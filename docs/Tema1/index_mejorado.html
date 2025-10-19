@@ -131,7 +131,7 @@
                     <p class="mb-2"><strong>Módulo:</strong> Didáctica de la Educación Infantil</p>
                     <p class="mb-2"><strong>Profesora:</strong> Beatriz María Gracia Sarasa</p>
                     <p class="mb-2"><strong>Instituto:</strong> IES Avempace</p>
-                    <p><strong>Fecha:</strong> 17/10/2025</p>
+                    <p><strong>Fecha:</strong> <span id="fecha"></span></p>
                 </div>
                 <button onclick="scrollToTimeline()" class="btn-primary text-lg px-8 py-3">
                     Explorar la Historia
@@ -556,6 +556,18 @@
                     easing: 'easeOutCubic'
                 });
             });
+            
+             // Obtener la fecha actual
+  const hoy = new Date();
+  // Formatear la fecha en formato dd/mm/yyyy
+  const fechaFormateada = hoy.toLocaleDateString('es-ES', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric'
+  });
+  // Insertarla en el elemento con id="fecha"
+  document.getElementById('fecha').textContent = fechaFormateada;
+            
             
             content.addEventListener('mouseleave', function() {
                 anime({
