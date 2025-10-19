@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Línea del Tiempo: El Concepto de Infancia en la Historia - Versión Mejorada</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Librerías adicionales -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r134/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js" charset="utf-8"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    
+    <!-- Estilos personalizados -->
+    <link rel="stylesheet" href="estilos_mejorados.css">
+    
+    <style>
+        /* Estilos adicionales para efectos especiales */
+        .hero-title {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+        
+        .subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            opacity: 0.9;
+        }
+        
+        .floating-element {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        .floating-element:nth-child(2) {
+            animation-delay: -2s;
+        }
+        
+        .floating-element:nth-child(3) {
+            animation-delay: -4s;
+        }
+        
+        .parallax-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%;
+            background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+            transform: translateZ(-1px) scale(2);
+        }
+        
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            animation: bounce 2s infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+        
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 4px;
+            background: var(--color-gradient-1);
+            z-index: 1000;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Barra de progreso -->
+    <div class="progress-bar" id="progressBar"></div>
+    
+    <!-- Fondo animado -->
+    <div id="vanta-bg" class="vanta-background"></div>
+    
+    <!-- Header mejorado -->
+    <header class="fixed w-full top-0 z-50 py-4">
+        <div class="container mx-auto px-6">
+            <div class="flex justify-between items-center">
+                <h1 class="text-2xl font-bold gradient-text text-glow">Infancia en la Historia</h1>
+                <nav id="main-nav" class="hidden md:flex space-x-8">
+                    <a href="#portada" class="nav-link text-white hover:text-yellow-300 transition-colors">Inicio</a>
+                    <a href="#linea-tiempo" class="nav-link text-white hover:text-yellow-300 transition-colors">Línea del Tiempo</a>
+                    <a href="#fuentes" class="nav-link text-white hover:text-yellow-300 transition-colors">Fuentes</a>
+                </nav>
+                <button id="mobile-menu-button" class="md:hidden text-white focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
+            </div>
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <a href="#portada" class="block nav-link text-white hover:text-yellow-300 py-2">Inicio</a>
+                <a href="#linea-tiempo" class="block nav-link text-white hover:text-yellow-300 py-2">Línea del Tiempo</a>
+                <a href="#fuentes" class="block nav-link text-white hover:text-yellow-300 py-2">Fuentes</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Portada Heroica -->
+        <section id="portada" class="content-section active min-h-screen flex items-center justify-center relative">
+            <div class="parallax-bg"></div>
+            <div class="hero-card text-white">
+                <h1 class="hero-title gradient-text text-glow text-float">
+                    <span id="typed-title"></span>
+                </h1>
+                <div class="subtitle mb-8">
+                    <p class="mb-2"><strong>Autora:</strong> Ana Maria da Cunha Goncalves</p>
+                    <p class="mb-2"><strong>Módulo:</strong> Didáctica de la Educación Infantil</p>
+                    <p class="mb-2"><strong>Profesora:</strong> Beatriz María Gracia Sarasa</p>
+                    <p class="mb-2"><strong>Instituto:</strong> IES Avempace</p>
+                    <p><strong>Fecha:</strong> 17/10/2025</p>
+                </div>
+                <button onclick="scrollToTimeline()" class="btn-primary text-lg px-8 py-3">
+                    Explorar la Historia
+                </button>
+            </div>
+            <div class="scroll-indicator">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+                </svg>
+            </div>
+        </section>
+
+        <!-- Línea del Tiempo Mejorada -->
+        <section id="linea-tiempo" class="content-section py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-5xl font-bold text-center mb-16 gradient-text-2 text-glow">
+                    Evolución Histórica del Concepto de Infancia
+                </h2>
+                
+                <div class="timeline">
+                    <!-- Antigüedad -->
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content antiguedad">
+                            <img src="https://kimi-web-img.moonshot.cn/img/monovisions.com/baf4293febfd77404e199e8df4ffda260903d5bb.jpg" 
+                                 alt="Niños en la antigüedad" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-orange-600">Antigüedad (Hasta S. V d.C.)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>La infancia como inexistente o propiedad:</strong> En la antigua Roma y Grecia, los niños no eran reconocidos como sujetos con derechos propios. Al nacer, el padre decidía si el bebé sería "elevado" (aceptado) o abandonado. Los niños eran vistos como adultos en miniatura o simple propiedad de sus progenitores.
+                            </p>
+                            <div class="mt-4 p-3 bg-orange-100 rounded-lg">
+                                <p class="text-sm text-orange-800"><strong>Dato clave:</strong> En Esparta, los bebés débiles eran descartados, mientras que en Roma el "pater familias" ejercía poder absoluto sobre la vida del niño.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Edad Media -->
+                    <div class="timeline-container right fade-in">
+                        <div class="timeline-content edad-media">
+                            <img src="https://kimi-web-img.moonshot.cn/img/monovisions.com/4a329eb4d5ba0bdff412703e4846a5cba4fd110b.jpg" 
+                                 alt="Niños en la Edad Media" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-pink-600">Edad Media (S. V - XV)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>La infancia bajo el pecado original:</strong> Durante el medievo, la concepción del niño estaba profundamente marcada por la doctrina del pecado original. Los niños eran vistos como seres corruptos que debían ser "reformados" mediante la disciplina y el castigo. Philippe Ariès señaló que en esta época no existía el concepto moderno de infancia.
+                            </p>
+                            <div class="mt-4 p-3 bg-pink-100 rounded-lg">
+                                <p class="text-sm text-pink-800"><strong>Dato impactante:</strong> La alta mortalidad infantil (aproximadamente 50% morían antes del primer año) generaba un menor apego emocional hacia ellos.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Renacimiento -->
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content renacimiento">
+                            <img src="https://kimi-web-img.moonshot.cn/img/monovisions.com/f1891b5844d036853d766b68beb10395339017f4.jpg" 
+                                 alt="Niños en el Renacimiento" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-purple-600">Renacimiento (S. XV - XVII)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>El nacimiento del sentimiento de infancia:</strong> El historiador Philippe Ariès argumenta que el concepto moderno de infancia "nació" durante este período. A través del análisis de pinturas y arte, Ariès observó que a partir del siglo XIII comenzaron a aparecer representaciones de niños con características propias.
+                            </p>
+                            <div class="mt-4 p-3 bg-purple-100 rounded-lg">
+                                <p class="text-sm text-purple-800"><strong>Cambio cultural:</strong> En el siglo XVII, los niños empiezan a ser representados solos en el arte, reflejando un cambio en la mentalidad colectiva.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Ilustración -->
+                    <div class="timeline-container right fade-in">
+                        <div class="timeline-content ilustracion">
+                            <img src="https://kimi-web-img.moonshot.cn/img/img.freepik.com/d58db04ea114ce7b338306cf13ce746f5494d671.jpg" 
+                                 alt="Educación en la Ilustración" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-yellow-600">La Ilustración (S. XVIII)</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>Punto de inflexión filosófico:</strong> El siglo XVIII marca una verdadera revolución en el concepto de infancia. <strong>John Locke</strong> introdujo la teoría de la "tabula rasa", mientras que <strong>Jean-Jacques Rousseau</strong> defendió la bondad natural del niño y la necesidad de una educación que respete sus etapas de desarrollo.
+                            </p>
+                            <div class="mt-4 p-3 bg-yellow-100 rounded-lg">
+                                <p class="text-sm text-yellow-800"><strong>Revolución conceptual:</strong> Rousseau planteó por primera vez que el niño vive en un mundo propio que debe ser comprendido, y que no debe ser tratado como adulto en miniatura.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Siglo XIX -->
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content industrial">
+                            <img src="https://kimi-web-img.moonshot.cn/img/kajabi-storefronts-production.kajabi-cdn.com/0086bb730ac02a6f8ff5af0dc44a7a496b8b409e.jpg" 
+                                 alt="Trabajo infantil en la Revolución Industrial" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-teal-600">Siglo XIX: Revolución Industrial</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>La dura contradicción:</strong> La Revolución Industrial trajo una paradoja cruel. Mientras las ideas ilustradas sobre la protección de la infancia se consolidaban, miles de niños fueron sometidos a brutales condiciones de explotación laboral en fábricas y minas. En 1845, el 43% de los trabajadores en fábricas textiles británicas eran menores de 18 años.
+                            </p>
+                            <div class="mt-4 p-3 bg-teal-100 rounded-lg">
+                                <p class="text-sm text-teal-800"><strong>Impacto físico:</strong> Los estudios bioarqueológicos de esqueletos infantiles de esta época revelan las horribles condiciones que sufrían, incluyendo malformaciones óseas y signos de desnutrición.</p>
+                            </div>
+                            <div id="childLaborChart" class="mt-6"></div>
+                        </div>
+                    </div>
+
+                    <!-- Siglo XX -->
+                    <div class="timeline-container right fade-in">
+                        <div class="timeline-content siglo-xx">
+                            <img src="https://kimi-web-img.moonshot.cn/img/monovisions.com/607efc6e293350af06307e6fce3c9233f9861830.jpg" 
+                                 alt="Niños en el siglo XX" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-blue-600">Siglo XX: "El Siglo del Niño"</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>Reconocimiento internacional de derechos:</strong> La pedagoga sueca <strong>Ellen Key</strong> acuñó el término "El Siglo del Niño" en 1900. Este siglo vio una explosión del interés científico, social y político por los niños. Se desarrollaron la pediatría y la psicología evolutiva, se generalizó la escolarización obligatoria y se consolidaron los derechos del niño.
+                            </p>
+                            <div class="mt-4 p-3 bg-blue-100 rounded-lg">
+                                <p class="text-sm text-blue-800"><strong>Hitos importantes:</strong> La <strong>Declaración de Ginebra (1924)</strong> y la <strong>Convención sobre los Derechos del Niño (1989)</strong> consolidaron el reconocimiento jurídico internacional de los derechos de la infancia.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Siglo XXI -->
+                    <div class="timeline-container left fade-in">
+                        <div class="timeline-content siglo-xxi">
+                            <img src="https://kimi-web-img.moonshot.cn/img/digestcity.com/7b2b0033f6d68e444af3771f40b0eef1458f1f9c.webp" 
+                                 alt="Niños digitales en el siglo XXI" class="epoca-image">
+                            <h3 class="text-2xl font-bold mb-4 text-red-600">Siglo XXI: La Era Digital</h3>
+                            <p class="text-gray-700 leading-relaxed">
+                                <strong>Nativos digitales y nuevos desafíos:</strong> La infancia actual está marcada por la irrupción de la tecnología digital. Los llamados "nativos digitales" crecen en un entorno hiperconectado que ofrece enormes oportunidades pero también nuevos retos como el ciberacoso, la sobreexposición a pantallas y adicción digital.
+                            </p>
+                            <div class="mt-4 p-3 bg-red-100 rounded-lg">
+                                <p class="text-sm text-red-800"><strong>Alerta actual:</strong> Según Save the Children, el 84% de los delitos sexuales en internet tienen como objetivo a menores, y el cerebro infantil es especialmente vulnerable a los efectos del uso excesivo de tecnología.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fuentes Mejoradas -->
+        <section id="fuentes" class="content-section py-20">
+            <div class="container mx-auto px-6">
+                <div class="sources-section max-w-6xl mx-auto p-10">
+                    <h2 class="text-4xl font-bold text-center mb-12 gradient-text-3 text-glow">Fuentes y Referencias</h2>
+                    <p class="text-center text-gray-600 mb-8 text-lg">Fuentes consultadas para la elaboración de esta investigación sobre el concepto de infancia a lo largo de la historia.</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-purple-600">Ariès, Philippe (1960)</h4>
+                            <p class="text-gray-700 text-sm"><em>El niño y la vida familiar en el Antiguo Régimen</em>. Obra fundacional que postula que el "sentimiento de infancia" es una construcción moderna surgida en el siglo XVII.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-blue-600">Key, Ellen (1900)</h4>
+                            <p class="text-gray-700 text-sm"><em>El Siglo del Niño</em>. Texto visionario que anticipó que el siglo XX sería el siglo de reconocimiento y protección de la infancia.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-green-600">Rousseau, Jean-Jacques (1762)</h4>
+                            <p class="text-gray-700 text-sm"><em>Emilio o De la Educación</em>. Obra fundamental que defiende la bondad natural del niño y plantea que la infancia es una etapa con características propias.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-orange-600">Locke, John (1693)</h4>
+                            <p class="text-gray-700 text-sm"><em>Algunos pensamientos sobre la educación</em>. Introduce la teoría de la "tabula rasa" y argumenta que la experiencia y educación son fundamentales.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-red-600">UNICEF (1989)</h4>
+                            <p class="text-gray-700 text-sm"><em>Convención sobre los Derechos del Niño</em>. Tratado internacional más importante sobre derechos de la infancia, ratificado por prácticamente todos los países.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-teal-600">Gowland, Rebecca et al. (2023)</h4>
+                            <p class="text-gray-700 text-sm">Universidad de Durham. Estudio bioarqueológico que analiza restos óseos de niños trabajadores durante la Revolución Industrial en Inglaterra.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-pink-600">Save the Children</h4>
+                            <p class="text-gray-700 text-sm">Informes sobre seguridad infantil digital. Organización que documenta los riesgos actuales para la infancia en la era digital.</p>
+                        </div>
+                        
+                        <div class="source-item">
+                            <h4 class="font-bold text-lg mb-2 text-indigo-600">Unidad 1: Contexto Educativo</h4>
+                            <p class="text-gray-700 text-sm">Material didáctico del módulo Didáctica de la Educación Infantil, IES Avempace. Contenido académico base para esta investigación.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer mejorado -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">&copy; 2025 - Trabajo académico sobre la historia de la infancia</p>
+            <p class="text-gray-500 text-sm mt-2">Elaborado con tecnologías modernas y efectos visuales por Ana Maria da Cunha - IES Avempace - Profesora: Beatriz María Gracia Sarasa -  Curso: 2025/2026</p>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar Vanta.js background
+        VANTA.NET({
+            el: "#vanta-bg",
+            mouseControls: true,
+            touchControls: true,
+            gyroControls: false,
+            minHeight: 200.00,
+            minWidth: 200.00,
+            scale: 1.00,
+            scaleMobile: 1.00,
+            color: 0x667eea,
+            backgroundColor: 0x764ba2,
+            points: 15.00,
+            maxDistance: 25.00,
+            spacing: 18.00
+        });
+
+        // Efecto de escritura para el título
+        document.addEventListener('DOMContentLoaded', function() {
+            new Typed('#typed-title', {
+                strings: [
+                    'Línea del Tiempo',
+                    'El Concepto de Infancia',
+                    'En la Historia'
+                ],
+                typeSpeed: 80,
+                backSpeed: 50,
+                backDelay: 2000,
+                loop: true,
+                showCursor: true,
+                cursorChar: '|'
+            });
+        });
+
+        // Navegación mejorada
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.content-section');
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            function showSection(hash) {
+                sections.forEach(section => {
+                    if ('#' + section.id === hash) {
+                        section.classList.add('active');
+                        anime({
+                            targets: section,
+                            opacity: [0, 1],
+                            translateY: [50, 0],
+                            duration: 1000,
+                            easing: 'easeOutCubic',
+                            delay: 200
+                        });
+                        
+                        // Animar elementos de timeline
+                        if (section.id === 'linea-tiempo') {
+                            setTimeout(() => {
+                                animateTimeline();
+                            }, 500);
+                        }
+                    } else {
+                        section.classList.remove('active');
+                    }
+                });
+                mobileMenu.classList.add('hidden');
+            }
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    history.pushState(null, null, targetId);
+                    showSection(targetId);
+                });
+            });
+            
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+
+            // Estado inicial
+            const initialHash = window.location.hash || '#portada';
+            showSection(initialHash);
+            
+            window.addEventListener('hashchange', () => {
+                showSection(window.location.hash);
+            });
+        });
+
+        // Animar timeline
+        function animateTimeline() {
+            const timelineContainers = document.querySelectorAll('.timeline-container');
+            
+            timelineContainers.forEach((container, index) => {
+                setTimeout(() => {
+                    container.classList.add('visible');
+                    anime({
+                        targets: container,
+                        opacity: [0, 1],
+                        translateX: container.classList.contains('left') ? [-100, 0] : [100, 0],
+                        duration: 800,
+                        easing: 'easeOutCubic'
+                    });
+                }, index * 300);
+            });
+        }
+
+        // Scroll suave a la línea de tiempo
+        function scrollToTimeline() {
+            window.location.hash = '#linea-tiempo';
+        }
+
+        // Barra de progreso al hacer scroll
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset;
+            const docHeight = document.body.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            document.getElementById('progressBar').style.width = scrollPercent + '%';
+        });
+
+        // Animaciones de scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Gráfico de trabajo infantil
+        document.addEventListener('DOMContentLoaded', function() {
+            const childLaborData = {
+                x: ['1851', '1871', '1891', '1911'],
+                y: [36.4, 28.1, 18.5, 12.3],
+                type: 'bar',
+                marker: {
+                    color: ['#ff9a9e', '#fecfef', '#a8edea', '#fed6e3'],
+                    line: {
+                        color: '#667eea',
+                        width: 2
+                    }
+                }
+            };
+            
+            const layout = {
+                title: {
+                    text: 'Descenso del Trabajo Infantil en Inglaterra',
+                    font: { family: 'Playfair Display, serif', size: 18, color: '#2d3748' }
+                },
+                xaxis: { 
+                    title: 'Año',
+                    font: { family: 'Inter, sans-serif', color: '#718096' }
+                },
+                yaxis: { 
+                    title: 'Porcentaje estimado de niños trabajadores (%)',
+                    font: { family: 'Inter, sans-serif', color: '#718096' }
+                },
+                paper_bgcolor: 'rgba(255,255,255,0)',
+                plot_bgcolor: 'rgba(255,255,255,0.8)',
+                font: {
+                    family: 'Inter, sans-serif',
+                    color: '#4a5568'
+                },
+                margin: { t: 50, b: 50, l: 80, r: 50 }
+            };
+            
+            Plotly.newPlot('childLaborChart', [childLaborData], layout, {responsive: true});
+        });
+
+        // Navegación con teclado mejorada
+        document.addEventListener('keydown', (e) => {
+            const sections = ['#portada', '#linea-tiempo', '#fuentes'];
+            const currentHash = window.location.hash;
+            let currentIndex = sections.indexOf(currentHash);
+            
+            if (currentIndex === -1) currentIndex = 0;
+            
+            if(e.key === 'ArrowDown' || e.key === ' ') {
+                e.preventDefault();
+                const nextIndex = (currentIndex + 1) % sections.length;
+                window.location.hash = sections[nextIndex];
+            } else if (e.key === 'ArrowUp') {
+                e.preventDefault();
+                const prevIndex = (currentIndex - 1 + sections.length) % sections.length;
+                window.location.hash = sections[prevIndex];
+            }
+        });
+
+        // Efectos de parallax
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.parallax-bg');
+            if (parallax) {
+                const speed = scrolled * 0.5;
+                parallax.style.transform = `translateY(${speed}px)`;
+            }
+        });
+
+        // Animación de elementos flotantes
+        function createFloatingElements() {
+            const container = document.querySelector('#portada');
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element absolute w-4 h-4 bg-white opacity-20 rounded-full';
+                element.style.left = Math.random() * 100 + '%';
+                element.style.top = Math.random() * 100 + '%';
+                element.style.animationDelay = Math.random() * 6 + 's';
+                container.appendChild(element);
+            }
+        }
+
+        // Inicializar elementos flotantes
+        document.addEventListener('DOMContentLoaded', createFloatingElements);
+
+        // Efectos de hover mejorados
+        document.querySelectorAll('.timeline-content').forEach(content => {
+            content.addEventListener('mouseenter', function() {
+                anime({
+                    targets: this,
+                    scale: 1.02,
+                    duration: 300,
+                    easing: 'easeOutCubic'
+                });
+            });
+            
+            content.addEventListener('mouseleave', function() {
+                anime({
+                    targets: this,
+                    scale: 1,
+                    duration: 300,
+                    easing: 'easeOutCubic'
+                });
+            });
+        });
+
+        // Animación de números en el gráfico
+        function animateNumbers() {
+            const numbers = document.querySelectorAll('.number-animate');
+            numbers.forEach(number => {
+                const finalNumber = parseInt(number.textContent);
+                let currentNumber = 0;
+                const increment = finalNumber / 50;
+                
+                const timer = setInterval(() => {
+                    currentNumber += increment;
+                    if (currentNumber >= finalNumber) {
+                        currentNumber = finalNumber;
+                        clearInterval(timer);
+                    }
+                    number.textContent = Math.floor(currentNumber);
+                }, 30);
+            });
+        }
+
+        // Inicializar todo cuando la página esté cargada
+        window.addEventListener('load', () => {
+            // Ocultar pantalla de carga si existe
+            const loading = document.querySelector('.loading');
+            if (loading) {
+                loading.classList.add('hidden');
+            }
+            
+            // Iniciar animaciones
+            setTimeout(() => {
+                if (window.location.hash === '#linea-tiempo' || window.location.hash === '') {
+                    animateTimeline();
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
