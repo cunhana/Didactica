@@ -1,0 +1,433 @@
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* Variables de colores vibrantes */
+:root {
+    --color-primary: #667eea;
+    --color-secondary: #764ba2;
+    --color-accent: #f093fb;
+    --color-warning: #f6ad55;
+    --color-success: #68d391;
+    --color-info: #4fd1c7;
+    --color-gradient-1: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color-gradient-2: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --color-gradient-3: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --color-gradient-4: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+    --color-gradient-5: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    --color-gradient-6: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+    --color-gradient-7: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+    --color-gradient-8: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+    --color-bg: #f8fafc;
+    --color-text: #2d3748;
+    --color-text-light: #718096;
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* Fondo animado con Vanta.js */
+.vanta-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: var(--color-gradient-1);
+}
+
+/* Tipografía mejorada */
+h1, h2, h3 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+/* Header con efecto glassmorphism mejorado */
+header {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+header:hover {
+    background: rgba(255, 255, 255, 0.25);
+}
+
+/* Títulos con gradientes animados */
+.gradient-text {
+    background: var(--color-gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.gradient-text-2 {
+    background: var(--color-gradient-2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+.gradient-text-3 {
+    background: var(--color-gradient-3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: gradientShift 3s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(30deg); }
+}
+
+/* Efectos de texto adicionales */
+.text-glow {
+    text-shadow: 0 0 20px rgba(102, 126, 234, 0.5);
+}
+
+.text-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Navegación mejorada */
+.nav-link {
+    position: relative;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--color-gradient-2);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Secciones con animaciones */
+.content-section {
+    display: none;
+    padding-top: 100px;
+    min-height: 100vh;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-section.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Portada heroica */
+.hero-card {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 3rem;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+    animation: fadeInUp 1s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Timeline mejorada */
+.timeline {
+    position: relative;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 2rem 0;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background: var(--color-gradient-1);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+    border-radius: 2px;
+}
+
+.timeline-container {
+    padding: 20px 50px;
+    position: relative;
+    background-color: inherit;
+    width: 50%;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.6s ease;
+}
+
+.timeline-container.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.timeline-container.left {
+    left: 0;
+}
+
+.timeline-container.right {
+    left: 50%;
+}
+
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    right: -15px;
+    background: var(--color-gradient-2);
+    top: 20px;
+    border-radius: 50%;
+    z-index: 1;
+    box-shadow: 0 0 20px rgba(240, 147, 251, 0.5);
+    animation: pulse 2s infinite;
+}
+
+.timeline-container.right::after {
+    left: -15px;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+/* Contenido de timeline con gradientes únicos por época */
+.timeline-content {
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.95);
+    position: relative;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.timeline-content:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+}
+
+/* Colores únicos para cada época */
+.antiguedad {
+    background: var(--color-gradient-8);
+    border-left: 5px solid #fcb69f;
+}
+
+.edad-media {
+    background: var(--color-gradient-7);
+    border-left: 5px solid #fecfef;
+}
+
+.renacimiento {
+    background: var(--color-gradient-6);
+    border-left: 5px solid #fed6e3;
+}
+
+.ilustracion {
+    background: var(--color-gradient-5);
+    border-left: 5px solid #fee140;
+}
+
+.industrial {
+    background: var(--color-gradient-4);
+    border-left: 5px solid #38f9d7;
+}
+
+.siglo-xx {
+    background: var(--color-gradient-3);
+    border-left: 5px solid #00f2fe;
+}
+
+.siglo-xxi {
+    background: var(--color-gradient-2);
+    border-left: 5px solid #f5576c;
+}
+
+/* Imgenes de época */
+.epoca-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.epoca-image:hover {
+    transform: scale(1.05);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Sección de fuentes */
+.sources-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.source-item {
+    transition: all 0.3s ease;
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+}
+
+.source-item:hover {
+    transform: translateX(10px);
+    border-left-color: var(--color-accent);
+    background: rgba(102, 126, 234, 0.05);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+/* Botones y elementos interactivos */
+.btn-primary {
+    background: var(--color-gradient-1);
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 35px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 31px;
+    }
+    
+    .timeline-container {
+        width: 100%;
+        padding-left: 70px;
+        padding-right: 25px;
+    }
+    
+    .timeline-container::after {
+        left: 16px;
+    }
+    
+    .timeline-container.right {
+        left: 0%;
+    }
+    
+    .hero-card {
+        margin: 1rem;
+        padding: 2rem;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animaciones de scroll */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Efectos de carga */
+.loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--color-gradient-1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top: 3px solid white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
