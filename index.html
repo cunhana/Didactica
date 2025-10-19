@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El Concepto de Infancia en la Historia | IES Avempace</title>
+    <meta name="description" content="Línea del tiempo interactiva sobre la evolución del concepto de infancia desde la Antigüedad hasta la actualidad">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- External Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta/0.5.21/vanta.net.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/npm/plotly.js@2.26.0/dist/plotly.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Header -->
+    <nav class="nav-header" id="navHeader">
+        <div class="nav-container">
+            <div class="nav-brand">
+                <span class="nav-logo">📚</span>
+                <span class="nav-title">Historia de la Infancia</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Inicio</a></li>
+                <li><a href="#introduccion" class="nav-link">Introducción</a></li>
+                <li><a href="#indice" class="nav-link">Índice</a></li>
+                <li><a href="#timeline" class="nav-link">Línea del Tiempo</a></li>
+                <li><a href="#conclusiones" class="nav-link">Conclusiones</a></li>
+                <li><a href="#fuentes" class="nav-link">Fuentes</a></li>
+            </ul>
+            <button class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="hero-section">
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="hero-title">El Concepto de Infancia<br>a través de la Historia</h1>
+            <div class="hero-subtitle">
+                <span id="typedText"></span>
+            </div>
+            <button class="hero-btn" onclick="scrollToSection('introduccion')">
+                <span>Explorar Historia</span>
+                <svg class="hero-btn-icon" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10.293 15.707a1 1 0 010-1.414L14.586 10l-4.293-4.293a1 1 0 111.414-1.414l5 5a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+        </div>
+    </section>
+
+    <!-- Introducción -->
+    <section id="introduccion" class="content-section intro-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">¿Qué es la Infancia?</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="intro-content">
+                <div class="intro-text">
+                    <p>A lo largo de la historia, la concepción de la infancia ha experimentado profundas transformaciones. Lo que hoy consideramos evidente - que los niños son seres con características propias, necesidades específicas y derechos fundamentales - no siempre fue así.</p>
+                    
+                    <p>Durante siglos, la infancia no fue reconocida como una etapa diferenciada de la vida. Los niños eran vistos como "adultos en miniatura" o "homúnculos", sin reconocimiento de sus particularidades cognitivas, emocionales o físicas. Las prácticas de crianza, educación y trato hacia los menores variaban enormemente según el contexto histórico, social y cultural.</p>
+                    
+                    <p>Este recorrido histórico nos permite comprender cómo hemos llegado a la concepción actual de la infancia como una etapa crucial del desarrollo humano, merecedora de protección, cuidado especializado y educación adaptada. Nosotras y nosotros como  futuros Técnicos Superiores en Educación Infantil, conocer esta evolución es fundamental para valorar la importancia de su rol profesional en la sociedad contemporánea.</p>
+                </div>
+                <div class="intro-visual">
+                    <svg class="intro-svg" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="childGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#6366f1"/>
+                                <stop offset="50%" stop-color="#8b5cf6"/>
+                                <stop offset="100%" stop-color="#ec4899"/>
+                            </linearGradient>
+                        </defs>
+                        
+                        <!-- Evolución de la figura del niño -->
+                        <g class="evolution-group">
+                            <!-- Figura medieval (homúnculo) -->
+                            <g transform="translate(50, 150)">
+                                <circle cx="0" cy="-40" r="15" fill="#64748b" opacity="0.7"/>
+                                <rect x="-10" y="-25" width="20" height="30" fill="#64748b" opacity="0.7"/>
+                                <text x="0" y="40" text-anchor="middle" font-size="12" fill="#64748b">Homúnculo</text>
+                            </g>
+                            
+                            <!-- Figura renacentista -->
+                            <g transform="translate(150, 130)">
+                                <circle cx="0" cy="-35" r="18" fill="#f59e0b" opacity="0.8"/>
+                                <rect x="-12" y="-20" width="24" height="35" fill="#f59e0b" opacity="0.8"/>
+                                <text x="0" y="35" text-anchor="middle" font-size="12" fill="#f59e0b">En formación</text>
+                            </g>
+                            
+                            <!-- Figura moderna -->
+                            <g transform="translate(250, 110)">
+                                <circle cx="0" cy="-30" r="20" fill="url(#childGradient)"/>
+                                <rect x="-15" y="-15" width="30" height="40" fill="url(#childGradient)"/>
+                                <text x="0" y="40" text-anchor="middle" font-size="12" fill="#6366f1">Sujeto de derechos</text>
+                            </g>
+                            
+                            <!-- Flecha de evolución -->
+                            <path d="M 80 150 Q 200 100 220 110" stroke="url(#childGradient)" stroke-width="3" fill="none" marker-end="url(#arrowhead)"/>
+                        </g>
+                        
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                <polygon points="0 0, 10 3.5, 0 7" fill="url(#childGradient)"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Índice Interactivo -->
+    <section id="indice" class="content-section index-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Períodos Históricos</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="index-grid" id="indexGrid">
+                <div class="index-card" data-target="timeline-periodo-0">
+                    <div class="index-icon">🏛️</div>
+                    <h3>Antigüedad</h3>
+                    <p>Grecia y Roma</p>
+                    <span class="index-years">Siglo V a.C. - V d.C.</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-1">
+                    <div class="index-icon">⛪</div>
+                    <h3>Edad Media</h3>
+                    <p>Cristianismo</p>
+                    <span class="index-years">Siglo V - XV</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-2">
+                    <div class="index-icon">🎨</div>
+                    <h3>Renacimiento</h3>
+                    <p>Humanismo</p>
+                    <span class="index-years">Siglo XV - XVII</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-3">
+                    <div class="index-icon">📚</div>
+                    <h3>Ilustración</h3>
+                    <p>Siglo XVIII</p>
+                    <span class="index-years">Siglo XVIII</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-4">
+                    <div class="index-icon">🔬</div>
+                    <h3>Siglo XIX</h3>
+                    <p>Estudio Científico</p>
+                    <span class="index-years">Siglo XIX</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-5">
+                    <div class="index-icon">🌟</div>
+                    <h3>Siglo XX</h3>
+                    <p>Reconocimiento Pleno</p>
+                    <span class="index-years">Siglo XX</span>
+                </div>
+                
+                <div class="index-card" data-target="timeline-periodo-6">
+                    <div class="index-icon">👶</div>
+                    <h3>Siglo XXI</h3>
+                    <p>Actualidad</p>
+                    <span class="index-years">2000 - Presente</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Línea del Tiempo -->
+    <section id="timeline" class="timeline-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Línea del Tiempo</h2>
+                <div class="section-divider"></div>
+            </div>
+            
+            <div class="timeline-container">
+                <div class="timeline-line"></div>
+                
+                <!-- Antigüedad -->
+                <div class="timeline-item left" id="timeline-periodo-0" data-period="0">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🏛️</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Antigüedad - Grecia y Roma</h3>
+                                <span class="timeline-years">Siglo V a.C. - Siglo V d.C.</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Ser en formación para ciudadanía. Educación diferenciada por género y clase social."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Grecia: Concepto de educación liberal y desarrollo integral (cuerpo-mente)</li>
+                                    <li>Aristóteles define periodos educativos: hasta 2 años, de 2-5 años, después</li>
+                                    <li>Roma: Educación enfocada en formar oradores</li>
+                                    <li>Infanticidio y 'exposición' de bebés práctica común</li>
+                                    <li>Alta mortalidad infantil</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Aristóteles</span>
+                                    <span class="author-tag">Plutarco</span>
+                                    <span class="author-tag">Platón</span>
+                                    <span class="author-tag">Séneca</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Columnas griegas -->
+                                    <rect x="30" y="80" width="8" height="30" fill="#9ca3af"/>
+                                    <rect x="50" y="80" width="8" height="30" fill="#9ca3af"/>
+                                    <rect x="70" y="80" width="8" height="30" fill="#9ca3af"/>
+                                    <rect x="25" y="75" width="50" height="8" fill="#9ca3af"/>
+                                    <!-- Niño con toga -->
+                                    <circle cx="130" cy="60" r="15" fill="#f59e0b"/>
+                                    <path d="M130 75 L120 105 L140 105 Z" fill="#f59e0b"/>
+                                    <text x="100" y="30" font-size="14" fill="#6b7280">Educación Liberal</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Edad Media -->
+                <div class="timeline-item right" id="timeline-periodo-1" data-period="1">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">⛪</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Cristianismo y Edad Media</h3>
+                                <span class="timeline-years">Siglo V - Siglo XV</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "'Homúnculo' corrupto por pecado original. 'No hay peor estado que la infancia después de la muerte'"
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>La IGLESIA controla la educación (antes era el Estado)</li>
+                                    <li>Desaparece educación liberal</li>
+                                    <li>Objetivo: servir a Dios y la Iglesia</li>
+                                    <li>Niño como 'ser perverso' que debe ser redimido</li>
+                                    <li>Concepto de 'homúnculo' (hombre en miniatura)</li>
+                                    <li>No hay reconocimiento de la infancia como etapa propia</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Tomás de Aquino</span>
+                                    <span class="author-tag">Abad Bérulle</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Iglesia -->
+                                    <rect x="80" y="50" width="40" height="50" fill="#6b7280"/>
+                                    <polygon points="80,50 100,30 120,50" fill="#6b7280"/>
+                                    <rect x="95" y="35" width="10" height="15" fill="#6b7280"/>
+                                    <!-- Cruz -->
+                                    <rect x="98" y="20" width="4" height="15" fill="#ef4444"/>
+                                    <rect x="93" y="25" width="14" height="4" fill="#ef4444"/>
+                                    <text x="70" y="115" font-size="12" fill="#6b7280">Homúnculo</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Renacimiento -->
+                <div class="timeline-item left" id="timeline-periodo-2" data-period="2">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🎨</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Renacimiento</h3>
+                                <span class="timeline-years">Siglo XV - Siglo XVII</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Ser moldeable por experiencia. Importancia de adaptación educativa."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Resurgen ideas clásicas sobre educación</li>
+                                    <li>Auge de observaciones de niños</li>
+                                    <li>Luis Vives: adaptación educación a distintos casos</li>
+                                    <li>Comenius: educación para niños y niñas</li>
+                                    <li>Locke: niño como "tabula rasa" (pizarra en blanco)</li>
+                                    <li>Enseñanza en lengua materna, no solo latín</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Erasmo</span>
+                                    <span class="author-tag">Luis Vives</span>
+                                    <span class="author-tag">Comenius</span>
+                                    <span class="author-tag">John Locke</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Paleta de pintor -->
+                                    <ellipse cx="100" cy="70" rx="30" ry="20" fill="#f3f4f6"/>
+                                    <circle cx="85" cy="65" r="3" fill="#ef4444"/>
+                                    <circle cx="100" cy="60" r="3" fill="#3b82f6"/>
+                                    <circle cx="115" cy="65" r="3" fill="#eab308"/>
+                                    <!-- Pincel -->
+                                    <rect x="130" y="40" width="3" height="25" fill="#8b5cf6"/>
+                                    <rect x="127" y="35" width="9" height="8" fill="#6b7280"/>
+                                    <text x="70" y="105" font-size="12" fill="#6b7280">Tabula Rasa</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Ilustración -->
+                <div class="timeline-item right" id="timeline-periodo-3" data-period="3">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">📚</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Ilustración y Siglo XVIII</h3>
+                                <span class="timeline-years">Siglo XVIII</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Ser con bondad natural. Etapa con características propias que requiere educación adaptada."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Rousseau: "El niño es bueno por naturaleza"</li>
+                                    <li>Educación debe ADAPTARSE al nivel del niño</li>
+                                    <li>Niño con características propias, no 'hombre pequeño'</li>
+                                    <li>Pestalozzi y Froebel: kindergarten (escuela preescolar)</li>
+                                    <li>Importancia del juego infantil</li>
+                                    <li>Disminución mortalidad infantil</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Jean-Jacques Rousseau</span>
+                                    <span class="author-tag">Pestalozzi</span>
+                                    <span class="author-tag">Froebel</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Libro abierto -->
+                                    <rect x="70" y="60" width="60" height="40" fill="#f3f4f6" stroke="#6b7280"/>
+                                    <line x1="100" y1="60" x2="100" y2="100" stroke="#6b7280"/>
+                                    <!-- Pluma -->
+                                    <rect x="140" y="45" width="2" height="20" fill="#8b5cf6"/>
+                                    <circle cx="141" cy="43" r="2" fill="#6366f1"/>
+                                    <text x="60" y="115" font-size="12" fill="#6b7280">Bondad Natural</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Siglo XIX -->
+                <div class="timeline-item left" id="timeline-periodo-4" data-period="4">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🔬</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Siglo XIX - Estudio Científico</h3>
+                                <span class="timeline-years">Siglo XIX</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Objeto de estudio científico. Desarrollo observable y medible."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Proliferan observaciones sistemáticas de niños</li>
+                                    <li>Darwin: Origen de las Especies (1859) - continuidad niño-adulto</li>
+                                    <li>Estudio científico del niño comienza</li>
+                                    <li>Educación obligatoria generalizada</li>
+                                    <li>Primer test de inteligencia (Binet y Simon, 1905)</li>
+                                    <li>Interés por sujetos especiales y superdotados</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Charles Darwin</span>
+                                    <span class="author-tag">Binet</span>
+                                    <span class="author-tag">Simon</span>
+                                    <span class="author-tag">Preyer</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Microscopio -->
+                                    <rect x="90" y="40" width="20" height="60" fill="#6b7280"/>
+                                    <circle cx="100" cy="35" r="8" fill="#3b82f6"/>
+                                    <rect x="85" y="100" width="30" height="5" fill="#6b7280"/>
+                                    <!-- Libro científico -->
+                                    <rect x="120" y="80" width="25" height="20" fill="#10b981"/>
+                                    <text x="60" y="115" font-size="12" fill="#6b7280">Estudio Científico</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Siglo XX -->
+                <div class="timeline-item right" id="timeline-periodo-5" data-period="5">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">🌟</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Siglo XX - Reconocimiento Pleno</h3>
+                                <span class="timeline-years">Siglo XX</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Sujeto de derechos. Persona en desarrollo con necesidades específicas."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Infancia reconocida como periodo con características propias</li>
+                                    <li>Niño como PERSONA con derechos</li>
+                                    <li>Declaración Derechos del Niño (1959)</li>
+                                    <li>Convención Derechos del Niño - ONU (1989)</li>
+                                    <li>Fin del trabajo infantil generalizado</li>
+                                    <li>Psicología evolutiva como disciplina</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">Philippe Ariès</span>
+                                    <span class="author-tag">Piaget</span>
+                                    <span class="author-tag">Vygotsky</span>
+                                    <span class="author-tag">Freud</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Escuela moderna -->
+                                    <rect x="60" y="70" width="80" height="30" fill="#3b82f6"/>
+                                    <rect x="70" y="75" width="15" height="20" fill="#93c5fd"/>
+                                    <rect x="90" y="75" width="15" height="20" fill="#93c5fd"/>
+                                    <rect x="110" y="75" width="15" height="20" fill="#93c5fd"/>
+                                    <!-- Juguetes -->
+                                    <circle cx="130" cy="60" r="5" fill="#ef4444"/>
+                                    <rect x="70" y="55" width="10" height="10" fill="#eab308"/>
+                                    <text x="70" y="115" font-size="12" fill="#6b7280">Derechos del Niño</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+                
+                <!-- Siglo XXI -->
+                <div class="timeline-item left" id="timeline-periodo-6" data-period="6">
+                    <div class="timeline-content">
+                        <div class="timeline-icon">👶</div>
+                        <div class="timeline-card">
+                            <div class="timeline-header">
+                                <h3>Siglo XXI - Actualidad</h3>
+                                <span class="timeline-years">2000 - Presente</span>
+                            </div>
+                            <blockquote class="timeline-vision">
+                                "Ciudadano activo con voz. Desarrollo integral en entornos seguros y afectivos."
+                            </blockquote>
+                            <div class="timeline-details">
+                                <h4>Características principales:</h4>
+                                <ul>
+                                    <li>Educación Infantil como etapa educativa (0-6 años)</li>
+                                    <li>Profesionalización: Técnicos Superiores en Educación Infantil</li>
+                                    <li>Importancia del apego y vínculo afectivo</li>
+                                    <li>Neurociencia aplicada al desarrollo infantil</li>
+                                    <li>Atención a la diversidad e inclusión</li>
+                                    <li>Enfoque en bienestar emocional y desarrollo integral</li>
+                                </ul>
+                                <div class="timeline-authors">
+                                    <span class="author-tag">LOE</span>
+                                    <span class="author-tag">UNESCO</span>
+                                    <span class="author-tag">UNICEF</span>
+                                </div>
+                            </div>
+                            <div class="timeline-illustration">
+                                <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+                                    <!-- Tablet/tecnología -->
+                                    <rect x="80" y="60" width="40" height="25" fill="#1f2937" stroke="#6b7280"/>
+                                    <rect x="85" y="65" width="30" height="15" fill="#3b82f6"/>
+                                    <!-- Niños jugando -->
+                                    <circle cx="60" cy="90" r="8" fill="#f59e0b"/>
+                                    <circle cx="140" cy="90" r="8" fill="#10b981"/>
+                                    <text x="60" y="115" font-size="12" fill="#6b7280">Era Digital</text>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-connector"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gráfico Interactivo -->
+    <section id="graficos" class="content-section chart-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Evolución Histórica</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="chart-container">
+                <div id="evolutionChart"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusiones -->
+    <section id="conclusiones" class="content-section conclusion-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Reflexiones Finales</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="conclusion-content">
+                <p>El recorrido histórico por el concepto de infancia nos revela una evolución extraordinaria: desde la negación de la infancia como etapa propia en la Edad Media, hasta su pleno reconocimiento en el siglo XX como período fundamental del desarrollo humano.</p>
+                
+                <div class="conclusion-highlights">
+                    <div class="highlight-card">
+                        <h3>De la invisibilidad al protagonismo</h3>
+                        <p>Los niños pasaron de ser prácticamente invisibles en el arte y la literatura medieval, a ser sujetos de estudio científico y, finalmente, protagonistas de sus propios derechos.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3>De la dureza al afecto</h3>
+                        <p>Las prácticas educativas evolucionaron desde el castigo físico sistemático y la dureza extrema, hacia el reconocimiento de la importancia del vínculo afectivo y el respeto a la dignidad infantil.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3>De la explotación a la protección</h3>
+                        <p>El trabajo infantil generalizado dio paso a leyes de protección y al reconocimiento del derecho a la educación y al juego.</p>
+                    </div>
+                    
+                    <div class="highlight-card">
+                        <h3>Del homúnculo al sujeto de derechos</h3>
+                        <p>La visión del niño como "adulto pequeño" se transformó en la comprensión de la infancia como etapa con características propias y necesidades específicas.</p>
+                    </div>
+                </div>
+                
+                <div class="conclusion-final">
+                    <p>En el siglo XXI, los Técnicos Superiores en Educación Infantil somos herederos de esta rica tradición y tenemos la responsabilidad de continuar promoviendo el desarrollo integral de los niños, respetando su individualidad, fomentando su bienestar emocional y garantizando sus derechos en un mundo en constante cambio.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fuentes -->
+    <section id="fuentes" class="content-section sources-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Fuentes y Referencias</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="sources-grid">
+                <div class="source-card">
+                    <h3>Philippe Ariès</h3>
+                    <p>El niño y la vida familiar en el Antiguo Régimen. Madrid: Taurus, 1987</p>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Unidad 1 - Didáctica de la Educación Infantil</h3>
+                    <p>IES Avempace - Contexto de la intervención educativa</p>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Convención sobre los Derechos del Niño</h3>
+                    <p>Asamblea General de la ONU, 1989</p>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Delval, J. y Gómez, J.C.</h3>
+                    <p>Dietrich Tiedemann: La psicología del niño hace doscientos años. Infancia y Aprendizaje, 1988</p>
+                </div>
+                
+                <div class="source-card">
+                    <h3>Historia de la vida privada</h3>
+                    <p>Ph. Ariès y G. Duby (dirs.), 5 volúmenes, Taurus, 2001</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Créditos Académicos</h3>
+                    <p><strong>Autora:</strong> Ana Maria da Cunha Goncalves</p>
+                    <p><strong>Módulo:</strong> Didáctica de la Educación Infantil (LFP)</p>
+                    <p><strong>Profesora:</strong> Beatriz Mª Gracia Sarasa</p>
+                    <p><strong>Instituto:</strong> IES Avempace</p>
+                    <p><strong>Curso:</strong> 2025/2026 - Técnico de Educación Infantil</p>
+                </div>
+                <div class="footer-tech">
+                    <h3>Tecnologías Utilizadas</h3>
+                    <p>HTML5 • CSS3 • JavaScript ES6+ • Vanta.js • Anime.js • Typed.js • Plotly.js</p>
+                    <p class="footer-license">Trabajo académico con fines educativos - Fuentes debidamente citadas</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Botón Volver Arriba -->
+    <button class="back-to-top" id="backToTop" onclick="scrollToTop()">
+        <svg fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M3.293 9.707a1 1 0 010-1.414l6-6a1 1 0 011.414 0l6 6a1 1 0 01-1.414 1.414L11 5.414V17a1 1 0 11-2 0V5.414L4.707 9.707a1 1 0 01-1.414 0z" clip-rule="evenodd"/>
+        </svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="funciones.js"></script>
+</body>
+</html>
