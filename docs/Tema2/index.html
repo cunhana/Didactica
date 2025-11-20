@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabla Pedagógica</title>
+    
+    <!-- Fuentes e Iconos -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- React y Tailwind -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Configuración de Tailwind para usar la fuente Poppins -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            /* Variables originales del diseño */
+            --color-primary: rgba(33, 128, 141, 1);
+            --color-text: rgba(19, 52, 59, 1);
+            --color-text-secondary: rgba(98, 108, 113, 1);
+            --color-card-border: rgba(94, 82, 64, 0.12);
+            
+            /* Pasteles */
+            --pastel-pink: #FFD6E8;
+            --pastel-mint: #C1E7E3;
+            --pastel-peach: #FFE5B4;
+            --pastel-lavender: #E0BBE4;
+            --pastel-blue: #B4D7FF;
+            --pastel-coral: #FFDFD3;
+            
+            /* Animaciones */
+            --ease-standard: cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, 
+                var(--pastel-pink) 0%, 
+                var(--pastel-mint) 20%, 
+                var(--pastel-peach) 40%, 
+                var(--pastel-lavender) 60%, 
+                var(--pastel-blue) 80%, 
+                var(--pastel-coral) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease-in-out infinite;
+            min-height: 100vh;
+            padding: 20px;
+            color: var(--color-text);
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Estilos de la tarjeta Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.90);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            animation: slideUp 0.8s var(--ease-standard);
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Estilos específicos de la portada */
+        .cover-title {
+            font-size: 2.5rem; /* eq 40px */
+            font-weight: 700;
+            color: var(--color-text);
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+        }
+
+        .academic-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+        }
+
+        .info-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.6);
+            border-radius: 12px;
+            border: 1px solid var(--color-card-border);
+            transition: all 0.25s var(--ease-standard);
+        }
+
+        .info-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .info-icon { font-size: 24px; color: var(--color-primary); margin-bottom: 8px; }
+        .info-label { font-size: 12px; font-weight: 500; color: var(--color-text-secondary); text-transform: uppercase; margin-bottom: 4px; }
+        .info-value { font-size: 16px; font-weight: 600; color: var(--color-text); }
+
+        .module-highlight {
+            background: linear-gradient(135deg, var(--pastel-lavender), var(--pastel-blue));
+            border: 2px solid var(--color-primary);
+        }
+        .module-highlight .info-value { color: var(--color-primary); font-size: 1.25rem; }
+
+        .decorative-line {
+            height: 3px;
+            background: linear-gradient(90deg, var(--pastel-pink), var(--pastel-mint), var(--pastel-peach), var(--pastel-lavender), var(--pastel-blue));
+            border-radius: 999px;
+            margin: 32px 0;
+        }
+
+        /* Impresión */
+        @media print {
+            body { background: white !important; animation: none; padding: 0; }
+            .glass-panel { box-shadow: none; border: none; background: white; backdrop-filter: none; }
+            .no-print { display: none !important; }
+            .academic-info { grid-template-columns: repeat(3, 1fr); }
+            .print-break-inside-avoid { break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="root"></div>
+
+    <script type="text/babel">
+        const { useState, useMemo, useEffect } = React;
+
+        // --- COMPONENTE: PORTADA (HEADER) ---
+        const CoverHeader = () => {
+            const [currentDate, setCurrentDate] = useState('');
+
+            useEffect(() => {
+                const now = new Date();
+                const formattedDate = `${String(now.getDate()).padStart(2, '0')}/${String(now.getMonth() + 1).padStart(2, '0')}/${now.getFullYear()}`;
+                setCurrentDate(formattedDate);
+            }, []);
+
+            return (
+                <div className="text-center mb-8">
+                    <h1 className="cover-title mb-8">Tabla Comparativa de Pedagogías en Educación Infantil</h1>
+                    
+                    <div className="academic-info mb-8">
+                        <div className="info-item">
+                            <i className="fas fa-user info-icon"></i>
+                            <div className="info-label">Autora</div>
+                            <div className="info-value">Ana Maria da Cunha Goncalves</div>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-school info-icon"></i>
+                            <div className="info-label">Instituto</div>
+                            <div className="info-value">IES Avempace</div>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-chalkboard-teacher info-icon"></i>
+                            <div className="info-label">Profesora</div>
+                            <div className="info-value">Beatriz Gracia Sarasa</div>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-graduation-cap info-icon"></i>
+                            <div className="info-label">Curso</div>
+                            <div className="info-value">2025/2026</div>
+                        </div>
+                        <div className="info-item">
+                            <i className="fas fa-calendar-alt info-icon"></i>
+                            <div className="info-label">Fecha</div>
+                            <div className="info-value">{currentDate}</div>
+                        </div>
+                    </div>
+                    
+                    <div className="info-item module-highlight w-full">
+                        <i className="fas fa-book-open info-icon"></i>
+                        <div className="info-label">Módulo</div>
+                        <div className="info-value">Didáctica de la Escuela Infantil</div>
+                    </div>
+
+                    <div className="decorative-line"></div>
+                </div>
+            );
+        };
+
+        // --- COMPONENTE PRINCIPAL ---
+        const App = () => {
+            const [searchTerm, setSearchTerm] = useState('');
+            const [selectedCategory, setSelectedCategory] = useState('Todas');
+
+            const data = [
+                { category: "Precursores Escuela Nueva", author: "Jean-Jacques Rousseau", era: "1712-1778 (Francia)", contribution: "Educación natural basada en bondad innata; experiencias sensoriales; libertad; respeto a ritmo individual; adaptación a etapas del desarrollo; ambientes de libertad" },
+                { category: "Precursores Escuela Nueva", author: "Johann Heinrich Pestalozzi", era: "1746-1827 (Suiza)", contribution: "Descubrimiento como base del aprendizaje; intuición como instrumento metodológico; educación para sectores desfavorecidos; relaciones positivas; precursor escuela pública" },
+                { category: "Precursores Escuela Nueva", author: "Friedrich Fröebel", era: "1782-1852 (Alemania)", contribution: "Creador del Kindergarten; educación en primeros años; formación de educadoras; instituciones diferentes a primarias; actividad espontánea del niño" },
+                { category: "Movimiento Escuela Nueva", author: "María Montessori", era: "1870-1952 (Italia)", contribution: "Autoeducación mediante ambiente y materiales adecuados; libertad con límites; rol discreto del educador; construcción de autonomía personal; Método Montessori" },
+                { category: "Movimiento Escuela Nueva", author: "Hermanas Agazzi", era: "Rosa 1866-1951 / Carolina 1870-1945 (Italia)", contribution: "Globalización de la enseñanza; observación del niño; importancia del juego y alegría; ambiente similar al hogar; uso de materiales cotidianos; Museo Didáctico" },
+                { category: "Movimiento Escuela Nueva", author: "Ovidio Decroly", era: "1871-1932 (Bélgica)", contribution: "Globalización como estrategia metodológica; aprendizaje basado en intereses y necesidades; Centros de Interés; desarrollo biológico; importancia del juego" },
+                { category: "Movimiento Escuela Nueva", author: "Célestin Freinet", era: "1896-1966 (Francia)", contribution: "Educación como socialización; trabajo en equipo; imprenta escolar; periódico escolar; técnicas variadas (texto libre, contratos); tanteo experimental" },
+                { category: "Teorías Conductistas", author: "Pavlov, Watson, Skinner", era: "1849-1990 (Varios)", contribution: "Aprendizaje por estímulo-respuesta; importancia del contexto social; modificación de conducta; evaluación cuantificable; enseñanza programada" },
+                { category: "Teorías Cognitivas", author: "Jean Piaget", era: "1896-1980 (Suiza)", contribution: "Pensamiento en estadios evolutivos; construcción activa del conocimiento; estadios: sensoriomotor, preoperatorio, operatorio concreto, operatorio formal" },
+                { category: "Teorías Cognitivas", author: "Jerome Bruner", era: "1915-2016 (EE.UU.)", contribution: "Aprendizaje por descubrimiento; construcción de estructuras cognitivas; andamiaje educativo; actividad del alumno como base" },
+                { category: "Teorías Cognitivas", author: "David Ausubel", era: "1918-2008 (EE.UU.)", contribution: "Aprendizaje verbal significativo; incorporación a estructuras cognitivas existentes; conexión con conocimientos previos; diferencia significativo vs memorístico" },
+                { category: "Teorías Cognitivas", author: "Albert Bandura", era: "1925-2021 (EE.UU.)", contribution: "Aprendizaje observacional; modelado social; teoría cognitivo-social; importancia de la cognición; interacción persona-conducta-ambiente" },
+                { category: "Teoría Sociohistórica", author: "Lev Vygotsky", era: "1896-1934 (Rusia)", contribution: "Desarrollo determinado por contexto social; Zona de Desarrollo Próximo; aprendizaje como impulsor del desarrollo; lenguaje e interacción social fundamentales" },
+                { category: "Teorías Evolutivas", author: "Sigmund Freud", era: "1856-1939 (Austria)", contribution: "Psicoanálisis aplicado a desarrollo psicosexual; primera infancia crucial; rol del inconsciente; educación afectiva; evitar represión de instintos" },
+                { category: "Teorías Evolutivas", author: "Carl Jung", era: "1875-1961 (Suiza)", contribution: "Desarrollo psicoafectivo; arquetipos y símbolos; inconsciente colectivo; procesos conscientes e inconscientes; aspecto cultural y espiritual" },
+                { category: "Teorías Evolutivas", author: "Erik Erikson", era: "1902-1994 (Alemania-EE.UU.)", contribution: "Ocho estadios del desarrollo vital; identidad como resultado de tres procesos (biológico, psicológico, social); desarrollo continuo; conflictos en cada etapa" },
+                { category: "Teoría General Instrucción", author: "Robert Gagné", era: "Siglo XX", contribution: "Integración de conductismo y cognitivismo; fases del aprendizaje (adquirir, retener, recordar, generalizar, ejecutar); retroalimentación; condiciones internas y externas" },
+                { category: "Teoría Ecológica", author: "Urie Bronfenbrenner", era: "Siglo XX-XXI", contribution: "Contexto natural e interactivo; microsistema, mesosistema, exosistema, macrosistema; interacción con múltiples ambientes; perspectiva sistémica" },
+                { category: "Otros Aportes", author: "Emmi Pikler", era: "1902-1984 (Hungría)", contribution: "Desarrollo desde enfoque respetuoso y observador; movimiento libre y autonomía; educación sensorial; respeto a ritmos individuales; actividad autónoma" },
+            ];
+
+            const categories = ['Todas', ...new Set(data.map(item => item.category))];
+
+            const getCategoryColor = (cat) => {
+                switch (cat) {
+                case "Precursores Escuela Nueva": return "bg-emerald-100 text-emerald-800 border-emerald-200";
+                case "Movimiento Escuela Nueva": return "bg-green-100 text-green-800 border-green-200";
+                case "Teorías Conductistas": return "bg-red-100 text-red-800 border-red-200";
+                case "Teorías Cognitivas": return "bg-blue-100 text-blue-800 border-blue-200";
+                case "Teoría Sociohistórica": return "bg-purple-100 text-purple-800 border-purple-200";
+                case "Teorías Evolutivas": return "bg-orange-100 text-orange-800 border-orange-200";
+                case "Teoría General Instrucción": return "bg-indigo-100 text-indigo-800 border-indigo-200";
+                case "Teoría Ecológica": return "bg-teal-100 text-teal-800 border-teal-200";
+                default: return "bg-gray-100 text-gray-800 border-gray-200";
+                }
+            };
+
+            const filteredData = useMemo(() => {
+                return data.filter(item => {
+                const matchesSearch = 
+                    item.author.toLowerCase().includes(searchTerm.toLowerCase()) || 
+                    item.contribution.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    item.category.toLowerCase().includes(searchTerm.toLowerCase());
+                const matchesCategory = selectedCategory === 'Todas' || item.category === selectedCategory;
+                return matchesSearch && matchesCategory;
+                });
+            }, [searchTerm, selectedCategory]);
+
+            const handlePrint = () => { window.print(); };
+
+            return (
+                <div className="max-w-5xl mx-auto">
+                    
+                    {/* PANEL PRINCIPAL (Vidrio) */}
+                    <div className="glass-panel p-8 md:p-12 mb-8 relative">
+                        
+                      
+
+                        {/* Header fusionado */}
+                        <CoverHeader />
+
+                        {/* Controls - Hidden when printing */}
+                        <div className="bg-white/80 p-4 rounded-xl shadow-sm border border-slate-200 mb-6 flex flex-col md:flex-row gap-4 justify-between items-center no-print">
+                            <div className="relative w-full md:w-1/3">
+                                <i className="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400"></i>
+                                <input 
+                                type="text"
+                                placeholder="Buscar autor..."
+                                className="w-full pl-10 pr-4 py-2 border border-slate-300 rounded-lg focus:ring-2 focus:ring-teal-500 focus:border-teal-500 outline-none transition-all bg-white"
+                                value={searchTerm}
+                                onChange={(e) => setSearchTerm(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="relative w-full md:w-1/3">
+                                <div className="flex items-center gap-2">
+                                    <i className="fas fa-filter text-slate-500"></i>
+                                    <select 
+                                        className="w-full p-2 border border-slate-300 rounded-lg bg-white focus:ring-2 focus:ring-teal-500 outline-none cursor-pointer"
+                                        value={selectedCategory}
+                                        onChange={(e) => setSelectedCategory(e.target.value)}
+                                    >
+                                        {categories.map(cat => (
+                                        <option key={cat} value={cat}>{cat}</option>
+                                        ))}
+                                    </select>
+                                </div>
+                            </div>
+                            
+                            <div className="text-sm text-slate-500 font-medium">
+                                {filteredData.length} registros
+                            </div>
+                        </div>
+
+                        {/* Table View (Desktop) */}
+                        <div className="hidden md:block overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
+                        <div className="overflow-x-auto">
+                            <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="bg-slate-800 text-white">
+                                <th className="p-4 font-semibold w-1/6 text-sm">Pedagogía</th>
+                                <th className="p-4 font-semibold w-1/6 text-sm">Autor/es</th>
+                                <th className="p-4 font-semibold w-1/6 text-sm">Época</th>
+                                <th className="p-4 font-semibold w-1/2 text-sm">Aportación Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredData.map((row, index) => (
+                                <tr 
+                                    key={index} 
+                                    className="border-b border-slate-100 hover:bg-slate-50 transition-colors print-break-inside-avoid"
+                                >
+                                    <td className="p-4 align-top">
+                                    <span className={`inline-block px-3 py-1 rounded-full text-xs font-bold border ${getCategoryColor(row.category)}`}>
+                                        {row.category}
+                                    </span>
+                                    </td>
+                                    <td className="p-4 align-top font-medium text-slate-900 text-sm">
+                                        {row.author}
+                                    </td>
+                                    <td className="p-4 align-top text-slate-600 text-xs">
+                                        {row.era}
+                                    </td>
+                                    <td className="p-4 align-top text-slate-700 leading-relaxed text-sm">
+                                    <ul className="list-disc pl-4 space-y-1">
+                                        {row.contribution.split(';').map((item, i) => (
+                                        <li key={i}>{item.trim()}</li>
+                                        ))}
+                                    </ul>
+                                    </td>
+                                </tr>
+                                ))}
+                            </tbody>
+                            </table>
+                        </div>
+                        </div>
+
+                        {/* Card View (Mobile & Print Fallback) */}
+                        <div className="md:hidden space-y-4">
+                        {filteredData.map((row, index) => (
+                            <div key={index} className="bg-white rounded-xl border border-slate-200 p-5 space-y-3 print-break-inside-avoid shadow-sm">
+                            <div className="flex justify-between items-start">
+                                <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getCategoryColor(row.category)}`}>
+                                {row.category}
+                                </span>
+                            </div>
+                            
+                            <div>
+                                <h3 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+                                <i className="fas fa-user text-slate-400 text-sm"></i>
+                                {row.author}
+                                </h3>
+                                <p className="text-xs text-slate-500 mt-1 flex items-center gap-2">
+                                <i className="fas fa-calendar-alt"></i>
+                                {row.era}
+                                </p>
+                            </div>
+
+                            <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                                <h4 className="font-semibold text-slate-700 mb-2 text-xs uppercase tracking-wide">Aportaciones:</h4>
+                                <ul className="list-disc pl-4 space-y-1 text-slate-600 text-sm">
+                                {row.contribution.split(';').map((item, i) => (
+                                    <li key={i}>{item.trim()}</li>
+                                ))}
+                                </ul>
+                            </div>
+                            </div>
+                        ))}
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
