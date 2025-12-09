@@ -1,0 +1,197 @@
+<!-- index.html - Página Principal -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 CFGS Educación Infantil - Diseño Curricular Interactivo</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Fondo dinámico animado -->
+    <div class="background-animation">
+        <div class="floating-shape shape-1"></div>
+        <div class="floating-shape shape-2"></div>
+        <div class="floating-shape shape-3"></div>
+        <div class="floating-shape shape-4"></div>
+    </div>
+
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-brand">
+                <i class="fas fa-graduation-cap"></i>
+                <span>CFGS Educación Infantil</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#concepto" class="nav-link">Concepto Currículo</a></li>
+                <li><a href="#niveles" class="nav-link">Niveles Concreción</a></li>
+                <li><a href="#fuentes" class="nav-link">Fuentes</a></li>
+                <li><a href="#documentos" class="nav-link">Documentos Centro</a></li>
+                <li><a href="#ejemplos" class="nav-link">Ejemplos Prácticos</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title animate-slide-up">
+                <span class="gradient-text">Tema 3</span><br>
+                Diseño Curricular y Planificación
+            </h1>
+            <p class="hero-subtitle animate-slide-up delay-1">Educación Infantil 0-6 años • CFGS 2º Curso</p>
+            <div class="hero-buttons animate-slide-up delay-2">
+                <button class="cta-button primary" onclick="scrollToSection('concepto')">
+                    <i class="fas fa-play"></i> Empezar Clase
+                </button>
+                <button class="cta-button secondary" onclick="openModal('modal-quiz')">
+                    <i class="fas fa-question-circle"></i> Autoevaluación
+                </button>
+            </div>
+        </div>
+        <div class="hero-illustration">
+            <!-- Ilustración SVG animada de niños jugando -->
+            <svg viewBox="0 0 400 300" class="hero-svg">
+                <defs>
+                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="100" cy="100" r="40" fill="#FFD93D" stroke="#FF6B6B" stroke-width="4">
+                    <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite"/>
+                </circle>
+                <circle cx="300" cy="80" r="35" fill="#6BCF7F" stroke="#4ECDC4" stroke-width="4">
+                    <animate attributeName="r" values="35;40;35" dur="2.5s" repeatCount="indefinite"/>
+                </circle>
+                <path d="M50 200 Q100 180 150 200 Q200 220 250 200 Q300 180 350 200" fill="none" stroke="#FF8E8E" stroke-width="8" stroke-linecap="round">
+                    <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Sección Concepto Currículo -->
+    <section id="concepto" class="section">
+        <div class="container">
+            <div class="section-header animate-fade-in">
+                <h2><i class="fas fa-book-open"></i> 1. Concepto de Currículo</h2>
+                <p>Según LOE/LOMLOE: conjunto de objetivos, competencias, contenidos, métodos y evaluación [file:1]</p>
+            </div>
+            <div class="content-grid">
+                <div class="content-card animate-slide-left">
+                    <h3><span class="badge primary">Dimensiones</span></h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-users"></i> Social/Cultural: Valores sociedad</li>
+                        <li><i class="fas fa-tools"></i> Técnica: Guía práctica docente</li>
+                    </ul>
+                </div>
+                <div class="content-card animate-slide-right">
+                    <h3><span class="badge success">Finalidades</span></h3>
+                    <ul class="feature-list">
+                        <li>Coherencia etapa educativa</li>
+                        <li>Continuidad ciclos</li>
+                        <li>Igualdad oportunidades</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="example-box animate-pulse">
+                <h4><i class="fas fa-baby"></i> Ejemplo 0-3 años</h4>
+                <p>Durante cambio pañal: "¡Mira tu pancita!" + espejos = <strong>conocimiento cuerpo</strong></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Acordeón Niveles de Concreción -->
+    <section id="niveles" class="section alternate-bg">
+        <div class="container">
+            <div class="section-header animate-fade-in">
+                <h2><i class="fas fa-layer-group"></i> 2. Niveles de Concreción Curricular</h2>
+            </div>
+            <div class="accordion-container">
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Nivel I: Diseño Curricular Base</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="level-card primary">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <h4>Obligatorio (Ministerio/CCAA)</h4>
+                                <p>Objetivos generales • Bloques contenidos • Orientaciones</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Nivel II: Propuesta Pedagógica</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="level-card success">
+                            <i class="fas fa-school"></i>
+                            <div>
+                                <h4>Centro adapta contexto</h4>
+                                <p>Secuenciación • Metodología • Evaluación centro</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header">
+                        <h3>Nivel III: Programación Aula</h3>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="level-card warning">
+                            <i class="fas fa-chalkboard-teacher"></i>
+                            <div>
+                                <h4>Educadora grupo concreto</h4>
+                                <p>Unidades didácticas • Actividades específicas</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Autoevaluación -->
+    <div id="modal-quiz" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-clipboard-check"></i> Autoevaluación</h3>
+                <span class="close">&times;</span>
+            </div>
+            <div class="quiz-container">
+                <div class="question">
+                    <p>¿Qué caracteriza al diseño curricular base?</p>
+                    <div class="options">
+                        <label><input type="radio" name="q1" value="a"> Orientador</label>
+                        <label><input type="radio" name="q1" value="b"> Normativo</label>
+                        <label><input type="radio" name="q1" value="c"> Ambos</label>
+                    </div>
+                </div>
+                <button class="btn-primary" onclick="checkQuiz()">Comprobar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>&copy; 2025 CFGS Educación Infantil | Tema 3 Completo [file:1]</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
