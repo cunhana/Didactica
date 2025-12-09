@@ -564,3 +564,318 @@ body {
         font-size: 1rem;
     }
 }
+/* AÑADIR a styles.css - ESTILOS ESPECÍFICOS PARA QUIZZES */
+
+/* Quiz Page Specific */
+.quiz-page { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+
+.quiz-hero {
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.quiz-title {
+    font-size: clamp(3rem, 6vw, 5rem);
+    margin-bottom: 1rem;
+}
+
+.quiz-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    min-width: 120px;
+}
+
+.stat-number {
+    display: block;
+    font-size: 3rem;
+    font-weight: 700;
+    background: linear-gradient(45deg, #FFD93D, #FF6B6B);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 0.5rem;
+}
+
+.full-width { width: 100%; max-width: 400px; margin: 0 auto; }
+
+.quiz-section { padding: 100px 5%; }
+
+.quiz-container { max-width: 900px; margin: 0 auto; }
+
+.question-card {
+    background: white;
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    transition: all 0.3s ease;
+}
+
+.question-card:hover { transform: translateY(-5px); }
+
+.question-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.question-number {
+    background: var(--primary);
+    color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.option-card {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+    padding: 1.5rem;
+    border: 3px solid #eee;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.option-card:hover {
+    border-color: var(--primary);
+    background: #fff5f5;
+    transform: translateX(10px);
+}
+
+.option-letter {
+    background: var(--primary);
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin-right: 1rem;
+    flex-shrink: 0;
+}
+
+.question-feedback {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    border-radius: 15px;
+    background: linear-gradient(135deg, #d4edda, #c3e6cb);
+    border-left: 5px solid var(--success);
+}
+
+.correct-icon {
+    font-size: 2rem;
+    color: var(--success);
+    margin-right: 1rem;
+}
+
+.question-progress {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 10px;
+    background: #eee;
+    border-radius: 10px;
+    overflow: hidden;
+    max-width: 400px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--secondary));
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+.next-btn {
+    padding: 1rem 2rem;
+    font-size: 1.1rem;
+}
+
+/* Drag & Drop Quiz */
+.drag-quiz { background: linear-gradient(135deg, #f0f8ff, #e3f2fd); padding: 3rem; border-radius: 20px; }
+
+.drag-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 3rem;
+}
+
+.draggable {
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: white;
+    border-radius: 25px;
+    cursor: grab;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.draggable:active { cursor: grabbing; transform: scale(1.05); }
+
+.drop-zones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+}
+
+.drop-zone {
+    min-height: 100px;
+    border: 3px dashed #ddd;
+    border-radius: 15px;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    background: white;
+}
+
+.drop-zone.drag-over {
+    border-color: var(--success);
+    background: #f0fff4;
+    transform: scale(1.02);
+}
+
+.drop-zone.valid { border-color: var(--success); }
+.drop-zone.invalid { border-color: #f44336; animation: shake 0.5s ease; }
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-10px); }
+    75% { transform: translateX(10px); }
+}
+
+/* Results Section */
+.results-section {
+    background: linear-gradient(135deg, var(--success), #a8e6cf);
+    padding: 120px 5%;
+    color: white;
+}
+
+.results-container {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.results-header i { font-size: 4rem; margin-bottom: 1rem; }
+
+.score-circle {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(20px);
+    margin: 3rem auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.score-circle::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.3) 50%, transparent 70%);
+    animation: rotate 3s linear infinite;
+    z-index: 0;
+}
+
+@keyframes rotate {
+    100% { transform: rotate(360deg); }
+}
+
+.score-number {
+    font-size: 5rem;
+    font-weight: 700;
+    color: #FFD93D;
+    z-index: 1;
+    position: relative;
+}
+
+.results-breakdown {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+    flex-wrap: wrap;
+}
+
+.result-item {
+    background: rgba(255,255,255,0.2);
+    backdrop-filter: blur(10px);
+    padding: 1.5rem 2rem;
+    border-radius: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 200px;
+}
+
+.score-badge {
+    background: rgba(255,255,255,0.3);
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px;
+    font-weight: 600;
+}
+
+.results-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.large-modal { max-width: 800px; max-height: 90vh; }
+
+/* Animaciones números */
+@keyframes countUp {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+.count-anim { animation: countUp 1s ease-out; }
+
