@@ -1,0 +1,109 @@
+<!-- gamification.html - SISTEMA GAMIFICACIÓN COMPLETO -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamificación Tema 3 - CFGS Educación Infantil</title>
+    <link rel="stylesheet" href="gamification.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Partículas Gaming -->
+    <div class="particles-container">
+        <canvas id="particles-canvas"></canvas>
+    </div>
+
+    <!-- Header Gaming -->
+    <header class="game-header">
+        <nav class="game-navbar">
+            <div class="player-stats">
+                <div class="avatar-container" id="playerAvatar">
+                    <i class="fas fa-user-graduate"></i>
+                    <div class="level-badge" id="playerLevel">LVL 1</div>
+                </div>
+                <div class="stats-display">
+                    <div class="stat-item">
+                        <span class="stat-label">XP</span>
+                        <span class="stat-value" id="xpValue">0</span>
+                        <div class="xp-bar">
+                            <div class="xp-fill" id="xpFill"></div>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Puntos</span>
+                        <span class="stat-value" id="pointsValue">0</span>
+                    </div>
+                </div>
+            </div>
+            <div class="game-title">
+                <h1><i class="fas fa-trophy"></i> GAMIFICACIÓN TEMA 3</h1>
+                <p>Ciclo Formativo Educación Infantil</p>
+            </div>
+            <div class="nav-controls">
+                <button class="game-btn" onclick="showRanking()">
+                    <i class="fas fa-leaderboard"></i> Ranking
+                </button>
+                <a href="index.html" class="game-btn secondary">
+                    <i class="fas fa-home"></i> Lección
+                </a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Dashboard Principal -->
+    <main class="game-dashboard">
+        <section class="missions-section">
+            <div class="section-header neon-glow">
+                <h2><i class="fas fa-tasks"></i> MISIONES PRINCIPALES</h2>
+            </div>
+            <div class="missions-grid" id="missionsGrid">
+                <!-- Misiones dinámicas -->
+            </div>
+        </section>
+
+        <section class="achievements-section">
+            <div class="section-header neon-glow">
+                <h2><i class="fas fa-medal"></i> LOGROS DESBLOQUEADOS</h2>
+            </div>
+            <div class="achievements-grid" id="achievementsGrid">
+                <!-- Badges dinámicos -->
+            </div>
+        </section>
+
+        <section class="daily-challenges">
+            <div class="section-header neon-glow">
+                <h2><i class="fas fa-fire"></i> RETOS DIARIOS</h2>
+            </div>
+            <div class="challenges-container" id="dailyChallenges">
+                <!-- Retos del día -->
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal Ranking -->
+    <div id="rankingModal" class="modal game-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-crown"></i> RANKING CLASE</h3>
+                <span class="close" onclick="closeModal('rankingModal')">&times;</span>
+            </div>
+            <div class="ranking-table" id="rankingTable">
+                <!-- Ranking dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Detalle Misión -->
+    <div id="missionModal" class="modal game-modal">
+        <div class="modal-content">
+            <div class="mission-detail" id="missionDetail">
+                <!-- Detalle misión -->
+            </div>
+        </div>
+    </div>
+
+    <script src="gamification.js"></script>
+</body>
+</html>
