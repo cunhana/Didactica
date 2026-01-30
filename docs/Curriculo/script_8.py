@@ -1,0 +1,346 @@
+
+# EVALUACION.HTML - Último archivo
+
+evaluacion_html_complete = '''<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación - Guía de Estudio</title>
+    <meta name="description" content="Criterios, procedimientos y documentos de evaluación en Educación Infantil">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1>✅ Evaluación</h1>
+            <p class="subtitle">Criterios, procedimientos y documentos de evaluación en Educación Infantil</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html">🏠 Inicio</a></li>
+                <li><a href="introduccion.html">📖 Introducción</a></li>
+                <li><a href="disposiciones.html">📋 Disposiciones</a></li>
+                <li><a href="areas.html">🎨 Áreas</a></li>
+                <li><a href="competencias.html">⭐ Competencias</a></li>
+                <li><a href="evaluacion.html" class="active">✅ Evaluación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container main-content">
+        <section class="content-section animate-fade-in">
+            <h2>🎯 Referentes de la Evaluación (Artículo 13)</h2>
+            <p>Los <strong>criterios de evaluación</strong> establecidos para cada ciclo en cada área son el referente fundamental para valorar:</p>
+            
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Consecución de Objetivos</h3>
+                    <p>A lo largo de toda la etapa</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⭐</div>
+                    <h3>Competencias Clave</h3>
+                    <p>Grado de desarrollo de las 8 competencias</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎨</div>
+                    <h3>Competencias Específicas</h3>
+                    <p>De cada área de conocimiento</p>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h3>⚠️ Importante</h3>
+                <p>No evalúas contenidos de forma aislada, sino el <strong>grado de desarrollo de competencias</strong> a través de los criterios de evaluación. Corresponde al centro educativo y a los docentes <strong>adecuar estos criterios</strong> al contexto y características de todo el alumnado.</p>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>📊 Carácter de la Evaluación (Artículo 14)</h2>
+            <p>La evaluación debe tener <strong>tres características fundamentales</strong>:</p>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>1. GLOBAL 🌍</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>¿Qué significa?</h4>
+                    <p>Se refiere al grado de desarrollo del <strong>conjunto de competencias clave</strong> y a la consecución de los logros expresados en los objetivos generales.</p>
+                    <p>No evalúas aspectos aislados, sino el desarrollo integral del niño o niña.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>2. CONTINUA 🔄</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>¿Qué significa?</h4>
+                    <p>Es un elemento <strong>inseparable del proceso educativo</strong>. Los profesionales recogen información de forma constante sobre el proceso de enseñanza y aprendizaje.</p>
+                    <p>Comprende: <strong>evaluación inicial, procesual y final</strong>.</p>
+                    <div class="highlight-box">
+                        <p>La observación es <strong>diaria y continua</strong>, no solo en momentos puntuales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>3. FORMATIVA 📈</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h4>¿Qué significa?</h4>
+                    <p>Tiene carácter <strong>regulador y orientador</strong> del proceso educativo. La información recogida se enfoca en <strong>mejorar las distintas fases y resultados</strong> de la intervención educativa.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <h3>👁️ Procedimiento Principal</h3>
+                <p>La <strong>observación directa, continua y sistemática</strong> del alumnado y de sus producciones en las situaciones de aprendizaje constituye el principal procedimiento de recogida de información.</p>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>📅 Tipos de Evaluación</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Evaluación Inicial (Artículo 15) 🏁</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h3>¿Cuándo se realiza?</h3>
+                    <ul>
+                        <li>Al inicio de la escolaridad en ambos ciclos</li>
+                        <li>En caso de traslado de centro</li>
+                    </ul>
+                    
+                    <h3>¿Qué incluye?</h3>
+                    <ul>
+                        <li>Datos destacados del desarrollo</li>
+                        <li>Información de la familia en la <strong>entrevista inicial</strong></li>
+                        <li>Informes médicos, psicológicos, pedagógicos y sociales relevantes</li>
+                        <li>Observación directa durante el <strong>período de adaptación</strong></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Evaluación Procesual (Artículo 16) 🔄</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h3>¿Cuándo se realiza?</h3>
+                    <p>De forma <strong>continua a lo largo de cada ciclo</strong>.</p>
+                    
+                    <h3>¿Cómo?</h3>
+                    <ul>
+                        <li>Los profesionales recogen información mediante <strong>observación directa</strong> y otros instrumentos</li>
+                        <li>Se establecerán al menos <strong>tres sesiones de evaluación por curso</strong> dentro del período lectivo</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Evaluación Final (Artículo 17) 🏁</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <h3>¿Cuándo se realiza?</h3>
+                    <ul>
+                        <li><strong>Al término de cada curso:</strong> Informe anual de evaluación</li>
+                        <li><strong>Al final de cada ciclo:</strong> Informe individualizado de final de ciclo</li>
+                        <li><strong>Al término de la etapa:</strong> Evaluación final</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>👨‍👩‍👧‍👦 Información a las Familias (Artículo 19)</h2>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Momento</th>
+                            <th>Información</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>A principios de curso</strong></td>
+                            <td>Programación de objetivos, saberes básicos, competencias y criterios de evaluación</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Al menos una vez al trimestre</strong></td>
+                            <td>Documento con progresos, dificultades, proceso de adaptación</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Periódicamente</strong></td>
+                            <td>Reuniones personales y reuniones de grupo</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <h3>💡 Aplicación Práctica</h3>
+                <p>La comunicación con las familias debe ser <strong>constante, clara y respetuosa</strong>. Los informes deben ser comprensibles y útiles, no solo burocráticos.</p>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>📄 Documentos de Evaluación (Artículo 21)</h2>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>1. Expediente Personal 📁</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Formato carpeta-dossier</li>
+                        <li>Se abre al inicio de la escolaridad de cada ciclo</li>
+                        <li>Contiene todos los documentos personales del niño o niña</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>2. Ficha Personal (Anexo IV) 📋</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Datos de filiación</li>
+                        <li>Datos familiares</li>
+                        <li>Datos de desarrollo, médicos, psicológicos y pedagógicos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>3. Informe Anual de Evaluación (Anexo VI) 📝</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Se elabora al finalizar cada curso</li>
+                        <li>Datos obtenidos a través de la evaluación continua</li>
+                        <li>Se adjunta al expediente personal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>4. Informe Individualizado de Final de Ciclo (Anexo VII) 📑</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Al finalizar cada ciclo</li>
+                        <li>Recoge datos más relevantes</li>
+                        <li>Aprendizajes adquiridos</li>
+                        <li>Medidas de refuerzo adoptadas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>📌 Resumen: Características de la Evaluación en Infantil</h2>
+            <div class="highlight-box">
+                <h3>🎯 Puntos Clave para Recordar</h3>
+                <ul>
+                    <li>La evaluación es <strong>GLOBAL, CONTINUA y FORMATIVA</strong></li>
+                    <li>El principal procedimiento es la <strong>OBSERVACIÓN DIRECTA</strong></li>
+                    <li>No se trata de poner notas, sino de <strong>observar, documentar y mejorar</strong> el proceso</li>
+                    <li>Los criterios de evaluación son el <strong>REFERENTE FUNDAMENTAL</strong></li>
+                    <li>La comunicación con las familias debe ser <strong>CONSTANTE</strong></li>
+                    <li>También debes evaluar tu <strong>PROPIA PRÁCTICA</strong> educativa</li>
+                    <li>Existen <strong>DOCUMENTOS OFICIALES</strong> que debes conocer y cumplimentar</li>
+                </ul>
+            </div>
+        </section>
+
+        <div class="info-section">
+            <div class="info-box animate-slide-left">
+                <h3>🎓 Para Reflexionar</h3>
+                <p>La evaluación en Educación Infantil es muy diferente a la de otras etapas. Es un <strong>proceso continuo de observación y mejora</strong>, no un momento puntual de calificación.</p>
+            </div>
+            <div class="info-box animate-slide-right">
+                <h3>✅ ¡Enhorabuena!</h3>
+                <p>Has completado el recorrido por los aspectos más importantes del <strong>Currículo de Educación Infantil de Aragón</strong>. Revisa cada sección cuantas veces necesites.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Guía de Estudio - Currículo de Educación Infantil Aragón</p>
+            <p>Basado en la ORDEN ECD/853/2022, de 13 de junio - BOA 17/06/2022</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>'''
+
+with open('evaluacion.html', 'w', encoding='utf-8') as f:
+    f.write(evaluacion_html_complete)
+
+print("✅ evaluacion.html creado")
+
+print("\n" + "="*60)
+print("🎉 ¡CONVERSIÓN COMPLETADA CON ÉXITO!")
+print("="*60)
+print("\n📦 TODOS LOS ARCHIVOS HTML CREADOS:")
+print("   1. ✅ index.html")
+print("   2. ✅ introduccion.html")
+print("   3. ✅ disposiciones.html")
+print("   4. ✅ areas.html")
+print("   5. ✅ competencias.html")
+print("   6. ✅ evaluacion.html")
+print("\n📂 Archivos adicionales:")
+print("   7. ✅ styles.css")
+print("   8. ✅ script.js")
+print("   9. ✅ README.md (GitHub Pages)")
+print("\n" + "="*60)
+print("🚀 100% LISTO PARA GITHUB PAGES")
+print("="*60)
+print("\n✨ Características:")
+print("   ✓ Sin archivos PHP (100% HTML estático)")
+print("   ✓ Todos los enlaces actualizados (.html)")
+print("   ✓ Compatible con GitHub Pages")
+print("   ✓ Colores pastel vivos")
+print("   ✓ Animaciones JavaScript")
+print("   ✓ Diseño responsive")
+print("   ✓ Navegación interactiva")
+print("\n📝 Próximos pasos:")
+print("   1. Descarga todos los archivos")
+print("   2. git init")
+print("   3. git add .")
+print('   4. git commit -m "Initial commit"')
+print("   5. git push a tu repositorio")
+print("   6. Activa GitHub Pages en Settings")
+print("   7. ¡Tu sitio estará online en minutos!")
+print("\n💡 Instrucciones completas en README.md")
+print("="*60)

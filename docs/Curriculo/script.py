@@ -1,0 +1,236 @@
+
+# Convertir introduccion.php a introduccion.html
+introduccion_html = '''<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Introducción - Guía de Estudio</title>
+    <meta name="description" content="Contexto legal y estructura del documento oficial del currículo de Educación Infantil de Aragón">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="stars"></div>
+    <div class="stars2"></div>
+    <div class="stars3"></div>
+    
+    <header class="header">
+        <div class="container">
+            <h1>📖 Introducción</h1>
+            <p class="subtitle">Contexto legal y estructura del documento oficial del currículo de Educación Infantil de Aragón</p>
+        </div>
+    </header>
+
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-list">
+                <li><a href="index.html">🏠 Inicio</a></li>
+                <li><a href="introduccion.html" class="active">📖 Introducción</a></li>
+                <li><a href="disposiciones.html">📋 Disposiciones</a></li>
+                <li><a href="areas.html">🎨 Áreas</a></li>
+                <li><a href="competencias.html">⭐ Competencias</a></li>
+                <li><a href="evaluacion.html">✅ Evaluación</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container main-content">
+        <section class="content-section animate-fade-in">
+            <h2>📄 El Documento Oficial</h2>
+            <p>El archivo que estás estudiando es la <strong>ORDEN ECD/853/2022, de 13 de junio</strong>, publicada en el <strong>Boletín Oficial de Aragón el 17 de junio de 2022</strong>.</p>
+            
+            <div class="highlight-box">
+                <h3>✨ ¿Por qué es importante este documento?</h3>
+                <p>Este documento es <strong>fundamental</strong> porque establece el currículo oficial y las características de evaluación de la Educación Infantil en la Comunidad Autónoma de Aragón para todos los centros educativos que imparten esta etapa.</p>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>⚖️ Marco Legal</h2>
+            <h3>Competencias de la Comunidad Autónoma</h3>
+            <p>El <strong>Estatuto de Autonomía de Aragón</strong> (Ley Orgánica 5/2007, de 20 de abril) establece en su artículo 73 que corresponde a la Comunidad Autónoma la <strong>competencia compartida en enseñanza</strong> en toda su extensión, niveles y grados.</p>
+            
+            <h3>Legislación Nacional de Referencia</h3>
+            <ul>
+                <li><strong>Ley Orgánica 3/2020, de 29 de diciembre:</strong> Modifica la Ley Orgánica 2/2006, de 3 de mayo, de Educación (LOMLOE)</li>
+                <li><strong>Real Decreto 95/2022, de 1 de febrero:</strong> Establece las enseñanzas mínimas de Educación Infantil a nivel nacional</li>
+            </ul>
+
+            <div class="tip-box">
+                <h4>💡 Para Recordar</h4>
+                <p>Esta orden <strong>adapta</strong> los contenidos nacionales a la realidad aragonesa, incorporando elementos propios como el <strong>patrimonio, territorio, costumbres, tradiciones, lenguas y modalidades lingüísticas de Aragón</strong>.</p>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>📚 Estructura del Documento</h2>
+            <p>El currículo se organiza de la siguiente manera:</p>
+            
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Capítulo I: Disposiciones Generales</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Artículo 1:</strong> Objeto y ámbito de aplicación</li>
+                        <li><strong>Artículo 2:</strong> Fines de la Educación Infantil</li>
+                        <li><strong>Artículo 3:</strong> Principios generales</li>
+                        <li><strong>Artículo 4:</strong> Principios pedagógicos</li>
+                        <li><strong>Artículo 5:</strong> Contextualización a Aragón</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Capítulo II: Ordenación del Currículo</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Artículo 6:</strong> Estructura del currículo</li>
+                        <li><strong>Artículo 7:</strong> Definiciones de los elementos del currículo</li>
+                        <li><strong>Artículo 8:</strong> Objetivos generales de la etapa</li>
+                        <li><strong>Artículo 9:</strong> Principios metodológicos generales</li>
+                        <li><strong>Artículo 10:</strong> Áreas de conocimiento</li>
+                        <li><strong>Artículo 11:</strong> Competencias, criterios de evaluación y saberes básicos</li>
+                        <li><strong>Artículo 12:</strong> Horario</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Capítulo III: Evaluación</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Artículos 13-21:</strong> Referentes, carácter, tipos de evaluación y documentos oficiales</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Capítulo IV: Atención a la Diversidad</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Artículo 22:</strong> Atención a las diferencias individuales</li>
+                        <li><strong>Artículo 23:</strong> Tutoría y orientación</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Capítulo V: Autonomía de los Centros</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Artículos 24-30:</strong> Proyecto curricular, programaciones didácticas y coordinación</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <div class="accordion-header">
+                    <span>Anexos</span>
+                    <span class="accordion-icon">▼</span>
+                </div>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Anexo I:</strong> Competencias clave de la Educación Infantil</li>
+                        <li><strong>Anexo II:</strong> Currículo de las áreas de conocimiento</li>
+                        <li><strong>Anexo III:</strong> Orientaciones didácticas y metodológicas</li>
+                        <li><strong>Anexos IV-VII:</strong> Documentos oficiales de evaluación</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>🎯 Características Principales de la Etapa</h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Característica</th>
+                            <th>Descripción</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Edad</strong></td>
+                            <td>Desde el nacimiento hasta los 6 años</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Organización</strong></td>
+                            <td>Dos ciclos: 0-3 años (primer ciclo) y 3-6 años (segundo ciclo)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Carácter</strong></td>
+                            <td>Voluntario con identidad propia</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gratuidad</strong></td>
+                            <td>Segundo ciclo gratuito; progresiva extensión al primer ciclo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Áreas</strong></td>
+                            <td>3 áreas de conocimiento interrelacionadas</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metodología</strong></td>
+                            <td>Basada en el juego, la experimentación y el enfoque globalizado</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="content-section animate-slide-up">
+            <h2>🗓️ Entrada en Vigor y Aplicación</h2>
+            <div class="warning-box">
+                <h3>📅 Fechas Importantes</h3>
+                <ul>
+                    <li><strong>Publicación:</strong> 17 de junio de 2022 (BOA)</li>
+                    <li><strong>Entrada en vigor:</strong> 18 de junio de 2022</li>
+                    <li><strong>Aplicación:</strong> Curso académico 2022-2023 en todos los niveles de la etapa</li>
+                </ul>
+            </div>
+
+            <p>Los centros disponen de un período de <strong>dos cursos escolares</strong> para elaborar o revisar su Proyecto curricular y adecuar las programaciones a esta orden.</p>
+        </section>
+
+        <div class="info-section">
+            <div class="info-box animate-slide-left">
+                <h3>🎓 Consejo para Estudiantes</h3>
+                <p>Como estudiante de Educación Infantil, este documento será tu <strong>guía principal</strong> cuando trabajes en un centro de Aragón. Familiarízate con su estructura y contenidos, ya que son la base para diseñar tu práctica educativa.</p>
+            </div>
+            <div class="info-box animate-slide-right">
+                <h3>🔍 Próximos Pasos</h3>
+                <p>Ahora que conoces la estructura general del documento, explora cada sección en detalle a través del menú de navegación.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 Guía de Estudio - Currículo de Educación Infantil Aragón</p>
+            <p>Basado en la ORDEN ECD/853/2022, de 13 de junio - BOA 17/06/2022</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>'''
+
+with open('introduccion.html', 'w', encoding='utf-8') as f:
+    f.write(introduccion_html)
+
+print("✅ introduccion.html creado")
