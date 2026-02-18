@@ -1,7 +1,0 @@
-{
-  "name": "En Mi Clase Cabemos Todos",
-  "description": "Una aplicación web interactiva para la Situación de Aprendizaje sobre igualdad de género en Educación Infantil.",
-  "requestFramePermissions": [
-    "camera"
-  ]
-}
