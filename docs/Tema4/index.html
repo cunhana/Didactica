@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UD 4 - Educación Infantil</title>
+    <style>
+        /* --- VARIABLES Y RESET --- */
+        :root {
+            --primary: #0ea5e9; /* Turquesa */
+            --secondary: #f97316; /* Naranja */
+            --bg-color: #f8fafc;
+            --text-main: #334155;
+            --text-light: #64748b;
+            --white: #ffffff;
+            --alert-bg: #fef08a;
+            --alert-border: #eab308;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.6; padding-bottom: 50px; }
+        h1, h2, h3 { color: #0f172a; margin-bottom: 10px; }
+        
+        /* --- HERO BANNER --- */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #3b82f6);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .hero h1 { color: var(--white); font-size: 2.5rem; margin-bottom: 15px; }
+        .hero p { font-size: 1.2rem; max-width: 600px; margin: 0 auto 20px auto; opacity: 0.9; }
+        .btn {
+            background-color: var(--secondary); color: var(--white);
+            border: none; padding: 12px 24px; font-size: 1.1rem; font-weight: bold;
+            border-radius: 8px; cursor: pointer; transition: transform 0.2s, background 0.2s;
+        }
+        .btn:hover { background-color: #ea580c; transform: scale(1.05); }
+
+        /* --- CONTENEDOR PRINCIPAL --- */
+        .container { max-width: 900px; margin: 0 auto; padding: 20px; }
+
+        /* --- ALERTA NORMATIVA --- */
+        .alert {
+            background-color: var(--alert-bg); border-left: 6px solid var(--alert-border);
+            padding: 15px 20px; border-radius: 8px; margin: -30px auto 30px auto;
+            max-width: 800px; position: relative; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            font-weight: 500;
+        }
+
+        /* --- ACORDEONES (Temario) --- */
+        details {
+            background: var(--white); margin-bottom: 15px; border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05); overflow: hidden;
+        }
+        summary {
+            background: var(--white); padding: 15px 20px; font-size: 1.2rem; font-weight: bold;
+            cursor: pointer; list-style: none; display: flex; align-items: center; border-left: 5px solid var(--primary);
+        }
+        summary::-webkit-details-marker { display: none; }
+        summary::after { content: '+'; margin-left: auto; font-size: 1.5rem; color: var(--primary); }
+        details[open] summary::after { content: '-'; }
+        .details-content { padding: 20px; border-top: 1px solid #e2e8f0; }
+        .details-content ul { padding-left: 20px; margin-bottom: 15px; }
+        .details-content table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .details-content th, .details-content td { border: 1px solid #cbd5e1; padding: 10px; text-align: left; }
+        .details-content th { background-color: #f1f5f9; }
+
+        /* --- FLASHCARDS (Repaso) --- */
+        .cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; }
+        .flip-card { background-color: transparent; height: 200px; perspective: 1000px; cursor: pointer; }
+        .flip-card-inner {
+            position: relative; width: 100%; height: 100%; text-align: center;
+            transition: transform 0.6s; transform-style: preserve-3d;
+        }
+        .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+        .flip-card-front, .flip-card-back {
+            position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden;
+            display: flex; align-items: center; justify-content: center; padding: 20px; border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .flip-card-front { background-color: var(--white); color: var(--primary); font-weight: bold; border: 2px solid var(--primary); }
+        .flip-card-back { background-color: var(--primary); color: white; transform: rotateY(180deg); font-size: 0.95rem; }
+
+        /* --- MODAL --- */
+        dialog {
+            border: none; border-radius: 12px; padding: 30px; max-width: 500px; margin: auto;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        dialog::backdrop { background: rgba(0,0,0,0.5); backdrop-filter: blur(3px); }
+        .close-btn { background: #ef4444; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; margin-top: 15px; }
+
+        /* --- CHECKLIST --- */
+        .checklist { background: var(--white); padding: 20px; border-radius: 12px; margin-top: 30px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .checklist label { display: block; margin-bottom: 10px; font-size: 1.1rem; cursor: pointer; }
+        .checklist input { margin-right: 10px; transform: scale(1.2); cursor: pointer; }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <h1>📘 Principios Pedagógicos y Metodología</h1>
+        <p>UD 4 | Actualizada con LOMLOE y RD 95/2022. Aprende <strong>cómo</strong> enseñar en Educación Infantil.</p>
+        <button class="btn" onclick="document.getElementById('modal-objetivos').showModal()">🎯 Ver Objetivos</button>
+    </header>
+
+    <div class="alert">
+        <strong>💡 Novedad Normativa:</strong> La LOMLOE (2020) y el RD 95/2022 actualizan la etapa incorporando el <em>apego seguro</em>, la <em>transición positiva familia-escuela</em> y el <em>Diseño Universal para el Aprendizaje (DUA)</em>.
+    </div>
+
+    <div class="container">
+        <h2>📚 Temario Completo</h2>
+
+        <details>
+            <summary>TEMA 1 — Principios Pedagógicos</summary>
+            <div class="details-content">
+                <p>El método es el camino hacia los objetivos e incluye las técnicas que definen al educador.</p>
+                <h3>Principios del Currículo (RD 95/2022 - LOMLOE)</h3>
+                <ul>
+                    <li><strong>Desarrollo integral:</strong> Bases del desarrollo físico, motor, afectivo, social e intelectual.</li>
+                    <li><strong>Aprendizaje significativo y emocional:</strong> Conectar con la realidad en un ambiente de afecto, confianza y <em>apego seguro</em> (novedad).</li>
+                    <li><strong>Papel activo del alumnado:</strong> El niño construye su propio conocimiento.</li>
+                    <li><strong>Globalización:</strong> Aprender conectando lo nuevo con lo conocido.</li>
+                    <li><strong>El juego:</strong> Principal recurso metodológico de la etapa.</li>
+                    <li><strong>Transición positiva familia-escuela:</strong> Garantizar la continuidad (novedad).</li>
+                </ul>
+                <h3>Principios de Aprendizaje (Regla Mnemotécnica)</h3>
+                <ul>
+                    <li><strong>Actividad:</strong> El niño aprende <em>HACIENDO</em>.</li>
+                    <li><strong>Aprendizaje significativo:</strong> El niño aprende si le da <em>SENTIDO</em>.</li>
+                    <li><strong>Globalización:</strong> El niño aprende <em>CONECTANDO</em> todo.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>TEMA 2 — Rincones y Talleres</summary>
+            <div class="details-content">
+                <p>Ambas son formas de organizar el espacio para un aprendizaje activo, pero con intenciones distintas.</p>
+                <table>
+                    <tr>
+                        <th>Característica</th>
+                        <th>Rincón 🟩</th>
+                        <th>Taller 🟦</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Actividad</strong></td>
+                        <td>Libre elección, investigación, juego</td>
+                        <td>Sistematizada, dirigida, progresiva</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Resultado</strong></td>
+                        <td>Experiencia sin producto obligatorio</td>
+                        <td>Producto concreto (pintura, objeto...)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rol Educador</strong></td>
+                        <td>Observador y facilitador</td>
+                        <td>Planificador y guía activo</td>
+                    </tr>
+                </table>
+                <p><em>Nota: En aulas con alumnos con NEE, los rincones favorecen una actividad autónoma y educación personalizada.</em></p>
+            </div>
+        </details>
+
+        <details>
+            <summary>TEMA 3 — Centros de Interés y Unidades Didácticas</summary>
+            <div class="details-content">
+                <h3>Centros de Interés (Ovide Decroly)</h3>
+                <p>Agrupan los contenidos en torno a temas de gran significado, partiendo de 4 necesidades: Alimentarse, Protegerse, Defenderse, Actuar/Trabajar.</p>
+                <p><strong>Fases (siempre en este orden):</strong></p>
+                <ol>
+                    <li><strong>Observación:</strong> Contacto directo (ver, tocar, oler). Inicio del método científico.</li>
+                    <li><strong>Asociación:</strong> Relacionar conocimientos previos con los nuevos.</li>
+                    <li><strong>Expresión:</strong> Culminación (dibujo, lenguaje, música).</li>
+                </ol>
+                <h3>Unidades Didácticas (UD)</h3>
+                <p>Herramienta que responde a <strong>QUÉ, CÓMO, CUÁNDO</strong> enseñar y evaluar. Sus 8 elementos son:</p>
+                <ul>
+                    <li>Descripción y Motivación</li>
+                    <li>Objetivos Didácticos (capacidades)</li>
+                    <li>Contenidos (conceptos, procedimientos, actitudes)</li>
+                    <li>Secuencia de actividades</li>
+                    <li>Recursos</li>
+                    <li>Organización espacio-tiempo</li>
+                    <li>Evaluación</li>
+                    <li>Atención a la Diversidad</li>
+                </ul>
+            </div>
+        </details>
+
+        <details>
+            <summary>TEMA 4 — Pequeños Proyectos (Actualidad)</summary>
+            <div class="details-content">
+                <p>Basado en una concepción constructivista. Es la opción metodológica más actual, respaldada por la LOMLOE.</p>
+                <h3>Las 8 Fases del Proyecto</h3>
+                <ol>
+                    <li><strong>Elección del tema:</strong> ¿Qué nos interesa? (Propuesto por los niños).</li>
+                    <li><strong>Ideas previas:</strong> ¿Qué sabemos ya y qué queremos hacer?</li>
+                    <li><strong>Puesta en común:</strong> Contraste de ideas en asamblea.</li>
+                    <li><strong>Búsqueda de fuentes:</strong> ¿Dónde buscamos información?</li>
+                    <li><strong>Organización:</strong> La educadora fija objetivos y tiempos.</li>
+                    <li><strong>Realización:</strong> ¡Manos a la obra!</li>
+                    <li><strong>Elaboración de dossier:</strong> Síntesis (murales, vídeos...).</li>
+                    <li><strong>Evaluación:</strong> ¿Qué aprendimos y qué queda pendiente?</li>
+                </ol>
+                <p><strong>Nuevo Rol del Educador:</strong> Ya no transmite conocimientos de forma pasiva; ahora <em>encauza, orienta, guía y provoca conflictos cognitivos</em>.</p>
+            </div>
+        </details>
+
+        <h2 style="margin-top: 40px;">🧠 Flashcards de Repaso (Pasa el ratón)</h2>
+        <div class="cards-grid">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">¿Diferencia Rincón vs Taller?</div>
+                    <div class="flip-card-back">Rincón = Libertad y proceso sin producto.<br>Taller = Técnica dirigida con producto final.</div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">¿Novedades RD 95/2022?</div>
+                    <div class="flip-card-back">Añade el apego seguro, el DUA y la transición positiva familia-escuela.</div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">¿Fases Centro de Interés?</div>
+                    <div class="flip-card-back">1. Observar (tocar/ver)<br>2. Asociar (relacionar)<br>3. Expresar (crear/comunicar)</div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">Rol Educador en Proyectos</div>
+                    <div class="flip-card-back">No transmite pasivamente. Guía, provoca conflictos cognitivos, orienta y acompaña.</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="checklist">
+            <h2>📝 Autoevaluación Final</h2>
+            <p style="margin-bottom: 15px;">Marca lo que ya domines para llevar un control de tu estudio:</p>
+            <label><input type="checkbox"> Conozco los 3 principios de aprendizaje (Actividad, Significativo, Globalización).</label>
+            <label><input type="checkbox"> Sé distinguir perfectamente entre un Rincón y un Taller.</label>
+            <label><input type="checkbox"> Puedo nombrar las 3 fases de Decroly en orden.</label>
+            <label><input type="checkbox"> Recuerdo los 8 elementos de una Unidad Didáctica.</label>
+            <label><input type="checkbox"> Entiendo las 8 fases de un Proyecto y el nuevo rol del educador.</label>
+        </div>
+    </div>
+
+    <dialog id="modal-objetivos">
+        <h2>🎯 Objetivos de la Unidad</h2>
+        <p>Al finalizar esta unidad serás capaz de:</p>
+        <ul style="margin-left: 20px; margin-top: 10px;">
+            <li>Conocer los principios metodológicos de la Educación Infantil.</li>
+            <li>Comparar propuestas metodológicas (rincones, talleres, proyectos).</li>
+            <li>Identificar los elementos de una Unidad Didáctica y elaborarla.</li>
+            <li>Conocer y planificar pequeños proyectos.</li>
+            <li>Reconocer la atención a la diversidad a través de la metodología.</li>
+        </ul>
+        <button class="close-btn" onclick="document.getElementById('modal-objetivos').close()">Cerrar</button>
+    </dialog>
+
+</body>
+</html>
