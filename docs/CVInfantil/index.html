@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orden ECD/853/2022 | Currículo Infantil Aragón</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
+        .page-view { animation: fadeIn 0.4s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        /* Modal Animation */
+        .modal-enter { animation: modalFadeIn 0.3s ease-out forwards; }
+        .modal-content-enter { animation: modalScaleUp 0.3s ease-out forwards; }
+        @keyframes modalFadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes modalScaleUp { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+        body.modal-open { overflow: hidden; }
+
+        /* Estilos para impresión de formularios */
+        @media print {
+            .no-print, aside, nav, button, #globalModal { display: none !important; }
+            .print-only { display: block !important; }
+            main { padding: 0 !important; margin: 0 !important; width: 100% !important; background: white !important; overflow: visible !important; }
+            .page-view { display: block !important; box-shadow: none !important; border: none !important; }
+            .form-container { width: 100%; max-width: 100%; margin: 0; padding: 0; }
+            input, select, textarea { border: none !important; border-bottom: 1px solid #000 !important; background: transparent !important; appearance: none; -webkit-appearance: none; resize: none; overflow: hidden; color: #000 !important; }
+            body { font-size: 12px; background: white; }
+            .print-break { page-break-before: always; }
+        }
+        
+        /* Form inputs styling */
+        .form-input { @apply w-full bg-slate-50 border border-slate-300 text-slate-900 text-sm rounded-lg focus:ring-teal-500 focus:border-teal-500 block p-2.5 transition-colors; }
+        .form-label { @apply block mb-1 text-xs font-bold text-slate-700 uppercase tracking-wide; }
+        .content-box { @apply bg-white p-8 rounded-2xl shadow-sm border border-slate-200 mb-8; }
+        .h2-title { @apply text-3xl font-black text-slate-800 mb-6 pb-2 border-b-2 border-teal-100; }
+        .h3-title { @apply text-xl font-bold text-teal-700 mb-4 mt-6; }
+        
+        /* Hover Effects */
+        .hover-card { transition: all 0.3s ease; }
+        .hover-card:hover { transform: translateY(-3px); box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1); }
+    </style>
+</head>
+<body class="flex h-screen overflow-hidden text-slate-800">
+
+    <!-- Sidebar Navigation -->
+    <aside class="w-72 bg-slate-900 text-slate-300 flex flex-col h-full shadow-2xl no-print overflow-y-auto shrink-0 z-20">
+        <div class="p-6 bg-slate-950/50 sticky top-0 backdrop-blur-md">
+            <h1 class="text-2xl font-black text-white leading-tight">Edu<span class="text-teal-400">Infantil</span><br>Aragón</h1>
+            <p class="text-[10px] uppercase tracking-widest text-teal-200/50 mt-2 font-bold">Orden ECD/853/2022</p>
+        </div>
+        
+        <nav class="flex-1 px-4 py-6 space-y-2">
+            <a href="#" id="nav-inicio" onclick="navigateTo('inicio')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all bg-teal-700 text-white border-l-4 border-teal-400 font-bold shadow-lg">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" /></svg>
+                Inicio y Contexto
+            </a>
+            <a href="#" id="nav-principios" onclick="navigateTo('principios')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                Disposiciones y Currículo
+            </a>
+            <a href="#" id="nav-tutoria" onclick="navigateTo('tutoria')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" /></svg>
+                Diversidad y Autonomía
+            </a>
+            <a href="#" id="nav-competencias" onclick="navigateTo('competencias')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.691.34a2 2 0 01-1.783 0l-.691-.34a6 6 0 00-3.86-.517l-2.387.477a2 2 0 00-1.022.547l-1.16 1.16a2 2 0 002.828 2.828l1.16-1.16a2 2 0 01.442-.442l1.16-1.16a2 2 0 00-2.828-2.828l-1.16 1.16a2 2 0 00.547 1.022z" /></svg>
+                8 Competencias Clave
+            </a>
+            <a href="#" id="nav-areas" onclick="navigateTo('areas')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+                Áreas y Saberes
+            </a>
+            <a href="#" id="nav-situaciones" onclick="navigateTo('situaciones')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" /></svg>
+                Situaciones Prácticas
+            </a>
+            <a href="#" id="nav-orientaciones" onclick="navigateTo('orientaciones')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-slate-800 hover:text-white font-medium">
+                <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" /></svg>
+                Orientaciones y Bebés
+            </a>
+            <div class="pt-4 mt-4 border-t border-slate-800">
+                <p class="px-4 text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">Interactivo</p>
+                <a href="#" id="nav-evaluacion" onclick="navigateTo('evaluacion')" class="nav-link flex items-center px-4 py-3 rounded-xl transition-all hover:bg-teal-600 hover:text-white text-teal-400 font-bold bg-teal-900/30">
+                    <svg class="w-5 h-5 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>
+                    Evaluación y Anexos
+                </a>
+            </div>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 overflow-y-auto relative w-full h-full pb-20 scroll-smooth">
+        
+        <!-- HEADER MOBILE (no-print) -->
+        <div class="md:hidden bg-slate-900 text-white p-4 sticky top-0 z-30 flex justify-between items-center shadow-lg no-print">
+            <h1 class="font-black text-xl">Edu<span class="text-teal-400">Infantil</span></h1>
+            <select onchange="navigateTo(this.value)" class="bg-slate-800 text-sm border-none text-white rounded p-2 outline-none">
+                <option value="inicio">Inicio y Contexto</option>
+                <option value="principios">Disposiciones y Currículo</option>
+                <option value="tutoria">Diversidad y Autonomía</option>
+                <option value="competencias">8 Competencias Clave</option>
+                <option value="areas">Áreas de Conocimiento</option>
+                <option value="situaciones">Situaciones Aprendizaje</option>
+                <option value="orientaciones">Orientaciones y Bebés</option>
+                <option value="evaluacion">Evaluación y Anexos</option>
+            </select>
+        </div>
+
+        <div class="max-w-6xl mx-auto p-4 md:p-10">
+
+            <!-- PAGE 1: INICIO Y CONTEXTO -->
+            <div id="page-inicio" class="page-view block">
+                <div class="bg-gradient-to-r from-teal-600 to-teal-800 rounded-3xl p-10 md:p-16 text-white shadow-xl mb-8 relative overflow-hidden">
+                    <div class="absolute -right-20 -top-20 w-64 h-64 bg-white/10 rounded-full blur-3xl"></div>
+                    <span class="inline-block px-3 py-1 bg-white/20 rounded-full text-xs font-bold tracking-widest mb-6 backdrop-blur-sm border border-white/30">BOLETÍN OFICIAL DE ARAGÓN</span>
+                    <h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">ORDEN ECD/853/2022</h1>
+                    <p class="text-xl md:text-2xl text-teal-100 font-light max-w-3xl">Currículo y Evaluación de la Educación Infantil en Aragón. <br>Guía completa e interactiva para docentes.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="content-box">
+                        <h2 class="h2-title">Portada Informativa</h2>
+                        <ul class="space-y-3 text-slate-600">
+                            <li><strong>Orden:</strong> ECD/853/2022, de 13 de junio</li>
+                            <li><strong>Publicación:</strong> BOA núm. 116, de 17 de junio de 2022</li>
+                            <li><strong>Vigencia:</strong> Desde 18 de junio de 2022</li>
+                            <li><strong>Aplicación:</strong> A partir del curso académico 2022-2023</li>
+                            <li><strong>Departamento:</strong> Educación, Cultura y Deporte (Aragón)</li>
+                            <li><strong>Ámbito:</strong> Todos los centros docentes de Aragón (1er y 2º ciclo)</li>
+                        </ul>
+                    </div>
+                    <div class="content-box">
+                        <h2 class="h2-title">Normativa Vigente</h2>
+                        <h3 class="h3-title">Marco Autonómico</h3>
+                        <p class="text-slate-600 mb-4">Orden ECD/853/2022, de 13 de junio (Aplicación progresiva curso 22-23).</p>
+                        <h3 class="h3-title">Marco Estatal</h3>
+                        <p class="text-slate-600 mb-4">Real Decreto 95/2022, de 1 de febrero (Ordenación y enseñanzas mínimas). Adaptado a LOMLOE.</p>
+                        <h3 class="h3-title">Derogaciones</h3>
+                        <p class="text-slate-600">Orden de 14 de octubre de 2008 (Anterior regulación).</p>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h2 class="h2-title">Consideraciones para el Contexto Aragonés</h2>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-teal-700 mb-2">Especificidades Territoriales</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li><strong>Ruralidad:</strong> Aulas multiedad (Infantil y Primaria), flexibilidad, aprovechamiento de la naturaleza y oficios locales.</li>
+                                <li><strong>Urbanidad:</strong> Diversidad de alumnado, acceso a museos, bibliotecas y parques públicos.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-teal-700 mb-2">Lenguas de Aragón</h4>
+                            <p class="text-sm text-slate-600 mb-2">Aragonés y catalán <strong>NO son optativas</strong>, son parte del currículum con trato de funcionalidad.</p>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Bilingüismo natural.</li>
+                                <li>Docentes formados.</li>
+                                <li>Familias como recurso transmisor.</li>
+                            </ul>
+                        </div>
+                        <div class="bg-slate-50 p-6 rounded-xl border border-slate-100">
+                            <h4 class="font-bold text-teal-700 mb-2">Patrimonio Cultural</h4>
+                            <ul class="text-sm text-slate-600 list-disc pl-4 space-y-1">
+                                <li>Tradiciones locales.</li>
+                                <li>Patrimonio arquitectónico (ej. mudéjar de Teruel).</li>
+                                <li>Personajes históricos y festividades.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 2: PRINCIPIOS Y ORDENACION -->
+            <div id="page-principios" class="page-view hidden">
+                <div class="content-box">
+                    <h2 class="h2-title">Disposiciones Generales (Capítulo I)</h2>
+                    <div class="grid lg:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="h3-title mt-0">Características de la Etapa</h3>
+                            <ul class="space-y-2 text-slate-600">
+                                <li><strong>Identidad:</strong> Etapa única, voluntaria y con identidad propia.</li>
+                                <li><strong>Edades:</strong> 0 a 6 años.</li>
+                                <li><strong>1er Ciclo (0-3 años):</strong> Dominio del cuerpo, individualización, cuidados y entorno afectivo seguro.</li>
+                                <li><strong>2º Ciclo (3-6 años):</strong> Gratuito. Ampliación de aprendizajes, autonomía y responsabilidad.</li>
+                                <li><strong>Fines:</strong> Desarrollo integral (físico, afectivo, sexual, social, cognitivo, artístico) y valores cívicos.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="h3-title mt-0">Principios Pedagógicos Fundamentales</h3>
+                            <ul class="space-y-2 text-slate-600">
+                                <li><strong>Aprendizaje:</strong> Experiencias significativas, positivas, juego y experimentación.</li>
+                                <li><strong>Ritmo:</strong> Respeto a ritmos individuales de maduración.</li>
+                                <li><strong>Iniciación temprana:</strong> Aproximación a lectura, escritura, matemáticas y TIC sin formalismos exigibles.</li>
+                                <li><strong>Idiomas:</strong> Lenguas extranjeras y lenguas propias de Aragón.</li>
+                                <li><strong>Contexto Aragonés:</strong> Incorporación del patrimonio natural, social y cultural.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h2 class="h2-title">Ordenación del Currículo (Capítulo II)</h2>
+                    
+                    <h3 class="h3-title">Elementos del Currículo (Definiciones Clave)</h3>
+                    <div class="grid md:grid-cols-3 gap-4 mb-8">
+                        <div class="p-4 bg-teal-50 rounded-xl border border-teal-100 hover-card cursor-pointer" onclick="openModal('Objetivos y Competencias', 'Elementos Curriculares', 'tpl-def-obj')">
+                            <span class="font-bold text-teal-800 block mb-1">Objetivos y Competencias</span>
+                            <p class="text-xs text-slate-600">Logros y desempeños imprescindibles adaptados al nivel del alumnado. <br><span class="text-teal-600 font-bold mt-2 inline-block">Ver más &rarr;</span></p>
+                        </div>
+                        <div class="p-4 bg-teal-50 rounded-xl border border-teal-100 hover-card cursor-pointer" onclick="openModal('Criterios de Evaluación', 'Elementos Curriculares', 'tpl-def-crit')">
+                            <span class="font-bold text-teal-800 block mb-1">Criterios de Evaluación</span>
+                            <p class="text-xs text-slate-600">Referentes observables que indican el nivel de desempeño. <br><span class="text-teal-600 font-bold mt-2 inline-block">Ver más &rarr;</span></p>
+                        </div>
+                        <div class="p-4 bg-teal-50 rounded-xl border border-teal-100 hover-card cursor-pointer" onclick="openModal('Saberes y Situaciones', 'Elementos Curriculares', 'tpl-def-sab')">
+                            <span class="font-bold text-teal-800 block mb-1">Saberes y Situaciones</span>
+                            <p class="text-xs text-slate-600">Conocimientos, destrezas, actitudes y retos globalizadores. <br><span class="text-teal-600 font-bold mt-2 inline-block">Ver más &rarr;</span></p>
+                        </div>
+                    </div>
+
+                    <h3 class="h3-title">Metodología y Horario Escolar</h3>
+                    <div class="space-y-4 text-slate-600">
+                        <p><strong>Diseño Universal para el Aprendizaje (DUA):</strong> Diseño flexible y accesible desde el inicio. Múltiples formas de presentación, acción/expresión y compromiso.</p>
+                        <p><strong>El Juego:</strong> Recurso metodológico central (exploratorio, simbólico, de reglas, libre, dirigido). Es el "trabajo" en Infantil.</p>
+                        <p><strong>Periodo de Adaptación:</strong> Planificación prioritaria. Flexibilidad horaria y familiar (2-4 semanas) para crear vínculo de apego seguro.</p>
+                        <p><strong>Horario:</strong> Enfoque globalizador alternando actividad y descanso. En 2º ciclo: mínimo 25 horas lectivas semanales.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 3: TUTORIA, DIVERSIDAD Y AUTONOMIA -->
+            <div id="page-tutoria" class="page-view hidden">
+                <div class="content-box">
+                    <h2 class="h2-title">Atención a la Diversidad y Tutoría (Capítulo IV)</h2>
+                    <h3 class="h3-title">Atención a las Diferencias Individuales</h3>
+                    <ul class="space-y-4 text-slate-600 list-disc pl-5">
+                        <li><strong>Pauta Ordinaria (DUA):</strong> Atención individualizada inclusiva habitual, no excepcional. Múltiples vías de expresión y compromiso.</li>
+                        <li><strong>Prevención Temprana:</strong> Intervención inmediata ante señales de alerta, dentro del aula ordinaria.</li>
+                        <li><strong>Altas Capacidades:</strong> Estimulación del ritmo propio, mayor profundidad, investigación autónoma. Sin presión.</li>
+                        <li><strong>Excepcionalidad (Adaptaciones Significativas):</strong> Requieren evaluación psicopedagógica previa. Implica priorizar objetivos, modificar saberes y adecuar criterios.</li>
+                    </ul>
+
+                    <h3 class="h3-title border-t pt-6">Tutoría y Relación Familia-Escuela</h3>
+                    <ul class="space-y-2 text-slate-600">
+                        <li><strong>Responsabilidad del Tutor/a:</strong> Orientar, conocer profundamente al niño/a, coordinar al equipo docente, evaluar y mediar emocionalmente.</li>
+                        <li><strong>Corresponsabilidad:</strong> La educación es una responsabilidad compartida. Familia y escuela no son independientes, requieren coherencia y comunicación constante.</li>
+                    </ul>
+                </div>
+
+                <div class="content-box">
+                    <h2 class="h2-title">Autonomía de los Centros (Capítulo V)</h2>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h3 class="h3-title mt-0">Documentos Institucionales Clave</h3>
+                            <div class="mb-4">
+                                <strong class="text-slate-800">Proyecto Curricular de Etapa (PCE):</strong>
+                                <p class="text-sm text-slate-600">Coordinado por el maestro/a de Infantil. Plazo de 2 cursos para adecuarse. Incluye directrices pedagógicas, plan digital, bilingüismo, lenguas de Aragón y atención a la diversidad.</p>
+                            </div>
+                            <div>
+                                <strong class="text-slate-800">Programaciones Didácticas:</strong>
+                                <p class="text-sm text-slate-600">Desarrolladas por equipos de ciclo (2º nivel de concreción). Documentos vivos. Concretan situaciones de aprendizaje y estrategias específicas.</p>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="h3-title mt-0">Disposiciones Específicas</h3>
+                            <ul class="space-y-3 text-sm text-slate-600">
+                                <li><strong>Transición y Coordinación:</strong> Vertical (entre 1er y 2º ciclo, y hacia 1º de Primaria) mediante reuniones e informes compartidos.</li>
+                                <li><strong>Religión:</strong> Oferta obligatoria para el centro, elección voluntaria para familias. Alternativa: atención educativa sin contenidos curriculares ni religiosos.</li>
+                                <li><strong>Materiales Curriculares:</strong> Autonomía docente. Deben respetar valores constitucionales e igualdad. Estabilidad mínima de 3 años.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 4: 8 COMPETENCIAS CLAVE -->
+            <div id="page-competencias" class="page-view hidden">
+                <div class="content-box">
+                    <h2 class="h2-title">Las 8 Competencias Clave (Capítulo VI)</h2>
+                    <p class="text-slate-600 mb-8">Basadas en el Marco Europeo y adaptadas al contexto aragonés. <strong>No existe jerarquía</strong> entre ellas, son transversales y se inician desde el nacimiento de forma integrada.</p>
+                    
+                    <div class="grid md:grid-cols-2 xl:grid-cols-4 gap-6">
+                        <!-- CCL -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-teal-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-xs">CCL</span>
+                                Com. Lingüística
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Capacidad para comunicarse eficazmente con énfasis en la oralidad y la escucha activa.</p>
+                            <button onclick="openModal('Com. Lingüística (CCL)', 'Competencia Clave', 'tpl-ccl')" class="w-full text-center py-2 bg-teal-100 text-teal-700 font-bold text-xs rounded-lg hover:bg-teal-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CP -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-blue-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-xs">CP</span>
+                                Plurilingüe
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Comunicación en contextos plurilingües respetando la diversidad y lenguas de Aragón.</p>
+                            <button onclick="openModal('Competencia Plurilingüe (CP)', 'Competencia Clave', 'tpl-cp')" class="w-full text-center py-2 bg-blue-100 text-blue-700 font-bold text-xs rounded-lg hover:bg-blue-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- STEM -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-orange-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-[10px]">STEM</span>
+                                Mat. y Científica
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Pensamiento lógico y científico mediante manipulación, experimentación y observación.</p>
+                            <button onclick="openModal('Matemática y STEM', 'Competencia Clave', 'tpl-stem')" class="w-full text-center py-2 bg-orange-100 text-orange-700 font-bold text-xs rounded-lg hover:bg-orange-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CD -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-red-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-xs">CD</span>
+                                Digital
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Uso saludable, responsable y crítico de tecnologías para el aprendizaje y la comunicación.</p>
+                            <button onclick="openModal('Competencia Digital (CD)', 'Competencia Clave', 'tpl-cd')" class="w-full text-center py-2 bg-red-100 text-red-700 font-bold text-xs rounded-lg hover:bg-red-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CPSAA -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-green-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-[10px]">CPSAA</span>
+                                Personal / Social
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Gestión del aprendizaje, regulación de emociones y relaciones empáticas con iguales.</p>
+                            <button onclick="openModal('Personal, Social y Aprender (CPSAA)', 'Competencia Clave', 'tpl-cpsaa')" class="w-full text-center py-2 bg-green-100 text-green-700 font-bold text-xs rounded-lg hover:bg-green-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CC -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-indigo-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-xs">CC</span>
+                                Ciudadana
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Convivencia pacífica, igualdad, inclusión y sostenibilidad (Las 3 erres).</p>
+                            <button onclick="openModal('Competencia Ciudadana (CC)', 'Competencia Clave', 'tpl-cc')" class="w-full text-center py-2 bg-indigo-100 text-indigo-700 font-bold text-xs rounded-lg hover:bg-indigo-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CE -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-yellow-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-xs">CE</span>
+                                Emprendedora
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Actuar con curiosidad, iniciativa, resiliencia y creatividad ante retos.</p>
+                            <button onclick="openModal('Competencia Emprendedora (CE)', 'Competencia Clave', 'tpl-ce')" class="w-full text-center py-2 bg-yellow-100 text-yellow-700 font-bold text-xs rounded-lg hover:bg-yellow-200 transition">Ver Ejemplos</button>
+                        </div>
+                        <!-- CCEC -->
+                        <div class="bg-slate-50 border border-slate-200 p-5 rounded-2xl hover-card flex flex-col h-full">
+                            <h3 class="font-black text-md text-slate-800 flex items-center mb-3">
+                                <span class="bg-pink-600 text-white w-8 h-8 rounded flex items-center justify-center mr-2 text-[10px]">CCEC</span>
+                                Conciencia Cult.
+                            </h3>
+                            <p class="text-xs text-slate-600 mb-4 flex-1">Expresión creativa y valoración del patrimonio cultural propio (Aragón) y ajeno.</p>
+                            <button onclick="openModal('Conciencia y Expresión Cultural (CCEC)', 'Competencia Clave', 'tpl-ccec')" class="w-full text-center py-2 bg-pink-100 text-pink-700 font-bold text-xs rounded-lg hover:bg-pink-200 transition">Ver Ejemplos</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 5: ÁREAS DE CONOCIMIENTO Y SABERES -->
+            <div id="page-areas" class="page-view hidden">
+                
+                <!-- Área 1 -->
+                <div class="content-box border-l-8 border-teal-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-black text-teal-700">Área 1: Crecimiento en Armonía</h2>
+                        <button onclick="openModal('Saberes y Ejemplos: Área 1', 'Área de Conocimiento', 'tpl-area1')" class="bg-teal-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-teal-700 transition shadow-sm">VER SABERES Y EJEMPLOS</button>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-sm">Centrada en el desarrollo personal y social del alumnado (dimensiones inseparables). Los primeros años son críticos para la autoestima. Evaluada principalmente mediante observación directa.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-teal-800">CA.1</strong> Cuerpo y Autoimagen</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-teal-800">CA.2</strong> Gestión Emocional</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-teal-800">CA.3</strong> Hábitos y Estilo de Vida</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-teal-800">CA.4</strong> Interacciones Sociales</div>
+                    </div>
+                </div>
+
+                <!-- Área 2 -->
+                <div class="content-box border-l-8 border-orange-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-black text-orange-700">Área 2: Descubrimiento y Exploración del Entorno</h2>
+                        <button onclick="openModal('Saberes y Ejemplos: Área 2', 'Área de Conocimiento', 'tpl-area2')" class="bg-orange-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-orange-700 transition shadow-sm">VER SABERES Y EJEMPLOS</button>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-sm">El entorno como provocador de emociones. Asienta las bases del pensamiento lógico-matemático y científico mediante indagación.</p>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-orange-800">DEE.1</strong> Destrezas Lógico-Matemáticas</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-orange-800">DEE.2</strong> P. Científico y Computacional</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-orange-800">DEE.3</strong> Sostenibilidad y Conservación</div>
+                    </div>
+                </div>
+
+                <!-- Área 3 -->
+                <div class="content-box border-l-8 border-purple-500">
+                    <div class="flex justify-between items-start mb-4">
+                        <h2 class="text-2xl font-black text-purple-700">Área 3: Comunicación y Representación</h2>
+                        <button onclick="openModal('Saberes y Ejemplos: Área 3', 'Área de Conocimiento', 'tpl-area3')" class="bg-purple-600 text-white px-4 py-2 rounded-lg text-xs font-bold hover:bg-purple-700 transition shadow-sm">VER SABERES Y EJEMPLOS</button>
+                    </div>
+                    <p class="text-slate-600 mb-6 text-sm">Desarrollo de múltiples lenguajes (verbal, plástico, musical, corporal, digital). La oralidad es el instrumento prioritario.</p>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-xs">
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-purple-800">CRR.1</strong> Interactuar y Expresar</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-purple-800">CRR.2</strong> Interpretar y Comprender</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-purple-800">CRR.3</strong> Producir Mensajes</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-purple-800">CRR.4</strong> Lenguaje Escrito</div>
+                        <div class="bg-slate-50 p-3 rounded-lg border border-slate-200"><strong class="block text-purple-800">CRR.5</strong> Diversidad Lingüística</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 6: SITUACIONES DE APRENDIZAJE -->
+            <div id="page-situaciones" class="page-view hidden">
+                <div class="content-box">
+                    <h2 class="h2-title">Situaciones por Etapas de Edad</h2>
+                    <p class="text-slate-600 mb-8">La Orden ECD/853/2022 proporciona ejemplos concretos que actúan como retos globalizadores. Hemos seleccionado y ampliado 4 situaciones clave clasificadas por la etapa madurativa del alumnado para facilitar su implementación.</p>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- 0-2 Años -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover-card">
+                            <span class="bg-green-100 text-green-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-3 inline-block">Etapa 0-2 Años</span>
+                            <h3 class="text-xl font-black text-slate-800 mb-2">Control de Esfínteres</h3>
+                            <p class="text-sm text-slate-600 mb-4">Proceso de higiene, autonomía personal y vinculación afectiva, adaptado al ritmo fisiológico y emocional (19-20 meses).</p>
+                            <button onclick="openModal('Control de Esfínteres (0-2 Años)', 'Caso Práctico Completo', 'tpl-sit-1')" class="w-full py-3 bg-white border border-slate-300 text-slate-800 font-bold text-xs rounded-xl shadow-sm hover:bg-slate-100 transition">VER DESARROLLO COMPLETO</button>
+                        </div>
+
+                        <!-- 2-3 Años -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover-card">
+                            <span class="bg-blue-100 text-blue-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-3 inline-block">Etapa 2-3 Años</span>
+                            <h3 class="text-xl font-black text-slate-800 mb-2">Mejora de la Pinza Digital</h3>
+                            <p class="text-sm text-slate-600 mb-4">Estrategias lúdicas para la motricidad fina y la coordinación óculo-manual previas a la escritura, sin mecanización.</p>
+                            <button onclick="openModal('Mejora de la Pinza Digital (2-3 Años)', 'Caso Práctico Completo', 'tpl-sit-2')" class="w-full py-3 bg-white border border-slate-300 text-slate-800 font-bold text-xs rounded-xl shadow-sm hover:bg-slate-100 transition">VER DESARROLLO COMPLETO</button>
+                        </div>
+
+                        <!-- 3-4 Años -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover-card">
+                            <span class="bg-orange-100 text-orange-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-3 inline-block">Etapa 3-4 Años</span>
+                            <h3 class="text-xl font-black text-slate-800 mb-2">Cajas de Cerillas y Palillos</h3>
+                            <p class="text-sm text-slate-600 mb-4">Situación para trabajar nociones matemáticas de cardinalidad, codificación y validación autónoma de resultados.</p>
+                            <button onclick="openModal('Cajas de Cerillas y Palillos (3-4 Años)', 'Caso Práctico Completo', 'tpl-sit-3')" class="w-full py-3 bg-white border border-slate-300 text-slate-800 font-bold text-xs rounded-xl shadow-sm hover:bg-slate-100 transition">VER DESARROLLO COMPLETO</button>
+                        </div>
+
+                        <!-- 4-6 Años -->
+                        <div class="bg-slate-50 border border-slate-200 rounded-2xl p-6 hover-card">
+                            <span class="bg-purple-100 text-purple-800 text-[10px] font-bold px-2 py-1 rounded uppercase tracking-wider mb-3 inline-block">Etapa 4-6 Años</span>
+                            <h3 class="text-xl font-black text-slate-800 mb-2">Las Escrituras del Mundo</h3>
+                            <p class="text-sm text-slate-600 mb-4">Investigación sobre la diversidad lingüística, aproximación funcional a la escritura y fomento del respeto intercultural.</p>
+                            <button onclick="openModal('Las Escrituras del Mundo (4-6 Años)', 'Caso Práctico Completo', 'tpl-sit-4')" class="w-full py-3 bg-white border border-slate-300 text-slate-800 font-bold text-xs rounded-xl shadow-sm hover:bg-slate-100 transition">VER DESARROLLO COMPLETO</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 7: ORIENTACIONES Y BEBES -->
+            <div id="page-orientaciones" class="page-view hidden">
+                
+                <div class="content-box bg-slate-900 text-white border-none">
+                    <h2 class="text-3xl font-black mb-6 text-teal-400">Especificaciones: Bebés (0 a 1 Año)</h2>
+                    <p class="text-slate-300 mb-6 font-medium italic">En el primer año, TODAS las actividades tienen intencionalidad educativa. No hay "tiempo libre sin aprendizaje".</p>
+                    
+                    <div class="grid md:grid-cols-2 gap-6 text-sm text-slate-300">
+                        <div>
+                            <h4 class="text-white font-bold mb-2">Necesidades Globales</h4>
+                            <p class="mb-4">Seguridad emocional, relación responsiva, exploración sensoriomotriz, afecto físico, movimiento.</p>
+                            <h4 class="text-white font-bold mb-2">Las Rutinas como Eje</h4>
+                            <ul class="list-disc pl-4 space-y-1">
+                                <li><strong>Comida:</strong> Vínculo, contacto visual, nombrar alimentos.</li>
+                                <li><strong>Sueño:</strong> Ambiente tranquilo, respetar ritmos.</li>
+                                <li><strong>Higiene:</strong> Intimidad, nombrar cuerpo. Interpretar distintos llantos (hambre, cansancio, cólico).</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-bold mb-2">Estimulación y Movimiento</h4>
+                            <p class="mb-4">Ropa cómoda, espacios cálidos para arrastre, gateo y marcha. Exploración de sí mismos y del entorno.</p>
+                            <h4 class="text-white font-bold mb-2">Comunicación Constante</h4>
+                            <p class="mb-4">El adulto DEBE utilizar lenguaje verbal claro en rutinas. Esperar respuestas (turnos comunicativos).</p>
+                            <h4 class="text-white font-bold mb-2">Familia-Escuela</h4>
+                            <p>Adaptación progresiva. Intercambio de info ("¿Durmió bien?").</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="content-box">
+                    <h2 class="h2-title">Orientaciones Didácticas (Capítulo XII)</h2>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">1. El Rol Docente</h3>
+                            <p class="text-sm text-slate-600">Modelo educativo y de conducta. NO es un mero transmisor, ES un acompañante afectivo, facilitador, y observador sistemático responsable del bienestar integral.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">2. Protagonismo del Alumnado</h3>
+                            <p class="text-sm text-slate-600">Agente activo (tocar, probar, sentir, imitar, explorar). Participación real en asambleas y resolución participativa de conflictos.</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">3. Agrupamientos y Materiales</h3>
+                            <p class="text-sm text-slate-600 mb-2">Grupos: Aula completa, pequeño grupo (rincones), parejas, individual.</p>
+                            <p class="text-sm text-slate-600">Materiales: Ricos y variados. NO limitarse a juguetes comerciales (usar cajas, arena, tapones, naturaleza).</p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">4. El Juego (Es el trabajo en Infantil)</h3>
+                            <p class="text-sm text-slate-600">Combinar Juego Dirigido (con objetivos pedagógicos) y Juego Libre/Simbólico (espontáneo, imaginativo, excelente para observación docente). <em>Calidad > Cantidad.</em></p>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-bold text-slate-800 mb-2">5. Gestión de Errores y Frustración</h3>
+                            <p class="text-sm text-slate-600">El error es empírico, no una amenaza. Reencuadrar ("No salió, ¿qué probamos ahora?"). Enseñar a regular frustración en lugar de evitarla.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PAGE 8: EVALUACION E INFORMES (INTERACTIVO) -->
+            <div id="page-evaluacion" class="page-view hidden w-full">
+                
+                <!-- Info Section (no-print) -->
+                <div class="content-box no-print">
+                    <h2 class="h2-title">Evaluación de los Aprendizajes (Capítulo III)</h2>
+                    <div class="grid md:grid-cols-2 gap-8 mb-6">
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-2">Características</h3>
+                            <ul class="text-sm text-slate-600 list-disc pl-5 space-y-1">
+                                <li><strong>Global:</strong> Dimensiones integrales.</li>
+                                <li><strong>Continua:</strong> Sistemática todo el proceso.</li>
+                                <li><strong>Formativa:</strong> Para mejorar, no clasificar.</li>
+                                <li><strong>Técnica Principal:</strong> Observación directa, sistemática y continua.</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 mb-2">Momentos Clave</h3>
+                            <ul class="text-sm text-slate-600 list-disc pl-5 space-y-1">
+                                <li><strong>Inicial:</strong> Entrevistas, observación adaptación.</li>
+                                <li><strong>Procesual:</strong> Mínimo 3 sesiones/curso.</li>
+                                <li><strong>Final:</strong> Anual y de ciclo (Anexos oficiales).</li>
+                                <li><strong>Docente:</strong> Autoevaluación y Coevaluación del propio equipo para mejorar prácticas.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-teal-50 p-4 rounded-xl border border-teal-200">
+                        <p class="text-sm font-bold text-teal-800 mb-2">Documentos Oficiales (Simulador Web)</p>
+                        <p class="text-xs text-slate-600 mb-4">Selecciona un Anexo, rellena los datos como docente y pulsa el botón para generar el PDF oficial de evaluación.</p>
+                        <div class="flex flex-wrap gap-2">
+                            <button onclick="showForm('anexo4')" class="px-4 py-2 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 transition">Anexo IV (Ficha Personal)</button>
+                            <button onclick="showForm('anexo5')" class="px-4 py-2 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 transition">Anexo V (Resumen Esc.)</button>
+                            <button onclick="showForm('anexo6')" class="px-4 py-2 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 transition">Anexo VI (Informe Anual)</button>
+                            <button onclick="showForm('anexo7')" class="px-4 py-2 bg-white border border-slate-300 rounded text-xs font-bold hover:bg-slate-100 transition">Anexo VII (Final Ciclo)</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Formularios Interactivos / Listos para imprimir -->
+                <div id="forms-container" class="w-full">
+                    
+                    <!-- ANEXO IV -->
+                    <div id="form-anexo4" class="form-container bg-white border border-slate-300 p-8 md:p-12 shadow-sm rounded mb-8 hidden">
+                        <div class="text-center mb-8 pb-4 border-b-2 border-slate-900 flex justify-between items-center">
+                            <div>
+                                <h1 class="text-xl font-black">ANEXO IV</h1>
+                                <h2 class="text-lg font-bold">FICHA PERSONAL</h2>
+                            </div>
+                            <div class="text-right text-[10px] text-slate-500">
+                                ORDEN ECD/853/2022<br>Educación Infantil Aragón
+                            </div>
+                        </div>
+                        
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-4 gap-4">
+                                <div class="col-span-2">
+                                    <label class="form-label">Apellidos</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="form-label">Nombre</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Fecha de Nacimiento</label>
+                                    <input type="date" class="form-input">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Lugar de Nac.</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Nacionalidad</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div class="col-span-1">
+                                    <label class="form-label">Sexo</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div class="col-span-4">
+                                    <label class="form-label">Domicilio Habitual</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                            </div>
+                            
+                            <h3 class="font-bold border-b border-slate-300 pt-4 pb-1">Datos Familiares</h3>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="form-label">Progenitor/Tutor 1</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div>
+                                    <label class="form-label">Teléfono 1</label>
+                                    <input type="tel" class="form-input">
+                                </div>
+                                <div>
+                                    <label class="form-label">Progenitor/Tutor 2</label>
+                                    <input type="text" class="form-input">
+                                </div>
+                                <div>
+                                    <label class="form-label">Teléfono 2</label>
+                                    <input type="tel" class="form-input">
+                                </div>
+                                <div class="col-span-2">
+                                    <label class="form-label">Hermanos/as en el centro</label>
+                                    <textarea rows="2" class="form-input"></textarea>
+                                </div>
+                            </div>
+
+                            <h3 class="font-bold border-b border-slate-300 pt-4 pb-1">Datos Psicopedagógicos y Médicos</h3>
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label class="form-label">Observaciones Médicas Significativas (Alergias, etc.)</label>
+                                    <textarea rows="3" class="form-input"></textarea>
+                                </div>
+                                <div>
+                                    <label class="form-label">Recursos Educativos o Apoyos</label>
+                                    <textarea rows="2" class="form-input"></textarea>
+                                </div>
+                                <div>
+                                    <label class="form-label">Adaptaciones Curriculares (Si existen)</label>
+                                    <textarea rows="2" class="form-input"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-12 pt-12">
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">Firma Dirección</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">Firma Tutor/a</p>
+                                </div>
+                            </div>
+                            
+                            <div class="text-center mt-8 no-print">
+                                <button type="button" onclick="window.print()" class="bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-slate-900 transition">IMPRIMIR / PDF FICHA</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- ANEXO V -->
+                    <div id="form-anexo5" class="form-container bg-white border border-slate-300 p-8 md:p-12 shadow-sm rounded mb-8 hidden">
+                        <div class="text-center mb-8 pb-4 border-b-2 border-slate-900">
+                            <h1 class="text-xl font-black">ANEXO V</h1>
+                            <h2 class="text-lg font-bold">RESUMEN DE LA ESCOLARIDAD</h2>
+                        </div>
+                        <form class="space-y-6">
+                            <div class="flex items-center space-x-2 mb-6">
+                                <span class="font-bold">Alumno/a:</span>
+                                <input type="text" class="form-input flex-1 border-b-only rounded-none bg-transparent">
+                            </div>
+                            
+                            <table class="w-full border-collapse border border-slate-800 text-sm mb-6">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-800 p-2">Curso Académico</th>
+                                        <th class="border border-slate-800 p-2">Edad</th>
+                                        <th class="border border-slate-800 p-2">Ciclo (1º o 2º)</th>
+                                        <th class="border border-slate-800 p-2">Nombre y Domicilio Centro</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                        <td class="border border-slate-800"><input type="text" class="w-full p-1 border-none bg-transparent text-center"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            
+                            <div>
+                                <label class="font-bold mb-2 block">Observaciones sobre la escolaridad:</label>
+                                <textarea rows="4" class="form-input"></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-12 pt-12">
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">Firma Dirección</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">Firma Tutor/a</p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-8 no-print">
+                                <button type="button" onclick="window.print()" class="bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-slate-900 transition">IMPRIMIR / PDF RESUMEN</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <!-- ANEXO VI / VII (COMBINED STRUCTURE) -->
+                    <div id="form-anexo6" class="form-container bg-white border border-slate-300 p-8 md:p-12 shadow-sm rounded mb-8 hidden">
+                        <div class="text-center mb-8 pb-4 border-b-2 border-slate-900">
+                            <h1 class="text-xl font-black" id="informe-title-anexo">ANEXO VI / VII</h1>
+                            <h2 class="text-lg font-bold" id="informe-subtitle">INFORME DE EVALUACIÓN</h2>
+                        </div>
+                        
+                        <form class="space-y-6">
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div><label class="font-bold">Alumno/a:</label> <input type="text" class="form-input mt-1"></div>
+                                <div><label class="font-bold">Centro:</label> <input type="text" class="form-input mt-1"></div>
+                            </div>
+                            
+                            <h3 class="font-bold border-b-2 border-slate-800 pb-1 mt-6">Grado de Desarrollo (Escala: IN / ED / AD / AP)</h3>
+                            <p class="text-xs text-slate-500 mb-2">IN: Iniciado | ED: En desarrollo | AD: Adquirida | AP: Adquirida Plenamente</p>
+                            
+                            <table class="w-full border-collapse border border-slate-800 text-sm">
+                                <thead>
+                                    <tr class="bg-slate-100">
+                                        <th class="border border-slate-800 p-2 text-left">Competencias Clave</th>
+                                        <th class="border border-slate-800 p-2 w-32">Calificación</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td class="border border-slate-800 p-2">Comunicación Lingüística (CCL)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">Plurilingüe (CP)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">STEM (C. Matemática y Ciencia)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">Digital (CD)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">P. Social y Aprender a Aprender (CPSAA)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">Ciudadana (CC)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">Emprendedora (CE)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">Conciencia y Expresión Cultural (CCEC)</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr class="bg-slate-100"><td colspan="2" class="border border-slate-800 p-2 font-bold text-center">Áreas de Conocimiento</td></tr>
+                                    <tr><td class="border border-slate-800 p-2">1. Crecimiento en Armonía</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">2. Descubrimiento y Exp. del Entorno</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                    <tr><td class="border border-slate-800 p-2">3. Comunicación y Rep. Realidad</td><td class="border border-slate-800 p-0"><select class="w-full h-full p-2 bg-transparent text-center outline-none"><option></option><option>IN</option><option>ED</option><option>AD</option><option>AP</option></select></td></tr>
+                                </tbody>
+                            </table>
+
+                            <div class="print-break mt-6">
+                                <label class="font-bold mb-1 block">Dificultades Encontradas:</label>
+                                <textarea rows="3" class="form-input w-full"></textarea>
+                            </div>
+                            <div class="mt-4">
+                                <label class="font-bold mb-1 block">Medidas Educativas de Refuerzo / Adaptaciones:</label>
+                                <textarea rows="3" class="form-input w-full"></textarea>
+                            </div>
+                            <div class="mt-4">
+                                <label class="font-bold mb-1 block">Otras Observaciones (Desarrollo integral, recomendaciones):</label>
+                                <textarea rows="3" class="form-input w-full"></textarea>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-12 pt-12">
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">VºBº Director/a</p>
+                                </div>
+                                <div class="text-center">
+                                    <div class="border-b border-slate-400 w-full h-12 mb-2"></div>
+                                    <p class="text-xs font-bold">Firma Tutor/a</p>
+                                </div>
+                            </div>
+                            <div class="text-center mt-8 no-print">
+                                <button type="button" onclick="window.print()" class="bg-teal-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-slate-900 transition">IMPRIMIR / PDF INFORME</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- GLOBAL MODAL COMPONENT -->
+    <div id="globalModal" class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 no-print" onclick="if(event.target === this) closeModal()">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl p-6 md:p-8 transform scale-95 transition-transform duration-300 max-h-[90vh] flex flex-col relative" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-start mb-4 border-b border-slate-100 pb-4">
+                <div>
+                    <span id="modalBadge" class="text-[10px] font-black px-2 py-1 bg-teal-100 text-teal-700 rounded-md uppercase tracking-wider mb-2 inline-block">Badge</span>
+                    <h3 id="modalTitle" class="text-2xl font-black text-slate-800">Title</h3>
+                </div>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-slate-800 bg-slate-100 hover:bg-slate-200 p-2 rounded-full transition">
+                    <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                </button>
+            </div>
+            <div id="modalBody" class="overflow-y-auto pr-2 text-slate-600 text-sm space-y-4">
+                <!-- content injected here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- DATA TEMPLATES FOR MODALS (Hidden) -->
+    <div id="modal-templates" class="hidden">
+        
+        <!-- ELEMENTOS CURRICULARES -->
+        <div id="tpl-def-obj">
+            <p>Los <strong>Objetivos</strong> son logros esperados al finalizar la etapa de Educación Infantil. Tienen un carácter orientador (no prescriptivo de manera rígida) y guían la práctica docente hacia el desarrollo integral del alumnado.</p>
+            <p>Las <strong>Competencias Clave</strong> son los desempeños imprescindibles para el éxito formativo y la participación activa en la sociedad. Adaptadas del Marco Europeo, se desarrollan de forma global, integrada e interconectada desde el primer ciclo, y no existe jerarquía entre ellas.</p>
+        </div>
+        <div id="tpl-def-crit">
+            <p>Los <strong>Criterios de Evaluación</strong> son referentes que indican el nivel de desempeño esperado del alumnado en un momento determinado. Orientan la observación sistemática y la valoración del progreso.</p>
+            <ul class="list-disc pl-5 space-y-1">
+                <li>Son directamente observables y medibles.</li>
+                <li>Permiten recoger evidencias reales del aprendizaje.</li>
+                <li>Existen criterios diferenciados y específicos tanto para el 1er ciclo como para el 2º ciclo.</li>
+            </ul>
+        </div>
+        <div id="tpl-def-sab">
+            <p>Los <strong>Saberes Básicos</strong> son un conjunto integrado de conocimientos (hechos, conceptos), destrezas procedimentales (el "saber hacer") y actitudes (valores, disposiciones). Se agrupan en bloques temáticos dentro de cada área.</p>
+            <p class="mt-4">Las <strong>Situaciones de Aprendizaje</strong> son contextos, actividades o retos diseñados por el docente que implican el despliegue real de las competencias. Deben ser motivadores, significativos, globalizadores y permitir valorar el desempeño del alumnado en la práctica.</p>
+        </div>
+
+        <!-- COMPETENCIAS CLAVE (Ejemplos) -->
+        <div id="tpl-ccl">
+            <p class="mb-3">La Comunicación Lingüística (CCL) prioriza la oralidad y la escucha activa en esta etapa, siendo el principal instrumento regulador de la conducta y acercamiento a la cultura literaria.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Asambleas diarias:</strong> Espacio donde cada niño/a relata vivencias ("¿Qué hiciste el fin de semana?"), respetando el turno de palabra y escuchando a sus iguales.</li>
+                <li><strong>Lectura dialógica:</strong> El docente lee un cuento y realiza pausas estratégicas para preguntar <em>"¿Qué crees que pasará ahora?"</em>, fomentando la predicción y el diálogo oral.</li>
+                <li><strong>Juegos de rimas y retahílas:</strong> Trabajar la conciencia fonológica mediante juegos verbales tradicionales ("Pito, pito, colorito...").</li>
+            </ul>
+        </div>
+        <div id="tpl-cp">
+            <p class="mb-3">La Competencia Plurilingüe (CP) fomenta el contacto con lenguas distintas a la familiar, valorando la diversidad lingüística, con especial énfasis en las lenguas y modalidades de Aragón.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Rutinas multilingües:</strong> Utilizar saludos y despedidas básicas en inglés ("Good morning!") o en lenguas propias de Aragón, asociándolos a momentos concretos del día.</li>
+                <li><strong>Cuentos del mundo:</strong> Invitar a familias de diferentes orígenes a contar un cuento breve o cantar una canción en su idioma materno.</li>
+                <li><strong>Reconocimiento de acentos y sonoridades:</strong> Actividades lúdicas de escucha donde el alumnado diferencia sonidos de idiomas distintos, promoviendo el respeto y la curiosidad.</li>
+            </ul>
+        </div>
+        <div id="tpl-stem">
+            <p class="mb-3">STEM desarrolla el pensamiento lógico-matemático y científico mediante manipulación, experimentación y observación, sentando las bases del método científico (ensayo-error).</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Experimento de Flotabilidad:</strong> Disponer recipientes con agua y diversos objetos (corchos, piedras, monedas). Los niños plantean hipótesis (<em>"¿Flotará?"</em>) y comprueban los resultados.</li>
+                <li><strong>Clasificación de la naturaleza:</strong> En una salida al patio, recoger hojas y clasificarlas según atributos simples (color, tamaño, forma).</li>
+                <li><strong>Medida antropométrica:</strong> Medir cuántos "pasos" o "manos" hay de distancia desde la alfombra de asamblea hasta la puerta, acercándolos al concepto de longitud.</li>
+            </ul>
+        </div>
+        <div id="tpl-cd">
+            <p class="mb-3">La Competencia Digital (CD) inicia la alfabetización digital básica, promoviendo un uso crítico, responsable y saludable de las tecnologías de la información.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Pizarra Digital Interactiva (PDI):</strong> Utilizar la PDI para que el alumnado interactúe con cuentos multimedia o relacione conceptos arrastrando imágenes con sus dedos.</li>
+                <li><strong>Robótica educativa temprana:</strong> Uso de robots de suelo (como Bee-Bot). Los niños/as programan secuencias simples (adelante, giro) para llevar al robot a una meta en un tapete temático.</li>
+                <li><strong>Videochats con otras aulas:</strong> Establecer una breve videollamada con otra clase del mismo colegio o de un pueblo cercano para compartir un proyecto o cantar juntos.</li>
+            </ul>
+        </div>
+        <div id="tpl-cpsaa">
+            <p class="mb-3">La Competencia Personal, Social y de Aprender a Aprender (CPSAA) es vital para gestionar las emociones, crear empatía, fortalecer la autoimagen y afrontar la frustración.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>El Rincón de la Calma:</strong> Espacio en el aula con cojines, texturas suaves y "botellas sensoriales" a donde el niño puede acudir libremente para autorregularse tras un conflicto o rabieta.</li>
+                <li><strong>El termómetro de las emociones:</strong> Al llegar por la mañana, cada niño coloca su foto en la emoción que siente (alegre, triste, enfadado), facilitando la verbalización y empatía.</li>
+                <li><strong>Reencuadrar el error:</strong> Si la torre de bloques se cae, el docente guía: <em>"¡Se cayó! ¿Qué podemos hacer diferente para que sea más fuerte la próxima vez?"</em>, fomentando el "Aprender a Aprender".</li>
+            </ul>
+        </div>
+        <div id="tpl-cc">
+            <p class="mb-3">La Competencia Ciudadana (CC) inculca valores democráticos, resolución pacífica de conflictos, igualdad de género y compromiso con la sostenibilidad ambiental.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Responsables de reciclaje (Las 3 Erres):</strong> Organizar el aula con contenedores de colores y nombrar encargados semanales que ayuden a separar el papel, los envases y los restos orgánicos del almuerzo.</li>
+                <li><strong>Dramatización de conflictos:</strong> Mediante marionetas, plantear un conflicto típico del aula (dos niños quieren el mismo juguete) y pedir a la asamblea que sugiera soluciones pacíficas y justas.</li>
+                <li><strong>Revisión de roles:</strong> Eliminar explícitamente los estereotipos de género, por ejemplo, asegurando que tanto niños como niñas participen por igual en el rincón de "tareas del hogar" (juego simbólico).</li>
+            </ul>
+        </div>
+        <div id="tpl-ce">
+            <p class="mb-3">La Competencia Emprendedora (CE) se centra en la curiosidad, imaginación, iniciativa y asunción de retos, usando el juego como motor para el pensamiento creativo.</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>El proyecto del Supermercado:</strong> Proponer crear un supermercado en el aula. El alumnado debe tener iniciativa para planificar qué necesitan: cajas vacías, hacer billetes de papel, crear carteles y asignar roles.</li>
+                <li><strong>Creación de juguetes con material reciclado:</strong> Darles materiales inespecíficos (cajas de cartón, rollos de papel) y retarles a inventar un juguete nuevo, fomentando la originalidad y la persistencia ante dificultades.</li>
+                <li><strong>Asambleas propositivas:</strong> Fomentar el liderazgo preguntando <em>"¿A qué queremos jugar hoy?"</em> o <em>"¿Cómo decoramos la clase para el invierno?"</em> y llevar a cabo sus iniciativas.</li>
+            </ul>
+        </div>
+        <div id="tpl-ccec">
+            <p class="mb-3">La Conciencia y Expresión Cultural (CCEC) permite al alumnado comunicar ideas de forma creativa y desarrollar un sentido de pertenencia a su cultura (especialmente la aragonesa).</p>
+            <h4 class="font-bold text-slate-800 border-b border-slate-200 pb-1 mb-2">Ejemplos Prácticos en el Aula</h4>
+            <ul class="list-disc pl-5 space-y-2">
+                <li><strong>Celebraciones y folclore aragonés:</strong> Escuchar y bailar música tradicional (jotas aragonesas), conocer elementos del patrimonio (cabezudos, gigantes) durante festividades locales.</li>
+                <li><strong>Pintura con intencionalidad:</strong> Tras escuchar una audición musical (ej. El Invierno de Vivaldi), ofrecer témperas y lienzos para que expresen los sentimientos que les ha provocado la melodía.</li>
+                <li><strong>Dramatización y expresión corporal:</strong> Representar cuentos tradicionales asumiendo roles y utilizando disfraces variados (libres de estereotipos) frente al espejo del aula.</li>
+            </ul>
+        </div>
+
+        <!-- AREAS DE CONOCIMIENTO (Saberes y Ejemplos) -->
+        <div id="tpl-area1">
+            <p class="mb-4">El Área 1, <strong>"Crecimiento en Armonía"</strong>, aborda de forma inseparable las dimensiones personal y social. Se construye la propia identidad, la gestión emocional y la progresiva autonomía.</p>
+            <h4 class="font-bold text-teal-800 mb-2 border-b border-teal-200 pb-1">Desglose de Saberes y Ejemplos</h4>
+            <div class="space-y-4">
+                <div class="bg-teal-50 p-3 rounded-lg">
+                    <strong class="block text-teal-700">CA.1 El Cuerpo y la Autoimagen</strong>
+                    <p class="text-sm mt-1">Conocer partes del cuerpo, desarrollar el tono muscular y la coordinación motriz gruesa y fina.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Crear un "Circuito Psicomotor" donde gateen bajo mesas, salten aros y caminen en equilibrio sobre una línea, finalizando mirándose en un espejo grande para reconocerse.</em></p>
+                </div>
+                <div class="bg-teal-50 p-3 rounded-lg">
+                    <strong class="block text-teal-700">CA.2 Gestión Emocional</strong>
+                    <p class="text-sm mt-1">Identificar, expresar y regular emociones. Creación de un vínculo de apego seguro.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: El uso del cuento "El Monstruo de Colores" para que los niños asocien emociones (alegría, tristeza, calma) a botes de colores, y el uso del "Rincón de la Calma" cuando están desregulados.</em></p>
+                </div>
+                <div class="bg-teal-50 p-3 rounded-lg">
+                    <strong class="block text-teal-700">CA.3 Hábitos y Estilo de Vida</strong>
+                    <p class="text-sm mt-1">Incorporación de rutinas de salud, alimentación, higiene, descanso y cuidado ambiental.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Una "Línea del Tiempo Visual" (pictogramas) que estructure la jornada escolar, dando seguridad para anticipar rutinas como ir al baño, lavarse las manos y el momento del almuerzo.</em></p>
+                </div>
+                <div class="bg-teal-50 p-3 rounded-lg">
+                    <strong class="block text-teal-700">CA.4 Interacciones Sociales</strong>
+                    <p class="text-sm mt-1">Relaciones basadas en la igualdad, empatía, asunción de normas y resolución de conflictos.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Fomentar el "Juego Simbólico" comunitario (jugar a los médicos, la casa) interviniendo solo como mediadores para rechazar estereotipos de género y ayudarles a negociar cuando hay disputas.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tpl-area2">
+            <p class="mb-4">El Área 2, <strong>"Descubrimiento y Exploración del Entorno"</strong>, concibe el medio natural y sociocultural como la fuente primaria de conocimiento, fomentando la indagación y el pensamiento científico-matemático.</p>
+            <h4 class="font-bold text-orange-800 mb-2 border-b border-orange-200 pb-1">Desglose de Saberes y Ejemplos</h4>
+            <div class="space-y-4">
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <strong class="block text-orange-700">DEE.1 Destrezas Lógico-Matemáticas</strong>
+                    <p class="text-sm mt-1">Identificación de atributos (color, forma), seriaciones, cuantificadores, geometría y medida.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Actividad de "Clasificación con aros": agrupar bloques lógicos o materiales naturales (piedras, piñas) dentro de diferentes aros según su forma o tamaño, y medir distancias en el patio usando "pasos".</em></p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <strong class="block text-orange-700">DEE.2 P. Científico y Computacional</strong>
+                    <p class="text-sm mt-1">Observación, formulación de hipótesis, ensayo-error, y secuencias lógicas.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Aplicar las 5 pautas de la indagación (¿Qué es?, Hipótesis, Experimentar, Concluir, Comunicar) preguntando qué pasará si dejamos un cubito de hielo al sol frente a dejarlo a la sombra.</em></p>
+                </div>
+                <div class="bg-orange-50 p-3 rounded-lg">
+                    <strong class="block text-orange-700">DEE.3 Sostenibilidad y Conservación</strong>
+                    <p class="text-sm mt-1">Reconocer elementos naturales, fenómenos atmosféricos, impacto humano y patrimonio de Aragón.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Creación de un pequeño "Huerto Escolar" o el cuidado rotativo de las plantas del aula, observando los efectos del agua, la tierra y el sol, e integrando prácticas sostenibles de reutilización de envases.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="tpl-area3">
+            <p class="mb-4">El Área 3, <strong>"Comunicación y Representación de la Realidad"</strong>, aborda el uso de múltiples lenguajes (verbal, plástico, musical, corporal, digital) priorizando siempre la oralidad.</p>
+            <h4 class="font-bold text-purple-800 mb-2 border-b border-purple-200 pb-1">Desglose de Saberes y Ejemplos</h4>
+            <div class="space-y-4">
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <strong class="block text-purple-700">CRR.1 & CRR.2 Interactuar, Interpretar y Comprender</strong>
+                    <p class="text-sm mt-1">Uso del repertorio comunicativo para expresar necesidades, y escucha activa para procesar la información del entorno.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: El momento del almuerzo o la llegada como espacio para diálogos espontáneos (formales e informales) donde el docente modela la estructura oral sin corregir directamente ("Ah, ¿quieres más pan?").</em></p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <strong class="block text-purple-700">CRR.3 Producir Mensajes (Lenguajes Artísticos)</strong>
+                    <p class="text-sm mt-1">Uso libre y creativo del lenguaje plástico, visual, musical y corporal (sin estereotipos).</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Experimentar con texturas inespecíficas (arcilla, esponjas, pintura de dedos) o crear "minimundos" donde combinan representación plástica y narración oral.</em></p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <strong class="block text-purple-700">CRR.4 Acercamiento al Lenguaje Escrito</strong>
+                    <p class="text-sm mt-1">Aproximación funcional y significativa (no formal o exigible). Entender para qué sirve escribir.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Identificar sus perchas por el nombre escrito, hacer una "lista de la compra" en el juego de la tienda con grafías espontáneas (garabatos funcionales), o leer carteles del aula.</em></p>
+                </div>
+                <div class="bg-purple-50 p-3 rounded-lg">
+                    <strong class="block text-purple-700">CRR.5 Diversidad Lingüística y Literatura</strong>
+                    <p class="text-sm mt-1">Acercamiento a la literatura infantil y valoración de otras lenguas, especialmente las de Aragón.</p>
+                    <p class="text-xs text-slate-600 mt-2"><em>Ejemplo: Rincón de lectura acogedor con libros ilustrados sobre diversidad, y aprender canciones populares en aragonés/catalán para la asamblea.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SITUACIONES DE APRENDIZAJE POR ETAPAS -->
+        <div id="tpl-sit-1">
+            <div class="bg-green-100 px-3 py-2 rounded-lg mb-4 text-green-800 font-bold border border-green-200">
+                Foco principal: Higiene, Autonomía y Vínculo Afectivo (CPSAA, CA.1, DEE)
+            </div>
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Planteamiento (19 - 20 Meses)</h4>
+            <p class="mb-4">El control de esfínteres es una de las conquistas más importantes a nivel social. No se debe estipular una fecha estricta, sino observar la maduración individual (posturas, caras, interés por la higiene). Es un aprendizaje fisiológico, emocional y social.</p>
+            
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Desarrollo de la Situación</h4>
+            <ul class="list-disc pl-5 space-y-2 mb-4">
+                <li><strong>Acuerdo previo:</strong> Informar y establecer un diálogo de corresponsabilidad con la familia (mismas pautas en casa y escuela, uso de ropa cómoda sin petos).</li>
+                <li><strong>Preparación y Actividades previas:</strong> 
+                    <ul class="list-circle pl-5 mt-1 space-y-1 text-slate-600">
+                        <li>Juegos con agua (abrir y cerrar grifos, tirar de la cadena).</li>
+                        <li>Manipulación de arcilla/plastilina (sustancias pringosas).</li>
+                        <li>Juego simbólico (vestir/desvestir muñecos, llevarlos a hacer pipí).</li>
+                        <li>Lectura de cuentos temáticos ("El topo que quería saber...").</li>
+                    </ul>
+                </li>
+                <li><strong>Implementación:</strong> Introducir el orinal como un objeto más del aula para que lo manipulen y no le teman. Ambiente tranquilo. Acompañar el proceso colaborando en el vestido y disminuyendo la ayuda progresivamente.</li>
+            </ul>
+
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Evaluación y Criterios</h4>
+            <p class="text-slate-600">Observación constante de gestos (piernas cruzadas). Se debe <strong>elogiar todo logro</strong> por mínimo que sea, e <strong>ignorar completamente los fallos</strong> (sin castigos). Crucial: Si hay un retroceso (ej. nacimiento de un hermano), no volver al pañal para no causar confusión.</p>
+        </div>
+
+        <div id="tpl-sit-2">
+            <div class="bg-blue-100 px-3 py-2 rounded-lg mb-4 text-blue-800 font-bold border border-blue-200">
+                Foco principal: Coordinación óculo-manual, Motricidad Fina, Preparación lectoescritura (CPSAA, CA.1, DEE.1)
+            </div>
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Planteamiento (2 - 3 Años)</h4>
+            <p class="mb-4">El control de la pinza digital es el paso previo y fundamental para una correcta y futura sujeción del lápiz. En lugar de forzar fichas de trazos, se plantean retos lúdicos manipulativos que ejerciten la musculatura pequeña de la mano.</p>
+            
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Desarrollo de la Situación (Secuencia Progresiva)</h4>
+            <ol class="list-decimal pl-5 space-y-2 mb-4 text-slate-600">
+                <li><strong>Rasgado de papel:</strong> Uso de revistas, periódico o celofán para hacer collages (libera la tensión y prepara la pinza).</li>
+                <li><strong>Bolitas de plastilina/papel:</strong> Reto cooperativo: "Vamos a hacer 10 bolitas entre los dos".</li>
+                <li><strong>El tendero de clase (Pinzas de ropa):</strong> Actividad de vida cotidiana lavando calcetines (juego simbólico) y tendiéndolos en una cuerda del aula.</li>
+                <li><strong>Plástico de burbujas:</strong> Puesto en el rincón de la calma para explotar burbujas con índice y pulgar.</li>
+                <li><strong>Tapones reciclados:</strong> Enroscar y desenroscar tapones de leche fijados a un panel.</li>
+                <li><strong>Autonomía en el vestido:</strong> Abrochar botones grandes de la bata y subir cremalleras.</li>
+            </ol>
+
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Evaluación y Criterios</h4>
+            <p class="text-slate-600">Observación del dominio progresivo del tono muscular. Importante <strong>adaptar los materiales</strong> a la diversidad: tamaños de tapones más grandes o plastilina más blanda si el niño/a muestra fatiga o dificultad. No se evalúa la velocidad, sino la coordinación y la autonomía.</p>
+        </div>
+
+        <div id="tpl-sit-3">
+            <div class="bg-orange-100 px-3 py-2 rounded-lg mb-4 text-orange-800 font-bold border border-orange-200">
+                Foco principal: Pensamiento lógico-matemático, Causa-efecto, Cardinalidad y Ordinalidad (DEE.1, STEM, CRR.2)
+            </div>
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Planteamiento (3 - 4 Años)</h4>
+            <p class="mb-4">Construir nociones aritméticas mediante manipulación, evitando el simple conteo memorístico. Un reto que exige codificar y descodificar información sin que el adulto actúe como validador directo.</p>
+            
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Desarrollo de la Situación</h4>
+            <ul class="list-disc pl-5 space-y-3 mb-4">
+                <li><strong>Fase 1: Exploración de Cantidad.</strong> El docente entrega una serie de cajas de cerillas (cerradas con un pequeño hueco). El reto es: <em>"Vete a la mesa de los palillos e introduce UNO y solo UNO en cada caja"</em>. Al no poder ver el interior de todas a la vez, el niño debe usar estrategias de conteo, anticipación (viajar una vez con un puñado) o hacer marcas en las cajas.</li>
+                <li><strong>Fase 2: Mensaje Cifrado.</strong> El docente pone 5 cajas en fila. Pide a un niño/a que esconda un palillo en una sola caja sin que los demás miren. Luego, debe dibujar o hacer un "mensaje escrito/cifrado" en un papel (ej. pintar 5 cuadrados y marcar el tercero) para que los compañeros descubran dónde está el palillo.</li>
+            </ul>
+
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Evaluación y Criterios</h4>
+            <p class="text-slate-600">Evaluar si usan el número como cardinal o como ordinal (posición). <strong>Validación autónoma:</strong> Al final, los propios alumnos abren las cajas y verifican si el mensaje funcionó, comprobando sus propias hipótesis sin requerir la aprobación final del docente.</p>
+        </div>
+
+        <div id="tpl-sit-4">
+            <div class="bg-purple-100 px-3 py-2 rounded-lg mb-4 text-purple-800 font-bold border border-purple-200">
+                Foco principal: Aproximación al lenguaje escrito, Plurilingüismo, Diversidad e Interculturalidad (CRR.4, CRR.5, CP, CC)
+            </div>
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Planteamiento (4 - 6 Años)</h4>
+            <p class="mb-4">El objetivo es mostrar que los números y las letras son funcionales (están en todas partes) y que existen diversas formas de comunicarse en el mundo, aprovechando la diversidad real del aula y el barrio.</p>
+            
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Desarrollo de la Situación</h4>
+            <ul class="list-disc pl-5 space-y-3 mb-4 text-slate-600">
+                <li><strong>Cazadores de Números (Entorno):</strong> 
+                    <br><em>Sesión 1:</em> Construir "cámaras de fotos" de cartón en plástica.
+                    <br><em>Sesión 2:</em> Salida por la localidad/barrio "fotografiando" (dibujando o señalando) números en el mundo real: matrículas, carteles de precios, portales.
+                    <br><em>Sesión 3:</em> Traer de casa objetos con números (básculas, mandos a distancia, calendarios) y explicar para qué sirven.
+                </li>
+                <li><strong>Escrituras del Mundo (Multiculturalidad):</strong>
+                    <br>Invitar a familiares de distintos orígenes (rumano, árabe, chino, o de lenguas de Aragón) a visitar el aula. Señalan su origen en un mapa y muestran cómo escriben. En pequeños grupos, los niños analizan periódicos en esas lenguas, hacen hipótesis de qué pone y juegan a inventar o copiar grafías "exóticas", montando una exposición cultural.
+                </li>
+            </ul>
+
+            <h4 class="font-bold text-slate-800 text-lg mb-2">Evaluación y Criterios</h4>
+            <p class="text-slate-600">Observar la curiosidad y el respeto por los códigos de representación gráfica y por culturas diferentes. Evaluar la comprensión funcional: el niño/a debe entender que un cartel de precios sirve para comprar, y que un alfabeto distinto también sirve para contar historias. Se consolida la <strong>aproximación al lenguaje escrito sin exigencia de lectura mecanizada.</strong></p>
+        </div>
+
+    </div>
+
+    <script>
+        function navigateTo(pageId) {
+            // Esconder todas las páginas
+            document.querySelectorAll('.page-view').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
+            });
+            // Mostrar página activa
+            document.getElementById('page-' + pageId).classList.remove('hidden');
+            document.getElementById('page-' + pageId).classList.add('block');
+            
+            // Actualizar navegación sidebar
+            document.querySelectorAll('.nav-link').forEach(el => {
+                el.classList.remove('bg-teal-700', 'border-l-4', 'border-teal-400', 'text-white', 'text-teal-400');
+                if(!el.classList.contains('bg-teal-900/30')) {
+                   el.classList.add('text-slate-300');
+                }
+            });
+            
+            const activeNav = document.getElementById('nav-' + pageId);
+            if(activeNav) {
+                if(pageId === 'evaluacion') {
+                    activeNav.classList.add('bg-teal-600', 'text-white');
+                    activeNav.classList.remove('text-teal-400');
+                } else {
+                    activeNav.classList.add('bg-teal-700', 'border-l-4', 'border-teal-400', 'text-white');
+                    activeNav.classList.remove('text-slate-300');
+                }
+            }
+            window.scrollTo(0,0);
+        }
+
+        // --- FUNCIONES PARA MODALES GLOBALES ---
+        function openModal(title, badge, templateId) {
+            document.getElementById('modalTitle').innerText = title;
+            document.getElementById('modalBadge').innerText = badge;
+            
+            // Insertar contenido del template
+            const content = document.getElementById(templateId).innerHTML;
+            document.getElementById('modalBody').innerHTML = content;
+            
+            // Mostrar Modal con animación
+            const modal = document.getElementById('globalModal');
+            document.body.classList.add('modal-open');
+            modal.classList.remove('hidden');
+            
+            // Añadir clases de animación
+            modal.classList.add('modal-enter');
+            modal.children[0].classList.add('modal-content-enter');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('globalModal');
+            document.body.classList.remove('modal-open');
+            
+            modal.classList.remove('modal-enter');
+            modal.children[0].classList.remove('modal-content-enter');
+            
+            modal.classList.add('opacity-0');
+            modal.children[0].classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+                modal.classList.remove('opacity-0');
+                modal.children[0].classList.remove('scale-95');
+                document.getElementById('modalBody').innerHTML = ''; // Limpiar
+            }, 300);
+        }
+
+        // --- FUNCIONES DE FORMULARIOS IMPRIMIBLES ---
+        function showForm(formId) {
+            // Ocultar todos los formularios
+            document.querySelectorAll('.form-container').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('print-only');
+            });
+            
+            // Mostrar el formulario seleccionado
+            let activeForm = document.getElementById('form-' + formId);
+            
+            // Reusar la estructura para el Anexo 6 y 7
+            if(formId === 'anexo6' || formId === 'anexo7') {
+                activeForm = document.getElementById('form-anexo6');
+                if(formId === 'anexo6') {
+                    document.getElementById('informe-title-anexo').innerText = "ANEXO VI";
+                    document.getElementById('informe-subtitle').innerText = "INFORME ANUAL DE EVALUACIÓN";
+                } else {
+                    document.getElementById('informe-title-anexo').innerText = "ANEXO VII";
+                    document.getElementById('informe-subtitle').innerText = "INFORME INDIVIDUALIZADO FINAL DE CICLO";
+                }
+            }
+
+            activeForm.classList.remove('hidden');
+            activeForm.classList.add('print-only'); // Solo este se imprimirá
+        }
+        
+        // Cargar vista inicial
+        navigateTo('inicio');
+    </script>
+</body>
+</html>
