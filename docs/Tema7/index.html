@@ -1,0 +1,408 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Guía interactiva del Tema 7: intervención socioeducativa en educación no formal y proyectos de atención a la infancia." />
+  <meta property="og:title" content="Tema 7 · Guía interactiva" />
+  <meta property="og:description" content="Web interactiva para estudiar PAI, niveles de planificación, fases, campos de trabajo y estructura del proyecto." />
+  <title>Guía interactiva · Tema 7</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root,[data-theme="light"]{
+      --text-xs: clamp(.75rem,.7rem + .25vw,.875rem);
+      --text-sm: clamp(.875rem,.8rem + .35vw,1rem);
+      --text-base: clamp(1rem,.95rem + .25vw,1.125rem);
+      --text-lg: clamp(1.125rem,1rem + .75vw,1.5rem);
+      --text-xl: clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+      --text-2xl: clamp(2rem,1.2rem + 2.5vw,3.5rem);
+      --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;--space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;--space-12:3rem;--space-16:4rem;
+      --bg:#fff9f3;--surface:#ffffff;--surface-2:#fff1e6;--surface-3:#eefcff;--text:#1f1d2b;--muted:#5c5972;--border:#e8d8cb;
+      --primary:#ff5c8a;--primary-2:#6c63ff;--accent:#00b8a9;--gold:#ffb703;--danger:#ef476f;--success:#2a9d8f;
+      --shadow:0 10px 30px rgba(31,29,43,.10);--shadow-lg:0 20px 50px rgba(31,29,43,.16);
+      --radius:24px;--radius-sm:14px;--radius-xs:10px;
+      --font-display:'Outfit',sans-serif;--font-body:'Nunito',sans-serif;
+    }
+    [data-theme="dark"]{
+      --bg:#11111a;--surface:#181826;--surface-2:#222236;--surface-3:#162635;--text:#f7f4ff;--muted:#c6bfdc;--border:#2d2d44;
+      --primary:#ff7aa2;--primary-2:#8c85ff;--accent:#2dd4bf;--gold:#ffca3a;--danger:#ff7b89;--success:#52c7b8;
+      --shadow:0 10px 30px rgba(0,0,0,.32);--shadow-lg:0 20px 50px rgba(0,0,0,.45);
+    }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:var(--font-body);background:
+      radial-gradient(circle at top left, color-mix(in srgb, var(--primary) 14%, transparent), transparent 30%),
+      radial-gradient(circle at top right, color-mix(in srgb, var(--accent) 14%, transparent), transparent 28%),
+      linear-gradient(180deg,var(--bg),color-mix(in srgb, var(--bg) 86%, white));
+      color:var(--text);font-size:var(--text-base);line-height:1.6}
+    a{color:inherit;text-decoration:none} img,svg{display:block;max-width:100%} button{font:inherit}
+    .skip-link{position:absolute;left:-9999px;top:auto}.skip-link:focus{left:1rem;top:1rem;background:var(--surface);padding:.75rem 1rem;border-radius:999px;z-index:999}
+    .app{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+    .sidebar{position:sticky;top:0;align-self:start;height:100vh;padding:var(--space-6);border-right:1px solid color-mix(in srgb, var(--text) 10%, transparent);background:color-mix(in srgb, var(--surface) 84%, transparent);backdrop-filter:blur(14px)}
+    .brand{display:flex;align-items:center;gap:var(--space-3);margin-bottom:var(--space-8)}
+    .logo{width:52px;height:52px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(135deg,var(--primary),var(--primary-2));box-shadow:var(--shadow);color:white}
+    .brand h1{font-family:var(--font-display);font-size:var(--text-lg);line-height:1.1;margin:0}
+    .brand p,.nav small,.mini-card p,.hero p,.card p,.timeline p,.modal p{color:var(--muted)}
+    .nav{display:grid;gap:var(--space-2)}
+    .nav a{padding:.85rem 1rem;border-radius:14px;font-size:var(--text-sm);font-weight:800;background:transparent;border:1px solid transparent}
+    .nav a:hover,.nav a.active{background:color-mix(in srgb,var(--primary) 12%, var(--surface));border-color:color-mix(in srgb,var(--primary) 24%, transparent)}
+    .sidebar-tools{margin-top:var(--space-8);display:grid;gap:var(--space-3)}
+    .theme-btn,.action-btn,.ghost-btn,.quiz-btn{border:none;border-radius:999px;padding:.9rem 1.05rem;font-weight:800;cursor:pointer;min-height:44px}
+    .theme-btn,.ghost-btn{background:var(--surface-2);color:var(--text);box-shadow:var(--shadow)}
+    .action-btn,.quiz-btn{background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff;box-shadow:var(--shadow)}
+    .content{padding:var(--space-6)}
+    .hero{position:relative;overflow:hidden;border-radius:36px;padding:clamp(1.5rem,4vw,4rem);background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 18%, var(--surface)),color-mix(in srgb,var(--accent) 18%, var(--surface)));box-shadow:var(--shadow-lg)}
+    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:var(--space-8);align-items:center}
+    .eyebrow{display:inline-flex;gap:.5rem;align-items:center;background:color-mix(in srgb,var(--surface) 80%, transparent);padding:.45rem .8rem;border-radius:999px;font-size:var(--text-xs);font-weight:800;letter-spacing:.04em;text-transform:uppercase}
+    .hero h2{font-family:var(--font-display);font-size:var(--text-2xl);line-height:1.02;margin:.9rem 0 1rem;max-width:11ch}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-5)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+    .mini-card,.card,.timeline-step,.exam-card,.flash-card,.accordion-item,.toast,.search-wrap input{background:var(--surface);border:1px solid color-mix(in srgb,var(--text) 10%, transparent);box-shadow:var(--shadow)}
+    .mini-card{padding:var(--space-4);border-radius:20px}.mini-card strong{display:block;font-family:var(--font-display);font-size:var(--text-xl)}
+    .section{padding-block:var(--space-10)}
+    .section-head{display:flex;justify-content:space-between;gap:var(--space-4);align-items:end;margin-bottom:var(--space-5)}
+    .section-head h3{font-family:var(--font-display);font-size:var(--text-xl);margin:0}.pill{padding:.45rem .8rem;border-radius:999px;background:var(--surface-3);font-size:var(--text-xs);font-weight:800}
+    .grid-2,.grid-3{display:grid;gap:var(--space-4)} .grid-2{grid-template-columns:repeat(2,1fr)} .grid-3{grid-template-columns:repeat(3,1fr)}
+    .card{padding:var(--space-5);border-radius:24px;position:relative;overflow:hidden}
+    .card h4{font-family:var(--font-display);margin:.2rem 0 .65rem;font-size:var(--text-lg)}
+    .card .tag{display:inline-flex;padding:.35rem .7rem;border-radius:999px;font-size:var(--text-xs);font-weight:800;background:color-mix(in srgb,var(--gold) 20%, var(--surface))}
+    .timeline{display:grid;gap:var(--space-4)}
+    .timeline-step{padding:var(--space-5);border-radius:24px;display:grid;grid-template-columns:auto 1fr auto;gap:var(--space-4);align-items:start}
+    .num{width:48px;height:48px;border-radius:16px;display:grid;place-items:center;font-weight:900;background:linear-gradient(135deg,var(--primary),var(--primary-2));color:#fff}
+    .why{font-size:var(--text-sm);font-weight:800;padding:.55rem .8rem;background:var(--surface-2);border-radius:999px}
+    .accordion{display:grid;gap:var(--space-3)}
+    .accordion-item{border-radius:22px;overflow:hidden}
+    .accordion-btn{width:100%;text-align:left;padding:1rem 1.1rem;background:transparent;border:none;display:flex;justify-content:space-between;gap:1rem;align-items:center;font-weight:900;cursor:pointer;min-height:44px}
+    .accordion-panel{display:none;padding:0 1.1rem 1rem}.accordion-item.open .accordion-panel{display:block}.accordion-item.open .chev{transform:rotate(180deg)}
+    .chev{transition:transform .25s ease}
+    .exam-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4)}
+    .exam-card,.flash-card{padding:var(--space-5);border-radius:22px}
+    .flash-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4)}
+    .flash-card{cursor:pointer;perspective:1000px;min-height:210px;position:relative}
+    .flash-inner{position:relative;width:100%;height:100%;transition:transform .6s;transform-style:preserve-3d}
+    .flash-card.flipped .flash-inner{transform:rotateY(180deg)}
+    .flash-face{position:absolute;inset:0;padding:var(--space-5);backface-visibility:hidden;border-radius:20px;display:flex;flex-direction:column;justify-content:center}
+    .flash-front{background:linear-gradient(135deg,color-mix(in srgb,var(--primary) 12%, var(--surface)),var(--surface))}
+    .flash-back{background:linear-gradient(135deg,color-mix(in srgb,var(--accent) 16%, var(--surface)),var(--surface));transform:rotateY(180deg)}
+    .search-wrap{position:sticky;top:1rem;z-index:20;margin:var(--space-6) 0}.search-wrap input{width:100%;padding:1rem 1.1rem;border-radius:18px;border:none;outline:none}
+    .modal-backdrop,.toast-area{position:fixed;z-index:1000}.modal-backdrop{inset:0;background:rgba(10,8,18,.58);display:none;place-items:center;padding:1rem}.modal-backdrop.show{display:grid}
+    .modal{width:min(860px,100%);max-height:88vh;overflow:auto;background:var(--surface);border-radius:28px;padding:var(--space-6);box-shadow:var(--shadow-lg);position:relative}
+    .modal-close{position:absolute;right:1rem;top:1rem;width:44px;height:44px;border-radius:999px;background:var(--surface-2);border:none;cursor:pointer}
+    .modal-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-4);margin-top:var(--space-4)}
+    .toast-area{right:1rem;bottom:1rem;display:grid;gap:.75rem}.toast{padding:1rem 1.1rem;border-radius:18px;min-width:260px}
+    .footer{padding:var(--space-10) 0 var(--space-4);color:var(--muted);font-size:var(--text-sm)}
+    .highlight{background:linear-gradient(transparent 55%, color-mix(in srgb,var(--gold) 40%, transparent) 55%)}
+    .hidden{display:none!important}
+    @media (max-width: 1100px){.app{grid-template-columns:1fr}.sidebar{position:relative;height:auto;border-right:none;border-bottom:1px solid color-mix(in srgb, var(--text) 10%, transparent)}.hero-grid,.grid-3,.flash-wrap,.modal-grid{grid-template-columns:1fr}.grid-2,.exam-grid,.stats{grid-template-columns:1fr 1fr}}
+    @media (max-width: 720px){.content{padding:var(--space-4)}.hero{border-radius:28px}.hero-grid,.grid-2,.exam-grid,.stats{grid-template-columns:1fr}.timeline-step{grid-template-columns:1fr}.section-head{flex-direction:column;align-items:start}.nav{grid-template-columns:repeat(2,1fr)}.nav a{text-align:center}.brand{margin-bottom:var(--space-4)}}
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#contenido">Saltar al contenido</a>
+<div class="app">
+  <aside class="sidebar" aria-label="Navegación principal">
+    <div class="brand">
+      <div class="logo" aria-label="Logo Tema 7">
+        <svg viewBox="0 0 48 48" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3" aria-hidden="true">
+          <path d="M9 31c5-1 8-5 9-12 4 6 9 9 15 10"/>
+          <path d="M12 15h24"/>
+          <circle cx="16" cy="15" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="24" cy="15" r="2" fill="currentColor" stroke="none"/>
+          <circle cx="32" cy="15" r="2" fill="currentColor" stroke="none"/>
+        </svg>
+      </div>
+      <div>
+        <h1>Tema 7<br>Guía viva</h1>
+        <p>PAI · estudio fácil · web lista para GitHub</p>
+      </div>
+    </div>
+    <nav class="nav">
+      <a href="#pai" class="active">Qué es un PAI</a>
+      <a href="#niveles">Niveles</a>
+      <a href="#fases">Fases</a>
+      <a href="#campos">Campos</a>
+      <a href="#estructura">Estructura</a>
+      <a href="#ejemplos">Ejemplos</a>
+      <a href="#examen">Examen</a>
+      <a href="#flashcards">Flashcards</a>
+    </nav>
+    <div class="sidebar-tools">
+      <button class="theme-btn" data-theme-toggle aria-label="Cambiar modo">🌙 Cambiar tema</button>
+      <button class="action-btn" data-open-modal="mapa">Abrir mapa mental</button>
+      <button class="ghost-btn" id="openSummary">Ver resumen rápido</button>
+    </div>
+  </aside>
+
+  <main class="content" id="contenido">
+    <section class="hero">
+      <div class="hero-grid">
+        <div>
+          <span class="eyebrow">Estudia sin perderte · explicado fácil</span>
+          <h2>Intervención socioeducativa en educación no formal</h2>
+          <p>Esta web reúne y reorganiza toda la información del Tema 7 con lenguaje sencillo, bloques visuales, acordeones, tarjetas giratorias, modales y recordatorios clave para memorizar mejor.</p>
+          <div class="hero-actions">
+            <a class="action-btn" href="#pai">Empezar por el esquema</a>
+            <button class="ghost-btn" data-open-modal="respuesta">Respuesta tipo examen</button>
+          </div>
+        </div>
+        <div class="stats" aria-label="Datos clave del tema">
+          <article class="mini-card"><strong>4</strong><p>Fases de intervención</p></article>
+          <article class="mini-card"><strong>4</strong><p>Niveles de planificación</p></article>
+          <article class="mini-card"><strong>2</strong><p>Grandes campos de trabajo</p></article>
+          <article class="mini-card"><strong>8</strong><p>Partes de un proyecto</p></article>
+        </div>
+      </div>
+    </section>
+
+    <div class="search-wrap">
+      <label class="sr-only" for="searchBox">Buscar contenido</label>
+      <input id="searchBox" type="search" placeholder="Busca palabras como: objetivos, recursos, ludoteca, evaluación..." />
+    </div>
+
+    <section class="section searchable" id="pai" data-keywords="pai proyecto atención infancia no formal definición">
+      <div class="section-head"><div><span class="pill">1</span><h3>Qué es un PAI</h3></div><button class="ghost-btn" data-open-modal="pai">Ver explicación ampliada</button></div>
+      <div class="grid-2">
+        <article class="card">
+          <span class="tag">Definición fácil</span>
+          <h4>Un PAI es un proyecto para trabajar con la infancia fuera de la escuela</h4>
+          <p>PAI significa <span class="highlight">Proyecto de Atención a la Infancia</span>. Sirve para organizar una intervención en educación no formal, es decir, en espacios como ludotecas, colonias, centros de tiempo libre, aulas hospitalarias o programas de verano.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Para qué sirve</span>
+          <h4>Pone orden antes de actuar</h4>
+          <p>Un PAI ayuda a saber qué necesidad existe, qué objetivos se quieren lograr, qué actividades se van a hacer, con qué recursos y cómo se comprobará si ha funcionado. En otras palabras: evita improvisar.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="niveles" data-keywords="plan programa proyecto actividades niveles planificación objetivos generales específicos operativos">
+      <div class="section-head"><div><span class="pill">2</span><h3>Niveles de planificación</h3></div><span class="pill">Plan → Programa → Proyecto → Actividades</span></div>
+      <div class="accordion">
+        <article class="accordion-item open">
+          <button class="accordion-btn"><span>Plan · lo más amplio</span><span class="chev">⌄</span></button>
+          <div class="accordion-panel"><p>El plan marca la orientación general. Fija metas grandes y a largo plazo. Habla de tiempos, criterios, espacios y recursos de manera global. Un plan puede contener varios programas.</p></div>
+        </article>
+        <article class="accordion-item">
+          <button class="accordion-btn"><span>Programa · concreta más</span><span class="chev">⌄</span></button>
+          <div class="accordion-panel"><p>El programa baja un nivel y convierte los objetivos generales en objetivos específicos. También concreta mejor la metodología y los recursos. Un programa puede incluir varios proyectos coordinados.</p></div>
+        </article>
+        <article class="accordion-item">
+          <button class="accordion-btn"><span>Proyecto · ya dice qué se hará exactamente</span><span class="chev">⌄</span></button>
+          <div class="accordion-panel"><p>Es el nivel más concreto de planificación. Redacta objetivos operativos y detalla actividades, cronograma, tareas, profesionales implicados y recursos concretos.</p></div>
+        </article>
+        <article class="accordion-item">
+          <button class="accordion-btn"><span>Actividades · la práctica real</span><span class="chev">⌄</span></button>
+          <div class="accordion-panel"><p>Son las acciones que se llevan a cabo de verdad: talleres, juegos, salidas, dinámicas y rutinas. En ellas se reparte el trabajo y se ejecuta lo previsto en el proyecto.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="fases" data-keywords="fases análisis realidad planificación ejecución evaluación">
+      <div class="section-head"><div><span class="pill">3</span><h3>Fases de la intervención</h3></div><button class="ghost-btn" data-toast="Recuerda el orden: análisis → planificación → ejecución → evaluación">Truco de memoria</button></div>
+      <div class="timeline">
+        <article class="timeline-step"><div class="num">1</div><div><h4>Análisis de la realidad</h4><p>Primero se estudia la situación para detectar necesidades. Se puede hacer con observación, documentos, cuestionarios o entrevistas. Aquí se responde a la pregunta: <strong>qué problema o necesidad existe</strong>.</p></div><span class="why">Antes de actuar</span></article>
+        <article class="timeline-step"><div class="num">2</div><div><h4>Planificación</h4><p>Después se diseña el proyecto completo: objetivos, actividades, destinatarios, recursos, tiempos y evaluación. Es la fase de pensar y organizar.</p></div><span class="why">Diseñar bien</span></article>
+        <article class="timeline-step"><div class="num">3</div><div><h4>Ejecución</h4><p>Es la puesta en práctica. Aquí ya se realizan las actividades y actuaciones previstas con los niños y niñas.</p></div><span class="why">Hacerlo real</span></article>
+        <article class="timeline-step"><div class="num">4</div><div><h4>Evaluación</h4><p>Se valora el proyecto, las actividades, los resultados, la participación infantil y la práctica profesional. No es solo revisar al final: sirve para mejorar.</p></div><span class="why">Mejorar</span></article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="campos" data-keywords="campos trabajo sectores socioeducativo asistencial ludotecas colonias aulas hospitalarias atención temprana">
+      <div class="section-head"><div><span class="pill">4</span><h3>Campos de trabajo</h3></div><span class="pill">Dos grandes grupos</span></div>
+      <div class="grid-2">
+        <article class="card">
+          <span class="tag">Socioeducativo</span>
+          <h4>Aprender, convivir y disfrutar</h4>
+          <p>Incluye espacios como <strong>ludotecas, centros de tiempo libre, colonias, campus y granjas-escuela</strong>. Su función principal es educativa y socializadora, muchas veces a través del juego y del ocio educativo.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Asistencial</span>
+          <h4>Apoyo, atención y protección</h4>
+          <p>Aquí están las <strong>aulas hospitalarias, espacios de encuentro familiar, centros de acogida y protección de menores y centros de atención temprana</strong>. Su labor es más de cuidado, apoyo específico o protección.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="estructura" data-keywords="estructura proyecto naturaleza contextualización fundamentación destinatarios objetivos metodología temporalización recursos evaluación">
+      <div class="section-head"><div><span class="pill">5</span><h3>Estructura del proyecto</h3></div><button class="action-btn" data-open-modal="plantilla">Abrir plantilla</button></div>
+      <div class="grid-3">
+        <article class="card"><h4>Naturaleza o contextualización</h4><p>Explica de qué trata el proyecto, dónde se realiza, a qué plan o programa pertenece y cuál es el contexto del centro o del entorno.</p></article>
+        <article class="card"><h4>Fundamentación o justificación</h4><p>Justifica por qué se hace. Incluye necesidades detectadas, diagnóstico, análisis de la realidad, normativa y, si procede, DAFO.</p></article>
+        <article class="card"><h4>Destinatarios</h4><p>Describe a quién va dirigido: edad, agrupamientos, características evolutivas y necesidades del grupo infantil.</p></article>
+        <article class="card"><h4>Objetivos operativos</h4><p>Son concretos y medibles. Fórmula útil: <span class="highlight">verbo en infinitivo + complemento directo + procedimiento</span>. Debe haber al menos una actividad por objetivo.</p></article>
+        <article class="card"><h4>Metodología y actividades</h4><p>Explica cómo se va a trabajar: estrategias, dinámicas, tipo de intervención y actividades concretas.</p></article>
+        <article class="card"><h4>Temporalización</h4><p>Indica cuándo se hace cada cosa. Incluye calendario, frecuencia, duración y cronograma.</p></article>
+        <article class="card"><h4>Recursos</h4><p>Humanos, materiales fungibles y no fungibles, económicos y espaciales. Todo lo necesario para desarrollar el proyecto.</p></article>
+        <article class="card"><h4>Evaluación</h4><p>Señala técnicas e instrumentos para valorar actividades, proyecto global y práctica profesional.</p></article>
+        <article class="card"><h4>Regla fácil</h4><p>Si el proyecto no dice <strong>qué, por qué, para quién, cómo, cuándo, con qué y cómo se valora</strong>, está incompleto.</p></article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="ejemplos" data-keywords="ejemplos plan programa proyecto zaragoza zaragalla colonias educación especial">
+      <div class="section-head"><div><span class="pill">6</span><h3>Ejemplos del tema</h3></div><button class="ghost-btn" data-open-modal="ejemplos">Ver en formato comparativo</button></div>
+      <div class="exam-grid">
+        <article class="exam-card"><h4>Ejemplo de plan</h4><p>II Plan Local de Infancia y Adolescencia de Zaragoza 2024-2027. Es un plan porque recoge grandes líneas de actuación y contiene varios programas.</p></article>
+        <article class="exam-card"><h4>Ejemplo de programa</h4><p>Zaragalla Verano 2026. Es un programa lúdico-educativo dirigido a la infancia y vinculado a una finalidad concreta.</p></article>
+        <article class="exam-card"><h4>Ejemplo de proyecto</h4><p>Colonias de educación especial. Ya se trata de una actuación mucho más concreta, con destinatarios, acciones y desarrollo definido.</p></article>
+        <article class="exam-card"><h4>Cómo diferenciarlos</h4><p>Si es muy amplio, será plan. Si organiza una línea concreta, será programa. Si ya aterriza en acciones, cronograma y tareas, será proyecto.</p></article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="examen" data-keywords="respuesta examen esquema memorizar qué es un pai niveles fases campos estructura ejemplos">
+      <div class="section-head"><div><span class="pill">7</span><h3>Respuesta tipo examen</h3></div><button class="quiz-btn" data-open-modal="respuesta">Abrir respuesta completa</button></div>
+      <div class="accordion">
+        <article class="accordion-item open"><button class="accordion-btn"><span>1. Explica qué es un PAI</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Un PAI es un Proyecto de Atención a la Infancia en el ámbito no formal. Organiza intervenciones con niños y niñas fuera de la escuela reglada.</p></div></article>
+        <article class="accordion-item"><button class="accordion-btn"><span>2. Di los niveles de planificación</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Plan, programa, proyecto y actividades. Van de lo más amplio a lo más concreto.</p></div></article>
+        <article class="accordion-item"><button class="accordion-btn"><span>3. Explica las fases</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Análisis de la realidad, planificación, ejecución y evaluación.</p></div></article>
+        <article class="accordion-item"><button class="accordion-btn"><span>4. Enumera los campos de trabajo</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Campos más socioeducativos y campos más asistenciales.</p></div></article>
+        <article class="accordion-item"><button class="accordion-btn"><span>5. Describe la estructura del proyecto</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Debe incluir contextualización, justificación, destinatarios, objetivos, metodología, temporalización, recursos y evaluación.</p></div></article>
+        <article class="accordion-item"><button class="accordion-btn"><span>6. Pon ejemplos</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Plan Local de Infancia de Zaragoza, programa Zaragalla y colonias de educación especial como proyecto.</p></div></article>
+      </div>
+    </section>
+
+    <section class="section searchable" id="flashcards" data-keywords="flashcards repaso memorización tarjetas objetivos recursos pAI">
+      <div class="section-head"><div><span class="pill">8</span><h3>Flashcards de repaso</h3></div><span class="pill">Pulsa para girar</span></div>
+      <div class="flash-wrap">
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Qué significa PAI?</h4></div><div class="flash-face flash-back"><p>Proyecto de Atención a la Infancia.</p></div></div></article>
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Cuántas fases hay?</h4></div><div class="flash-face flash-back"><p>Cuatro: análisis, planificación, ejecución y evaluación.</p></div></div></article>
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Qué va primero, plan o proyecto?</h4></div><div class="flash-face flash-back"><p>Primero el plan, porque es el nivel más general.</p></div></div></article>
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Qué son los objetivos operativos?</h4></div><div class="flash-face flash-back"><p>Objetivos concretos, medibles y vinculados directamente a actividades.</p></div></div></article>
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Qué tipos de recursos aparecen?</h4></div><div class="flash-face flash-back"><p>Humanos, materiales, económicos y espaciales.</p></div></div></article>
+        <article class="flash-card"><div class="flash-inner"><div class="flash-face flash-front"><h4>¿Qué diferencia hay entre socioeducativo y asistencial?</h4></div><div class="flash-face flash-back"><p>El primero prioriza educación y socialización; el segundo, atención, apoyo o protección.</p></div></div></article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <p>Web creada para publicar en GitHub Pages como recurso de estudio. Todo el contenido se ha estructurado a partir del resumen y explicación didáctica previa del Tema 7.</p>
+    </footer>
+  </main>
+</div>
+
+<div class="modal-backdrop" id="modalBackdrop" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" id="modalClose" aria-label="Cerrar modal">✕</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<div class="toast-area" id="toastArea" aria-live="polite" aria-atomic="true"></div>
+
+<script>
+const modalData = {
+  pai: {
+    title: 'PAI explicado para un estudiante que se lía',
+    body: `
+      <p><strong>Idea clave:</strong> un PAI no es una actividad suelta. Es el documento que organiza una intervención con infancia en educación no formal.</p>
+      <div class="modal-grid">
+        <div class="exam-card"><h4>Qué hace</h4><p>Ordena objetivos, actividades, recursos, tiempos y evaluación.</p></div>
+        <div class="exam-card"><h4>Dónde se aplica</h4><p>En ludotecas, colonias, centros de tiempo libre, aulas hospitalarias y otros servicios no formales.</p></div>
+        <div class="exam-card"><h4>Por qué importa</h4><p>Porque evita improvisar y permite justificar la intervención.</p></div>
+        <div class="exam-card"><h4>Cómo recordarlo</h4><p>PAI = proyecto pensado antes de actuar con niños y niñas.</p></div>
+      </div>`
+  },
+  plantilla: {
+    title: 'Plantilla rápida para redactar un proyecto',
+    body: `
+      <p>Usa esta secuencia cada vez que tengas que construir un proyecto.</p>
+      <div class="accordion">
+        <article class="accordion-item open"><button class="accordion-btn"><span>1. Naturaleza</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Qué es el proyecto, dónde se hace y en qué contexto se inserta.</p></div></article>
+        <article class="accordion-item open"><button class="accordion-btn"><span>2. Justificación</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Por qué hace falta. Necesidades, diagnóstico y fundamentos.</p></div></article>
+        <article class="accordion-item open"><button class="accordion-btn"><span>3. Destinatarios</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Quién participa, qué edad tiene y qué necesidades presenta.</p></div></article>
+        <article class="accordion-item open"><button class="accordion-btn"><span>4. Objetivos</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Redáctalos con verbo en infinitivo + complemento directo + procedimiento.</p></div></article>
+        <article class="accordion-item open"><button class="accordion-btn"><span>5. Metodología, temporalización, recursos y evaluación</span><span class="chev">⌄</span></button><div class="accordion-panel"><p>Cómo trabajarás, cuándo lo harás, con qué medios y cómo comprobarás resultados.</p></div></article>
+      </div>`
+  },
+  ejemplos: {
+    title: 'Comparación rápida: plan, programa y proyecto',
+    body: `
+      <div class="modal-grid">
+        <div class="exam-card"><h4>Plan</h4><p>Muy general, largo plazo, grandes metas. Ejemplo: plan local de infancia.</p></div>
+        <div class="exam-card"><h4>Programa</h4><p>Más concreto, desarrolla una línea específica. Ejemplo: programa de verano.</p></div>
+        <div class="exam-card"><h4>Proyecto</h4><p>Muy concreto, actividades, cronograma y profesionales. Ejemplo: colonias concretas.</p></div>
+        <div class="exam-card"><h4>Truco</h4><p>Pregúntate: ¿marca línea general, organiza una línea concreta o ya baja a actividades reales?</p></div>
+      </div>`
+  },
+  respuesta: {
+    title: 'Respuesta tipo examen lista para memorizar',
+    body: `
+      <p>Un PAI es un Proyecto de Atención a la Infancia en el ámbito no formal, es decir, una intervención organizada para trabajar con niños y niñas fuera del sistema escolar reglado.</p>
+      <p>Los niveles de planificación son plan, programa, proyecto y actividades, y van de lo más general a lo más concreto.</p>
+      <p>Las fases de la intervención son análisis de la realidad, planificación, ejecución y evaluación.</p>
+      <p>Los campos de trabajo pueden ser más socioeducativos, como ludotecas, colonias o centros de tiempo libre, o más asistenciales, como aulas hospitalarias, espacios de encuentro familiar o centros de atención temprana.</p>
+      <p>La estructura del proyecto incluye naturaleza o contextualización, fundamentación o justificación, destinatarios, objetivos operativos, metodología y actividades, temporalización, recursos y evaluación.</p>
+      <p>Como ejemplos, el tema menciona un plan local de infancia, el programa Zaragalla y unas colonias de educación especial como proyecto.</p>`
+  },
+  mapa: {
+    title: 'Mapa mental del tema',
+    body: `
+      <div class="grid-2">
+        <article class="exam-card"><h4>Núcleo</h4><p>PAI en educación no formal.</p></article>
+        <article class="exam-card"><h4>Ramas</h4><p>Definición, niveles, fases, campos, estructura y ejemplos.</p></article>
+        <article class="exam-card"><h4>Niveles</h4><p>Plan → Programa → Proyecto → Actividades.</p></article>
+        <article class="exam-card"><h4>Fases</h4><p>Análisis → Planificación → Ejecución → Evaluación.</p></article>
+        <article class="exam-card"><h4>Campos</h4><p>Socioeducativo / Asistencial.</p></article>
+        <article class="exam-card"><h4>Proyecto</h4><p>Qué es, por qué se hace, para quién, cómo, cuándo, con qué y cómo se evalúa.</p></article>
+      </div>`
+  }
+};
+
+const backdrop = document.getElementById('modalBackdrop');
+const modalContent = document.getElementById('modalContent');
+const modalClose = document.getElementById('modalClose');
+function openModal(key){
+  const item = modalData[key]; if(!item) return;
+  modalContent.innerHTML = `<h3 id="modalTitle" style="font-family:var(--font-display);font-size:var(--text-xl);margin:0 2rem 1rem 0">${item.title}</h3>${item.body}`;
+  backdrop.classList.add('show'); backdrop.setAttribute('aria-hidden','false');
+  modalContent.querySelectorAll('.accordion-btn').forEach(bindAccordionBtn);
+}
+function closeModal(){backdrop.classList.remove('show'); backdrop.setAttribute('aria-hidden','true');}
+modalClose.addEventListener('click', closeModal);
+backdrop.addEventListener('click', e=>{if(e.target===backdrop) closeModal()});
+document.addEventListener('keydown', e=>{if(e.key==='Escape') closeModal()});
+document.querySelectorAll('[data-open-modal]').forEach(btn=>btn.addEventListener('click',()=>openModal(btn.dataset.openModal)));
+
+document.querySelectorAll('.accordion-btn').forEach(bindAccordionBtn);
+function bindAccordionBtn(btn){btn.addEventListener('click',()=>btn.parentElement.classList.toggle('open'),{once:false});}
+
+document.querySelectorAll('.flash-card').forEach(card=>card.addEventListener('click',()=>card.classList.toggle('flipped')));
+
+const themeBtn = document.querySelector('[data-theme-toggle]');
+let theme = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark':'light';
+document.documentElement.setAttribute('data-theme', theme);
+function updateThemeLabel(){themeBtn.textContent = theme === 'dark' ? '☀️ Cambiar tema' : '🌙 Cambiar tema';}
+updateThemeLabel();
+themeBtn.addEventListener('click',()=>{theme = theme==='dark' ? 'light':'dark'; document.documentElement.setAttribute('data-theme',theme); updateThemeLabel();});
+
+function showToast(message){
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  document.getElementById('toastArea').appendChild(toast);
+  setTimeout(()=>{toast.style.opacity='0'; toast.style.transform='translateY(12px)';},2200);
+  setTimeout(()=>toast.remove(),2800);
+}
+document.querySelectorAll('[data-toast]').forEach(btn=>btn.addEventListener('click',()=>showToast(btn.dataset.toast)));
+document.getElementById('openSummary').addEventListener('click',()=>showToast('Esquema rápido: PAI → niveles → fases → campos → estructura → ejemplos'));
+
+const searchBox = document.getElementById('searchBox');
+const sections = [...document.querySelectorAll('.searchable')];
+searchBox.addEventListener('input',()=>{
+  const q = searchBox.value.trim().toLowerCase();
+  sections.forEach(sec=>{
+    const text = (sec.innerText + ' ' + (sec.dataset.keywords || '')).toLowerCase();
+    sec.classList.toggle('hidden', q && !text.includes(q));
+  });
+});
+
+const navLinks = [...document.querySelectorAll('.nav a')];
+const observer = new IntersectionObserver(entries=>{
+  entries.forEach(entry=>{
+    if(entry.isIntersecting){
+      navLinks.forEach(a=>a.classList.toggle('active', a.getAttribute('href') === '#' + entry.target.id));
+    }
+  });
+},{rootMargin:'-35% 0px -45% 0px',threshold:0});
+sections.forEach(sec=>observer.observe(sec));
+</script>
+</body>
+</html>
