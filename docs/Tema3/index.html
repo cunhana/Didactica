@@ -1,164 +1,1362 @@
-<!-- index.html - Página Principal -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tema 3 CFGS Educación Infantil - Diseño Curricular Interactivo</title>
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Currículo Aragonés de Educación Infantil | Guía Interactiva</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #2c5282;
+            --primary-light: #4299e1;
+            --secondary: #ed8936;
+            --accent: #38b2ac;
+            --success: #48bb78;
+            --warning: #ecc94b;
+            --danger: #f56565;
+            --dark: #1a202c;
+            --gray: #718096;
+            --light: #f7fafc;
+            --white: #ffffff;
+            --shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 8px 10px -6px rgba(0,0,0,0.1);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.15), 0 10px 10px -5px rgba(0,0,0,0.1);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        /* Header */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 50%, var(--accent) 100%);
+            color: white;
+            padding: 4rem 1rem 6rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 50%;
+            animation: float 20s infinite ease-in-out;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255,255,255,0.08);
+            border-radius: 50%;
+            animation: float 15s infinite ease-in-out reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            font-weight: 400;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            border-radius: var(--radius);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            opacity: 0.9;
+        }
+
+        /* Navigation */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+            padding: 0.75rem 1rem;
+        }
+
+        .nav-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+
+        .nav-content::-webkit-scrollbar {
+            display: none;
+        }
+
+        .nav-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            background: transparent;
+            color: var(--gray);
+            font-weight: 600;
+            font-size: 0.875rem;
+            border-radius: 50px;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: var(--transition);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .nav-btn:hover, .nav-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        .section {
+            padding: 4rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            background: var(--primary-light);
+            color: white;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.75rem;
+        }
+
+        .section-title {
+            font-size: clamp(1.75rem, 4vw, 2.5rem);
+            color: var(--dark);
+            margin-bottom: 0.75rem;
+        }
+
+        .section-subtitle {
+            color: var(--gray);
+            font-size: 1.125rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid rgba(0,0,0,0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.25rem;
+            color: white;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .card p {
+            color: var(--gray);
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        .card-action {
+            margin-top: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 0.875rem;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .card-action:hover {
+            gap: 0.75rem;
+            color: var(--primary-light);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .comparison-table th {
+            background: var(--primary);
+            color: white;
+            padding: 1.25rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .comparison-table td {
+            padding: 1.25rem 1.5rem;
+            border-bottom: 1px solid #edf2f7;
+        }
+
+        .comparison-table tr:hover td {
+            background: #f7fafc;
+        }
+
+        .comparison-table .label {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .label-old {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .label-new {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+
+        /* Accordion */
+        .accordion {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            margin-bottom: 1rem;
+        }
+
+        .accordion-header {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-family: 'Nunito', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: #f7fafc;
+        }
+
+        .accordion-header.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .accordion-icon {
+            transition: var(--transition);
+            font-size: 1.25rem;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out;
+        }
+
+        .accordion-body.active {
+            max-height: 2000px;
+            transition: max-height 0.5s ease-in;
+        }
+
+        .accordion-content {
+            padding: 2rem;
+            border-top: 1px solid #edf2f7;
+        }
+
+        /* Competency Badges */
+        .competency-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .competency-item {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border-left: 4px solid var(--primary);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .competency-item:hover {
+            transform: translateX(5px);
+            box-shadow: var(--shadow);
+        }
+
+        .competency-sigla {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .competency-title {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        /* Pyramid */
+        .pyramid {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .pyramid-level {
+            background: white;
+            border-radius: 12px;
+            padding: 1.25rem 2rem;
+            text-align: center;
+            font-weight: 700;
+            color: var(--dark);
+            box-shadow: var(--shadow);
+            position: relative;
+            transition: var(--transition);
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+
+        .pyramid-level:hover {
+            transform: scale(1.05);
+            border-color: var(--primary-light);
+        }
+
+        .pyramid-level-1 { width: 60%; background: linear-gradient(135deg, #ebf8ff 0%, #bee3f8 100%); border-color: #90cdf4; }
+        .pyramid-level-2 { width: 70%; background: linear-gradient(135deg, #e6fffa 0%, #b2f5ea 100%); border-color: #81e6d9; }
+        .pyramid-level-3 { width: 80%; background: linear-gradient(135deg, #f0fff4 0%, #c6f6d5 100%); border-color: #9ae6b4; }
+        .pyramid-level-4 { width: 90%; background: linear-gradient(135deg, #fffff0 0%, #fefcbf 100%); border-color: #f6e05e; }
+
+        .pyramid-arrow {
+            color: var(--gray);
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(5px); }
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(5px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            padding: 1rem;
+        }
+
+        .modal-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal {
+            background: white;
+            border-radius: var(--radius);
+            max-width: 700px;
+            width: 100%;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.9) translateY(20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.active .modal {
+            transform: scale(1) translateY(0);
+        }
+
+        .modal-header {
+            padding: 2rem 2rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .modal-close {
+            background: #f7fafc;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray);
+            transition: var(--transition);
+            font-size: 1.25rem;
+        }
+
+        .modal-close:hover {
+            background: #fed7d7;
+            color: #c53030;
+        }
+
+        .modal-body {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .modal-body p, .modal-body li {
+            color: #4a5568;
+            line-height: 1.8;
+            margin-bottom: 0.75rem;
+        }
+
+        .modal-body ul {
+            margin-left: 1.5rem;
+        }
+
+        .modal-body strong {
+            color: var(--primary);
+        }
+
+        /* Timeline / Steps */
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .steps::before {
+            content: '';
+            position: absolute;
+            left: 0.75rem;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), var(--accent));
+        }
+
+        .step {
+            position: relative;
+            background: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+
+        .step::before {
+            content: '';
+            position: absolute;
+            left: -1.75rem;
+            top: 1.75rem;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 3px var(--primary-light);
+        }
+
+        .step-number {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            font-size: 0.875rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .step h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .step p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer p {
+            opacity: 0.8;
+            font-size: 0.875rem;
+        }
+
+        .footer a {
+            color: var(--primary-light);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-stats {
+                gap: 1rem;
+            }
+            .stat-item {
+                padding: 0.75rem 1.25rem;
+            }
+            .comparison-table {
+                font-size: 0.875rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 0.75rem;
+            }
+        }
+
+        /* Smooth scroll */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Highlight box */
+        .highlight-box {
+            background: linear-gradient(135deg, #ebf8ff 0%, #e6fffa 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
+            margin: 1.5rem 0;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #2c5282;
+            font-weight: 600;
+        }
+
+        /* Area colors */
+        .area-ca { --area-color: #ed8936; --area-bg: #fffaf0; }
+        .area-dee { --area-color: #38b2ac; --area-bg: #e6fffa; }
+        .area-crr { --area-color: #805ad5; --area-bg: #faf5ff; }
+
+        .area-card {
+            border-top: 4px solid var(--area-color);
+            background: var(--area-bg);
+        }
+
+        .area-card .card-icon {
+            background: var(--area-color);
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.5rem 1rem;
+            border: 2px solid #e2e8f0;
+            background: white;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.875rem;
+            transition: var(--transition);
+            font-family: 'Nunito', sans-serif;
+        }
+
+        .tab-btn.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* DUA Principles */
+        .dua-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .dua-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dua-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .dua-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .dua-number {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+
+        .dua-card h4 {
+            margin-bottom: 0.75rem;
+            color: var(--dark);
+        }
+
+        .dua-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Legal refs */
+        .legal-refs {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+            margin-top: 2rem;
+        }
+
+        .legal-refs h4 {
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .legal-refs ul {
+            list-style: none;
+        }
+
+        .legal-refs li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #edf2f7;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.75rem;
+        }
+
+        .legal-refs li:last-child {
+            border-bottom: none;
+        }
+
+        .legal-refs i {
+            color: var(--primary);
+            margin-top: 0.25rem;
+        }
+
+        .legal-refs a {
+            color: var(--primary-light);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .legal-refs a:hover {
+            text-decoration: underline;
+        }
+    </style>
 </head>
 <body>
-    <!-- Fondo dinámico animado -->
-    <div class="background-animation">
-        <div class="floating-shape shape-1"></div>
-        <div class="floating-shape shape-2"></div>
-        <div class="floating-shape shape-3"></div>
-        <div class="floating-shape shape-4"></div>
-    </div>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="navbar">
-            <div class="nav-brand">
-                <i class="fas fa-graduation-cap"></i>
-                <span>CFGS Educación Infantil</span>
+    <!-- Hero -->
+    <header class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <i class="fas fa-book-open"></i>
+                Guía de Estudio Oficial
             </div>
-            <ul class="nav-menu">
-                <li><a href="#concepto" class="nav-link">Concepto Currículo</a></li>
-                <li><a href="#niveles" class="nav-link">Niveles Concreción</a></li>
-                <li><a href="#fuentes" class="nav-link">Fuentes</a></li>
-                <li><a href="#documentos" class="nav-link">Documentos Centro</a></li>
-                <li><a href="#ejemplos" class="nav-link">Ejemplos Prácticos</a></li>
-            </ul>
-            <div class="hamburger">
-                <span></span>
-                <span></span>
-                <span></span>
+            <h1>El Currículo Aragonés para Educación Infantil</h1>
+            <p>Guía completa e interactiva sobre el currículo de 0 a 6 años: DUA, competencias clave, áreas de aprendizaje y situaciones de aprendizaje.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">3</span>
+                    <span class="stat-label">Áreas de Aprendizaje</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">8</span>
+                    <span class="stat-label">Competencias Clave</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2</span>
+                    <span class="stat-label">Ciclos (0-3 y 3-6)</span>
+                </div>
             </div>
-        </nav>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title animate-slide-up">
-                <span class="gradient-text">Tema 3</span><br>
-                Diseño Curricular y Planificación
-            </h1>
-            <p class="hero-subtitle animate-slide-up delay-1">Educación Infantil 0-6 años • CFGS 2º Curso</p>
-            <div class="hero-buttons animate-slide-up delay-2">
-                <button class="cta-button primary" onclick="scrollToSection('concepto')">
-                    <i class="fas fa-play"></i> Empezar Clase
-                </button>
-                <button class="cta-button secondary" onclick="openModal('modal-quiz')">
-                    <i class="fas fa-question-circle"></i> Autoevaluación
-                </button>
-            </div>
+    <!-- Navigation -->
+    <nav class="sticky-nav">
+        <div class="nav-content">
+            <button class="nav-btn active" onclick="scrollToSection('resumen')">Resumen</button>
+            <button class="nav-btn" onclick="scrollToSection('novedades')">Novedades</button>
+            <button class="nav-btn" onclick="scrollToSection('dua')">DUA</button>
+            <button class="nav-btn" onclick="scrollToSection('competencias')">Competencias</button>
+            <button class="nav-btn" onclick="scrollToSection('areas')">Áreas</button>
+            <button class="nav-btn" onclick="scrollToSection('situaciones')">Situaciones</button>
+            <button class="nav-btn" onclick="scrollToSection('arquitectura')">Arquitectura</button>
+            <button class="nav-btn" onclick="scrollToSection('legal')">Marco Legal</button>
         </div>
-        <div class="hero-illustration">
-            <!-- Ilustración SVG animada de niños jugando -->
-            <svg viewBox="0 0 400 300" class="hero-svg">
-                <defs>
-                    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" style="stop-color:#FF6B6B;stop-opacity:1" />
-                        <stop offset="100%" style="stop-color:#4ECDC4;stop-opacity:1" />
-                    </linearGradient>
-                </defs>
-                <circle cx="100" cy="100" r="40" fill="#FFD93D" stroke="#FF6B6B" stroke-width="4">
-                    <animate attributeName="r" values="40;45;40" dur="2s" repeatCount="indefinite"/>
-                </circle>
-                <circle cx="300" cy="80" r="35" fill="#6BCF7F" stroke="#4ECDC4" stroke-width="4">
-                    <animate attributeName="r" values="35;40;35" dur="2.5s" repeatCount="indefinite"/>
-                </circle>
-                <path d="M50 200 Q100 180 150 200 Q200 220 250 200 Q300 180 350 200" fill="none" stroke="#FF8E8E" stroke-width="8" stroke-linecap="round">
-                    <animate attributeName="stroke-dasharray" values="0,1000;1000,0" dur="3s" repeatCount="indefinite"/>
-                </path>
-            </svg>
-        </div>
-    </section>
+    </nav>
 
-    <!-- Sección Concepto Currículo -->
-    <section id="concepto" class="section">
+    <!-- Resumen Ejecutivo -->
+    <section id="resumen" class="section">
         <div class="container">
-            <div class="section-header animate-fade-in">
-                <h2><i class="fas fa-book-open"></i> 1. Concepto de Currículo</h2>
-                <p>Según LOE/LOMLOE: conjunto de objetivos, competencias, contenidos, métodos y evaluación [file:1]</p>
+            <div class="section-header">
+                <span class="section-tag">Introducción</span>
+                <h2 class="section-title">Resumen Ejecutivo</h2>
+                <p class="section-subtitle">El currículo aragonés de Educación Infantil cubre la etapa de 0 a 6 años y supone una transformación profunda respecto al modelo anterior de 2008.</p>
             </div>
-            <div class="content-grid">
-                <div class="content-card animate-slide-left">
-                    <h3><span class="badge primary">Dimensiones</span></h3>
-                    <ul class="feature-list">
-                        <li><i class="fas fa-users"></i> Social/Cultural: Valores sociedad</li>
-                        <li><i class="fas fa-tools"></i> Técnica: Guía práctica docente</li>
-                    </ul>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ed8936, #dd6b20);">
+                        <i class="fas fa-child"></i>
+                    </div>
+                    <h3>El Niño como Centro</h3>
+                    <p>El gran cambio es que el niño pasa a ser el centro del proceso educativo, abandonando el modelo centrado exclusivamente en contenidos.</p>
                 </div>
-                <div class="content-card animate-slide-right">
-                    <h3><span class="badge success">Finalidades</span></h3>
-                    <ul class="feature-list">
-                        <li>Coherencia etapa educativa</li>
-                        <li>Continuidad ciclos</li>
-                        <li>Igualdad oportunidades</li>
-                    </ul>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #38b2ac, #319795);">
+                        <i class="fas fa-universal-access"></i>
+                    </div>
+                    <h3>Diseño Universal para el Aprendizaje (DUA)</h3>
+                    <p>Herramienta de inclusión educativa que planifica desde el inicio para que todos los niños puedan aprender sin necesidad de adaptaciones posteriores.</p>
+                    <span class="card-action" onclick="openModal('dua-modal')">Ver principios <i class="fas fa-arrow-right"></i></span>
                 </div>
-            </div>
-            <div class="example-box animate-pulse">
-                <h4><i class="fas fa-baby"></i> Ejemplo 0-3 años</h4>
-                <p>Durante cambio pañal: "¡Mira tu pancita!" + espejos = <strong>conocimiento cuerpo</strong></p>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #805ad5, #6b46c1);">
+                        <i class="fas fa-puzzle-piece"></i>
+                    </div>
+                    <h3>Competencias Clave</h3>
+                    <p>Eje vertebrador del currículo. Se trabajan de forma transversal e integrada en todas las áreas y situaciones de aprendizaje.</p>
+                    <span class="card-action" onclick="openModal('competencias-modal')">Ver las 8 competencias <i class="fas fa-arrow-right"></i></span>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4299e1, #3182ce);">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <h3>Situaciones de Aprendizaje</h3>
+                    <p>Método de trabajo en el aula basado en secuencias de actividades contextualizadas con sentido real y significativo.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #48bb78, #38a169);">
+                        <i class="fas fa-layer-group"></i>
+                    </div>
+                    <h3>Tres Áreas Renovadas</h3>
+                    <p>Nuevas denominaciones pedagógicas que reflejan mejor el enfoque actual: Crecimiento en Armonía, Descubrimiento del Entorno y Comunicación.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #e53e3e, #c53030);">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Marco Legal Actualizado</h3>
+                    <p>Basado en la LOMLOE y el Real Decreto 95/2022, que establece las enseñanzas mínimas y el marco competencial.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Acordeón Niveles de Concreción -->
-    <section id="niveles" class="section alternate-bg">
+    <!-- Novedades -->
+    <section id="novedades" class="section" style="background: white;">
         <div class="container">
-            <div class="section-header animate-fade-in">
-                <h2><i class="fas fa-layer-group"></i> 2. Niveles de Concreción Curricular</h2>
+            <div class="section-header">
+                <span class="section-tag">Comparativa</span>
+                <h2 class="section-title">Novedades respecto al modelo anterior (2008)</h2>
+                <p class="section-subtitle">El cambio más profundo es el paso de un modelo basado en contenidos a uno basado en competencias y situaciones de aprendizaje.</p>
             </div>
-            <div class="accordion-container">
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Nivel I: Diseño Curricular Base</h3>
-                        <i class="fas fa-chevron-down"></i>
+
+            <div style="overflow-x: auto;">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 20%;">Aspecto</th>
+                            <th style="width: 40%;">Antes (2008)</th>
+                            <th style="width: 40%;">Ahora (Currículo Actual)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Enfoque</strong></td>
+                            <td><span class="label label-old">Contenidos y áreas tradicionales</span></td>
+                            <td><span class="label label-new">Competencias y situaciones de aprendizaje</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Inclusión</strong></td>
+                            <td><span class="label label-old">Adaptaciones posteriores</span></td>
+                            <td><span class="label label-new">DUA desde el inicio del diseño</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nombres de áreas</strong></td>
+                            <td><span class="label label-old">Denominaciones antiguas</span></td>
+                            <td><span class="label label-new">Nuevas denominaciones pedagógicas</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Eje vertebrador</strong></td>
+                            <td><span class="label label-old">Objetivos como eje central</span></td>
+                            <td><span class="label label-new">Competencias clave como eje</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Evaluación</strong></td>
+                            <td><span class="label label-old">Enfoque acreditativo</span></td>
+                            <td><span class="label label-new">Referente para identificar ritmo y progreso</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Metodología</strong></td>
+                            <td><span class="label label-old">Globalización genérica</span></td>
+                            <td><span class="label label-new">Globalización con intencionalidad educativa</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 2rem;">
+                <p><i class="fas fa-info-circle" style="margin-right: 0.5rem;"></i> El Real Decreto 95/2022 establece que las administraciones educativas desarrollan el currículo autonómico, que en Aragón adopta estas tres áreas con nombres renovados para reflejar mejor el enfoque pedagógico actual.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- DUA -->
+    <section id="dua" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Inclusión Educativa</span>
+                <h2 class="section-title">Diseño Universal para el Aprendizaje (DUA)</h2>
+                <p class="section-subtitle">Forma de planificar desde el principio para que todos puedan aprender, sin necesidad de hacer adaptaciones individuales después. Recogido en el artículo 10.3 del RD 95/2022.</p>
+            </div>
+
+            <div class="dua-grid">
+                <div class="dua-card">
+                    <div class="dua-number"><i class="fas fa-eye"></i></div>
+                    <h4>Representación</h4>
+                    <p>Ofrecer la información de distintas formas (visual, auditiva, manipulativa) para que todos los niños puedan entenderla desde sus posibilidades perceptivas.</p>
+                </div>
+                <div class="dua-card">
+                    <div class="dua-number"><i class="fas fa-hand-paper"></i></div>
+                    <h4>Acción y Expresión</h4>
+                    <p>Permitir que cada niño demuestre lo que sabe de la manera que le resulte más fácil: dibujo, palabra, gesto, movimiento o tecnología.</p>
+                </div>
+                <div class="dua-card">
+                    <div class="dua-number"><i class="fas fa-heart"></i></div>
+                    <h4>Compromiso (Implicación)</h4>
+                    <p>Motivar a cada niño desde sus propios intereses para que se implique activamente en el aprendizaje, fomentando la motivación intrínseca.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, #fffaf0, #fff5eb); border: 1px solid #fed7aa;">
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <div style="background: #ed8936; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                        <i class="fas fa-lightbulb"></i>
                     </div>
+                    <div>
+                        <h4 style="color: #c05621; margin-bottom: 0.5rem;">Ejemplo práctico aplicado al DUA</h4>
+                        <p style="color: #744210; margin: 0;">En vez de explicar los alimentos solo con palabras, se utilizan <strong>pictogramas</strong> (representación visual), <strong>frutas reales</strong> (manipulación sensorial) y <strong>juego simbólico</strong> (acción y expresión). Así todos los niños, incluyendo los que tienen dificultades lingüísticas, participan desde el principio sin necesidad de adaptaciones posteriores.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Competencias Clave -->
+    <section id="competencias" class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Eje Vertebrador</span>
+                <h2 class="section-title">Las 8 Competencias Clave</h2>
+                <p class="section-subtitle">Son transversales a todas las áreas, de igual importancia, sin jerarquía entre ellas. Se solapan y entrelazan. Adaptación de la Recomendación del Consejo de la UE (22 de mayo de 2018).</p>
+            </div>
+
+            <div class="competency-grid">
+                <div class="competency-item" onclick="openModal('ccl-modal')">
+                    <span class="competency-sigla">CCL</span>
+                    <div class="competency-title">Comunicación Lingüística</div>
+                </div>
+                <div class="competency-item" onclick="openModal('cp-modal')" style="border-left-color: #ed8936;">
+                    <span class="competency-sigla" style="background: #ed8936;">CP</span>
+                    <div class="competency-title">Plurilingüe</div>
+                </div>
+                <div class="competency-item" onclick="openModal('steam-modal')" style="border-left-color: #38b2ac;">
+                    <span class="competency-sigla" style="background: #38b2ac;">STEAM</span>
+                    <div class="competency-title">Matemática, Ciencia, Tecnología e Ingeniería</div>
+                </div>
+                <div class="competency-item" onclick="openModal('cd-modal')" style="border-left-color: #805ad5;">
+                    <span class="competency-sigla" style="background: #805ad5;">CD</span>
+                    <div class="competency-title">Digital</div>
+                </div>
+                <div class="competency-item" onclick="openModal('cpsaa-modal')" style="border-left-color: #e53e3e;">
+                    <span class="competency-sigla" style="background: #e53e3e;">CPSAA</span>
+                    <div class="competency-title">Personal, Social y Aprender a Aprender</div>
+                </div>
+                <div class="competency-item" onclick="openModal('cc-modal')" style="border-left-color: #d69e2e;">
+                    <span class="competency-sigla" style="background: #d69e2e;">CC</span>
+                    <div class="competency-title">Ciudadana</div>
+                </div>
+                <div class="competency-item" onclick="openModal('ce-modal')" style="border-left-color: #dd6b20;">
+                    <span class="competency-sigla" style="background: #dd6b20;">CE</span>
+                    <div class="competency-title">Emprendedora</div>
+                </div>
+                <div class="competency-item" onclick="openModal('ccec-modal')" style="border-left-color: #319795;">
+                    <span class="competency-sigla" style="background: #319795;">CCEC</span>
+                    <div class="competency-title">Conciencia y Expresión Culturales</div>
+                </div>
+            </div>
+
+            <p style="text-align: center; margin-top: 2rem; color: var(--gray); font-size: 0.9rem;">
+                <i class="fas fa-mouse-pointer" style="margin-right: 0.5rem;"></i> Haz clic en cada competencia para ver su desarrollo en Educación Infantil
+            </p>
+        </div>
+    </section>
+
+    <!-- Áreas -->
+    <section id="areas" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Organización Curricular</span>
+                <h2 class="section-title">Las 3 Áreas de Aprendizaje</h2>
+                <p class="section-subtitle">El currículo mantiene la estructura de dos ciclos (0-3 y 3-6 años) pero renueva completamente los nombres de las áreas para reflejar mejor su enfoque pedagógico.</p>
+            </div>
+
+            <!-- Área 1 -->
+            <div class="accordion">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="background: #ed8936; color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">CA</div>
+                        <div>
+                            <div style="font-size: 1.1rem;">Área 1 — Crecimiento en Armonía</div>
+                            <div style="font-size: 0.85rem; opacity: 0.8; font-weight: 400;">Cuerpo, emociones, hábitos y relaciones sociales</div>
+                        </div>
+                    </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
                     <div class="accordion-content">
-                        <div class="level-card primary">
-                            <i class="fas fa-file-alt"></i>
-                            <div>
-                                <h4>Obligatorio (Ministerio/CCAA)</h4>
-                                <p>Objetivos generales • Bloques contenidos • Orientaciones</p>
+                        <p style="margin-bottom: 1.5rem; color: #4a5568;">Esta área se ocupa de la dimensión personal y social del niño. Desde el enfoque del RD 95/2022, busca que los niños progresen en el conocimiento y control de su cuerpo, desarrollen el equilibrio afectivo, adquieran hábitos saludables y establezcan relaciones de apego saludables.</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab(this, 'ca-comp')">Competencias Específicas</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'ca-crit')">Criterios 2º Ciclo</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'ca-sab')">Saberes Básicos</button>
+                        </div>
+
+                        <div id="ca-comp" class="tab-content active">
+                            <div class="cards-grid" style="grid-template-columns: 1fr;">
+                                <div class="card area-card" style="--area-color: #ed8936; --area-bg: #fffaf0;">
+                                    <h4 style="color: #c05621;"><i class="fas fa-user" style="margin-right: 0.5rem;"></i>CA.1 Autoconocimiento</h4>
+                                    <p>Progresar en el conocimiento y control del cuerpo, construyendo una autoimagen positiva y ajustada. Incluye el dominio del movimiento, la percepción sensorial y la coordinación.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #ed8936; --area-bg: #fffaf0;">
+                                    <h4 style="color: #c05621;"><i class="fas fa-smile" style="margin-right: 0.5rem;"></i>CA.2 Bienestar Emocional</h4>
+                                    <p>Reconocer, expresar y regular emociones para lograr seguridad afectiva. Desarrollar estrategias de regulación emocional y afrontar pequeñas adversidades.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #ed8936; --area-bg: #fffaf0;">
+                                    <h4 style="color: #c05621;"><i class="fas fa-heartbeat" style="margin-right: 0.5rem;"></i>CA.3 Hábitos Saludables</h4>
+                                    <p>Adoptar normas y hábitos que promuevan un estilo de vida sano y responsable con el entorno. Incorporar estrategias de autocuidado y cuidado del entorno.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #ed8936; --area-bg: #fffaf0;">
+                                    <h4 style="color: #c05621;"><i class="fas fa-users" style="margin-right: 0.5rem;"></i>CA.4 Interacción Social</h4>
+                                    <p>Relacionarse en igualdad, con empatía y respeto, construyendo identidad democrática. Establecer vínculos saludables y gestionar conflictos de forma positiva.</p>
+                                </div>
                             </div>
+                        </div>
+
+                        <div id="ca-crit" class="tab-content">
+                            <div class="steps">
+                                <div class="step">
+                                    <span class="step-number">1</span>
+                                    <h4>Competencia 1</h4>
+                                    <p>Progresar en el conocimiento de su cuerpo ajustando acciones y reacciones, desarrollando equilibrio, percepción sensorial y coordinación. Manejar objetos mostrando control progresivo de movimientos finos.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">2</span>
+                                    <h4>Competencia 2</h4>
+                                    <p>Identificar y expresar necesidades y sentimientos, ajustando progresivamente el control de sus emociones. Ofrecer y pedir ayuda, valorando la cooperación entre iguales.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">3</span>
+                                    <h4>Competencia 3</h4>
+                                    <p>Realizar actividades de autocuidado y cuidado del entorno con actitud respetuosa, mostrando autoconfianza e iniciativa. Respetar la secuencia temporal de rutinas.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">4</span>
+                                    <h4>Competencia 4</h4>
+                                    <p>Participar con iniciativa en juegos colectivos con actitudes de afecto y empatía. Reproducir conductas a través del juego simbólico rechazando estereotipos. Gestionar conflictos proponiendo alternativas creativas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="ca-sab" class="tab-content">
+                            <ul style="margin-left: 1.5rem; color: #4a5568; line-height: 2;">
+                                <li><strong>El cuerpo y su control:</strong> Imagen global y segmentaria, sentidos y funciones, movimiento y coordinación, progresiva autonomía.</li>
+                                <li><strong>Desarrollo afectivo:</strong> Identificación y control progresivo de emociones, estrategias de ayuda y cooperación, aceptación constructiva de errores.</li>
+                                <li><strong>Hábitos saludables:</strong> Rutinas de autocuidado, higiene, alimentación, descanso y seguridad personal.</li>
+                                <li><strong>Convivencia:</strong> Juego simbólico, resolución de conflictos, celebraciones culturales, respeto a la diversidad.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Nivel II: Propuesta Pedagógica</h3>
-                        <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <!-- Área 2 -->
+            <div class="accordion">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="background: #38b2ac; color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">DEE</div>
+                        <div>
+                            <div style="font-size: 1.1rem;">Área 2 — Descubrimiento y Exploración del Entorno</div>
+                            <div style="font-size: 0.85rem; opacity: 0.8; font-weight: 400;">Pensamiento lógico, científico y sostenibilidad</div>
+                        </div>
                     </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
                     <div class="accordion-content">
-                        <div class="level-card success">
-                            <i class="fas fa-school"></i>
-                            <div>
-                                <h4>Centro adapta contexto</h4>
-                                <p>Secuenciación • Metodología • Evaluación centro</p>
+                        <p style="margin-bottom: 1.5rem; color: #4a5568;">Desarrolla el pensamiento lógico, científico y la conciencia ambiental. Favorece el descubrimiento, observación y exploración de elementos físicos y naturales, concebidos como provocadores de emociones y sorpresas.</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab(this, 'dee-comp')">Competencias Específicas</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'dee-crit')">Criterios 2º Ciclo</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'dee-sab')">Saberes Básicos</button>
+                        </div>
+
+                        <div id="dee-comp" class="tab-content active">
+                            <div class="cards-grid" style="grid-template-columns: 1fr;">
+                                <div class="card area-card" style="--area-color: #38b2ac; --area-bg: #e6fffa;">
+                                    <h4 style="color: #2c7a7b;"><i class="fas fa-shapes" style="margin-right: 0.5rem;"></i>DEE.1 Exploración Lógica</h4>
+                                    <p>Identificar características de objetos, clasificarlos y desarrollar destrezas lógico-matemáticas mediante manipulación sensorial. Establecer relaciones de orden, correspondencia y comparación.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #38b2ac; --area-bg: #e6fffa;">
+                                    <h4 style="color: #2c7a7b;"><i class="fas fa-flask" style="margin-right: 0.5rem;"></i>DEE.2 Método Científico</h4>
+                                    <p>Iniciarse en la observación sistemática, el pensamiento computacional y la resolución creativa de problemas. Plantear hipótesis y verificarlas mediante la manipulación.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #38b2ac; --area-bg: #e6fffa;">
+                                    <h4 style="color: #2c7a7b;"><i class="fas fa-leaf" style="margin-right: 0.5rem;"></i>DEE.3 Sostenibilidad</h4>
+                                    <p>Reconocer elementos de la naturaleza y desarrollar hábitos de cuidado y respeto del entorno. Mostrar actitud de protección hacia el medio natural y los animales.</p>
+                                </div>
                             </div>
+                        </div>
+
+                        <div id="dee-crit" class="tab-content">
+                            <div class="steps">
+                                <div class="step">
+                                    <span class="step-number">1</span>
+                                    <h4>Exploración Lógica</h4>
+                                    <p>Establecer relaciones entre objetos por cualidades o atributos. Emplear cuantificadores básicos en contexto de juego. Aplicar nociones espaciales y temporales básicas. Identificar situaciones que requieren medir.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">2</span>
+                                    <h4>Método Científico</h4>
+                                    <p>Gestionar retos mediante planificación de secuencias. Plantear hipótesis y verificarlas por manipulación. Programar secuencias de acciones (pensamiento computacional). Participar en proyectos cooperativos.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">3</span>
+                                    <h4>Sostenibilidad</h4>
+                                    <p>Mostrar respeto y cuidado hacia el medio natural y los animales. Identificar impacto de acciones humanas. Establecer relaciones entre medio natural y social.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="dee-sab" class="tab-content">
+                            <ul style="margin-left: 1.5rem; color: #4a5568; line-height: 2;">
+                                <li><strong>Diálogo corporal con el entorno:</strong> Cualidades de objetos, cuantificadores, nociones espaciales y temporales, situaciones de medida.</li>
+                                <li><strong>Experimentación:</strong> Curiosidad, indagación, ensayo-error, observación, comprobación. Pensamiento científico y creatividad.</li>
+                                <li><strong>Medio físico y natural:</strong> Recursos naturales, sostenibilidad, fenómenos naturales, empatía y cuidado de animales, respeto al patrimonio cultural.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
-                <div class="accordion-item">
-                    <div class="accordion-header">
-                        <h3>Nivel III: Programación Aula</h3>
-                        <i class="fas fa-chevron-down"></i>
+            </div>
+
+            <!-- Área 3 -->
+            <div class="accordion">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <div style="display: flex; align-items: center; gap: 1rem;">
+                        <div style="background: #805ad5; color: white; width: 45px; height: 45px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.9rem;">CRR</div>
+                        <div>
+                            <div style="font-size: 1.1rem;">Área 3 — Comunicación y Representación de la Realidad</div>
+                            <div style="font-size: 0.85rem; opacity: 0.8; font-weight: 400;">Lenguajes, comunicación, lectoescritura y diversidad cultural</div>
+                        </div>
                     </div>
+                    <i class="fas fa-chevron-down accordion-icon"></i>
+                </button>
+                <div class="accordion-body">
                     <div class="accordion-content">
-                        <div class="level-card warning">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                            <div>
-                                <h4>Educadora grupo concreto</h4>
-                                <p>Unidades didácticas • Actividades específicas</p>
+                        <p style="margin-bottom: 1.5rem; color: #4a5568;">Trabaja todos los lenguajes con los que el niño se expresa e interpreta el mundo. Se concede carácter prioritario al proceso de adquisición del lenguaje verbal, pero se integran expresión plástica, musical, corporal y digital.</p>
+                        
+                        <div class="tabs">
+                            <button class="tab-btn active" onclick="switchTab(this, 'crr-comp')">Competencias Específicas</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'crr-crit')">Criterios 2º Ciclo</button>
+                            <button class="tab-btn" onclick="switchTab(this, 'crr-sab')">Saberes Básicos</button>
+                        </div>
+
+                        <div id="crr-comp" class="tab-content active">
+                            <div class="cards-grid" style="grid-template-columns: 1fr;">
+                                <div class="card area-card" style="--area-color: #805ad5; --area-bg: #faf5ff;">
+                                    <h4 style="color: #553c9a;"><i class="fas fa-comments" style="margin-right: 0.5rem;"></i>CRR.1 Interacción Comunicativa</h4>
+                                    <p>Manifestar interés por interactuar comunicativamente en situaciones cotidianas. Participar activamente en situaciones de progresiva complejidad.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #805ad5; --area-bg: #faf5ff;">
+                                    <h4 style="color: #553c9a;"><i class="fas fa-ear-listen" style="margin-right: 0.5rem;"></i>CRR.2 Comprensión e Interpretación</h4>
+                                    <p>Interpretar y comprender mensajes apoyándose en la propia experiencia. Reconocer intencionalidad en manifestaciones artísticas y digitales.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #805ad5; --area-bg: #faf5ff;">
+                                    <h4 style="color: #553c9a;"><i class="fas fa-pen-fancy" style="margin-right: 0.5rem;"></i>CRR.3 Producción y Expresión</h4>
+                                    <p>Producir mensajes de forma eficaz, personal y creativa usando distintos lenguajes: oral, plástico, musical, corporal y digital.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #805ad5; --area-bg: #faf5ff;">
+                                    <h4 style="color: #553c9a;"><i class="fas fa-book" style="margin-right: 0.5rem;"></i>CRR.4 Aproximación a la Escritura</h4>
+                                    <p>Participar en actividades relacionadas con textos escritos, mostrando curiosidad por su función comunicativa. Identificar características textuales.</p>
+                                </div>
+                                <div class="card area-card" style="--area-color: #805ad5; --area-bg: #faf5ff;">
+                                    <h4 style="color: #553c9a;"><i class="fas fa-globe" style="margin-right: 0.5rem;"></i>CRR.5 Diversidad Lingüística y Cultural</h4>
+                                    <p>Valorar la diversidad lingüística y cultural del entorno como riqueza comunicativa. Participar en interacciones en lengua extranjera.</p>
+                                </div>
                             </div>
+                        </div>
+
+                        <div id="crr-crit" class="tab-content">
+                            <div class="steps">
+                                <div class="step">
+                                    <span class="step-number">1</span>
+                                    <h4>Interacción</h4>
+                                    <p>Participar activamente en situaciones comunicativas de progresiva complejidad. Ajustar repertorio comunicativo al contexto. Mostrar interés por la diversidad lingüística.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">2</span>
+                                    <h4>Comprensión</h4>
+                                    <p>Interpretar eficazmente mensajes e intenciones comunicativas. Interpretar manifestaciones artísticas en formato digital con actitud curiosa.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">3</span>
+                                    <h4>Expresión</h4>
+                                    <p>Uso funcional del lenguaje oral con discurso organizado. Elaborar creaciones plásticas. Interpretar propuestas dramáticas y musicales. Expresarse con herramientas digitales.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">4</span>
+                                    <h4>Escritura</h4>
+                                    <p>Mostrar interés por códigos escritos. Identificar características textuales y paratextuales. Recurrir a la biblioteca como fuente de disfrute.</p>
+                                </div>
+                                <div class="step">
+                                    <span class="step-number">5</span>
+                                    <h4>Pluralidad Cultural</h4>
+                                    <p>Relacionarse respetuosamente en la pluralidad lingüística. Participar en interacciones en lengua extranjera. Aproximarse a la literatura infantil. Expresar emociones mediante manifestaciones artísticas.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="crr-sab" class="tab-content">
+                            <ul style="margin-left: 1.5rem; color: #4a5568; line-height: 2;">
+                                <li><strong>Lenguaje verbal:</strong> Escucha atenta, comprensión de mensajes, expresión oral, vocabulario, estructuras gramaticales, funciones comunicativas.</li>
+                                <li><strong>Lenguaje no verbal:</strong> Gestos, mimica, expresión corporal, desplazamientos espaciales.</li>
+                                <li><strong>Plástica y visual:</strong> Materiales, colores, texturas, técnicas, expresiones artísticas.</li>
+                                <li><strong>Musical:</strong> Canciones, sonidos, ritmo, entonación, instrumentos.</li>
+                                <li><strong>Lectoescritura:</strong> Función comunicativa de la escritura, biblioteca, modelos lectores.</li>
+                                <li><strong>Plurilingüismo:</strong> Lengua extranjera, diversidad lingüística y cultural del entorno.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
@@ -166,32 +1364,530 @@
         </div>
     </section>
 
-    <!-- Modal Autoevaluación -->
-    <div id="modal-quiz" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3><i class="fas fa-clipboard-check"></i> Autoevaluación</h3>
-                <span class="close">&times;</span>
+    <!-- Situaciones de Aprendizaje -->
+    <section id="situaciones" class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Metodología</span>
+                <h2 class="section-title">Cómo Diseñar una Situación de Aprendizaje</h2>
+                <p class="section-subtitle">Secuencia planificada de actividades con sentido, que permite al niño aplicar lo que sabe en un contexto real o significativo.</p>
             </div>
-            <div class="quiz-container">
-                <div class="question">
-                    <p>¿Qué caracteriza al diseño curricular base?</p>
-                    <div class="options">
-                        <label><input type="radio" name="q1" value="a"> Orientador</label>
-                        <label><input type="radio" name="q1" value="b"> Normativo</label>
-                        <label><input type="radio" name="q1" value="c"> Ambos</label>
+
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #4299e1, #3182ce);">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3>Temporalización</h3>
+                    <p>Cuánto tiempo dura la situación de aprendizaje. Debe permitir la profundización sin prisas, respetando los ritmos individuales.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #48bb78, #38a169);">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3>Espacios</h3>
+                    <p>Dónde se realiza: aula, patio, biblioteca, entorno natural. Todos los espacios son potencialmente educativos.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #ed8936, #dd6b20);">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Metodología</h3>
+                    <p>Cómo se trabaja: juego, experimentación, proyectos, talleres. Siempre desde el enfoque globalizador propio de la etapa.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #805ad5, #6b46c1);">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Agrupamiento</h3>
+                    <p>Individual, parejas, pequeño grupo o gran grupo. La diversidad de agrupamientos enriquece los aprendizajes sociales.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #38b2ac, #319795);">
+                        <i class="fas fa-toolbox"></i>
+                    </div>
+                    <h3>Recursos</h3>
+                    <p>Materiales manipulativos, digitales, humanos. Especial atención a la accesibilidad del material según principios DUA.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon" style="background: linear-gradient(135deg, #e53e3e, #c53030);">
+                        <i class="fas fa-clipboard-check"></i>
+                    </div>
+                    <h3>Evaluación</h3>
+                    <p>Qué criterios se usan, consultando las tablas curriculares por áreas. Sin valor acreditativo, pero como referente de progreso.</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem; background: linear-gradient(135deg, #ebf8ff, #e6fffa); border: 1px solid #90cdf4;">
+                <div style="display: flex; align-items: flex-start; gap: 1rem;">
+                    <div style="background: var(--primary); color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.25rem;">
+                        <i class="fas fa-utensils"></i>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary); margin-bottom: 0.5rem;">Ejemplo práctico: "El Restaurante de los Colores" (Aula de 2-3 años)</h4>
+                        <p style="color: #2c5282; margin: 0 0 1rem 0;">Los niños crean un restaurante ficticio clasificando alimentos por color y forma.</p>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1rem;">
+                            <span style="background: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; color: #c05621; font-weight: 600; border: 1px solid #fed7aa;">CA.3 Hábitos Saludables</span>
+                            <span style="background: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; color: #2c7a7b; font-weight: 600; border: 1px solid #b2f5ea;">DEE.1 Clasificación Lógica</span>
+                            <span style="background: white; padding: 0.25rem 0.75rem; border-radius: 50px; font-size: 0.8rem; color: #553c9a; font-weight: 600; border: 1px solid #d6bcfa;">CRR.1 Interacción Verbal</span>
+                        </div>
+                        <p style="color: #2c5282; margin: 0; font-size: 0.9rem;"><strong>Aplicación DUA:</strong> Pictogramas (representación visual), frutas reales (manipulación sensorial) y elección de roles (compromiso desde intereses).</p>
                     </div>
                 </div>
-                <button class="btn-primary" onclick="checkQuiz()">Comprobar</button>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- Arquitectura -->
+    <section id="arquitectura" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Estructura</span>
+                <h2 class="section-title">Arquitectura del Currículo</h2>
+                <p class="section-subtitle">El currículo funciona como una pirámide de interconexiones, no como elementos sueltos. La situación de aprendizaje es la herramienta que activa todo el sistema.</p>
+            </div>
+
+            <div class="pyramid">
+                <div class="pyramid-level pyramid-level-1" onclick="openModal('objetivos-modal')">
+                    <i class="fas fa-bullseye" style="margin-right: 0.5rem;"></i>
+                    Objetivos de Etapa
+                    <div style="font-size: 0.8rem; opacity: 0.8; font-weight: 400; margin-top: 0.25rem;">Meta final de la etapa (0-6 años)</div>
+                </div>
+                <div class="pyramid-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pyramid-level pyramid-level-2" onclick="openModal('competencias-modal')">
+                    <i class="fas fa-puzzle-piece" style="margin-right: 0.5rem;"></i>
+                    Competencias Clave
+                    <div style="font-size: 0.8rem; opacity: 0.8; font-weight: 400; margin-top: 0.25rem;">8 competencias transversales a las 3 áreas</div>
+                </div>
+                <div class="pyramid-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pyramid-level pyramid-level-3" onclick="openModal('especificas-modal')">
+                    <i class="fas fa-crosshairs" style="margin-right: 0.5rem;"></i>
+                    Competencias Específicas + Criterios
+                    <div style="font-size: 0.8rem; opacity: 0.8; font-weight: 400; margin-top: 0.25rem;">Concretas por área y ciclo</div>
+                </div>
+                <div class="pyramid-arrow"><i class="fas fa-arrow-down"></i></div>
+                <div class="pyramid-level pyramid-level-4" onclick="openModal('saberes-modal')">
+                    <i class="fas fa-book" style="margin-right: 0.5rem;"></i>
+                    Saberes Básicos
+                    <div style="font-size: 0.8rem; opacity: 0.8; font-weight: 400; margin-top: 0.25rem;">Conocimientos, destrezas y actitudes</div>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <p><i class="fas fa-lightbulb" style="margin-right: 0.5rem;"></i> <strong>La situación de aprendizaje activa todo:</strong> se seleccionan saberes básicos, se trabajan competencias específicas, se mide con criterios de evaluación y se contribuye al desarrollo de las competencias clave, apuntando siempre a los objetivos de etapa.</p>
+            </div>
+
+            <div class="cards-grid" style="margin-top: 2rem;">
+                <div class="card">
+                    <h3><i class="fas fa-link" style="color: var(--primary); margin-right: 0.5rem;"></i>Relación entre elementos</h3>
+                    <p>Los objetivos se conectan con las competencias clave. Estas se despliegan en competencias específicas de cada área. Los criterios de evaluación miden el desarrollo de estas competencias específicas. Los saberes básicos son los contenidos necesarios para alcanzarlas.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-child" style="color: var(--success); margin-right: 0.5rem;"></i>El niño en el centro</h3>
+                    <p>Todo el sistema curricular gira en torno al desarrollo integral del niño. No se trata de acumular contenidos aislados, sino de movilizar saberes para resolver situaciones significativas.</p>
+                </div>
+                <div class="card">
+                    <h3><i class="fas fa-infinity" style="color: var(--secondary); margin-right: 0.5rem;"></i>Carácter globalizador</h3>
+                    <p>Una misma situación de aprendizaje puede trabajar simultáneamente competencias de las tres áreas, reflejando el enfoque globalizador propio de la Educación Infantil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Marco Legal -->
+    <section id="legal" class="section" style="background: white;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Normativa</span>
+                <h2 class="section-title">Marco Legal de Referencia</h2>
+                <p class="section-subtitle">Fundamento normativo del currículo aragonés de Educación Infantil.</p>
+            </div>
+
+            <div class="legal-refs">
+                <h4><i class="fas fa-gavel" style="margin-right: 0.5rem;"></i>Normativa Estatal</h4>
+                <ul>
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong>LOMLOE</strong> — Ley Orgánica 3/2020, de 29 de diciembre, por la que se modifica la Ley Orgánica 2/2006, de 3 de mayo, de Educación.
+                            <br><span style="font-size: 0.85rem; color: var(--gray);">Establece el marco general del sistema educativo español.</span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong>Real Decreto 95/2022</strong> — Por el que se establece la ordenación y las enseñanzas mínimas de la Educación Infantil (BOE-A-2022-1654).
+                            <br><span style="font-size: 0.85rem; color: var(--gray);">Define objetivos, competencias clave, competencias específicas, criterios de evaluación y saberes básicos. <a href="https://www.boe.es/buscar/doc.php?id=BOE-A-2022-1654" target="_blank">Ver en BOE <i class="fas fa-external-link-alt" style="font-size: 0.7rem;"></i></a></span>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fas fa-file-alt"></i>
+                        <div>
+                            <strong>Recomendación del Consejo de la UE</strong> — De 22 de mayo de 2018, relativa a las competencias clave para el aprendizaje permanente.
+                            <br><span style="font-size: 0.85rem; color: var(--gray);">Marco europeo que adapta el currículo español.</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="legal-refs" style="margin-top: 1.5rem;">
+                <h4><i class="fas fa-landmark" style="margin-right: 0.5rem;"></i>Desarrollo Autonómico</h4>
+                <ul>
+                    <li>
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Gobierno de Aragón / Departamento de Educación</strong>
+                            <br><span style="font-size: 0.85rem; color: var(--gray);">Las administraciones educativas establecen el currículo autonómico, del que forman parte las enseñanzas mínimas estatales. Los centros educativos desarrollan y completan este currículo adaptándolo a su realidad socioeducativa (Art. 10 RD 95/2022).</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
-        <p>&copy; 2025 CFGS Educación Infantil | Tema 3 Completo [file:1]</p>
+        <div class="container">
+            <p style="margin-bottom: 0.5rem;"><strong>Guía de Estudio — Currículo Aragonés de Educación Infantil</strong></p>
+            <p>Basado en el Real Decreto 95/2022 y la normativa vigente. Contenido orientado a la formación del profesorado.</p>
+            <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">
+                <i class="fas fa-info-circle"></i> Esta guía es una herramienta de estudio. Para la normativa oficial actualizada, consulte siempre el BOE y la normativa autonómica.
+            </p>
+        </div>
     </footer>
 
-    <script src="script.js"></script>
+    <!-- MODALS -->
+
+    <!-- Modal DUA -->
+    <div class="modal-overlay" id="dua-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">Diseño Universal para el Aprendizaje (DUA)</h3>
+                    <p class="modal-subtitle">Art. 10.3 RD 95/2022 — Principio de inclusión educativa</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('dua-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>La LOMLOE (Ley Orgánica 3/2020) es la primera ley educativa española que incorpora el DUA de forma explícita y obligatoria. El artículo 4.3 establece la necesidad de proporcionar al alumnado <strong>múltiples medios de representación, de acción y expresión y de formas de implicación</strong>.</p>
+                <p>En Educación Infantil, los 3 principios DUA se aplican principalmente a través del <strong>juego, la rutina y la exploración sensorial</strong>.</p>
+                <ul>
+                    <li><strong>Representación (Pautas 1-3):</strong> El mismo contenido llega a través de tres canales sensoriales distintos. Ejemplo: un cuento se lee en voz alta, se muestra en pictogramas y se representa con títeres.</li>
+                    <li><strong>Acción y Expresión (Pautas 4-6):</strong> Para demostrar comprensión del ciclo del agua, los niños pueden dibujar, modelar con plastilina o actuar "como si fueran una gota".</li>
+                    <li><strong>Implicación (Pautas 7-9):</strong> Los rincones de juego libre permiten que el alumno elija dónde y cómo aprende, activando su motivación intrínseca.</li>
+                </ul>
+                <p><strong>Consecuencia práctica:</strong> El profesorado debe basar su práctica educativa en el DUA, adaptándola a las necesidades colectivas e individuales del alumnado sin necesidad de diseñar adaptaciones curriculares individuales posteriores.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Competencias Clave General -->
+    <div class="modal-overlay" id="competencias-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">Las 8 Competencias Clave</h3>
+                    <p class="modal-subtitle">Anexo I del RD 95/2022 — Recomendación UE 2018</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('competencias-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Las competencias clave son desempeños imprescindibles para que el alumnado progrese con garantías de éxito en su itinerario formativo. <strong>No existe jerarquía entre ellas</strong> y tienen carácter transversal.</p>
+                <p>Se han incorporado destrezas esenciales como el <strong>pensamiento crítico, la resolución de problemas, el trabajo en equipo, la creatividad y las destrezas interculturales</strong>.</p>
+                <p>En Educación Infantil se inicia su desarrollo desde los primeros momentos de escolarización, a través de las tres áreas de aprendizaje de forma globalizada.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modales individuales de competencias -->
+    <div class="modal-overlay" id="ccl-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CCL — Comunicación Lingüística</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('ccl-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Se potencian intercambios comunicativos respetuosos con otros niños y adultos, dotados de intencionalidad y contenidos progresivamente elaborados.</p>
+                <p>La <strong>oralidad</strong> tiene un papel destacado: es el principal instrumento para la comunicación, expresión y regulación de la conducta, y el vehículo para el primer acercamiento a la cultura literaria a través de rimas, retahílas, adivinanzas y cuentos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cp-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CP — Competencia Plurilingüe</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('cp-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Se inicia el contacto con lenguas y culturas distintas de la familiar. Se fomentan actitudes de <strong>respeto y aprecio por la diversidad lingüística y cultural</strong>, así como el interés por el enriquecimiento del repertorio lingüístico.</p>
+                <p>Se promueven el diálogo y la convivencia democrática desde edades tempranas.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="steam-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">STEAM — Matemática, Ciencia, Tecnología e Ingeniería</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('steam-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Los niños se inician en destrezas lógico-matemáticas y dan los primeros pasos hacia el pensamiento científico a través del <strong>juego, la manipulación y experimentos sencillos</strong>.</p>
+                <p>Se estimula la curiosidad por entender la realidad próxima, respetando los ritmos de aprendizaje. Se observa, clasifica, cuantifica, construye y comprueba fenómenos del entorno natural.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cd-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CD — Competencia Digital</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('cd-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Se inicia el proceso de <strong>alfabetización digital</strong>: acceso a la información, comunicación y creación de contenidos a través de medios digitales.</p>
+                <p>El uso saludable y responsable de herramientas digitales puede aumentar la motivación, comprensión y progreso en la adquisición de aprendizajes.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cpsaa-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CPSAA — Personal, Social y Aprender a Aprender</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('cpsaa-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Reconocimiento, expresión y control progresivo de emociones propias. Identificación de emociones ajenas y desarrollo de empatía.</p>
+                <p>Descubrimiento de un entorno diferente al familiar, experimentando la satisfacción de <strong>aprender en sociedad</strong>, compartiendo experiencias y cooperando constructivamente.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="cc-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CC — Competencia Ciudadana</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('cc-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Se ofrecen modelos positivos basados en valores de <strong>respeto, equidad, igualdad, inclusión y convivencia</strong>. Pautas para la resolución pacífica y dialogada de conflictos.</p>
+                <p>Compromiso activo con la sostenibilidad, cuidado de animales y prevención de conductas discriminatorias.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="ce-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CE — Competencia Emprendedora</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('ce-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Se estimulan la <strong>curiosidad, iniciativa, imaginación y disposición a indagar y crear</strong> mediante el juego, actividades libres y proyectos cooperativos.</p>
+                <p>Se asientan las bases del pensamiento estratégico y creativo, la resolución de problemas y el análisis crítico desde las primeras edades.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="ccec-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">CCEC — Conciencia y Expresión Culturales</h3>
+                    <p class="modal-subtitle">Competencia clave en Educación Infantil</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('ccec-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Expresión creativa de ideas, sentimientos y emociones a través de <strong>diversos lenguajes y formas artísticas</strong>.</p>
+                <p>Desarrollo de la conciencia cultural y sentido de pertenencia a través del acercamiento a manifestaciones culturales y artísticas.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Objetivos -->
+    <div class="modal-overlay" id="objetivos-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">Objetivos Generales de la Etapa</h3>
+                    <p class="modal-subtitle">Artículo 8 del RD 95/2022</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('objetivos-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Los objetivos se agrupan en dos grandes dimensiones del desarrollo integral:</p>
+                <h4 style="color: var(--primary); margin: 1rem 0 0.5rem;">Desarrollo Personal</h4>
+                <ul>
+                    <li>Conocer y respetar su propio cuerpo y el de los demás.</li>
+                    <li>Ganar autonomía en actividades cotidianas.</li>
+                    <li>Reconocer y gestionar emociones.</li>
+                    <li>Desarrollar habilidades motrices y expresivas.</li>
+                </ul>
+                <h4 style="color: var(--primary); margin: 1rem 0 0.5rem;">Desarrollo Social y Cognitivo</h4>
+                <ul>
+                    <li>Explorar el entorno natural, familiar y social.</li>
+                    <li>Relacionarse con igualdad, empatía y resolución pacífica de conflictos.</li>
+                    <li>Comunicarse a través de múltiples lenguajes.</li>
+                    <li>Iniciarse en la lógico-matemática y la lectoescritura.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Específicas -->
+    <div class="modal-overlay" id="especificas-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">Competencias Específicas y Criterios</h3>
+                    <p class="modal-subtitle">Anexo II del RD 95/2022</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('especificas-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Las competencias específicas constituyen el <strong>elemento de conexión</strong> entre las competencias clave y los saberes básicos de cada área.</p>
+                <p>Son comunes para los dos ciclos de la etapa (0-3 y 3-6), pero su desarrollo se adapta a las características evolutivas de cada ciclo:</p>
+                <ul>
+                    <li><strong>Primer ciclo (0-3):</strong> Especial relevancia al conocimiento del cuerpo, individuación, construcción de relaciones y uso de lenguajes. Respeto a los ritmos individuales.</li>
+                    <li><strong>Segundo ciclo (3-6):</strong> Se amplían y refuerzan los aprendizajes previos. Se intensifica la adquisición de destrezas para "aprender a ser" y "aprender a hacer".</li>
+                </ul>
+                <p>Los <strong>criterios de evaluación</strong> no tienen valor acreditativo, pero sirven como referentes para identificar el ritmo y las características del progreso.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Saberes -->
+    <div class="modal-overlay" id="saberes-modal">
+        <div class="modal">
+            <div class="modal-header">
+                <div>
+                    <h3 class="modal-title">Saberes Básicos</h3>
+                    <p class="modal-subtitle">Contenidos propios de cada área</p>
+                </div>
+                <button class="modal-close" onclick="closeModal('saberes-modal')"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <p>Los saberes básicos son los <strong>conocimientos, destrezas y actitudes</strong> propios de un área cuyo aprendizaje es necesario para la adquisición de las competencias específicas.</p>
+                <p>Se organizan en bloques temáticos dentro de cada área y se establecen para cada ciclo. En el <strong>primer ciclo tienen carácter orientativo</strong>; en el <strong>segundo ciclo conforman las enseñanzas mínimas</strong> junto con los objetivos de etapa.</p>
+                <p>Ejemplos de saberes básicos:</p>
+                <ul>
+                    <li><strong>CA:</strong> El cuerpo y su control, desarrollo afectivo, hábitos saludables, convivencia.</li>
+                    <li><strong>DEE:</strong> Exploración sensorial, pensamiento lógico-matemático, método científico, sostenibilidad.</li>
+                    <li><strong>CRR:</strong> Lenguaje verbal y no verbal, expresión artística, aproximación a la lectoescritura, plurilingüismo.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Accordion
+        function toggleAccordion(button) {
+            const body = button.nextElementSibling;
+            const isActive = button.classList.contains('active');
+            
+            // Close all
+            document.querySelectorAll('.accordion-header').forEach(h => h.classList.remove('active'));
+            document.querySelectorAll('.accordion-body').forEach(b => b.classList.remove('active'));
+            
+            // Open clicked if wasn't active
+            if (!isActive) {
+                button.classList.add('active');
+                body.classList.add('active');
+            }
+        }
+
+        // Tabs
+        function switchTab(button, tabId) {
+            const container = button.closest('.accordion-content');
+            container.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            container.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            
+            button.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // Modals
+        function openModal(modalId) {
+            document.getElementById(modalId).classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on overlay click
+        document.querySelectorAll('.modal-overlay').forEach(overlay => {
+            overlay.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    this.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                document.querySelectorAll('.modal-overlay.active').forEach(modal => {
+                    modal.classList.remove('active');
+                });
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Navigation
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Update active button
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+        }
+
+        // Update nav on scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('onclick').includes(current)) {
+                    btn.classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
