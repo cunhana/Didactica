@@ -1,0 +1,2152 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historia de la Educación Infantil - Guía Completa</title>
+    <meta name="description" content="Guía completa sobre la historia, teorías y metodologías de la educación infantil. Desde los precursores hasta los enfoques actuales.">
+    <style>
+        :root {
+            --color-primary: #FF6B6B;
+            --color-secondary: #4ECDC4;
+            --color-accent: #FFE66D;
+            --color-purple: #A855F7;
+            --color-pink: #EC4899;
+            --color-orange: #F97316;
+            --color-green: #22C55E;
+            --color-blue: #3B82F6;
+            --color-indigo: #6366F1;
+            --gradient-rainbow: linear-gradient(135deg, #FF6B6B, #FFE66D, #4ECDC4, #A855F7, #EC4899);
+            --shadow-soft: 0 10px 40px rgba(0,0,0,0.1);
+            --shadow-hover: 0 20px 60px rgba(0,0,0,0.15);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: #334155;
+            background: #FAFBFC;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gradient-rainbow);
+            border-radius: 5px;
+        }
+
+        /* Navegación */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 1rem 2rem;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled {
+            padding: 0.5rem 2rem;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient-rainbow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #475569;
+            font-weight: 600;
+            font-size: 0.95rem;
+            position: relative;
+            padding: 0.5rem 0;
+            transition: var(--transition);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--gradient-rainbow);
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--color-purple);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #f5576c 75%, #ffd93d 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            overflow: hidden;
+            padding: 6rem 2rem 4rem;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            max-width: 900px;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(10px);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            color: white;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.3);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            color: white;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.2);
+        }
+
+        .hero h1 span {
+            display: block;
+            background: linear-gradient(to right, #FFE66D, #fff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: rgba(255,255,255,0.95);
+            max-width: 700px;
+            margin: 0 auto 2.5rem;
+            line-height: 1.8;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            cursor: pointer;
+            border: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .btn-primary {
+            background: white;
+            color: var(--color-purple);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid rgba(255,255,255,0.4);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Floating shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(40px);
+            opacity: 0.6;
+            animation: shapeFloat 20s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #FF6B6B;
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 200px;
+            height: 200px;
+            background: #4ECDC4;
+            bottom: -50px;
+            left: -50px;
+            animation-delay: -5s;
+        }
+
+        .shape-3 {
+            width: 150px;
+            height: 150px;
+            background: #FFE66D;
+            top: 50%;
+            left: 20%;
+            animation-delay: -10s;
+        }
+
+        @keyframes shapeFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            33% { transform: translate(30px, -30px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+        }
+
+        /* Sections General */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 0.4rem 1.2rem;
+            background: var(--gradient-rainbow);
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border-radius: 50px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            color: #1e293b;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .section-subtitle {
+            font-size: 1.2rem;
+            color: #64748b;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Cards Grid */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2.5rem;
+            box-shadow: var(--shadow-soft);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-rainbow);
+            transform: scaleX(0);
+            transition: var(--transition);
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            font-size: 1.8rem;
+        }
+
+        .card-icon.red { background: #fef2f2; color: #ef4444; }
+        .card-icon.blue { background: #eff6ff; color: #3b82f6; }
+        .card-icon.green { background: #f0fdf4; color: #22c55e; }
+        .card-icon.purple { background: #faf5ff; color: #a855f7; }
+        .card-icon.orange { background: #fff7ed; color: #f97316; }
+        .card-icon.pink { background: #fdf2f8; color: #ec4899; }
+
+        .card h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: #64748b;
+            line-height: 1.7;
+        }
+
+        .card-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+            color: var(--color-purple);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .card-link:hover {
+            gap: 1rem;
+        }
+
+        /* Accordion */
+        .accordion {
+            margin-top: 2rem;
+        }
+
+        .accordion-item {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: var(--transition);
+        }
+
+        .accordion-item:hover {
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .accordion-header {
+            padding: 1.5rem 2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1e293b;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: #f8fafc;
+        }
+
+        .accordion-header.active {
+            background: linear-gradient(135deg, #f0f9ff, #faf5ff);
+            color: var(--color-purple);
+        }
+
+        .accordion-icon {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--gradient-rainbow);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            flex-shrink: 0;
+        }
+
+        .accordion-header.active .accordion-icon {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease-out, padding 0.4s ease;
+        }
+
+        .accordion-content.active {
+            max-height: 2000px;
+            padding: 0 2rem 2rem;
+        }
+
+        .accordion-content p, .accordion-content ul {
+            color: #475569;
+            line-height: 1.8;
+        }
+
+        .accordion-content ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        .accordion-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 100%;
+            background: var(--gradient-rainbow);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding-right: 50%;
+            position: relative;
+            margin-bottom: 3rem;
+        }
+
+        .timeline-item:nth-child(even) {
+            justify-content: flex-start;
+            padding-right: 0;
+            padding-left: 50%;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 24px;
+            height: 24px;
+            background: white;
+            border: 4px solid var(--color-purple);
+            border-radius: 50%;
+            z-index: 2;
+            box-shadow: 0 0 0 6px rgba(168, 85, 247, 0.2);
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            max-width: 450px;
+            margin: 0 2rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+        }
+
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 0;
+            height: 0;
+            border: 10px solid transparent;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -20px;
+            border-left-color: white;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -20px;
+            border-right-color: white;
+        }
+
+        .timeline-year {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            background: var(--gradient-rainbow);
+            color: white;
+            font-weight: 700;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #64748b;
+            font-size: 0.95rem;
+            line-height: 1.7;
+        }
+
+        /* Table Styles */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+        }
+
+        th {
+            background: var(--gradient-rainbow);
+            color: white;
+            padding: 1.2rem 1.5rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+
+        td {
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            color: #475569;
+        }
+
+        tr:hover td {
+            background: #f8fafc;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #faf5ff, #f0f9ff);
+            border-left: 5px solid var(--color-purple);
+            padding: 2rem;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 2rem 0;
+            position: relative;
+        }
+
+        .highlight-box::before {
+            content: '💡';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: white;
+            padding: 0.5rem;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .highlight-box h4 {
+            color: var(--color-purple);
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Quote */
+        blockquote {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            margin: 2rem 0;
+            position: relative;
+            font-style: italic;
+            color: #475569;
+            font-size: 1.1rem;
+            border: 1px solid #e2e8f0;
+        }
+
+        blockquote::before {
+            content: '"';
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            font-size: 5rem;
+            color: var(--color-purple);
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(135deg, #1e293b, #334155);
+            color: white;
+            padding: 4rem 2rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--color-accent);
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section a {
+            color: #94a3b8;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 3rem;
+            margin-top: 3rem;
+            border-top: 1px solid #475569;
+            color: #94a3b8;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item,
+            .timeline-item:nth-child(even) {
+                justify-content: flex-start;
+                padding-left: 60px;
+                padding-right: 0;
+            }
+
+            .timeline-dot {
+                left: 20px;
+                transform: translateX(-50%);
+            }
+
+            .timeline-content::before {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Section backgrounds */
+        .bg-light {
+            background: #f8fafc;
+            border-radius: 30px;
+            margin: 2rem auto;
+            max-width: 1400px;
+        }
+
+        .bg-white {
+            background: white;
+        }
+
+        /* Numbered list styled */
+        .numbered-list {
+            counter-reset: item;
+            list-style: none;
+            padding: 0;
+        }
+
+        .numbered-list li {
+            counter-increment: item;
+            position: relative;
+            padding-left: 3.5rem;
+            margin-bottom: 1.5rem;
+            padding-top: 0.5rem;
+        }
+
+        .numbered-list li::before {
+            content: counter(item);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: var(--gradient-rainbow);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1rem;
+        }
+
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.25rem;
+        }
+
+        .tag-red { background: #fef2f2; color: #ef4444; }
+        .tag-blue { background: #eff6ff; color: #3b82f6; }
+        .tag-green { background: #f0fdf4; color: #22c55e; }
+        .tag-purple { background: #faf5ff; color: #a855f7; }
+        .tag-orange { background: #fff7ed; color: #f97316; }
+
+        /* Progress bar */
+        .progress-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            z-index: 1001;
+            background: transparent;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: var(--gradient-rainbow);
+            width: 0%;
+            transition: width 0.1s;
+        }
+
+        /* Back to top */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-rainbow);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            z-index: 999;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+        }
+
+        /* Two column layout */
+        .two-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            align-items: start;
+        }
+
+        /* Image placeholder with gradient */
+        .img-placeholder {
+            width: 100%;
+            height: 250px;
+            background: var(--gradient-rainbow);
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+            margin: 1rem 0;
+        }
+
+        /* SVG Icons inline */
+        .icon-svg {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Progress Bar -->
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="20" cy="20" r="18" stroke="url(#grad1)" stroke-width="3" fill="none"/>
+                    <path d="M12 20C12 15.5817 15.5817 12 20 12C24.4183 12 28 15.5817 28 20" stroke="url(#grad1)" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="20" cy="20" r="4" fill="url(#grad1)"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#FF6B6B"/>
+                            <stop offset="50%" style="stop-color:#4ECDC4"/>
+                            <stop offset="100%" style="stop-color:#A855F7"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                EduInfantil
+            </div>
+            <ul class="nav-links">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#conceptos">Conceptos</a></li>
+                <li><a href="#historia">Historia</a></li>
+                <li><a href="#teorias">Teorías</a></li>
+                <li><a href="#metodologias">Metodologías</a></li>
+                <li><a href="#actualidad">Actualidad</a></li>
+            </ul>
+            <button class="mobile-menu-btn" aria-label="Menú">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="3" y1="6" x2="21" y2="6"/>
+                    <line x1="3" y1="12" x2="21" y2="12"/>
+                    <line x1="3" y1="18" x2="21" y2="18"/>
+                </svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>📚</span> Guía de Estudio Completa
+            </div>
+            <h1>
+                Historia de la
+                <span>Educación Infantil</span>
+            </h1>
+            <p>
+                Un recorrido completo desde los primeros pensadores de la Antigüedad hasta las metodologías más innovadoras del siglo XXI. Descubre cómo ha evolucionado la forma de entender, cuidar y educar a los niños y niñas de 0 a 6 años.
+            </p>
+            <div class="hero-buttons">
+                <a href="#conceptos" class="btn btn-primary">
+                    Comenzar el viaje
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M5 12h14M12 5l7 7-7 7"/>
+                    </svg>
+                </a>
+                <a href="#resumen" class="btn btn-secondary">
+                    Ver resumen ejecutivo
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Índice de Contenidos -->
+    <section id="indice" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">Navegación</span>
+            <h2 class="section-title">Índice de Contenidos</h2>
+            <p class="section-subtitle">Explora cada sección del tema a tu propio ritmo</p>
+        </div>
+        
+        <div class="cards-grid">
+            <a href="#conceptos" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon red">🎯</div>
+                <h3>1. Conceptos Fundamentales</h3>
+                <p>Qué es la educación, tipos (formal, no formal e informal) y el carácter específico de la educación infantil.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+            
+            <a href="#historia" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon blue">🏛️</div>
+                <h3>2. Historia y Precursores</h3>
+                <p>Desde Aristóteles hasta la Escuela Nueva: Rousseau, Pestalozzi, Fröebel, Montessori, Decroly y más.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+            
+            <a href="#teorias" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon green">🧠</div>
+                <h3>3. Teorías del Aprendizaje</h3>
+                <p>Conductismo, cognitivismo, socio-histórico, psicoanálisis y Gestalt. Piaget, Vygotsky, Skinner y otros.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+            
+            <a href="#actualidad" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon purple">🌟</div>
+                <h3>4. Concepciones Actuales</h3>
+                <p>Modelo ecológico, conectivismo y aportaciones metodológicas: Pikler, Reggio Emilia, Waldorf.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+            
+            <a href="#espana" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon orange">🇪🇸</div>
+                <h3>5. La Escuela Nueva en España</h3>
+                <p>Montesino, Giner de los Ríos, Ferrer Guardia y Marta Mata: pioneros de la educación en nuestro país.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+            
+            <a href="#simplificado" class="card" style="text-decoration: none; color: inherit;">
+                <div class="card-icon pink">✨</div>
+                <h3>6. Versión Simplificada</h3>
+                <p>Todo el contenido en lenguaje claro y accesible, ideal para repasar los conceptos esenciales.</p>
+                <span class="card-link">Explorar →</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Resumen Ejecutivo -->
+    <section id="resumen" class="bg-light fade-in">
+        <div class="section-header">
+            <span class="section-tag">Resumen</span>
+            <h2 class="section-title">Resumen Ejecutivo</h2>
+        </div>
+        
+        <blockquote>
+            Este tema recorre la historia y la evolución de la educación infantil desde sus primeros pensadores en la Antigüedad hasta las metodologías más innovadoras del siglo XXI. Se analizan los principales autores y corrientes pedagógicas que han dado forma a cómo entendemos hoy la educación de 0 a 6 años: desde los precursores ilustrados como Rousseau y Pestalozzi, pasando por el movimiento de la Escuela Nueva con figuras como Montessori y Decroly, hasta las teorías psicológicas del aprendizaje (Piaget, Vygotsky, Skinner) y los enfoques metodológicos actuales como Pikler, Reggio Emilia y Waldorf. <strong>El hilo conductor es siempre el mismo: el niño o la niña como centro del proceso educativo.</strong>
+        </blockquote>
+    </section>
+
+    <!-- SECCIÓN 1: CONCEPTOS FUNDAMENTALES -->
+    <section id="conceptos" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">Bloque 1</span>
+            <h2 class="section-title">Modelos Actuales de Atención a la Infancia</h2>
+            <p class="section-subtitle">Conceptos esenciales para comprender la educación infantil</p>
+        </div>
+
+        <div class="accordion">
+            <!-- ¿Qué es la educación? -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>📖 ¿Qué es la educación?</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>La palabra <strong>"educación"</strong> viene del latín <em>educare</em>, que significa <strong>conducir o guiar</strong>. La educación se define como un <strong>proceso de doble sentido</strong>, es decir, de enseñanza y aprendizaje al mismo tiempo, a través del cual se transmiten conocimientos, valores, costumbres y formas de actuar.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Educación Infantil</h4>
+                        <p>En educación infantil, este concepto incluye la <strong>crianza, la enseñanza y la orientación</strong> que se da a los niños y niñas en sus primeros años de vida. No se trata solo de transmitir conocimientos, sino de acompañar el desarrollo integral de cada pequeño.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tipos de Educación -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎓 Tipos de Educación (Clasificación de Trilla)</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Siguiendo la clasificación de <strong>Trilla</strong>, existen tres tipos fundamentales de educación:</p>
+                    
+                    <div class="cards-grid" style="margin-top: 1.5rem;">
+                        <div class="card" style="border-left: 4px solid var(--color-green);">
+                            <div class="card-icon green">🌱</div>
+                            <h3>Educación Informal</h3>
+                            <p>Ocurre durante <strong>toda la vida</strong> a través de las experiencias diarias y el contacto con el entorno. <strong>No es planificada</strong> ni intencionada. Aprendemos hablando, jugando, conviviendo en familia, explorando la calle...</p>
+                            <div style="margin-top: 1rem;">
+                                <span class="tag tag-green">Natural</span>
+                                <span class="tag tag-green">Espontáneo</span>
+                                <span class="tag tag-green">Continuo</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid var(--color-blue);">
+                            <div class="card-icon blue">🎯</div>
+                            <h3>Educación No Formal</h3>
+                            <p>Actividades <strong>organizadas y sistemáticas</strong> fuera del sistema escolar oficial, dirigidas a grupos específicos. Incluye talleres, ludotecas, actividades extraescolares, cursos de verano...</p>
+                            <div style="margin-top: 1rem;">
+                                <span class="tag tag-blue">Organizado</span>
+                                <span class="tag tag-blue">Flexible</span>
+                                <span class="tag tag-blue">Voluntario</span>
+                            </div>
+                        </div>
+                        
+                        <div class="card" style="border-left: 4px solid var(--color-purple);">
+                            <div class="card-icon purple">🏫</div>
+                            <h3>Educación Formal</h3>
+                            <p>Enseñanza <strong>reglada, estructurada y reconocida por el Estado</strong>, que otorga titulaciones oficiales. Sigue un currículo establecido y se desarrolla en centros educativos.</p>
+                            <div style="margin-top: 1rem;">
+                                <span class="tag tag-purple">Reglado</span>
+                                <span class="tag tag-purple">Estructurado</span>
+                                <span class="tag tag-purple">Titulación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Carácter de la Educación Infantil -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>👶 Carácter de la Educación Infantil</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>La educación infantil tiene un <strong>carácter propio y diferenciado</strong> respecto a la educación del adulto, ya que se adapta a las características y necesidades específicas de cada niño o niña.</p>
+                    
+                    <div class="highlight-box">
+                        <h4>Formación Integral</h4>
+                        <p>El enfoque actual apuesta por la <strong>formación integral</strong>, atendiendo a todos los ámbitos del desarrollo:</p>
+                        <ul style="margin-top: 0.5rem;">
+                            <li>🧠 <strong>Cognitivo</strong> - Pensamiento y aprendizaje</li>
+                            <li>❤️ <strong>Afectivo</strong> - Emociones y sentimientos</li>
+                            <li>🏃 <strong>Motor</strong> - Desarrollo físico y psicomotricidad</li>
+                            <li>🤝 <strong>Social y relacional</strong> - Interacción con otros</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="highlight-box" style="border-left-color: var(--color-orange); background: linear-gradient(135deg, #fff7ed, #fefce8);">
+                        <h4 style="color: var(--color-orange);">DUA - Diseño Universal de Aprendizaje</h4>
+                        <p>Se incluye el <strong>DUA (Diseño Universal de Aprendizaje)</strong>, que busca que <strong>todos los niños y niñas tengan acceso a la educación</strong> independientemente de sus capacidades. Es un enfoque inclusivo que elimina barreras desde el diseño inicial.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 2: HISTORIA Y PRECURSORES -->
+    <section id="historia" class="bg-light fade-in">
+        <div class="section-header">
+            <span class="section-tag">Bloque 2</span>
+            <h2 class="section-title">Teorías Influyentes en la Educación Infantil</h2>
+            <p class="section-subtitle">De la Antigüedad a la Escuela Nueva: los pensadores que cambiaron la educación</p>
+        </div>
+
+        <h3 style="text-align: center; margin-bottom: 3rem; color: #1e293b; font-size: 1.5rem;">📜 Precedentes Históricos</h3>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">Grecia Antigua</span>
+                    <h3>Aristóteles</h3>
+                    <p>Defendía que la <strong>educación era fundamental para la formación humana</strong>. Consideraba que la educación debía adaptarse a las etapas del desarrollo y que el hábito era clave en la formación del carácter.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">Roma</span>
+                    <h3>Quintiliano</h3>
+                    <p>Subrayó la importancia de los <strong>cuidados desde los primeros meses de vida</strong>. En su obra "Institución Oratoria", defendió que la educación debe ser amable, adaptada a la edad y que el niño aprende mejor cuando está contento.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <span class="timeline-year">Siglo XVII</span>
+                    <h3>Comenius (Jan Amos Komenský)</h3>
+                    <p>Propuso que la educación debe <strong>comenzar en el hogar</strong>, en la llamada <strong>"escuela materna"</strong>. Fue pionero en defender la educación universal, la enseñanza en la lengua materna y el aprendizaje a través de los sentidos.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 4rem 0 3rem; color: #1e293b; font-size: 1.5rem;">🌟 Precursores de la Escuela Nueva</h3>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Autor</th>
+                        <th>País / Época</th>
+                        <th>Aportación Principal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Jean-Jacques Rousseau</strong></td>
+                        <td>Suiza, Ilustración</td>
+                        <td>Respetar la <strong>naturaleza del niño</strong>; aprendizaje por observación y manipulación libre. "Emilio" es su obra fundamental.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Johann Heinrich Pestalozzi</strong></td>
+                        <td>Suiza, Ilustración</td>
+                        <td>Aprendizaje a través de los <strong>sentidos</strong>; enseñanza individualizada; precursor de la <strong>escuela pública</strong>. Cabeza, corazón y manos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Friedrich Fröebel</strong></td>
+                        <td>Alemania, s. XVIII-XIX</td>
+                        <td>Creador del concepto de <strong>Kindergarten</strong> (jardín de infancia) para niños de 2 a 7 años. Los juegos y regalos como material educativo.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="text-align: center; margin: 4rem 0 3rem; color: #1e293b; font-size: 1.5rem;">🚀 Movimiento de la Escuela Nueva (s. XIX-XX)</h3>
+        
+        <div class="highlight-box">
+            <h4>Revolución Pedagógica</h4>
+            <p>Este movimiento supuso una <strong>revolución pedagógica</strong>: puso al niño o niña en el centro, fomentó su actividad y promovió una educación personalizada. Sus objetivos eran:</p>
+            <ul>
+                <li>Desarrollar las funciones <strong>intelectuales y morales</strong></li>
+                <li>Estimular el <strong>interés del alumnado</strong></li>
+                <li>Atender sus <strong>necesidades individuales</strong></li>
+            </ul>
+        </div>
+
+        <div class="accordion" style="margin-top: 2rem;">
+            <!-- Hermanas Agazzi -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏠 Hermanas Agazzi (Rosa y Carolina)</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Fundaron la <strong>Casa Bambini de Mompiano</strong></li>
+                        <li>Su método: crear un <strong>ambiente escolar cálido, parecido al hogar</strong></li>
+                        <li>Usaban el <strong>"museo didáctico"</strong>: colecciones de objetos sencillos y atractivos para estimular el juego y los sentidos</li>
+                        <li>Importancia del <strong>orden, la limpieza y la belleza</strong> en el entorno</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- María Montessori -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>👩‍⚕️ María Montessori</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>Creó la <strong><em>Casa dei Bambini</em></strong>, origen del método Montessori</li>
+                        <li>Todo gira en torno al <strong>niño/a y su autoeducación</strong></li>
+                        <li>El entorno debe estar <strong>preparado</strong> con solo los materiales necesarios</li>
+                        <li>El niño/a <strong>elige libremente</strong> sus actividades en ese ambiente</li>
+                        <li>La maestra <strong>observa, guía y facilita</strong>, sin imponer</li>
+                        <li>Períodos sensibles, materiales autocorrectivos y desarrollo de la independencia</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Ovide Decroly -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🔬 Ovide Decroly</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>El niño aprende <strong>lo que le interesa</strong>, y todo interés nace de una necesidad</li>
+                        <li>Creó los <strong>Centros de Interés</strong>: desde un tema concreto se trabajan todas las áreas</li>
+                        <li>Su principio de <strong>globalización</strong> plantea que el conocimiento debe presentarse de forma natural y desde múltiples perspectivas</li>
+                        <li>Observación, interés, expresión y globalización como etapas del aprendizaje</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Célestin Freinet -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🛠️ Célestin Freinet</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li>La educación es un <strong>elemento de socialización</strong></li>
+                        <li>Aprendizaje por <strong>ensayo-error</strong>, centrado en la acción</li>
+                        <li>Creó el <strong>método por talleres</strong>: aprender a través de la experiencia y la colaboración</li>
+                        <li>Sus principios: <strong>expresión libre, cooperación, relación con el entorno, evaluación continua</strong></li>
+                        <li>Uso de la imprenta escolar como herramienta de aprendizaje</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Otros autores -->
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>✨ Otros Autores Relevantes</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="two-columns">
+                        <div>
+                            <h4 style="color: var(--color-purple); margin-bottom: 0.5rem;">Adolphe Ferrière</h4>
+                            <p>Aprendizaje activo en un <strong>ambiente dinámico</strong>. Defensor de la Escuela Nueva y la educación personalizada.</p>
+                        </div>
+                        <div>
+                            <h4 style="color: var(--color-orange); margin-bottom: 0.5rem;">William Heard Kilpatrick</h4>
+                            <p>Método de aprendizaje basado en <strong>proyectos</strong>: activo, interdisciplinar y colaborativo. El método de proyectos como organizador del currículo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN: ESCUELA NUEVA EN ESPAÑA -->
+    <section id="espana" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">Bloque 2b</span>
+            <h2 class="section-title">La Escuela Nueva en España</h2>
+            <p class="section-subtitle">Pioneros y referentes de la educación infantil en nuestro país</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon red">🏫</div>
+                <h3>Pablo Montesino</h3>
+                <p>Fundó la <strong>primera Escuela de Párvulos en España (1838)</strong>. Pionero indiscutible de la Educación Infantil en nuestro país, abriendo el camino para la escolarización de los más pequeños.</p>
+                <span class="tag tag-red">1838</span>
+                <span class="tag tag-red">Pionero</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon blue">📖</div>
+                <h3>Francisco Giner de los Ríos</h3>
+                <p>Fundó la <strong>ILE (Institución Libre de Enseñanza)</strong>. Promovió la <strong>igualdad de sexos</strong> y la formación del profesorado. Defendió una educación laica, científica y humanista.</p>
+                <span class="tag tag-blue">ILE</span>
+                <span class="tag tag-blue">Laicismo</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon green">⚖️</div>
+                <h3>Francesc Ferrer Guardia</h3>
+                <p>Difundió la <strong>educación racionalista, laica, científica</strong> y el desarrollo integral de la persona. Fundó la Escuela Moderna, un modelo de educación libre y progresista.</p>
+                <span class="tag tag-green">Escuela Moderna</span>
+                <span class="tag tag-green">Libertad</span>
+            </div>
+
+            <div class="card">
+                <div class="card-icon purple">🌹</div>
+                <h3>Marta Mata (1926-2006)</h3>
+                <p>Fundó la <strong>Escola Rosa Sensat</strong>. Luchó toda su vida por una <strong>escuela pública de calidad, accesible e igualitaria</strong>. Referente de la pedagogía activa en Cataluña y España.</p>
+                <span class="tag tag-purple">Rosa Sensat</span>
+                <span class="tag tag-purple">Pedagogía Activa</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 3: TEORÍAS DEL APRENDIZAJE -->
+    <section id="teorias" class="bg-light fade-in">
+        <div class="section-header">
+            <span class="section-tag">Bloque 3</span>
+            <h2 class="section-title">Teorías sobre el Proceso de Enseñanza-Aprendizaje</h2>
+            <p class="section-subtitle">Las grandes corrientes psicológicas que explican cómo aprendemos</p>
+        </div>
+
+        <!-- CONDUCTISMO -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-red); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #fef2f2; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">🔁</span>
+                Teorías Conductistas
+            </h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">El aprendizaje se produce por la <strong>relación entre estímulos y respuestas</strong>. La persona aprende asociando su comportamiento con lo que ocurre en su entorno.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🐕 Ivan Pavlov - Condicionamiento Clásico</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Un <strong>estímulo neutro</strong> puede llegar a provocar una <strong>respuesta automática</strong> si se asocia repetidamente a otro estímulo que ya provoca esa respuesta.</p>
+                        <div class="highlight-box">
+                            <h4>Ejemplo clásico</h4>
+                            <p>El perro de Pavlov: al asociar el sonido de una campana (estímulo neutro) con la comida (estímulo incondicionado), el perro empezó a salivar solo con oír la campana.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🐀 B.F. Skinner - Condicionamiento Operante</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Los comportamientos se <strong>refuerzan o se debilitan</strong> según las consecuencias que producen:</p>
+                        <div class="table-container" style="margin-top: 1rem;">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Tipo</th>
+                                        <th>Descripción</th>
+                                        <th>Ejemplo en el aula</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td><strong>Refuerzo positivo</strong></td>
+                                        <td>Dar algo bueno para aumentar una conducta</td>
+                                        <td>Elogiar, dar pegatinas, reconocimiento</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Refuerzo negativo</strong></td>
+                                        <td>Quitar algo malo para aumentar una conducta</td>
+                                        <td>Dejar de molestar cuando trabaja bien</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Castigo positivo</strong></td>
+                                        <td>Dar algo malo para disminuir una conducta</td>
+                                        <td>Reprender, tiempo de reflexión</td>
+                                    </tr>
+                                    <tr>
+                                        <td><strong>Castigo negativo</strong></td>
+                                        <td>Quitar algo bueno para disminuir una conducta</td>
+                                        <td>Retirar privilegios, tiempo sin juego</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COGNITIVISMO -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-blue); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #eff6ff; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">🧠</span>
+                Teorías Cognitivas
+            </h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Estudian los <strong>procesos internos de la mente</strong> (memoria, atención, comprensión). El educador/a es un facilitador/a del aprendizaje.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🧩 Jean Piaget - Etapas del Desarrollo Intelectual</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Piaget propone que el niño/a construye activamente su conocimiento a través de la interacción con el entorno.</p>
+                        <div class="cards-grid" style="margin-top: 1.5rem;">
+                            <div class="card" style="border-top: 4px solid #FF6B6B;">
+                                <h4 style="color: #FF6B6B;">0-2 años</h4>
+                                <p><strong>Sensoriomotora</strong></p>
+                                <p>Aprenden tocando y explorando con los sentidos. El mundo se conoce a través de la acción directa.</p>
+                            </div>
+                            <div class="card" style="border-top: 4px solid #FFE66D;">
+                                <h4 style="color: #d4a000;">2-7 años</h4>
+                                <p><strong>Preoperacional</strong></p>
+                                <p>Aprenden a través del <strong>juego y la imitación</strong>. Pensamiento egocéntrico y simbólico.</p>
+                            </div>
+                            <div class="card" style="border-top: 4px solid #4ECDC4;">
+                                <h4 style="color: #4ECDC4;">7-11 años</h4>
+                                <p><strong>Operaciones Concretas</strong></p>
+                                <p>Comienzan a comprender la <strong>lógica</strong>, pero necesitan manipular objetos concretos.</p>
+                            </div>
+                            <div class="card" style="border-top: 4px solid #A855F7;">
+                                <h4 style="color: #A855F7;">11-12+ años</h4>
+                                <p><strong>Operaciones Formales</strong></p>
+                                <p>Piensan en <strong>abstracto</strong>, razonamiento hipotético-deductivo.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🪜 Jerome Bruner - Andamiaje y Descubrimiento</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <ul>
+                            <li>Propone el <strong>"andamiaje"</strong>: el adulto ayuda y luego <strong>retira esa ayuda progresivamente</strong></li>
+                            <li><strong>Aprendizaje por descubrimiento</strong>: el alumno/a construye activamente su conocimiento</li>
+                            <li>Tres modos de representación: <strong>enactivo (acción), icónico (imágenes) y simbólico (lenguaje)</strong></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>👁️ Albert Bandura - Aprendizaje por Observación</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Los <strong>modelos</strong> (docentes, iguales) son fundamentales para adquirir y modificar conductas. El aprendizaje ocurre al <strong>observar e imitar</strong> a otros.</p>
+                        <div class="highlight-box">
+                            <h4>Proceso de modelado</h4>
+                            <p>Atención → Retención → Reproducción → Motivación. Los niños/as aprenden comportamientos, actitudes y valores observando a los adultos significativos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🔗 David Ausubel - Aprendizaje Significativo</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Los nuevos conocimientos se aprenden mejor cuando se <strong>conectan con lo que el alumno/a ya sabe</strong>. De aquí surge la importancia de la <strong>evaluación inicial</strong> y los organizadores previos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- VYGOTSKY -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-purple); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #faf5ff; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">🤝</span>
+                Teoría Socio-histórica: Lev Vygotsky
+            </h3>
+            
+            <div class="highlight-box" style="border-left-color: var(--color-purple);">
+                <h4>El contexto social como motor del desarrollo</h4>
+                <p>El desarrollo del niño/a <strong>depende del contexto social</strong> en el que vive. No aprendemos de forma aislada, sino en interacción con otros más capaces.</p>
+            </div>
+
+            <div class="card" style="margin-top: 1.5rem; border-left: 5px solid var(--color-purple);">
+                <h3 style="color: var(--color-purple); margin-bottom: 1rem;">🎯 Zona de Desarrollo Próximo (ZDP)</h3>
+                <p>Es la <strong>distancia entre lo que un niño/a puede hacer solo/a y lo que puede hacer con ayuda</strong>. Es en esta "zona mágica" donde ocurre el verdadero aprendizaje.</p>
+                <div style="margin-top: 1rem; display: flex; gap: 1rem; flex-wrap: wrap;">
+                    <span class="tag tag-purple">Aprendizaje cooperativo</span>
+                    <span class="tag tag-purple">Andamiaje</span>
+                    <span class="tag tag-purple">Mediación social</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- PSICOANÁLISIS -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-pink); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #fdf2f8; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">💭</span>
+                Teorías Psicoanalíticas
+            </h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">Exploran la influencia de las <strong>emociones, el inconsciente y las experiencias tempranas</strong> en la formación de la personalidad.</p>
+            
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🛋️ Sigmund Freud</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Describe tres instancias de la psique: <strong>ello, yo y superyó</strong>.</p>
+                        <p style="margin-top: 1rem;"><strong>Etapas del desarrollo psicosexual:</strong></p>
+                        <ul>
+                            <li><strong>Oral</strong> (0-1 año): placer por la boca</li>
+                            <li><strong>Anal</strong> (1-3 años): control de esfínteres</li>
+                            <li><strong>Fálica</strong> (3-6 años): complejo de Edipo/Electra</li>
+                            <li><strong>Latencia</strong> (6-12 años): calma sexual</li>
+                            <li><strong>Genital</strong> (pubertad en adelante): madurez sexual</li>
+                        </ul>
+                        <div class="highlight-box" style="margin-top: 1rem;">
+                            <h4>Importancia educativa</h4>
+                            <p>Los <strong>seis primeros años de vida son cruciales</strong>: destete, control de esfínteres, relaciones familiares marcan la personalidad futura.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🌱 Erik Erikson - Desarrollo Psicosocial</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Cada etapa de la vida implica una <strong>"crisis" o conflicto</strong> que, si se resuelve positivamente, fortalece la identidad.</p>
+                        <div style="margin-top: 1rem;">
+                            <p><strong>Primeras etapas relevantes en educación infantil:</strong></p>
+                            <ul>
+                                <li><strong>0-1 año:</strong> Confianza vs. Desconfianza</li>
+                                <li><strong>1-3 años:</strong> Autonomía vs. Vergüenza y duda</li>
+                                <li><strong>3-6 años:</strong> Iniciativa vs. Culpa</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header" onclick="toggleAccordion(this)">
+                        <span>🎨 Melanie Klein</span>
+                        <span class="accordion-icon">▼</span>
+                    </button>
+                    <div class="accordion-content">
+                        <p>Estudia los <strong>conflictos emocionales en las primeras etapas de la vida</strong>, observando cómo se manifiestan a través del <strong>juego y la fantasía</strong>. El juego es la principal vía de expresión del niño/a.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GESTALT -->
+        <div>
+            <h3 style="color: var(--color-orange); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #fff7ed; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">👁️</span>
+                Teorías de la Gestalt
+            </h3>
+            
+            <div class="two-columns">
+                <div class="card">
+                    <h4 style="color: var(--color-orange);">🖼️ Ley Figura-Fondo</h4>
+                    <p>Percibimos lo que <strong>destaca sobre el fondo</strong>. En el aula, es importante diseñar entornos donde lo esencial sea claramente perceptible.</p>
+                </div>
+                <div class="card">
+                    <h4 style="color: var(--color-orange);">💡 Insight</h4>
+                    <p>Comprensión súbita: la capacidad de <strong>resolver un problema de golpe</strong>, de forma repentina. Muy útil en actividades de resolución de problemas en el aula.</p>
+                </div>
+            </div>
+            <p style="margin-top: 1.5rem; color: #64748b;">Se centran en la <strong>percepción y la comprensión global</strong> de la información. El todo es más que la suma de sus partes.</p>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 4: CONCEPCIONES ACTUALES -->
+    <section id="actualidad" class="fade-in">
+        <div class="section-header">
+            <span class="section-tag">Bloque 4</span>
+            <h2 class="section-title">Concepción Actual del Aprendizaje</h2>
+            <p class="section-subtitle">Modelos básicos y metodologías del siglo XXI</p>
+        </div>
+
+        <!-- MODELO ECOLÓGICO -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-green); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #f0fdf4; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">🌍</span>
+                Modelo Ecológico de Bronfenbrenner
+            </h3>
+            <p style="color: #64748b; margin-bottom: 1.5rem;">El niño/a vive rodeado de <strong>sistemas que influyen en su desarrollo</strong>, representados como círculos concéntricos:</p>
+            
+            <div class="cards-grid">
+                <div class="card" style="border: 2px solid #fecaca;">
+                    <div class="card-icon red">🏠</div>
+                    <h3>Microsistema</h3>
+                    <p><strong>Familia, escuela, amigos/as</strong> (lo más cercano). Los entornos donde el niño/a participa directamente.</p>
+                </div>
+                
+                <div class="card" style="border: 2px solid #fed7aa;">
+                    <div class="card-icon orange">🤝</div>
+                    <h3>Mesosistema</h3>
+                    <p><strong>Relaciones entre esos entornos</strong> (familia-escuela). La conexión entre los diferentes microsistemas.</p>
+                </div>
+                
+                <div class="card" style="border: 2px solid #fde68a;">
+                    <div class="card-icon" style="background: #fefce8; color: #d4a000;">📺</div>
+                    <h3>Exosistema</h3>
+                    <p>Entornos que <strong>no rodean directamente</strong> al niño/a pero le afectan: medios de comunicación, servicios sociales, trabajo de los padres.</p>
+                </div>
+                
+                <div class="card" style="border: 2px solid #bbf7d0;">
+                    <div class="card-icon green">🌐</div>
+                    <h3>Macrosistema</h3>
+                    <p><strong>Valores culturales, políticos y sociales</strong> del contexto más amplio. La cultura, las leyes, las creencias.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CONECTIVISMO -->
+        <div style="margin-bottom: 3rem;">
+            <h3 style="color: var(--color-blue); font-size: 1.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+                <span style="width: 40px; height: 40px; background: #eff6ff; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center;">🌐</span>
+                Conectivismo (Siemens y Downes)
+            </h3>
+            
+            <div class="highlight-box" style="border-left-color: var(--color-blue); background: linear-gradient(135deg, #eff6ff, #f0f9ff);">
+                <h4 style="color: var(--color-blue);">Teoría del siglo XXI</h4>
+                <p>Destaca el papel de la <strong>tecnología y las redes</strong> en el aprendizaje. La capacidad de <strong>conectar información y acceder a redes de conocimiento</strong> es tan importante como los contenidos en sí mismos. Muy relevante para la enseñanza en modalidad virtual.</p>
+            </div>
+        </div>
+
+        <h3 style="text-align: center; margin: 4rem 0 2rem; color: #1e293b; font-size: 1.8rem;">🎨 Metodologías Actuales</h3>
+
+        <!-- PIKLER -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 5px solid var(--color-pink);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div style="width: 60px; height: 60px; background: #fdf2f8; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">👶</div>
+                <div>
+                    <h3 style="color: var(--color-pink); margin: 0;">Emmi Pikler (1902-1984)</h3>
+                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">El arte de acompañar sin intervenir</p>
+                </div>
+            </div>
+            
+            <p style="margin-bottom: 1rem;"><strong>Tres pilares fundamentales:</strong></p>
+            <div class="numbered-list">
+                <li>Garantizar la <strong>seguridad física y afectiva</strong> del niño/a</li>
+                <li>Permitir el <strong>movimiento libre y autónomo</strong> (sin hamacas, tronas ni posturas forzadas)</li>
+                <li>Proporcionar <strong>materiales y mobiliario que fomenten la autonomía</strong> (el triángulo Pikler es su material más conocido)</li>
+            </div>
+            
+            <div class="highlight-box" style="margin-top: 1.5rem;">
+                <h4>El rol del educador/a</h4>
+                <p><strong>Acompaña sin intervenir</strong>, crea vínculo, mantiene contacto visual, realiza los cuidados de forma <strong>lenta e individualizada</strong>. Sin prisa, respetando los ritmos del niño/a.</p>
+            </div>
+        </div>
+
+        <!-- REGGIO EMILIA -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 5px solid var(--color-orange);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div style="width: 60px; height: 60px; background: #fff7ed; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🎨</div>
+                <div>
+                    <h3 style="color: var(--color-orange); margin: 0;">Reggio Emilia - Loris Malaguzzi</h3>
+                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">El ambiente como tercer maestro</p>
+                </div>
+            </div>
+            
+            <p>Fundado en Italia tras la II Guerra Mundial. Características principales:</p>
+            <ul style="margin: 1rem 0;">
+                <li>Espacios <strong>cuidadosamente diseñados</strong> para inspirar curiosidad y creatividad, con <strong>materiales naturales y variados</strong></li>
+                <li><strong>Trabajo en grupo y por talleres</strong></li>
+                <li><strong>Documentación del proceso de aprendizaje</strong> mediante fotografías para reflexionar y planificar</li>
+                <li>Los niños/as investigan, crean y construyen conocimiento juntos</li>
+                <li>Los <strong>cien lenguajes del niño</strong>: expresión a través de múltiples vías</li>
+            </ul>
+        </div>
+
+        <!-- WALDORF -->
+        <div class="card" style="margin-bottom: 2rem; border-left: 5px solid var(--color-purple);">
+            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                <div style="width: 60px; height: 60px; background: #faf5ff; border-radius: 16px; display: flex; align-items: center; justify-content: center; font-size: 2rem;">🌳</div>
+                <div>
+                    <h3 style="color: var(--color-purple); margin: 0;">Escuela Waldorf - Rudolf Steiner</h3>
+                    <p style="margin: 0; color: #64748b; font-size: 0.9rem;">Aprender con todo el cuerpo y el alma</p>
+                </div>
+            </div>
+            
+            <ul>
+                <li>Enfoque <strong>holístico e integral</strong>: integra artes, música, movimiento y expresión creativa</li>
+                <li>Se <strong>adapta a las etapas de desarrollo</strong> del niño/a</li>
+                <li>Reconoce los <strong>ritmos y talentos individuales</strong></li>
+                <li>En el aula, cada sesión comienza siempre con un <strong>cuento</strong></li>
+                <li>Juguetes naturales, colores suaves y ambiente cálido</li>
+            </ul>
+        </div>
+
+        <!-- OTROS MODELOS -->
+        <h4 style="margin: 2rem 0 1rem; color: #1e293b;">⭐ Otros Modelos Importantes</h4>
+        
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🇺🇸 Head Start (EE.UU., 1965)</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Programa de <strong>educación temprana para niños hasta 5 años</strong>, enfocado en combatir la pobreza. Ofrecía alfabetización y preparación escolar. Históricamente relacionado con <em>Barrio Sésamo</em> (Sesame Street).</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏴󠁧󠁢󠁥󠁮󠁧󠁿 Summerhill (Gran Bretaña, 1921, A.S. Neill)</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Escuela <strong>radicalmente libre</strong>; sin clases ni exámenes obligatorios. El principio fundamental es la <strong>libertad</strong> y el respeto mutuo entre adultos y niños/as.</p>
+                </div>
+            </div>
+            
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🇮🇹 Francesco Tonucci (*Frato*)</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Psicopedagogo y dibujante italiano. Su pedagogía defiende <strong>dar voz a los niños y niñas</strong>. Autor de <em>La ciudad de los niños</em>, propone una ciudad diseñada desde la perspectiva infantil.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN 5: VERSIÓN SIMPLIFICADA -->
+    <section id="simplificado" class="bg-light fade-in">
+        <div class="section-header">
+            <span class="section-tag">Versión Accesible</span>
+            <h2 class="section-title">Lenguaje Claro y Sencillo</h2>
+            <p class="section-subtitle">Todo el contenido explicado de forma directa y comprensible</p>
+        </div>
+
+        <div class="accordion">
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>❓ ¿Qué es educar?</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Educar significa <strong>guiar y acompañar</strong> a una persona para que aprenda, crezca y se desarrolle. En educación infantil, esto incluye <strong>cuidar, enseñar y orientar</strong> a los niños y niñas en sus primeros años.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🎓 ¿Cómo aprendemos? Tres formas</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div class="cards-grid" style="margin-top: 1rem;">
+                        <div class="card" style="background: #f0fdf4;">
+                            <h4 style="color: #22c55e;">🌱 De forma informal</h4>
+                            <p>Sin darnos cuenta, por lo que vivimos cada día: <strong>familia, calle, juego</strong>.</p>
+                        </div>
+                        <div class="card" style="background: #eff6ff;">
+                            <h4 style="color: #3b82f6;">🎯 De forma no formal</h4>
+                            <p>En <strong>talleres, ludotecas, actividades extraescolares</strong>... organizadas pero fuera de la escuela.</p>
+                        </div>
+                        <div class="card" style="background: #faf5ff;">
+                            <h4 style="color: #a855f7;">🏫 De forma formal</h4>
+                            <p>En la <strong>escuela oficial</strong>, con un programa reconocido por el Estado.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>👶 ¿Qué es especial en la educación infantil?</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>Los niños y niñas de 0 a 6 años <strong>no son adultos pequeños</strong>: aprenden, sienten y se desarrollan de una forma completamente diferente. Por eso, la educación infantil se adapta a sus necesidades reales, atendiendo a todo: <strong>lo que piensan, lo que sienten, cómo se mueven, cómo se relacionan</strong>.</p>
+                    <p style="margin-top: 1rem;">Hoy también incluye el <strong>DUA</strong>, que garantiza que <strong>ningún niño/a quede fuera</strong> por sus características o capacidades.</p>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏛️ Los grandes pensadores de la historia</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p><strong>Los primeros (mucho antes de la escuela moderna):</strong></p>
+                    <ul>
+                        <li><strong>Aristóteles</strong> ya decía que educar es importante desde pequeños</li>
+                        <li><strong>Quintiliano</strong> insistía en que los primeros meses de vida son clave</li>
+                        <li><strong>Comenius</strong> (s. XVII) propuso que la educación empiece en casa</li>
+                    </ul>
+                    
+                    <p style="margin-top: 1rem;"><strong>Los que cambiaron todo (siglos XVIII y XIX):</strong></p>
+                    <ul>
+                        <li><strong>Rousseau:</strong> el niño/a aprende mejor si se le deja explorar libremente y se respeta su naturaleza</li>
+                        <li><strong>Pestalozzi:</strong> los niños/as aprenden mejor usando los sentidos; la enseñanza debe adaptarse a cada uno/a</li>
+                        <li><strong>Fröebel:</strong> inventó el <strong>Kindergarten</strong> (jardín de infancia): un espacio especial para niños/as de 2 a 7 años</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🚀 La Escuela Nueva: una revolución pedagógica</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <p>A finales del siglo XIX nació un movimiento que decía: <strong>el niño/a es el protagonista, no el maestro/a</strong>.</p>
+                    
+                    <div style="margin-top: 1.5rem;">
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">🏠</span>
+                            <div>
+                                <strong>Hermanas Agazzi</strong> → clase como un hogar, materiales cotidianos y naturales, importancia del juego y el orden
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">👩‍⚕️</span>
+                            <div>
+                                <strong>María Montessori</strong> → el niño/a elige, se mueve libremente en un ambiente preparado; la maestra observa y guía sin interrumpir
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem; margin-bottom: 1rem; padding: 1rem; background: white; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">🔬</span>
+                            <div>
+                                <strong>Decroly</strong> → se aprende lo que interesa; todo parte de los intereses del niño/a; se trabajan todas las áreas desde un mismo tema (Centros de Interés)
+                            </div>
+                        </div>
+                        <div style="display: flex; align-items: start; gap: 1rem; padding: 1rem; background: white; border-radius: 12px;">
+                            <span style="font-size: 1.5rem;">🛠️</span>
+                            <div>
+                                <strong>Freinet</strong> → aprender haciendo y colaborando; método de talleres; expresión libre
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🇪🇸 La Escuela Nueva en España</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <ul>
+                        <li><strong>Montesino</strong> → primera escuela de párvulos de España (1838)</li>
+                        <li><strong>Giner de los Ríos</strong> → escuela laica, igualitaria y libre (ILE)</li>
+                        <li><strong>Ferrer Guardia</strong> → educación racional y científica, sin dogmas</li>
+                        <li><strong>Marta Mata</strong> → Escola Rosa Sensat; luchó toda su vida por una escuela pública de calidad para todos/as</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧠 ¿Cómo aprenden los niños/as? Las teorías del aprendizaje</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid #ef4444;">
+                        <h4 style="color: #ef4444; margin-bottom: 0.5rem;">🔁 Conductismo (Pavlov y Skinner)</h4>
+                        <p>Aprendemos asociando comportamientos con consecuencias. Si algo tiene una consecuencia buena, lo repetimos. Si tiene una consecuencia mala, lo evitamos. En el aula: refuerzos positivos, modificación de conducta.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid #3b82f6;">
+                        <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">🧠 Cognitivismo (Piaget, Bruner, Bandura, Ausubel)</h4>
+                        <p>Lo importante es lo que pasa <strong>dentro</strong> de la mente. Piaget nos dice que los niños/as de 0 a 7 años aprenden con el cuerpo y el juego antes de poder pensar en abstracto. Bruner añade que el adulto debe ayudar y luego soltar poco a poco. Bandura recuerda que los niños/as aprenden mucho <strong>observando e imitando</strong> a los adultos. Ausubel dice que se aprende mejor cuando lo nuevo conecta con lo que ya sabemos.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid #a855f7;">
+                        <h4 style="color: #a855f7; margin-bottom: 0.5rem;">🤝 Vygotsky (socio-histórico)</h4>
+                        <p>Aprendemos mejor en compañía. Hay una <strong>zona mágica</strong> entre lo que un niño/a puede hacer solo/a y lo que puede hacer con ayuda: ahí es donde ocurre el aprendizaje de verdad. Por eso, el trabajo cooperativo es tan valioso.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid #ec4899;">
+                        <h4 style="color: #ec4899; margin-bottom: 0.5rem;">💭 Psicoanálisis (Freud, Erikson, Klein)</h4>
+                        <p>Las emociones y las experiencias tempranas moldean la personalidad. El <strong>juego libre es esencial</strong> porque el niño/a procesa el mundo a través de él. Erikson nos enseña que cada etapa de la vida tiene un reto emocional propio.</p>
+                    </div>
+                    
+                    <div style="padding: 1.5rem; background: white; border-radius: 12px; border-left: 4px solid #f97316;">
+                        <h4 style="color: #f97316; margin-bottom: 0.5rem;">👁️ Gestalt</h4>
+                        <p>Percibimos el mundo como un todo, no en partes sueltas. A veces la solución a un problema aparece de golpe (<em>insight</em>). Aplicado al aula: actividades que estimulen la percepción global y la resolución de problemas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion-item">
+                <button class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🌟 Metodologías de hoy: ¿qué se aplica en las aulas actuales?</span>
+                    <span class="accordion-icon">▼</span>
+                </button>
+                <div class="accordion-content">
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px;">
+                        <h4 style="color: #ec4899; margin-bottom: 0.5rem;">🌿 Emmi Pikler — El arte de acompañar sin intervenir</h4>
+                        <p>El bebé o niño/a necesita sentirse seguro/a, moverse libremente y tener materiales a su alcance. El educador/a está presente, observa, cuida con calma y crea vínculo. Sin hamacas ni posturas forzadas. Sin prisa.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px;">
+                        <h4 style="color: #f97316; margin-bottom: 0.5rem;">🎨 Reggio Emilia — El ambiente como tercer maestro</h4>
+                        <p>Aulas cuidadas con materiales naturales, trabajo en grupo, proyectos colectivos y fotografías del proceso de aprendizaje. Los niños/as investigan, crean y construyen conocimiento juntos.</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 1.5rem; padding: 1.5rem; background: white; border-radius: 12px;">
+                        <h4 style="color: #a855f7; margin-bottom: 0.5rem;">🌳 Waldorf — Aprender con todo el cuerpo y el alma</h4>
+                        <p>Se trabaja el arte, la música y el movimiento. Todo el aprendizaje es creativo e integral. Cada clase empieza con un cuento. Se respetan los ritmos de cada niño/a.</p>
+                    </div>
+                    
+                    <div style="padding: 1.5rem; background: white; border-radius: 12px;">
+                        <h4 style="color: #3b82f6; margin-bottom: 0.5rem;">⭐ Otros enfoques</h4>
+                        <ul>
+                            <li><strong>Head Start:</strong> programa americano para combatir la pobreza desde la educación temprana (0-5 años)</li>
+                            <li><strong>Summerhill:</strong> la escuela donde no hay clases obligatorias ni exámenes; todo se basa en la libertad</li>
+                            <li><strong>Tonucci (Frato):</strong> un pedagogo que dibuja y que cree que los niños/as deben tener voz en su educación y en la ciudad</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <blockquote style="margin-top: 3rem; background: linear-gradient(135deg, #faf5ff, #f0f9ff); border: 2px solid #a855f7;">
+            <strong>📌 Idea central de todo el tema:</strong> a lo largo de la historia, los mejores pedagogos han coincidido en algo fundamental: <strong>el niño o niña es el protagonista de su propio aprendizaje</strong>. El papel del educador/a es crear las condiciones para que ese aprendizaje ocurra de la forma más natural, significativa y respetuosa posible.
+        </blockquote>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>📚 Guía de Estudio</h4>
+                <p style="color: #94a3b8; line-height: 1.7;">Historia de la Educación Infantil - Tema 2: Didáctica. Un recurso completo para estudiantes de educación infantil.</p>
+            </div>
+            <div class="footer-section">
+                <h4>🔗 Navegación Rápida</h4>
+                <ul>
+                    <li><a href="#conceptos">Conceptos Fundamentales</a></li>
+                    <li><a href="#historia">Historia y Precursores</a></li>
+                    <li><a href="#teorias">Teorías del Aprendizaje</a></li>
+                    <li><a href="#actualidad">Metodologías Actuales</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>🎓 Recursos</h4>
+                <ul>
+                    <li><a href="#simplificado">Versión Simplificada</a></li>
+                    <li><a href="#espana">Escuela Nueva en España</a></li>
+                    <li><a href="#indice">Índice Completo</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Guía de Estudio - Historia de la Educación Infantil | Diseñado para el aprendizaje accesible e inclusivo</p>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+        ↑
+    </button>
+
+    <script>
+        // Accordion functionality
+        function toggleAccordion(header) {
+            const content = header.nextElementSibling;
+            const isActive = header.classList.contains('active');
+            
+            // Close all accordions in the same parent
+            const parent = header.closest('.accordion');
+            parent.querySelectorAll('.accordion-header').forEach(h => {
+                h.classList.remove('active');
+            });
+            parent.querySelectorAll('.accordion-content').forEach(c => {
+                c.classList.remove('active');
+            });
+            
+            // Open clicked if it wasn't active
+            if (!isActive) {
+                header.classList.add('active');
+                content.classList.add('active');
+            }
+        }
+
+        // Progress bar
+        window.addEventListener('scroll', () => {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressBar').style.width = scrolled + '%';
+            
+            // Navbar
+            const navbar = document.getElementById('navbar');
+            if (winScroll > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            // Back to top
+            const backToTop = document.getElementById('backToTop');
+            if (winScroll > 500) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle (basic)
+        document.querySelector('.mobile-menu-btn').addEventListener('click', () => {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            navLinks.style.position = 'absolute';
+            navLinks.style.top = '100%';
+            navLinks.style.left = '0';
+            navLinks.style.right = '0';
+            navLinks.style.flexDirection = 'column';
+            navLinks.style.background = 'white';
+            navLinks.style.padding = '1rem';
+            navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
+        });
+    </script>
+</body>
+</html>
