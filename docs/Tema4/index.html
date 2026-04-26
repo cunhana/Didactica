@@ -1,1066 +1,1282 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Guía de Estudio Completa — Tema 4</title>
-  <meta name="description" content="Guía de estudio completa del Tema 4: Principios Pedagógicos y Opciones Metodológicas en Educación Infantil." />
-  <style>
-    :root{
-      --bg: #fff8f1;
-      --bg-soft: #fff1fb;
-      --card: #ffffff;
-      --text: #1e1b4b;
-      --muted: #5b5675;
-      --primary: #ff4d6d;
-      --secondary: #7c3aed;
-      --accent: #06b6d4;
-      --accent-2: #22c55e;
-      --accent-3: #f59e0b;
-      --line: #eadcff;
-      --shadow: 0 14px 35px rgba(87, 28, 135, 0.12);
-      --radius: 22px;
-      --radius-sm: 14px;
-      --max: 1180px;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Estudio — Tema 4: Principios Pedagógicos y Opciones Metodológicas en Educación Infantil</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --coral: #FF6B6B;
+            --turquoise: #4ECDC4;
+            --yellow: #FFE66D;
+            --purple: #9B59B6;
+            --blue: #3498DB;
+            --green: #2ECC71;
+            --orange: #F39C12;
+            --pink: #FF69B4;
+            --dark: #2C3E50;
+            --light: #F8F9FA;
+            --white: #FFFFFF;
+        }
 
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(255,77,109,.15), transparent 30%),
-        radial-gradient(circle at top right, rgba(6,182,212,.18), transparent 25%),
-        radial-gradient(circle at bottom left, rgba(124,58,237,.12), transparent 35%),
-        linear-gradient(180deg, #fff8f1 0%, #fffaff 100%);
-      color: var(--text);
-      line-height: 1.6;
-    }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
-    a{color:inherit;text-decoration:none}
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
-    .container{
-      width:min(100% - 32px, var(--max));
-      margin-inline:auto;
-    }
+        h1, h2, h3, h4 { font-family: 'Poppins', sans-serif; }
 
-    .topbar{
-      position:sticky;
-      top:0;
-      z-index:1000;
-      backdrop-filter: blur(12px);
-      background: rgba(255,255,255,.78);
-      border-bottom: 1px solid rgba(124,58,237,.12);
-    }
+        /* Hero */
+        .hero {
+            background: linear-gradient(135deg, var(--coral) 0%, var(--purple) 50%, var(--blue) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
 
-    .topbar-inner{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-      padding:14px 0;
-    }
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: float 20s linear infinite;
+        }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      font-weight:800;
-      letter-spacing:.2px;
-    }
+        @keyframes float {
+            0% { transform: translate(0,0); }
+            100% { transform: translate(-50px,-50px); }
+        }
 
-    .brand-badge{
-      width:44px;
-      height:44px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      color:white;
-      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-      box-shadow: var(--shadow);
-      font-size:1.1rem;
-    }
+        .hero-content { position: relative; z-index: 1; }
 
-    .nav{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-    }
+        .hero-badge {
+            display: inline-block;
+            background: var(--yellow);
+            color: var(--dark);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+        }
 
-    .nav a{
-      padding:10px 14px;
-      border-radius:999px;
-      background:#ffffff;
-      border:1px solid #efe5ff;
-      color:var(--muted);
-      font-weight:600;
-      font-size:.94rem;
-      transition:.25s ease;
-    }
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 4rem);
+            color: var(--white);
+            font-weight: 800;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .nav a:hover{
-      transform:translateY(-2px);
-      border-color:#d8c0ff;
-      color:var(--secondary);
-      box-shadow: 0 8px 18px rgba(124,58,237,.12);
-    }
+        .hero-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+            color: rgba(255,255,255,0.95);
+            max-width: 800px;
+            margin-bottom: 2rem;
+        }
 
-    .hero{
-      padding:42px 0 24px;
-    }
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .hero-grid{
-      display:grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap:24px;
-      align-items:stretch;
-    }
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-    .hero-card, .side-card, .section-card, .mini-card{
-      background: var(--card);
-      border:1px solid rgba(124,58,237,.12);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-    }
+        .btn-primary {
+            background: var(--yellow);
+            color: var(--dark);
+            box-shadow: 0 6px 20px rgba(255,230,109,0.4);
+        }
 
-    .hero-card{
-      padding:32px;
-      position:relative;
-      overflow:hidden;
-    }
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255,230,109,0.6);
+        }
 
-    .hero-card::after{
-      content:"";
-      position:absolute;
-      inset:auto -60px -60px auto;
-      width:220px;
-      height:220px;
-      background: radial-gradient(circle, rgba(255,77,109,.18), transparent 65%);
-      pointer-events:none;
-    }
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: var(--white);
+            border: 2px solid rgba(255,255,255,0.5);
+            backdrop-filter: blur(10px);
+        }
 
-    .eyebrow{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
-      padding:8px 14px;
-      border-radius:999px;
-      background: linear-gradient(90deg, rgba(255,77,109,.12), rgba(124,58,237,.10), rgba(6,182,212,.10));
-      color:var(--secondary);
-      font-weight:800;
-      font-size:.86rem;
-      margin-bottom:14px;
-    }
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-3px);
+        }
 
-    h1, h2, h3, h4{
-      line-height:1.2;
-      margin:0 0 14px;
-    }
+        /* Floating shapes */
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            animation: bounce 6s ease-in-out infinite;
+        }
+        .shape-1 { width: 300px; height: 300px; background: var(--yellow); top: -100px; left: -100px; animation-delay: 0s; }
+        .shape-2 { width: 200px; height: 200px; background: var(--turquoise); bottom: -50px; right: -50px; animation-delay: 2s; }
+        .shape-3 { width: 150px; height: 150px; background: var(--pink); top: 50%; right: 10%; animation-delay: 4s; }
 
-    h1{
-      font-size: clamp(2rem, 3.6vw, 3.5rem);
-      letter-spacing:-.03em;
-    }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-30px) rotate(180deg); }
+        }
 
-    h2{
-      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
-      color:#2b185a;
-    }
+        /* Navigation */
+        .nav-bar {
+            position: sticky;
+            top: 0;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 0.8rem 0;
+        }
 
-    h3{
-      font-size: 1.2rem;
-      color:#341a78;
-    }
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
 
-    p{margin:0 0 14px}
-    .lead{
-      font-size:1.08rem;
-      color:var(--muted);
-      max-width:70ch;
-    }
+        .nav-logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 800;
+            font-size: 1.2rem;
+            background: linear-gradient(135deg, var(--coral), var(--purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .chips{
-      display:flex;
-      flex-wrap:wrap;
-      gap:10px;
-      margin-top:20px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            list-style: none;
+        }
 
-    .chip{
-      padding:10px 14px;
-      border-radius:999px;
-      color:white;
-      font-weight:700;
-      font-size:.92rem;
-      box-shadow: 0 10px 20px rgba(0,0,0,.08);
-    }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            font-size: 0.85rem;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            transition: all 0.3s;
+        }
 
-    .chip.p1{background:linear-gradient(135deg,#ff4d6d,#ff7a59)}
-    .chip.p2{background:linear-gradient(135deg,#7c3aed,#4f46e5)}
-    .chip.p3{background:linear-gradient(135deg,#06b6d4,#0ea5e9)}
-    .chip.p4{background:linear-gradient(135deg,#22c55e,#14b8a6)}
+        .nav-links a:hover {
+            background: var(--coral);
+            color: var(--white);
+        }
 
-    .side-card{
-      padding:24px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.98)),
-        linear-gradient(135deg, rgba(255,77,109,.15), rgba(124,58,237,.15), rgba(6,182,212,.15));
-    }
+        /* Sections */
+        .section {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
 
-    .side-card ul{
-      margin:0;
-      padding-left:18px;
-    }
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
 
-    .side-card li{
-      margin:8px 0;
-      color:var(--muted);
-    }
+        .section-tag {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
 
-    .layout{
-      display:grid;
-      grid-template-columns: 280px 1fr;
-      gap:24px;
-      padding:16px 0 60px;
-    }
+        .section-title {
+            font-size: clamp(1.8rem, 4vw, 2.8rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
 
-    .toc{
-      position:sticky;
-      top:90px;
-      align-self:start;
-      padding:18px;
-      background: rgba(255,255,255,.9);
-      border:1px solid rgba(124,58,237,.14);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-    }
+        .section-desc {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+        }
 
-    .toc h3{
-      margin-bottom:10px;
-    }
+        /* Cards */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
 
-    .toc a{
-      display:block;
-      padding:10px 12px;
-      margin:6px 0;
-      border-radius:12px;
-      color:var(--muted);
-      font-weight:600;
-      transition:.2s ease;
-    }
+        .card {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            border: 3px solid transparent;
+        }
 
-    .toc a:hover{
-      background:#f7f0ff;
-      color:var(--secondary);
-      transform:translateX(3px);
-    }
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: var(--card-color, var(--coral));
+        }
 
-    .content{
-      display:grid;
-      gap:22px;
-    }
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            border-color: var(--card-color, var(--coral));
+        }
 
-    .section-card{
-      padding:28px;
-    }
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            background: var(--card-bg, rgba(255,107,107,0.1));
+            color: var(--card-color, var(--coral));
+        }
 
-    .section-card + .section-card{
-      margin-top:0;
-    }
+        .card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--dark);
+        }
 
-    .section-tag{
-      display:inline-block;
-      margin-bottom:12px;
-      padding:7px 12px;
-      border-radius:999px;
-      font-size:.82rem;
-      font-weight:800;
-      letter-spacing:.02em;
-      color:#fff;
-      background: linear-gradient(135deg, var(--secondary), var(--accent));
-    }
+        .card p {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
 
-    .callout{
-      margin:18px 0 0;
-      padding:16px 18px;
-      border-left:6px solid var(--accent-3);
-      background: linear-gradient(180deg, #fff9e8, #fffdf5);
-      border-radius: 14px;
-      color:#624c00;
-      font-weight:600;
-    }
+        .card-number {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            font-size: 3rem;
+            font-weight: 800;
+            opacity: 0.08;
+            color: var(--card-color, var(--coral));
+            line-height: 1;
+        }
 
-    .separator{
-      height:1px;
-      border:0;
-      background: linear-gradient(90deg, transparent, #dbc5ff, transparent);
-      margin:26px 0;
-    }
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            margin: 2rem 0;
+        }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap:18px;
-    }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            font-size: 0.95rem;
+        }
 
-    .grid-3{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap:18px;
-    }
+        th {
+            background: linear-gradient(135deg, var(--purple), var(--blue));
+            color: var(--white);
+            padding: 1.2rem 1rem;
+            text-align: left;
+            font-weight: 700;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    .mini-card{
-      padding:18px;
-      height:100%;
-      border-left:6px solid transparent;
-    }
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            color: #444;
+        }
 
-    .mini-card.pink{border-left-color: var(--primary)}
-    .mini-card.purple{border-left-color: var(--secondary)}
-    .mini-card.blue{border-left-color: var(--accent)}
-    .mini-card.green{border-left-color: var(--accent-2)}
-    .mini-card.orange{border-left-color: var(--accent-3)}
+        tr:hover td {
+            background: #f8f9ff;
+        }
 
-    .mini-card h4{
-      margin-bottom:10px;
-      font-size:1rem;
-    }
+        tr:last-child td { border-bottom: none; }
 
-    ol, ul{
-      padding-left:22px;
-    }
+        /* Quote blocks */
+        .quote-block {
+            background: linear-gradient(135deg, var(--turquoise), var(--blue));
+            color: var(--white);
+            padding: 2.5rem;
+            border-radius: 24px;
+            margin: 2rem 0;
+            position: relative;
+            font-size: 1.1rem;
+            font-style: italic;
+            box-shadow: 0 15px 40px rgba(78,205,196,0.3);
+        }
 
-    li{
-      margin:8px 0;
-    }
+        .quote-block::before {
+            content: '"';
+            font-size: 6rem;
+            position: absolute;
+            top: -10px;
+            left: 20px;
+            opacity: 0.3;
+            font-family: Georgia, serif;
+            line-height: 1;
+        }
 
-    table{
-      width:100%;
-      border-collapse: collapse;
-      margin-top:14px;
-      overflow:hidden;
-      border-radius:16px;
-      background:white;
-      border:1px solid #eadcff;
-    }
+        /* Key concept */
+        .key-concept {
+            background: linear-gradient(135deg, var(--yellow), #FFD93D);
+            padding: 1.5rem 2rem;
+            border-radius: 20px;
+            margin: 1.5rem 0;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            box-shadow: 0 8px 30px rgba(255,230,109,0.3);
+        }
 
-    th, td{
-      padding:14px 14px;
-      text-align:left;
-      vertical-align:top;
-      border-bottom:1px solid #f1e8ff;
-    }
+        .key-concept .icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
 
-    th{
-      background: linear-gradient(135deg, #7c3aed, #06b6d4);
-      color:white;
-      font-size:.96rem;
-    }
+        .key-concept strong {
+            color: var(--dark);
+            display: block;
+            margin-bottom: 0.3rem;
+        }
 
-    tr:nth-child(even) td{
-      background:#fcfaff;
-    }
+        /* Lists */
+        .styled-list {
+            list-style: none;
+            padding: 0;
+        }
 
-    .code-flow{
-      margin-top:14px;
-      padding:18px;
-      border-radius:18px;
-      background:#140f2d;
-      color:#f5f3ff;
-      overflow:auto;
-      border:1px solid #31215f;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size:.95rem;
-      line-height:1.7;
-    }
+        .styled-list li {
+            padding: 0.8rem 0 0.8rem 2.5rem;
+            position: relative;
+            border-bottom: 1px dashed #ddd;
+        }
 
-    .note{
-      color:var(--muted);
-      font-size:.98rem;
-    }
+        .styled-list li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--coral);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
 
-    .quote{
-      padding:18px 20px;
-      margin-top:14px;
-      border-radius:16px;
-      background: linear-gradient(180deg, #f6f7ff, #ffffff);
-      border:1px solid #dde3ff;
-      color:#312e81;
-      font-weight:600;
-    }
+        .styled-list li:last-child { border-bottom: none; }
 
-    .quick-list{
-      display:grid;
-      gap:10px;
-    }
+        /* Timeline / Flow */
+        .flow-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            max-width: 600px;
+            margin: 2rem auto;
+        }
 
-    .quick-item{
-      padding:14px 16px;
-      border-radius:14px;
-      background: linear-gradient(180deg, #ffffff, #fcf8ff);
-      border:1px solid #ecdfff;
-      font-weight:600;
-    }
+        .flow-item {
+            background: var(--white);
+            padding: 1.5rem 2rem;
+            border-radius: 16px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            position: relative;
+            text-align: center;
+            font-weight: 600;
+            border-left: 5px solid var(--flow-color, var(--coral));
+        }
 
-    .footer{
-      padding:30px 0 60px;
-      color:var(--muted);
-      text-align:center;
-    }
+        .flow-arrow {
+            text-align: center;
+            font-size: 2rem;
+            color: var(--purple);
+            line-height: 1;
+            padding: 0.3rem 0;
+        }
 
-    .highlight{
-      color: var(--primary);
-      font-weight:800;
-    }
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
 
-    .subtle{
-      color: var(--muted);
-    }
+        .info-box {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            border-top: 4px solid var(--box-color, var(--green));
+        }
 
-    @media (max-width: 980px){
-      .hero-grid,
-      .layout,
-      .grid-2,
-      .grid-3{
-        grid-template-columns:1fr;
-      }
+        .info-box h4 {
+            color: var(--box-color, var(--green));
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
 
-      .toc{
-        position:relative;
-        top:0;
-      }
+        /* Tags */
+        .tag {
+            display: inline-block;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin: 0.2rem;
+        }
 
-      .nav{
-        display:none;
-      }
-    }
+        .tag-coral { background: rgba(255,107,107,0.15); color: var(--coral); }
+        .tag-turquoise { background: rgba(78,205,196,0.15); color: #2a9d8f; }
+        .tag-purple { background: rgba(155,89,182,0.15); color: var(--purple); }
+        .tag-blue { background: rgba(52,152,219,0.15); color: var(--blue); }
+        .tag-green { background: rgba(46,204,113,0.15); color: var(--green); }
+        .tag-orange { background: rgba(243,156,18,0.15); color: var(--orange); }
+        .tag-pink { background: rgba(255,105,180,0.15); color: var(--pink); }
 
-    @media (max-width: 640px){
-      .hero-card,
-      .side-card,
-      .section-card{
-        padding:20px;
-      }
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
 
-      th, td{
-        padding:12px 10px;
-      }
+        footer p { opacity: 0.7; font-size: 0.9rem; }
 
-      h1{
-        font-size: 2rem;
-      }
-    }
-  </style>
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--coral), var(--purple)); border-radius: 5px; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { justify-content: center; }
+            .section { padding: 2rem 1rem; }
+            .card { padding: 1.5rem; }
+        }
+
+        /* Smooth scroll */
+        html { scroll-behavior: smooth; }
+
+        /* Animation on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+<base target="_blank">
 </head>
 <body>
 
-  <header class="topbar">
-    <div class="container topbar-inner">
-      <div class="brand">
-        <div class="brand-badge">📚</div>
-        <div>
-          <div>Guía de Estudio Completa</div>
-          <div class="subtle">Tema 4 · Educación Infantil</div>
+    <!-- HERO -->
+    <header class="hero" id="inicio">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="hero-content">
+            <span class="hero-badge">📚 GUÍA DE ESTUDIO COMPLETA — TEMA 4</span>
+            <h1>Principios Pedagógicos y Opciones Metodológicas en Educación Infantil</h1>
+            <p class="hero-subtitle">Organización, planificación y documentación de la enseñanza en la etapa infantil: desde la ley hasta el aula.</p>
+            <div class="hero-cta">
+                <a href="#indice" class="btn btn-primary">📖 Ver Índice</a>
+                <a href="#resumen" class="btn btn-secondary">⚡ Resumen Ejecutivo</a>
+            </div>
         </div>
-      </div>
+    </header>
 
-      <nav class="nav" aria-label="Navegación principal">
-        <a href="#indice">Índice</a>
-        <a href="#resumen">Resumen</a>
-        <a href="#bloque1">Bloque 1</a>
-        <a href="#bloque2">Bloque 2</a>
-        <a href="#bloque3">Bloque 3</a>
-        <a href="#bloque4">Bloque 4</a>
-        <a href="#bloque5">Bloque 5</a>
-        <a href="#bloque6">Bloque 6</a>
-        <a href="#conceptos">Conceptos clave</a>
-        <a href="#repaso">Repaso</a>
-      </nav>
-    </div>
-  </header>
+    <!-- NAVIGATION -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <div class="nav-logo">📚 Tema 4</div>
+            <ul class="nav-links">
+                <li><a href="#indice">Índice</a></li>
+                <li><a href="#resumen">Resumen</a></li>
+                <li><a href="#bloque1">Pedagógicos</a></li>
+                <li><a href="#bloque2">Metodológicos</a></li>
+                <li><a href="#bloque3">Estrategias</a></li>
+                <li><a href="#bloque4">Planificación</a></li>
+                <li><a href="#bloque5">Documentos</a></li>
+                <li><a href="#bloque6">Situaciones</a></li>
+                <li><a href="#conceptos">Conceptos</a></li>
+                <li><a href="#repaso">Repaso</a></li>
+            </ul>
+        </div>
+    </nav>
 
-  <main class="container">
-    <section class="hero">
-      <div class="hero-grid">
-        <article class="hero-card">
-          <div class="eyebrow">GUÍA DE ESTUDIO COMPLETA — TEMA 4</div>
-          <h1>Principios Pedagógicos y Opciones Metodológicas en Educación Infantil</h1>
-          <p class="lead">
-            Material organizado en bloques para estudiar los principios pedagógicos, los principios metodológicos,
-            las estrategias de intervención, los niveles de planificación y los documentos básicos del centro y del aula.
-          </p>
-
-          <div class="chips" aria-label="Etiquetas temáticas">
-            <span class="chip p1">Principios pedagógicos</span>
-            <span class="chip p2">Metodología</span>
-            <span class="chip p3">Planificación</span>
-            <span class="chip p4">Situaciones de aprendizaje</span>
-          </div>
-        </article>
-
-        <aside class="side-card">
-          <h3>Vista rápida</h3>
-          <ul>
-            <li>8 principios pedagógicos clave.</li>
-            <li>13 principios metodológicos generales.</li>
-            <li>3 estrategias metodológicas.</li>
-            <li>3 niveles de concreción curricular formal.</li>
-            <li>Documentos oficiales del centro y del aula.</li>
-            <li>Situaciones de Aprendizaje: definición, tipos y estructura.</li>
-          </ul>
-        </aside>
-      </div>
+    <!-- ÍNDICE -->
+    <section class="section" id="indice">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(255,107,107,0.15); color: var(--coral);">📋 Contenidos</span>
+            <h2 class="section-title" style="color: var(--coral);">Índice Detallado</h2>
+        </div>
+        <div class="cards-grid">
+            <a href="#bloque1" class="card" style="--card-color: var(--coral); --card-bg: rgba(255,107,107,0.1);">
+                <span class="card-number">01</span>
+                <div class="card-icon">🎯</div>
+                <h3>Principios Pedagógicos</h3>
+                <p>Los 8 fundamentos que orientan toda la práctica educativa en la etapa infantil.</p>
+            </a>
+            <a href="#bloque2" class="card" style="--card-color: var(--turquoise); --card-bg: rgba(78,205,196,0.1);">
+                <span class="card-number">02</span>
+                <div class="card-icon">🛠️</div>
+                <h3>Principios Metodológicos</h3>
+                <p>13 principios que concretan cómo organizar la enseñanza en el día a día.</p>
+            </a>
+            <a href="#bloque3" class="card" style="--card-color: var(--purple); --card-bg: rgba(155,89,182,0.1);">
+                <span class="card-number">03</span>
+                <div class="card-icon">🧩</div>
+                <h3>Estrategias Metodológicas</h3>
+                <p>Expositiva, por descubrimiento y mixta: definición y ejemplos prácticos.</p>
+            </a>
+            <a href="#bloque4" class="card" style="--card-color: var(--blue); --card-bg: rgba(52,152,219,0.1);">
+                <span class="card-number">04</span>
+                <div class="card-icon">📐</div>
+                <h3>Niveles de Planificación</h3>
+                <p>Diseño de la intervención educativa: contenidos, objetivos y atención a la diversidad.</p>
+            </a>
+            <a href="#bloque5" class="card" style="--card-color: var(--green); --card-bg: rgba(46,204,113,0.1);">
+                <span class="card-number">05</span>
+                <div class="card-icon">📁</div>
+                <h3>Documentos de Planificación</h3>
+                <p>PEC, RRI, Propuesta Pedagógica, PCE, PGA y Programaciones Didácticas.</p>
+            </a>
+            <a href="#bloque6" class="card" style="--card-color: var(--orange); --card-bg: rgba(243,156,18,0.1);">
+                <span class="card-number">06</span>
+                <div class="card-icon">🎨</div>
+                <h3>Situaciones de Aprendizaje</h3>
+                <p>Elemento central de la planificación docente: tipos y estructura completa.</p>
+            </a>
+        </div>
     </section>
 
-    <section class="layout">
-      <aside class="toc" aria-label="Índice lateral">
-        <h3 id="indice">Índice detallado</h3>
-        <a href="#indice-detallado">1. Índice detallado</a>
-        <a href="#resumen">2. Resumen ejecutivo</a>
-        <a href="#bloque1">3. Bloque 1</a>
-        <a href="#bloque2">Bloque 2</a>
-        <a href="#bloque3">Bloque 3</a>
-        <a href="#bloque4">Bloque 4</a>
-        <a href="#bloque5">Bloque 5</a>
-        <a href="#bloque6">Bloque 6</a>
-        <a href="#conceptos">4. Conceptos clave</a>
-        <a href="#repaso">5. Ideas principales</a>
-      </aside>
-
-      <div class="content">
-        <section class="section-card" id="indice-detallado">
-          <span class="section-tag">1. ÍNDICE DETALLADO</span>
-          <ol>
-            <li>Principios pedagógicos de la etapa infantil</li>
-            <li>Principios metodológicos generales</li>
-            <li>Estrategias metodológicas</li>
-            <li>Diseño de la intervención educativa: niveles de planificación
-              <ul>
-                <li>Aspectos trabajados en la escuela infantil</li>
-                <li>Temas transversales</li>
-                <li>Niveles de concreción curricular (formal y no formal)</li>
-                <li>Los objetivos como elemento organizativo</li>
-                <li>Atención a las diferencias individuales</li>
-              </ul>
-            </li>
-            <li>Diseño de la intervención educativa: documentos de planificación
-              <ul>
-                <li>PEC, RRI, Propuesta Pedagógica, PCE, Proyecto de gestión, PGA</li>
-                <li>Programaciones Didácticas (estructura completa)</li>
-                <li>Las Situaciones de Aprendizaje (definición, tipos y estructura)</li>
-              </ul>
-            </li>
-          </ol>
-        </section>
-
-        <section class="section-card" id="resumen">
-          <span class="section-tag">2. RESUMEN EJECUTIVO</span>
-          <p>
-            Este tema explica <strong>cómo se organiza y planifica la enseñanza en Educación Infantil</strong>
-            desde dos ángulos complementarios: los <strong>principios que guían qué hacer</strong>
-            (principios pedagógicos y metodológicos) y <strong>cómo documentarlo y organizarlo</strong>
-            (niveles de planificación y documentos oficiales del centro).
-          </p>
-          <p>
-            El hilo conductor es que <strong>todo parte de la ley</strong> (primer nivel),
-            se concreta en el <strong>centro educativo</strong> (segundo nivel) y llega al
-            <strong>aula</strong> a través del trabajo docente (tercer nivel).
-            Las <strong>Situaciones de Aprendizaje</strong> son la unidad mínima de planificación real del día a día.
-          </p>
-        </section>
-
-        <section class="section-card" id="bloque1">
-          <span class="section-tag">BLOQUE 1</span>
-          <h2>Principios Pedagógicos</h2>
-          <p>
-            Son los <strong>fundamentos que orientan toda la práctica educativa</strong> en la etapa infantil.
-            Hay 8 principios clave:
-          </p>
-
-          <div class="grid-2">
-            <article class="mini-card pink">
-              <h4>1. Máximo desarrollo de cada niño/a</h4>
-              <p>Cada criatura es única; la escuela debe potenciar al máximo sus capacidades individuales.</p>
-            </article>
-
-            <article class="mini-card purple">
-              <h4>2. Aprendizaje significativo, experimentación y juego</h4>
-              <p>Aprender haciendo, viviendo experiencias positivas y jugando.</p>
-            </article>
-
-            <article class="mini-card blue">
-              <h4>3. Desarrollo integral</h4>
-              <p>Se atiende lo afectivo, emocional, motor, comunicativo y social. No solo lo académico.</p>
-            </article>
-
-            <article class="mini-card green">
-              <h4>4. Consumo responsable y salud</h4>
-              <p>Desde pequeños se trabaja el cuidado del cuerpo y del entorno.</p>
-            </article>
-
-            <article class="mini-card orange">
-              <h4>5. Autonomía personal</h4>
-              <p>Se fomenta de forma positiva, equilibrada e igualitaria (sin diferencias de género).</p>
-            </article>
-
-            <article class="mini-card pink">
-              <h4>6. Desarrollo de todos los lenguajes</h4>
-              <p>Verbal, corporal, musical, plástico… respetando los derechos de la infancia.</p>
-            </article>
-
-            <article class="mini-card purple">
-              <h4>7. Aproximación a lectoescritura, números, TIC y expresión</h4>
-              <p>Sin carácter obligatorio ni exigible; es una introducción suave y adaptada.</p>
-            </article>
-
-            <article class="mini-card blue">
-              <h4>8. Primera aproximación a la lengua extranjera</h4>
-              <p>Solo en el segundo ciclo (3-6 años), de forma lúdica y natural.</p>
-            </article>
-          </div>
-
-          <div class="callout">
-            💡 <strong>Clave práctica:</strong> Estos principios no son una lista de tareas.
-            Son la filosofía que debe impregnar cada actividad, rutina y relación con el alumnado.
-          </div>
-        </section>
-
-        <section class="section-card" id="bloque2">
-          <span class="section-tag">BLOQUE 2</span>
-          <h2>Principios Metodológicos Generales</h2>
-          <p>
-            Son <strong>13 principios</strong> que concretan cómo debe organizarse la enseñanza en el día a día.
-          </p>
-
-          <div class="grid-3">
-            <article class="mini-card pink">
-              <h4>Sobre la etapa y el diseño</h4>
-              <ul>
-                <li>a) La Educación Infantil tiene <strong>identidad propia</strong>; no es una preparación para primaria.</li>
-                <li>b) El <strong>DUA (Diseño Universal para el Aprendizaje)</strong> guía el diseño de situaciones inclusivas.</li>
-                <li>c) <strong>Enfoque globalizador</strong>: las áreas de conocimiento se trabajan de forma integrada, no por asignaturas.</li>
-              </ul>
-            </article>
-
-            <article class="mini-card purple">
-              <h4>Sobre el alumnado</h4>
-              <ul>
-                <li>d) El <strong>papel activo del niño/a</strong>: aprenden haciendo, explorando, participando.</li>
-                <li>e) <strong>Aprendizaje significativo</strong>: lo nuevo se conecta con lo que ya saben.</li>
-                <li>g) Se fomenta el desarrollo de las <strong>capacidades afectivas</strong>.</li>
-                <li>k) La enseñanza debe <strong>adecuarse a las necesidades reales</strong> de cada alumno/a.</li>
-              </ul>
-            </article>
-
-            <article class="mini-card blue">
-              <h4>Educador/a, recursos y entorno</h4>
-              <ul>
-                <li>f) Actitud <strong>equilibrada, afectiva y disponible</strong> en todo momento.</li>
-                <li>h) Uso de <strong>materiales diversos</strong>.</li>
-                <li>i) <strong>El juego</strong> es el principal recurso metodológico.</li>
-                <li>j) Se organiza el <strong>ambiente y el tiempo</strong> de forma favorable al aprendizaje.</li>
-                <li>l) Se usan <strong>recursos digitales adaptados</strong> a sus características evolutivas.</li>
-                <li>m) Se planifica cuidadosamente el <strong>período de adaptación</strong>.</li>
-              </ul>
-            </article>
-          </div>
-        </section>
-
-        <section class="section-card" id="bloque3">
-          <span class="section-tag">BLOQUE 3</span>
-          <h2>Estrategias Metodológicas</h2>
-          <p>
-            La <strong>metodología</strong> se define como el
-            <em>"conjunto de acciones, principios, estrategias y elementos organizativos que se llevan a cabo para facilitar el aprendizaje y lograr los objetivos."</em>
-          </p>
-          <p>Existen tres tipos de estrategias:</p>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Estrategia</th>
-                <th>En qué consiste</th>
-                <th>Ejemplo práctico</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Expositiva</strong></td>
-                <td>El/la docente presenta la información directamente</td>
-                <td>Narrar un cuento, explicar un concepto</td>
-              </tr>
-              <tr>
-                <td><strong>Por descubrimiento</strong></td>
-                <td>El alumnado experimenta y aprende por sí mismo</td>
-                <td>Talleres, juego libre, experimentación</td>
-              </tr>
-              <tr>
-                <td><strong>Mixta</strong></td>
-                <td>Combina las dos anteriores</td>
-                <td>Proyecto temático con introducción y exploración</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section class="section-card" id="bloque4">
-          <span class="section-tag">BLOQUE 4</span>
-          <h2>Diseño de la Intervención — Niveles de Planificación</h2>
-
-          <h3>4.1. ¿Qué se trabaja en la Escuela Infantil?</h3>
-          <div class="grid-2">
-            <article class="mini-card green">
-              <h4>Contenidos principales</h4>
-              <ul>
-                <li>Rutinas y hábitos: alimentación, higiene, sueño</li>
-                <li>Desarrollo afectivo y emocional</li>
-                <li>Habilidades de comunicación y lenguaje</li>
-                <li>Habilidades sociales y convivencia</li>
-                <li>Motricidad (gruesa y fina)</li>
-                <li>Desarrollo sensorial</li>
-                <li>Capacidades cognitivas</li>
-                <li>Inicio de la lengua extranjera</li>
-                <li>Habilidades numéricas básicas</li>
-                <li>Lectoescritura (aproximación)</li>
-                <li>Uso de TIC</li>
-              </ul>
-            </article>
-
-            <article class="mini-card orange">
-              <h4>Temas transversales</h4>
-              <ul>
-                <li>Educación en valores</li>
-                <li>Educación para la paz</li>
-                <li>Educación ambiental</li>
-                <li>Educación vial</li>
-                <li>Educación para la salud y del consumidor/a</li>
-                <li>Educación cívica y moral</li>
-                <li>Educación para la igualdad</li>
-              </ul>
-            </article>
-          </div>
-
-          <hr class="separator" />
-
-          <h3>4.2. Niveles de concreción curricular</h3>
-          <p><strong>En el ámbito FORMAL</strong> hay tres niveles:</p>
-
-          <div class="code-flow" aria-label="Niveles de concreción curricular formal">
-NIVEL 1 → Administración (Leyes y decretos)
-        ↓
-NIVEL 2 → Centro educativo (Proyecto curricular y Propuesta pedagógica)
-        ↓
-NIVEL 3 → Docente (Programaciones y Situaciones de aprendizaje)
-          </div>
-
-          <p style="margin-top:16px;"><strong>En el ámbito NO FORMAL</strong> la estructura es:</p>
-          <ul>
-            <li><strong>Plan</strong> → Objetivos generales, largo plazo, amplio territorio. Contiene varios programas.</li>
-            <li><strong>Programa</strong> → Objetivos específicos, metodologías concretas. Contiene varios proyectos.</li>
-            <li><strong>Proyecto</strong> → Actividades concretas con objetivos operativos y medibles.</li>
-          </ul>
-
-          <hr class="separator" />
-
-          <h3>4.3. Los Objetivos: de lo general a lo concreto</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Tipo de objetivo</th>
-                <th>Quién los fija</th>
-                <th>Dónde aparecen</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Generales de etapa</strong></td>
-                <td>Administración</td>
-                <td>Real Decreto y Orden</td>
-              </tr>
-              <tr>
-                <td><strong>Específicos de área</strong></td>
-                <td>Administración</td>
-                <td>Competencias específicas</td>
-              </tr>
-              <tr>
-                <td><strong>Didácticos</strong></td>
-                <td>El/la docente</td>
-                <td>Situaciones de aprendizaje</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <hr class="separator" />
-
-          <h3>4.4. Atención a las diferencias individuales</h3>
-          <p>
-            La <strong>atención individualizada e inclusiva</strong> es la pauta ordinaria, no la excepción.
-            Para ello:
-          </p>
-          <ul>
-            <li>Se aplica el DUA en la práctica diaria.</li>
-            <li>El currículo y los recursos se organizan con enfoque inclusivo.</li>
-            <li>El Plan de Atención a la Diversidad se incorpora al Proyecto Curricular.</li>
-            <li>El aula se organiza de forma individualizada.</li>
-            <li>El rango de la Atención Temprana abarca de los 0 a los 6 años.</li>
-          </ul>
-        </section>
-
-        <section class="section-card" id="bloque5">
-          <span class="section-tag">BLOQUE 5</span>
-          <h2>Documentos de Planificación del Centro</h2>
-          <p>
-            Estos son los documentos oficiales que organizan la vida educativa, de mayor a menor amplitud:
-          </p>
-
-          <table>
-            <thead>
-              <tr>
-                <th>Documento</th>
-                <th>Qué es</th>
-                <th>Quién lo elabora</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>PEC</strong></td>
-                <td>Identidad, valores y metas del centro. Incluye la Propuesta Pedagógica</td>
-                <td>Comunidad educativa</td>
-              </tr>
-              <tr>
-                <td><strong>RRI</strong></td>
-                <td>Normas de funcionamiento: protocolos, horarios, espacios, derechos y deberes</td>
-                <td>Todo el centro</td>
-              </tr>
-              <tr>
-                <td><strong>Propuesta Pedagógica</strong></td>
-                <td>Filosofía educativa, principios y estrategias del centro. Incluida en el PEC</td>
-                <td>Equipo educativo + Dirección</td>
-              </tr>
-              <tr>
-                <td><strong>PCE</strong></td>
-                <td>Detalla objetivos, metodología, temporalización, evaluación, adaptaciones...</td>
-                <td>Equipo educativo</td>
-              </tr>
-              <tr>
-                <td><strong>Proyecto de gestión</strong></td>
-                <td>Autonomía económica: recursos humanos y materiales</td>
-                <td>El centro</td>
-              </tr>
-              <tr>
-                <td><strong>PGA</strong></td>
-                <td>Organización anual: días, fiestas, proyectos del curso</td>
-                <td>El centro (inicio de curso)</td>
-              </tr>
-              <tr>
-                <td><strong>Programación Didáctica</strong></td>
-                <td>Planificación concreta del curso por cada tutor/a</td>
-                <td>Tutor/a de aula</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <hr class="separator" />
-
-          <h3>Estructura completa de una Programación Didáctica</h3>
-          <ol>
-            <li><strong>Justificación</strong> — Por qué es necesaria, normativa, grupo al que va dirigida</li>
-            <li><strong>Competencias clave</strong> — Las que se trabajan a lo largo del curso</li>
-            <li><strong>Objetivos</strong> — Generales de etapa y específicos de área</li>
-            <li><strong>Contenidos</strong> — Saberes básicos y temas transversales</li>
-            <li><strong>Metodología</strong> — Estrategias, DUA, agrupamientos, familias, juego</li>
-            <li><strong>Situaciones de aprendizaje</strong> — Lista con temporalización</li>
-            <li><strong>Recursos</strong> — Espacios, materiales fungibles/inventariables, personas</li>
-            <li><strong>Evaluación</strong> — Criterios, indicadores, técnicas, instrumentos y momentos</li>
-            <li><strong>Actividades complementarias y extraescolares</strong></li>
-            <li><strong>Revisión de los procesos de enseñanza-aprendizaje</strong></li>
-            <li><strong>Medidas para recursos digitales y proyectos bilingües</strong></li>
-          </ol>
-        </section>
-
-        <section class="section-card" id="bloque6">
-          <span class="section-tag">BLOQUE 6</span>
-          <h2>Las Situaciones de Aprendizaje</h2>
-          <p>Son el <strong>elemento central de la planificación docente</strong>. Se definen como:</p>
-
-          <div class="quote">
-            "Situaciones y actividades que implican el despliegue por parte del alumnado de actuaciones
-            que contribuyen al desarrollo de las competencias clave y las competencias específicas
-            y cuyo diseño involucra el aprendizaje de diferentes saberes básicos asociados
-            a una o varias áreas de conocimiento."
-          </div>
-
-          <h3 style="margin-top:22px;">Tipos de Situaciones de Aprendizaje</h3>
-          <div class="grid-2">
-            <article class="mini-card pink">
-              <h4>Permanentes</h4>
-              <p>
-                Rutinas diarias (comida, higiene, descanso), actividades habituales
-                (hora del cuento, entrada/salida), rincones (huerto, biblioteca, juego simbólico).
-              </p>
-            </article>
-
-            <article class="mini-card blue">
-              <h4>Temporales</h4>
-              <p>
-                Período de adaptación, salidas, talleres, fiestas, proyectos temáticos, fin de curso.
-              </p>
-            </article>
-          </div>
-
-          <hr class="separator" />
-
-          <h3>Estructura de una Situación de Aprendizaje</h3>
-          <table>
-            <thead>
-              <tr>
-                <th>Elemento</th>
-                <th>Contenido</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Título</strong></td>
-                <td>Corto, llamativo y relacionado con el tema</td>
-              </tr>
-              <tr>
-                <td><strong>Justificación</strong></td>
-                <td>Por qué es importante trabajar este tema</td>
-              </tr>
-              <tr>
-                <td><strong>Contextualización de aula</strong></td>
-                <td>Grupo destinatario y sus características</td>
-              </tr>
-              <tr>
-                <td><strong>Contextualización curricular</strong></td>
-                <td>Competencias clave, áreas y competencias específicas</td>
-              </tr>
-              <tr>
-                <td><strong>Objetivos</strong></td>
-                <td>Generales, específicos y didácticos relacionados</td>
-              </tr>
-              <tr>
-                <td><strong>Contenidos/Saberes básicos</strong></td>
-                <td>Con temas transversales, conceptos, procedimientos y actitudes</td>
-              </tr>
-              <tr>
-                <td><strong>Metodología</strong></td>
-                <td>Estrategias, TIC, espacio-tiempo, familias, DUA</td>
-              </tr>
-              <tr>
-                <td><strong>Actividades</strong></td>
-                <td>Cronograma, secuenciación, tipos, recursos por sesión</td>
-              </tr>
-              <tr>
-                <td><strong>Recursos</strong></td>
-                <td>Humanos y materiales para toda la situación</td>
-              </tr>
-              <tr>
-                <td><strong>Evaluación</strong></td>
-                <td>Criterios, técnicas, instrumentos, momentos y evaluación docente</td>
-              </tr>
-              <tr>
-                <td><strong>Anexos</strong></td>
-                <td>Fichas de actividades, materiales complementarios</td>
-              </tr>
-            </tbody>
-          </table>
-        </section>
-
-        <section class="section-card" id="conceptos">
-          <span class="section-tag">4. CONCEPTOS CLAVE</span>
-          <h2>Explicación sencilla de los conceptos clave</h2>
-
-          <div class="quick-list">
-            <div class="quick-item">
-              <strong>¿Qué es el DUA?</strong><br>
-              El <strong>Diseño Universal para el Aprendizaje</strong> es una forma de planificar las clases
-              para que <strong>todos los niños y niñas puedan participar</strong>, independientemente de sus capacidades.
-              Significa ofrecer múltiples formas de presentar la información, de que los niños/as puedan expresarse y de motivarles.
-            </div>
-
-            <div class="quick-item">
-              <strong>¿Qué diferencia hay entre Programación Didáctica y Situación de Aprendizaje?</strong><br>
-              La <strong>Programación Didáctica</strong> es el <strong>plan de todo el curso</strong> (como el índice de un libro).
-              La <strong>Situación de Aprendizaje</strong> es <strong>cada capítulo concreto</strong> que se desarrolla dentro de ese plan.
-            </div>
-
-            <div class="quick-item">
-              <strong>¿Por qué el juego es tan importante?</strong><br>
-              Porque es el <strong>lenguaje natural de la infancia</strong>. A través del juego, los niños/as aprenden,
-              se relacionan, desarrollan su cuerpo, procesan emociones y construyen conocimiento.
-              Por eso es el principal recurso metodológico en esta etapa.
-            </div>
-
-            <div class="quick-item">
-              <strong>¿Qué significa "enfoque globalizador"?</strong><br>
-              Significa que <strong>no se separan los contenidos en asignaturas</strong>.
-              Un niño/a que aprende los colores también trabaja el lenguaje, la psicomotricidad fina,
-              la atención y las emociones al mismo tiempo. Todo está conectado.
-            </div>
-
-            <div class="quick-item">
-              <strong>¿Qué es la Atención Temprana?</strong><br>
-              Es el conjunto de intervenciones dirigidas a niños/as de <strong>0 a 6 años</strong>
-              que presentan o tienen riesgo de presentar algún trastorno en su desarrollo.
-              Implica la coordinación entre familia, escuela y servicios especializados.
-            </div>
-          </div>
-        </section>
-
-        <section class="section-card" id="repaso">
-          <span class="section-tag">5. ESQUEMA RÁPIDO</span>
-          <h2>Ideas principales por apartados</h2>
-
-          <div class="grid-2">
-            <article class="mini-card pink">
-              <h4>Principios pedagógicos (8)</h4>
-              <p>
-                Máximo desarrollo · Aprendizaje significativo y juego · Desarrollo integral ·
-                Salud y consumo · Autonomía · Todos los lenguajes ·
-                Aproximación a lectoescritura/TIC · Lengua extranjera en 2.º ciclo
-              </p>
-            </article>
-
-            <article class="mini-card purple">
-              <h4>Principios metodológicos (13 — a a m)</h4>
-              <p>
-                Identidad propia · DUA · Globalización · Papel activo · Aprendizaje significativo ·
-                Papel del educador/a · Capacidades afectivas · Materiales diversos ·
-                <strong>Juego</strong> · Organización espacio-tiempo · Necesidades del alumnado · TIC ·
-                Período de adaptación
-              </p>
-            </article>
-
-            <article class="mini-card blue">
-              <h4>Estrategias metodológicas (3)</h4>
-              <p>Expositiva · Descubrimiento · Mixta</p>
-            </article>
-
-            <article class="mini-card green">
-              <h4>Niveles de concreción (formal)</h4>
-              <p>1.º Administración → 2.º Centro → 3.º Docente</p>
-            </article>
-
-            <article class="mini-card orange">
-              <h4>Documentos del centro</h4>
-              <p>PEC → RRI → Propuesta pedagógica → PCE → Proyecto de gestión → PGA → Programación Didáctica</p>
-            </article>
-
-            <article class="mini-card pink">
-              <h4>Situaciones de aprendizaje</h4>
-              <p>Permanentes (rutinas, rincones) + Temporales (talleres, proyectos, fiestas)</p>
-            </article>
-          </div>
-        </section>
-      </div>
+    <!-- RESUMEN EJECUTIVO -->
+    <section class="section" id="resumen" style="background: linear-gradient(135deg, #f8f9ff, #fff5f5);">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(243,156,18,0.15); color: var(--orange);">⚡ En 2 minutos</span>
+            <h2 class="section-title" style="color: var(--orange);">Resumen Ejecutivo</h2>
+        </div>
+        <div class="quote-block">
+            Este tema explica <strong>cómo se organiza y planifica la enseñanza en Educación Infantil</strong> desde dos ángulos complementarios: los <strong>principios que guían qué hacer</strong> (principios pedagógicos y metodológicos) y <strong>cómo documentarlo y organizarlo</strong> (niveles de planificación y documentos oficiales del centro).
+            <br><br>
+            El hilo conductor es que <strong>todo parte de la ley</strong> (primer nivel), se concreta en el <strong>centro educativo</strong> (segundo nivel) y llega al <strong>aula</strong> a través del trabajo docente (tercer nivel). Las Situaciones de Aprendizaje son la unidad mínima de planificación real del día a día.
+        </div>
     </section>
 
-    <footer class="footer">
-      <p><strong>Guía de Estudio Completa — Tema 4</strong></p>
-      <p>Ana Maria da Cunha Goncalves - Didactica - Profesora Beatriz Sarasa.</p>
+    <!-- BLOQUE 1: PRINCIPIOS PEDAGÓGICOS -->
+    <section class="section" id="bloque1">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(255,107,107,0.15); color: var(--coral);">🎯 Bloque 1</span>
+            <h2 class="section-title" style="color: var(--coral);">Principios Pedagógicos</h2>
+            <p class="section-desc">Son los <strong>fundamentos que orientan toda la práctica educativa</strong> en la etapa infantil. Hay 8 principios clave:</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card" style="--card-color: var(--coral);">
+                <span class="card-number">1</span>
+                <div class="card-icon">🌟</div>
+                <h3>Máximo desarrollo de cada niño/a</h3>
+                <p>Cada criatura es única; la escuela debe potenciar al máximo sus capacidades individuales.</p>
+            </div>
+            <div class="card" style="--card-color: var(--turquoise);">
+                <span class="card-number">2</span>
+                <div class="card-icon">🎮</div>
+                <h3>Aprendizaje significativo, experimentación y juego</h3>
+                <p>Aprender haciendo, viviendo experiencias positivas y jugando.</p>
+            </div>
+            <div class="card" style="--card-color: var(--purple);">
+                <span class="card-number">3</span>
+                <div class="card-icon">🧠</div>
+                <h3>Desarrollo integral</h3>
+                <p>Se atiende lo afectivo, emocional, motor, comunicativo y social. No solo lo académico.</p>
+            </div>
+            <div class="card" style="--card-color: var(--blue);">
+                <span class="card-number">4</span>
+                <div class="card-icon">🍎</div>
+                <h3>Consumo responsable y salud</h3>
+                <p>Desde pequeños se trabaja el cuidado del cuerpo y del entorno.</p>
+            </div>
+            <div class="card" style="--card-color: var(--green);">
+                <span class="card-number">5</span>
+                <div class="card-icon">🚀</div>
+                <h3>Autonomía personal</h3>
+                <p>Se fomenta de forma positiva, equilibrada e igualitaria (sin diferencias de género).</p>
+            </div>
+            <div class="card" style="--card-color: var(--orange);">
+                <span class="card-number">6</span>
+                <div class="card-icon">🎭</div>
+                <h3>Desarrollo de todos los lenguajes</h3>
+                <p>Verbal, corporal, musical, plástico… respetando los derechos de la infancia.</p>
+            </div>
+            <div class="card" style="--card-color: var(--pink);">
+                <span class="card-number">7</span>
+                <div class="card-icon">🔢</div>
+                <h3>Aproximación a lectoescritura, números, TIC y expresión</h3>
+                <p>Sin carácter obligatorio ni exigible; es una introducción suave y adaptada.</p>
+            </div>
+            <div class="card" style="--card-color: #E74C3C;">
+                <span class="card-number">8</span>
+                <div class="card-icon">🌍</div>
+                <h3>Primera aproximación a la lengua extranjera</h3>
+                <p>Solo en el segundo ciclo (3-6 años), de forma lúdica y natural.</p>
+            </div>
+        </div>
+
+        <div class="key-concept">
+            <span class="icon">💡</span>
+            <div>
+                <strong>Clave práctica:</strong> Estos principios no son una lista de tareas. Son la filosofía que debe impregnar cada actividad, rutina y relación con el alumnado.
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 2: PRINCIPIOS METODOLÓGICOS -->
+    <section class="section" id="bloque2" style="background: linear-gradient(135deg, #f0fffc, #f8f9ff);">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(78,205,196,0.15); color: #2a9d8f;">🛠️ Bloque 2</span>
+            <h2 class="section-title" style="color: var(--turquoise);">Principios Metodológicos Generales</h2>
+            <p class="section-desc">Son <strong>13 principios</strong> que concretan cómo debe organizarse la enseñanza en el día a día.</p>
+        </div>
+
+        <div class="two-col">
+            <div class="info-box" style="--box-color: var(--coral);">
+                <h4>📐 Sobre la etapa y el diseño</h4>
+                <ul class="styled-list">
+                    <li><strong>a)</strong> La Educación Infantil tiene <strong>identidad propia</strong>; no es una preparación para primaria.</li>
+                    <li><strong>b)</strong> El <strong>DUA (Diseño Universal para el Aprendizaje)</strong> guía el diseño de situaciones inclusivas.</li>
+                    <li><strong>c)</strong> <strong>Enfoque globalizador</strong>: las áreas de conocimiento se trabajan de forma integrada, no por asignaturas.</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--blue);">
+                <h4>👶 Sobre el alumnado</h4>
+                <ul class="styled-list">
+                    <li><strong>d)</strong> El <strong>papel activo del niño/a</strong>: aprenden haciendo, explorando, participando.</li>
+                    <li><strong>e)</strong> <strong>Aprendizaje significativo</strong>: lo nuevo se conecta con lo que ya saben.</li>
+                    <li><strong>g)</strong> Se fomenta el desarrollo de las <strong>capacidades afectivas</strong>.</li>
+                    <li><strong>k)</strong> La enseñanza debe <strong>adecuarse a las necesidades reales</strong> de cada alumno/a.</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--purple);">
+                <h4>👩‍🏫 Sobre el/la educador/a</h4>
+                <ul class="styled-list">
+                    <li><strong>f)</strong> Actitud <strong>equilibrada, afectiva y disponible</strong> en todo momento.</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--green);">
+                <h4>🏫 Sobre los recursos y el entorno</h4>
+                <ul class="styled-list">
+                    <li><strong>h)</strong> Uso de <strong>materiales diversos</strong>.</li>
+                    <li><strong>i)</strong> <strong>El juego</strong> es el principal recurso metodológico.</li>
+                    <li><strong>j)</strong> Se organiza el <strong>ambiente y el tiempo</strong> de forma favorable al aprendizaje.</li>
+                    <li><strong>l)</strong> Se usan <strong>recursos digitales adaptados</strong> a sus características evolutivas.</li>
+                    <li><strong>m)</strong> Se planifica cuidadosamente el <strong>período de adaptación</strong>.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 3: ESTRATEGIAS -->
+    <section class="section" id="bloque3">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(155,89,182,0.15); color: var(--purple);">🧩 Bloque 3</span>
+            <h2 class="section-title" style="color: var(--purple);">Estrategias Metodológicas</h2>
+            <p class="section-desc">La <strong>metodología</strong> se define como el <em>"conjunto de acciones, principios, estrategias y elementos organizativos que se llevan a cabo para facilitar el aprendizaje y lograr los objetivos."</em></p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Estrategia</th>
+                        <th>En qué consiste</th>
+                        <th>Ejemplo práctico</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-coral">Expositiva</span></td>
+                        <td>El/la docente presenta la información directamente</td>
+                        <td>Narrar un cuento, explicar un concepto</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-turquoise">Por descubrimiento</span></td>
+                        <td>El alumnado experimenta y aprende por sí mismo</td>
+                        <td>Talleres, juego libre, experimentación</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-purple">Mixta</span></td>
+                        <td>Combina las dos anteriores</td>
+                        <td>Proyecto temático con introducción y exploración</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- BLOQUE 4: NIVELES DE PLANIFICACIÓN -->
+    <section class="section" id="bloque4" style="background: linear-gradient(135deg, #f0f8ff, #f5f0ff);">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(52,152,219,0.15); color: var(--blue);">📐 Bloque 4</span>
+            <h2 class="section-title" style="color: var(--blue);">Diseño de la Intervención — Niveles de Planificación</h2>
+        </div>
+
+        <h3 style="color: var(--blue); margin-bottom: 1.5rem; font-size: 1.4rem;">¿Qué se trabaja en la Escuela Infantil?</h3>
+
+        <div class="two-col">
+            <div class="info-box" style="--box-color: var(--blue);">
+                <h4>📚 Contenidos principales</h4>
+                <ul class="styled-list">
+                    <li>Rutinas y hábitos: alimentación, higiene, sueño</li>
+                    <li>Desarrollo afectivo y emocional</li>
+                    <li>Habilidades de comunicación y lenguaje</li>
+                    <li>Habilidades sociales y convivencia</li>
+                    <li>Motricidad (gruesa y fina)</li>
+                    <li>Desarrollo sensorial</li>
+                    <li>Capacidades cognitivas</li>
+                    <li>Inicio de la lengua extranjera</li>
+                    <li>Habilidades numéricas básicas</li>
+                    <li>Lectoescritura (aproximación)</li>
+                    <li>Uso de TIC</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--green);">
+                <h4>🌐 Temas transversales</h4>
+                <p style="margin-bottom: 1rem; color: #666;">Se trabajan de forma transversal en todas las actividades:</p>
+                <ul class="styled-list">
+                    <li>Educación en valores</li>
+                    <li>Educación para la paz</li>
+                    <li>Educación ambiental</li>
+                    <li>Educación vial</li>
+                    <li>Educación para la salud y del consumidor/a</li>
+                    <li>Educación cívica y moral</li>
+                    <li>Educación para la igualdad</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="color: var(--purple); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Niveles de concreción curricular</h3>
+
+        <div class="two-col">
+            <div class="info-box" style="--box-color: var(--purple);">
+                <h4>🏛️ Ámbito FORMAL</h4>
+                <div class="flow-chart">
+                    <div class="flow-item" style="--flow-color: var(--coral);">
+                        <strong>NIVEL 1</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Administración (Leyes y decretos)</span>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-item" style="--flow-color: var(--purple);">
+                        <strong>NIVEL 2</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Centro educativo (Proyecto curricular y Propuesta pedagógica)</span>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-item" style="--flow-color: var(--green);">
+                        <strong>NIVEL 3</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Docente (Programaciones y Situaciones de aprendizaje)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--orange);">
+                <h4>🌱 Ámbito NO FORMAL</h4>
+                <div class="flow-chart">
+                    <div class="flow-item" style="--flow-color: var(--orange);">
+                        <strong>Plan</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Objetivos generales, largo plazo, amplio territorio. Contiene varios programas.</span>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-item" style="--flow-color: var(--blue);">
+                        <strong>Programa</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Objetivos específicos, metodologías concretas. Contiene varios proyectos.</span>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-item" style="--flow-color: var(--green);">
+                        <strong>Proyecto</strong><br>
+                        <span style="font-size: 0.9rem; color: #666;">Actividades concretas con objetivos operativos y medibles.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h3 style="color: var(--coral); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Los Objetivos: de lo general a lo concreto</h3>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tipo de objetivo</th>
+                        <th>Quién los fija</th>
+                        <th>Dónde aparecen</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-coral">Generales de etapa</span></td>
+                        <td>Administración</td>
+                        <td>Real Decreto y Orden</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-purple">Específicos de área</span></td>
+                        <td>Administración</td>
+                        <td>Competencias específicas</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">Didácticos</span></td>
+                        <td>El/la docente</td>
+                        <td>Situaciones de aprendizaje</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="color: var(--turquoise); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Atención a las diferencias individuales</h3>
+
+        <div class="key-concept">
+            <span class="icon">♿</span>
+            <div>
+                <strong>Atención individualizada e inclusiva:</strong> Es la pauta ordinaria, no la excepción.
+            </div>
+        </div>
+
+        <div class="cards-grid" style="margin-top: 1.5rem;">
+            <div class="card" style="--card-color: var(--coral);">
+                <div class="card-icon">♿</div>
+                <h3>DUA en la práctica diaria</h3>
+                <p>Se aplica el Diseño Universal para el Aprendizaje en el día a día del aula.</p>
+            </div>
+            <div class="card" style="--card-color: var(--purple);">
+                <div class="card-icon">🏫</div>
+                <h3>Currículo inclusivo</h3>
+                <p>El currículo y los recursos se organizan con enfoque inclusivo.</p>
+            </div>
+            <div class="card" style="--card-color: var(--blue);">
+                <div class="card-icon">📋</div>
+                <h3>Plan de Atención a la Diversidad</h3>
+                <p>Se incorpora al Proyecto Curricular del centro.</p>
+            </div>
+            <div class="card" style="--card-color: var(--green);">
+                <div class="card-icon">🎯</div>
+                <h3>Aula individualizada</h3>
+                <p>El aula se organiza de forma individualizada para cada niño/a.</p>
+            </div>
+            <div class="card" style="--card-color: var(--orange);">
+                <div class="card-icon">👶</div>
+                <h3>Atención Temprana</h3>
+                <p>El rango abarca de los <strong>0 a los 6 años</strong>.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 5: DOCUMENTOS -->
+    <section class="section" id="bloque5">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(46,204,113,0.15); color: var(--green);">📁 Bloque 5</span>
+            <h2 class="section-title" style="color: var(--green);">Documentos de Planificación del Centro</h2>
+            <p class="section-desc">Estos son los documentos oficiales que organizan la vida educativa, de mayor a menor amplitud:</p>
+        </div>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Documento</th>
+                        <th>Qué es</th>
+                        <th>Quién lo elabora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-coral">PEC</span></td>
+                        <td>Identidad, valores y metas del centro. Incluye la Propuesta Pedagógica</td>
+                        <td>Comunidad educativa</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">RRI</span></td>
+                        <td>Normas de funcionamiento: protocolos, horarios, espacios, derechos y deberes</td>
+                        <td>Todo el centro</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-purple">Propuesta Pedagógica</span></td>
+                        <td>Filosofía educativa, principios y estrategias del centro. Incluida en el PEC</td>
+                        <td>Equipo educativo + Dirección</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-turquoise">PCE</span></td>
+                        <td>Detalla objetivos, metodología, temporalización, evaluación, adaptaciones...</td>
+                        <td>Equipo educativo</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-orange">Proyecto de gestión</span></td>
+                        <td>Autonomía económica: recursos humanos y materiales</td>
+                        <td>El centro</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-pink">PGA</span></td>
+                        <td>Organización anual: días, fiestas, proyectos del curso</td>
+                        <td>El centro (inicio de curso)</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">Programación Didáctica</span></td>
+                        <td>Planificación concreta del curso por cada tutor/a</td>
+                        <td>Tutor/a de aula</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3 style="color: var(--green); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Estructura completa de una Programación Didáctica</h3>
+
+        <div class="cards-grid">
+            <div class="card" style="--card-color: var(--coral);">
+                <span class="card-number">1</span>
+                <div class="card-icon">📝</div>
+                <h3>Justificación</h3>
+                <p>Por qué es necesaria, normativa, grupo al que va dirigida</p>
+            </div>
+            <div class="card" style="--card-color: var(--turquoise);">
+                <span class="card-number">2</span>
+                <div class="card-icon">🎯</div>
+                <h3>Competencias clave</h3>
+                <p>Las que se trabajan a lo largo del curso</p>
+            </div>
+            <div class="card" style="--card-color: var(--purple);">
+                <span class="card-number">3</span>
+                <div class="card-icon">🎪</div>
+                <h3>Objetivos</h3>
+                <p>Generales de etapa y específicos de área</p>
+            </div>
+            <div class="card" style="--card-color: var(--blue);">
+                <span class="card-number">4</span>
+                <div class="card-icon">📚</div>
+                <h3>Contenidos</h3>
+                <p>Saberes básicos y temas transversales</p>
+            </div>
+            <div class="card" style="--card-color: var(--green);">
+                <span class="card-number">5</span>
+                <div class="card-icon">🛠️</div>
+                <h3>Metodología</h3>
+                <p>Estrategias, DUA, agrupamientos, familias, juego</p>
+            </div>
+            <div class="card" style="--card-color: var(--orange);">
+                <span class="card-number">6</span>
+                <div class="card-icon">🎨</div>
+                <h3>Situaciones de aprendizaje</h3>
+                <p>Lista con temporalización</p>
+            </div>
+            <div class="card" style="--card-color: var(--pink);">
+                <span class="card-number">7</span>
+                <div class="card-icon">🧰</div>
+                <h3>Recursos</h3>
+                <p>Espacios, materiales fungibles/inventariables, personas</p>
+            </div>
+            <div class="card" style="--card-color: #E74C3C;">
+                <span class="card-number">8</span>
+                <div class="card-icon">📊</div>
+                <h3>Evaluación</h3>
+                <p>Criterios, indicadores, técnicas, instrumentos y momentos</p>
+            </div>
+            <div class="card" style="--card-color: var(--coral);">
+                <span class="card-number">9</span>
+                <div class="card-icon">🎉</div>
+                <h3>Actividades complementarias y extraescolares</h3>
+                <p>Salidas, talleres y actividades fuera del horario lectivo</p>
+            </div>
+            <div class="card" style="--card-color: var(--turquoise);">
+                <span class="card-number">10</span>
+                <div class="card-icon">🔄</div>
+                <h3>Revisión de los procesos de enseñanza-aprendizaje</h3>
+                <p>Análisis y mejora continua</p>
+            </div>
+            <div class="card" style="--card-color: var(--purple);">
+                <span class="card-number">11</span>
+                <div class="card-icon">💻</div>
+                <h3>Medidas para recursos digitales y proyectos bilingües</h3>
+                <p>Integración de TIC y lenguas extranjeras</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOQUE 6: SITUACIONES DE APRENDIZAJE -->
+    <section class="section" id="bloque6" style="background: linear-gradient(135deg, #fff8f0, #fff5f5);">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(243,156,18,0.15); color: var(--orange);">🎨 Bloque 6</span>
+            <h2 class="section-title" style="color: var(--orange);">Las Situaciones de Aprendizaje</h2>
+            <p class="section-desc">Son el <strong>elemento central de la planificación docente</strong>.</p>
+        </div>
+
+        <div class="quote-block" style="background: linear-gradient(135deg, var(--orange), var(--coral));">
+            "Situaciones y actividades que implican el despliegue por parte del alumnado de actuaciones que contribuyen al desarrollo de las competencias clave y las competencias específicas y cuyo diseño involucra el aprendizaje de diferentes saberes básicos asociados a una o varias áreas de conocimiento."
+        </div>
+
+        <h3 style="color: var(--orange); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Tipos de Situaciones de Aprendizaje</h3>
+
+        <div class="two-col">
+            <div class="info-box" style="--box-color: var(--green);">
+                <h4>🌿 Permanentes</h4>
+                <p style="margin-bottom: 1rem; color: #666;">Rutinas y actividades habituales del día a día:</p>
+                <ul class="styled-list">
+                    <li>Rutinas diarias (comida, higiene, descanso)</li>
+                    <li>Actividades habituales (hora del cuento, entrada/salida)</li>
+                    <li>Rincones (huerto, biblioteca, juego simbólico)</li>
+                </ul>
+            </div>
+
+            <div class="info-box" style="--box-color: var(--coral);">
+                <h4>⏰ Temporales</h4>
+                <p style="margin-bottom: 1rem; color: #666;">Actividades puntuales o de duración limitada:</p>
+                <ul class="styled-list">
+                    <li>Período de adaptación</li>
+                    <li>Salidas</li>
+                    <li>Talleres</li>
+                    <li>Fiestas</li>
+                    <li>Proyectos temáticos</li>
+                    <li>Fin de curso</li>
+                </ul>
+            </div>
+        </div>
+
+        <h3 style="color: var(--purple); margin: 3rem 0 1.5rem; font-size: 1.4rem;">Estructura de una Situación de Aprendizaje</h3>
+
+        <div class="table-wrapper">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Elemento</th>
+                        <th>Contenido</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="tag tag-coral">Título</span></td>
+                        <td>Corto, llamativo y relacionado con el tema</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-turquoise">Justificación</span></td>
+                        <td>Por qué es importante trabajar este tema</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-purple">Contextualización de aula</span></td>
+                        <td>Grupo destinatario y sus características</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">Contextualización curricular</span></td>
+                        <td>Competencias clave, áreas y competencias específicas</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-green">Objetivos</span></td>
+                        <td>Generales, específicos y didácticos relacionados</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-orange">Contenidos/Saberes básicos</span></td>
+                        <td>Con temas transversales, conceptos, procedimientos y actitudes</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-pink">Metodología</span></td>
+                        <td>Estrategias, TIC, espacio-tiempo, familias, DUA</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-coral">Actividades</span></td>
+                        <td>Cronograma, secuenciación, tipos, recursos por sesión</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-turquoise">Recursos</span></td>
+                        <td>Humanos y materiales para toda la situación</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-purple">Evaluación</span></td>
+                        <td>Criterios, técnicas, instrumentos, momentos y evaluación docente</td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag tag-blue">Anexos</span></td>
+                        <td>Fichas de actividades, materiales complementarios</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- CONCEPTOS CLAVE -->
+    <section class="section" id="conceptos">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(255,105,180,0.15); color: var(--pink);">🔑 Conceptos Clave</span>
+            <h2 class="section-title" style="color: var(--pink);">Explicación Sencilla</h2>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card" style="--card-color: var(--purple);">
+                <div class="card-icon">♿</div>
+                <h3>¿Qué es el DUA?</h3>
+                <p>El <strong>Diseño Universal para el Aprendizaje</strong> es una forma de planificar las clases para que <strong>todos los niños y niñas puedan participar</strong>, independientemente de sus capacidades. Significa ofrecer múltiples formas de presentar la información, de que los niños/as puedan expresarse y de motivarles.</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--blue);">
+                <div class="card-icon">📖</div>
+                <h3>Programación vs. Situación</h3>
+                <p>La <strong>Programación Didáctica</strong> es el <strong>plan de todo el curso</strong> (como el índice de un libro). La <strong>Situación de Aprendizaje</strong> es <strong>cada capítulo concreto</strong> que se desarrolla dentro de ese plan.</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--coral);">
+                <div class="card-icon">🎮</div>
+                <h3>¿Por qué el juego es tan importante?</h3>
+                <p>Porque es el <strong>lenguaje natural de la infancia</strong>. A través del juego, los niños/as aprenden, se relacionan, desarrollan su cuerpo, procesan emociones y construyen conocimiento. Por eso es el principal recurso metodológico en esta etapa.</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--green);">
+                <div class="card-icon">🌍</div>
+                <h3>¿Qué significa "enfoque globalizador"?</h3>
+                <p>Significa que <strong>no se separan los contenidos en asignaturas</strong>. Un niño/a que aprende los colores también trabaja el lenguaje, la psicomotricidad fina, la atención y las emociones al mismo tiempo. Todo está conectado.</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--orange);">
+                <div class="card-icon">👶</div>
+                <h3>¿Qué es la Atención Temprana?</h3>
+                <p>Es el conjunto de intervenciones dirigidas a niños/as de <strong>0 a 6 años</strong> que presentan o tienen riesgo de presentar algún trastorno en su desarrollo. Implica la coordinación entre familia, escuela y servicios especializados.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- IDEAS PRINCIPALES -->
+    <section class="section" id="repaso" style="background: linear-gradient(135deg, #f5f0ff, #f0f8ff);">
+        <div class="section-header">
+            <span class="section-tag" style="background: rgba(52,152,219,0.15); color: var(--blue);">📝 Esquema Rápido</span>
+            <h2 class="section-title" style="color: var(--blue);">Ideas Principales por Apartados</h2>
+            <p class="section-desc">Esquema rápido para repasar antes del examen:</p>
+        </div>
+
+        <div class="cards-grid">
+            <div class="card" style="--card-color: var(--coral);">
+                <div class="card-icon">🎯</div>
+                <h3>Principios pedagógicos (8)</h3>
+                <p>Máximo desarrollo · Aprendizaje significativo y juego · Desarrollo integral · Salud y consumo · Autonomía · Todos los lenguajes · Aproximación a lectoescritura/TIC · Lengua extranjera en 2.º ciclo</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--turquoise);">
+                <div class="card-icon">🛠️</div>
+                <h3>Principios metodológicos (13 — a a m)</h3>
+                <p>Identidad propia · DUA · Globalización · Papel activo · Aprendizaje significativo · Papel del educador/a · Capacidades afectivas · Materiales diversos · <strong>Juego</strong> · Organización espacio-tiempo · Necesidades del alumnado · TIC · Período de adaptación</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--purple);">
+                <div class="card-icon">🧩</div>
+                <h3>Estrategias metodológicas (3)</h3>
+                <p>Expositiva · Descubrimiento · Mixta</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--blue);">
+                <div class="card-icon">📐</div>
+                <h3>Niveles de concreción (formal)</h3>
+                <p>1.º Administración → 2.º Centro → 3.º Docente</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--green);">
+                <div class="card-icon">📁</div>
+                <h3>Documentos del centro</h3>
+                <p>PEC → RRI → Propuesta pedagógica → PCE → Proyecto de gestión → PGA → Programación Didáctica</p>
+            </div>
+
+            <div class="card" style="--card-color: var(--orange);">
+                <div class="card-icon">🎨</div>
+                <h3>Situaciones de aprendizaje</h3>
+                <p>Permanentes (rutinas, rincones) + Temporales (talleres, proyectos, fiestas)</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <p style="font-size: 1.2rem; margin-bottom: 0.5rem;">📚 Guía de Estudio Completa — Tema 4</p>
+        <p>Principios Pedagógicos y Opciones Metodológicas en Educación Infantil</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem;">Ana Maria da Cunha - Contenido basado en la normativa vigente de Educación Infantil- Didactica- Beatriz Garcia Sarasa</p>
     </footer>
-  </main>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Fade in animation on scroll
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.card, .info-box, .table-wrapper, .quote-block, .key-concept').forEach(el => {
+            el.classList.add('fade-in');
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
