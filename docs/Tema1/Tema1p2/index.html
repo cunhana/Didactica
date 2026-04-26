@@ -1,1 +1,1866 @@
 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Guía completa de Didáctica de la Educación Infantil para TSEI. Unidad 1: Contexto de la Intervención Educativa. Historia, legislación y perfil profesional.">
+    <title>Didáctica de la Educación Infantil — TSEI | Guía Interactiva Completa</title>
+    <style>
+        :root {
+            --coral: #FF6B6B;
+            --turquesa: #4ECDC4;
+            --amarillo: #FFE66D;
+            --lavanda: #A18CD1;
+            --menta: #88D8B0;
+            --naranja: #FFB347;
+            --rosa: #FF9AA2;
+            --azul-cielo: #85C1E9;
+            --texto: #2D3748;
+            --texto-claro: #718096;
+            --fondo: #FAFBFC;
+            --blanco: #FFFFFF;
+            --sombra: rgba(0,0,0,0.08);
+            --radio: 16px;
+            --transicion: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--fondo);
+            color: var(--texto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== NAVEGACIÓN ===== */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid transparent;
+            border-image: linear-gradient(90deg, var(--coral), var(--turquesa), var(--amarillo), var(--lavanda)) 1;
+            padding: 0.75rem 2rem;
+            box-shadow: 0 2px 20px var(--sombra);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--coral), var(--turquesa));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .nav-links button {
+            background: none;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--texto-claro);
+            cursor: pointer;
+            transition: var(--transicion);
+            font-size: 0.9rem;
+        }
+
+        .nav-links button:hover, .nav-links button.active {
+            background: linear-gradient(135deg, var(--lavanda), var(--azul-cielo));
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(161,140,209,0.3);
+        }
+
+        /* ===== LAYOUT GENERAL ===== */
+        .page {
+            display: none;
+            animation: fadeIn 0.5s ease;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .page.active { display: block; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            background: linear-gradient(135deg, var(--coral), var(--naranja));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--texto);
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            bottom: 0.5rem;
+            width: 6px;
+            border-radius: 3px;
+            background: linear-gradient(to bottom, var(--turquesa), var(--lavanda));
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            margin: 1.5rem 0 0.75rem;
+            color: var(--texto);
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--texto-claro);
+        }
+
+        p { margin-bottom: 1rem; color: var(--texto); }
+
+        /* ===== HERO / HOME ===== */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, rgba(255,107,107,0.05), rgba(78,205,196,0.05), rgba(161,140,209,0.05));
+            border-radius: var(--radio);
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--amarillo), transparent 70%);
+            opacity: 0.4;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            50% { transform: translate(-20px, 20px); }
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero .subtitle {
+            font-size: 1.25rem;
+            color: var(--texto-claro);
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: linear-gradient(135deg, var(--menta), var(--turquesa));
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 15px rgba(78,205,196,0.3);
+        }
+
+        .hero-summary {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--texto);
+            background: rgba(255,255,255,0.8);
+            padding: 2rem;
+            border-radius: var(--radio);
+            box-shadow: 0 4px 20px var(--sombra);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* ===== TARJETAS DE NAVEGACIÓN ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .nav-card {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--sombra);
+            cursor: pointer;
+            transition: var(--transicion);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--turquesa));
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+            border-color: var(--turquesa);
+        }
+
+        .nav-card:hover::after { transform: scaleX(1); }
+
+        .nav-card .icon {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 1rem;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.75rem;
+        }
+
+        .nav-card:nth-child(1) .icon { background: linear-gradient(135deg, #FFE5E5, #FF6B6B); }
+        .nav-card:nth-child(2) .icon { background: linear-gradient(135deg, #E5F5F3, #4ECDC4); }
+        .nav-card:nth-child(3) .icon { background: linear-gradient(135deg, #F0EBF8, #A18CD1); }
+        .nav-card:nth-child(4) .icon { background: linear-gradient(135deg, #FFF8E5, #FFB347); }
+
+        .nav-card h3 { margin: 0.5rem 0; font-size: 1.2rem; }
+        .nav-card p { font-size: 0.95rem; color: var(--texto-claro); margin: 0; }
+
+        /* ===== ACORDEONES ===== */
+        .accordion {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 12px var(--sombra);
+            overflow: hidden;
+            border-left: 4px solid var(--turquesa);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 1.25rem 1.5rem;
+            background: none;
+            border: none;
+            text-align: left;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--texto);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transicion);
+        }
+
+        .accordion-header:hover { background: rgba(78,205,196,0.05); }
+        .accordion-header .arrow { transition: transform 0.3s ease; font-size: 1.2rem; color: var(--turquesa); }
+        .accordion.open .arrow { transform: rotate(180deg); }
+
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, padding 0.4s ease;
+            padding: 0 1.5rem;
+        }
+
+        .accordion.open .accordion-body {
+            max-height: 2000px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* ===== TIMELINE ===== */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: linear-gradient(to bottom, var(--coral), var(--turquesa), var(--lavanda), var(--menta));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            padding-left: 80px;
+            margin-bottom: 2.5rem;
+            opacity: 0;
+            animation: slideIn 0.5s ease forwards;
+        }
+
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        .timeline-item:nth-child(5) { animation-delay: 0.5s; }
+        .timeline-item:nth-child(6) { animation-delay: 0.6s; }
+        .timeline-item:nth-child(7) { animation-delay: 0.7s; }
+        .timeline-item:nth-child(8) { animation-delay: 0.8s; }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(-20px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 18px;
+            top: 0;
+            width: 28px;
+            height: 28px;
+            background: var(--blanco);
+            border: 4px solid var(--coral);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.75rem;
+            color: var(--coral);
+            box-shadow: 0 2px 8px var(--sombra);
+        }
+
+        .timeline-item:nth-child(2n) .timeline-dot { border-color: var(--turquesa); color: var(--turquesa); }
+        .timeline-item:nth-child(3n) .timeline-dot { border-color: var(--lavanda); color: var(--lavanda); }
+        .timeline-item:nth-child(4n) .timeline-dot { border-color: var(--naranja); color: var(--naranja); }
+
+        .timeline-content {
+            background: var(--blanco);
+            padding: 1.5rem;
+            border-radius: var(--radio);
+            box-shadow: 0 4px 16px var(--sombra);
+        }
+
+        .timeline-content .year {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            background: linear-gradient(135deg, var(--coral), var(--naranja));
+            color: white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ===== TABLAS ESTILIZADAS ===== */
+        .table-wrap {
+            overflow-x: auto;
+            border-radius: var(--radio);
+            box-shadow: 0 4px 20px var(--sombra);
+            margin: 2rem 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--blanco);
+            font-size: 0.95rem;
+        }
+
+        thead {
+            background: linear-gradient(135deg, var(--lavanda), var(--azul-cielo));
+            color: white;
+        }
+
+        th, td { padding: 1rem 1.25rem; text-align: left; }
+        th { font-weight: 700; }
+        tbody tr { border-bottom: 1px solid #EDF2F7; transition: background 0.2s; }
+        tbody tr:hover { background: rgba(161,140,209,0.05); }
+        tbody tr:last-child { border-bottom: none; }
+
+        /* ===== DESTACADOS Y CALLOUTS ===== */
+        .callout {
+            padding: 1.5rem;
+            border-radius: var(--radio);
+            margin: 1.5rem 0;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            border-left: 5px solid;
+        }
+
+        .callout.info {
+            background: linear-gradient(135deg, #EBF8FF, #BEE3F8);
+            border-color: var(--azul-cielo);
+        }
+
+        .callout.success {
+            background: linear-gradient(135deg, #E6FFFA, #B2F5EA);
+            border-color: var(--turquesa);
+        }
+
+        .callout.warning {
+            background: linear-gradient(135deg, #FFFBEB, #FDE68A);
+            border-color: var(--amarillo);
+        }
+
+        .callout.important {
+            background: linear-gradient(135deg, #FFE5E5, #FED7D7);
+            border-color: var(--coral);
+        }
+
+        .callout-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        /* ===== LISTAS ESTILIZADAS ===== */
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .feature-list li {
+            padding: 1rem 1.25rem;
+            background: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 2px 8px var(--sombra);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            transition: var(--transicion);
+        }
+
+        .feature-list li:hover {
+            transform: translateX(8px);
+            box-shadow: 0 4px 16px var(--sombra);
+        }
+
+        .feature-list li::before {
+            content: '▸';
+            color: var(--turquesa);
+            font-weight: 800;
+            font-size: 1.2rem;
+        }
+
+        /* ===== GRID DE TARJETAS PEQUEÑAS ===== */
+        .mini-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .mini-card {
+            background: var(--blanco);
+            padding: 1.25rem;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--sombra);
+            border-top: 3px solid var(--turquesa);
+            transition: var(--transicion);
+        }
+
+        .mini-card:hover { transform: translateY(-4px); }
+        .mini-card:nth-child(2) { border-top-color: var(--coral); }
+        .mini-card:nth-child(3) { border-top-color: var(--lavanda); }
+        .mini-card:nth-child(4) { border-top-color: var(--naranja); }
+
+        .mini-card h4 { margin-top: 0; font-size: 1rem; color: var(--texto); }
+        .mini-card p { font-size: 0.9rem; color: var(--texto-claro); margin: 0; }
+
+        /* ===== TARJETAS DE ROL ===== */
+        .role-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .role-card {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--sombra);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transicion);
+        }
+
+        .role-card:hover { transform: translateY(-6px); box-shadow: 0 12px 40px rgba(0,0,0,0.12); }
+        
+        .role-card .role-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: white;
+        }
+
+        .role-card.formal .role-badge { background: linear-gradient(135deg, var(--turquesa), var(--azul-cielo)); }
+        .role-card.formal { border-top: 4px solid var(--turquesa); }
+        
+        .role-card.apoyo .role-badge { background: linear-gradient(135deg, var(--lavanda), var(--rosa)); }
+        .role-card.apoyo { border-top: 4px solid var(--lavanda); }
+        
+        .role-card.noformal .role-badge { background: linear-gradient(135deg, var(--naranja), var(--amarillo)); color: var(--texto); }
+        .role-card.noformal { border-top: 4px solid var(--naranja); }
+
+        .role-card h3 { margin-top: 0.5rem; font-size: 1.3rem; }
+        .role-card .age-tag {
+            display: inline-block;
+            margin: 0.5rem 0 1rem;
+            padding: 0.25rem 0.75rem;
+            background: var(--fondo);
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            color: var(--texto-claro);
+        }
+
+        /* ===== GRID DE ÉTICA ===== */
+        .ethics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .ethics-item {
+            padding: 1.25rem;
+            background: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 2px 12px var(--sombra);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: var(--transicion);
+        }
+
+        .ethics-item:hover { transform: scale(1.02); }
+        .ethics-item .ethics-num {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--coral), var(--naranja));
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .ethics-item:nth-child(2n) .ethics-num { background: linear-gradient(135deg, var(--turquesa), var(--menta)); }
+        .ethics-item:nth-child(3n) .ethics-num { background: linear-gradient(135deg, var(--lavanda), var(--azul-cielo)); }
+        .ethics-item:nth-child(4n) .ethics-num { background: linear-gradient(135deg, var(--naranja), var(--amarillo)); color: var(--texto); }
+
+        .ethics-item h4 { margin: 0 0 0.25rem; font-size: 1rem; }
+        .ethics-item p { margin: 0; font-size: 0.9rem; color: var(--texto-claro); }
+
+        /* ===== IDEAS CLAVE DESTACADAS ===== */
+        .key-ideas {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .idea-card {
+            background: var(--blanco);
+            border-radius: var(--radio);
+            padding: 2rem;
+            box-shadow: 0 4px 20px var(--sombra);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: var(--transicion);
+            border-left: 6px solid;
+        }
+
+        .idea-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+        }
+
+        .idea-card:nth-child(1) { border-left-color: var(--coral); }
+        .idea-card:nth-child(2) { border-left-color: var(--turquesa); }
+        .idea-card:nth-child(3) { border-left-color: var(--lavanda); }
+        .idea-card:nth-child(4) { border-left-color: var(--naranja); }
+        .idea-card:nth-child(5) { border-left-color: var(--menta); }
+        .idea-card:nth-child(6) { border-left-color: var(--rosa); }
+
+        .idea-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .idea-card:nth-child(1) .idea-icon { background: linear-gradient(135deg, #FFE5E5, #FF6B6B); }
+        .idea-card:nth-child(2) .idea-icon { background: linear-gradient(135deg, #E5F5F3, #4ECDC4); }
+        .idea-card:nth-child(3) .idea-icon { background: linear-gradient(135deg, #F0EBF8, #A18CD1); }
+        .idea-card:nth-child(4) .idea-icon { background: linear-gradient(135deg, #FFF8E5, #FFB347); }
+        .idea-card:nth-child(5) .idea-icon { background: linear-gradient(135deg, #E6FFFA, #88D8B0); }
+        .idea-card:nth-child(6) .idea-icon { background: linear-gradient(135deg, #FFE5E5, #FF9AA2); }
+
+        .idea-content h3 { margin: 0 0 0.5rem; font-size: 1.2rem; }
+        .idea-content p { margin: 0; color: var(--texto-claro); }
+
+        /* ===== FOOTER ===== */
+        .site-footer {
+            margin-top: 4rem;
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(135deg, var(--texto), #1a202c);
+            color: white;
+            border-radius: var(--radio) var(--radio) 0 0;
+        }
+
+        .rainbow-bar {
+            height: 6px;
+            background: linear-gradient(90deg, var(--coral), var(--naranja), var(--amarillo), var(--turquesa), var(--azul-cielo), var(--lavanda));
+            border-radius: 3px;
+            margin-bottom: 1.5rem;
+        }
+
+        /* ===== UTILIDADES ===== */
+        .section-intro {
+            font-size: 1.1rem;
+            color: var(--texto-claro);
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 0.35rem 0.9rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            margin: 0.25rem;
+        }
+
+        .tag.coral { background: #FFE5E5; color: #C53030; }
+        .tag.turquesa { background: #E6FFFA; color: #234E52; }
+        .tag.lavanda { background: #F0EBF8; color: #553C9A; }
+        .tag.amarillo { background: #FFFBEB; color: #744210; }
+
+        .two-col {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .quote-box {
+            background: linear-gradient(135deg, var(--fondo), var(--blanco));
+            border-left: 5px solid var(--lavanda);
+            padding: 1.5rem 2rem;
+            border-radius: 0 var(--radio) var(--radio) 0;
+            margin: 1.5rem 0;
+            font-style: italic;
+            color: var(--texto-claro);
+            position: relative;
+        }
+
+        .quote-box::before {
+            content: '"';
+            font-size: 3rem;
+            color: var(--lavanda);
+            opacity: 0.3;
+            position: absolute;
+            top: -0.5rem;
+            left: 0.5rem;
+            font-family: Georgia, serif;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 1.75rem; }
+            h2 { font-size: 1.5rem; }
+            .hero h1 { font-size: 2rem; }
+            .nav-links { gap: 0.25rem; }
+            .nav-links button { padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+            .timeline::before { left: 20px; }
+            .timeline-item { padding-left: 60px; }
+            .timeline-dot { left: 8px; width: 24px; height: 24px; font-size: 0.7rem; }
+            .page { padding: 1rem; }
+            .idea-card { flex-direction: column; gap: 1rem; }
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--fondo); }
+        ::-webkit-scrollbar-thumb { background: linear-gradient(var(--turquesa), var(--lavanda)); border-radius: 5px; }
+
+        /* ===== PROGRESS BAR (decorativa) ===== */
+        .progress-section {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(135deg, rgba(161,140,209,0.05), rgba(78,205,196,0.05));
+            border-radius: var(--radio);
+            margin: 2rem 0;
+        }
+
+        .progress-dots {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 600px;
+            margin: 1.5rem auto;
+            position: relative;
+        }
+
+        .progress-dots::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--coral), var(--turquesa), var(--lavanda));
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .progress-dot {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--blanco);
+            border: 4px solid var(--turquesa);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 0.85rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 2px 8px var(--sombra);
+        }
+
+        .progress-dot:nth-child(2) { border-color: var(--coral); }
+        .progress-dot:nth-child(3) { border-color: var(--lavanda); }
+        .progress-dot:nth-child(4) { border-color: var(--naranja); }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVEGACIÓN ===== -->
+    <nav class="navbar" role="navigation" aria-label="Navegación principal">
+        <div class="nav-container">
+            <div class="logo" onclick="showPage('home')" tabindex="0" role="button" aria-label="Ir al inicio">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <rect width="32" height="32" rx="8" fill="url(#grad1)"/>
+                    <path d="M8 20C8 16 12 12 16 12C20 12 24 16 24 20" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                    <circle cx="16" cy="10" r="3" fill="white"/>
+                    <defs>
+                        <linearGradient id="grad1" x1="0" y1="0" x2="32" y2="32">
+                            <stop offset="0%" stop-color="#FF6B6B"/>
+                            <stop offset="100%" stop-color="#4ECDC4"/>
+                        </linearGradient>
+                    </defs>
+                </svg>
+                TSEI Guía Digital
+            </div>
+            <ul class="nav-links">
+                <li><button class="active" onclick="showPage('home')" aria-current="page">Inicio</button></li>
+                <li><button onclick="showPage('evolucion')">Evolución y Contexto</button></li>
+                <li><button onclick="showPage('legislacion')">Marco Legislativo</button></li>
+                <li><button onclick="showPage('tsei')">El TSEI</button></li>
+                <li><button onclick="showPage('ideas')">Ideas Clave</button></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- ===== HOME ===== -->
+    <main id="home" class="page active" role="main">
+        <section class="hero" aria-labelledby="main-title">
+            <div class="badge">📚 Unidad 1: El Contexto de la Intervención Educativa</div>
+            <h1 id="main-title">Didáctica de la Educación Infantil</h1>
+            <p class="subtitle">Técnico Superior en Educación Infantil (TSEI)</p>
+            
+            <div class="hero-summary">
+                <p>Esta unidad explica <strong>quiénes atienden a los niños y niñas de 0 a 6 años, cómo ha evolucionado esta atención a lo largo de la historia, qué leyes la regulan hoy y cuál es el papel del Técnico Superior en Educación Infantil (TSEI)</strong>.</p>
+                <p>Es un tema fundamental para entender el contexto en el que trabajan los profesionales de la etapa infantil, tanto en <strong>centros educativos</strong> como en <strong>espacios no formales</strong>.</p>
+            </div>
+        </section>
+
+        <section aria-labelledby="nav-title">
+            <h2 id="nav-title" class="sr-only">Navegación por contenidos</h2>
+            <div class="cards-grid">
+                <article class="nav-card" onclick="showPage('evolucion')" tabindex="0" role="button" aria-label="Ir a Evolución y situación actual">
+                    <div class="icon">🏛️</div>
+                    <h3>Evolución y Contexto</h3>
+                    <p>Historia de la atención a la infancia, contexto social actual, modalidades formales y no formales, y panorama europeo.</p>
+                </article>
+                
+                <article class="nav-card" onclick="showPage('legislacion')" tabindex="0" role="button" aria-label="Ir a Marco legislativo">
+                    <div class="icon">⚖️</div>
+                    <h3>Marco Legislativo</h3>
+                    <p>Características de la etapa 0-6 años, evolución de las leyes educativas en España, normativa aragonesa y marco internacional.</p>
+                </article>
+                
+                <article class="nav-card" onclick="showPage('tsei')" tabindex="0" role="button" aria-label="Ir a Perfil del TSEI">
+                    <div class="icon">👩‍🏫</div>
+                    <h3>El Perfil del TSEI</h3>
+                    <p>Competencias, funciones, ética profesional, trabajo en equipo, relación con familias y formación permanente.</p>
+                </article>
+                
+                <article class="nav-card" onclick="showPage('ideas')" tabindex="0" role="button" aria-label="Ir a Ideas Clave">
+                    <div class="icon">💡</div>
+                    <h3>Ideas Clave</h3>
+                    <p>Resumen ejecutivo visual con los conceptos fundamentales para recordar y estudiar.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="indice-title">
+            <h2 id="indice-title">📋 Índice de Contenidos Completo</h2>
+            <p class="section-intro">Esta guía digital aborda los tres bloques temáticos principales de la Unidad 1. Navega libremente entre las secciones.</p>
+            
+            <div class="two-col">
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                        1. Evolución y situación actual de la atención a la infancia
+                        <span class="arrow" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li>Historia general y en España</li>
+                            <li>Contexto social actual</li>
+                            <li>Modalidades de atención formal y no formal</li>
+                            <li>La atención en Europa (Informe Eurydice 2025)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                        2. Marco legislativo de la Educación Infantil (0–6 años)
+                        <span class="arrow" aria-hidden="true">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li>Características de la etapa</li>
+                            <li>Ordenación del sistema educativo</li>
+                            <li>Evolución legislativa en España</li>
+                            <li>Normativa aragonesa e internacional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion open">
+                <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                    3. El perfil profesional del TSEI
+                    <span class="arrow" aria-hidden="true">▼</span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="feature-list" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                        <li>Competencias generales y específicas</li>
+                        <li>Formación académica requerida</li>
+                        <li>Funciones profesionales</li>
+                        <li>Ética profesional</li>
+                        <li>Formación permanente</li>
+                        <li>Relación con familias</li>
+                        <li>Trabajo interdisciplinar</li>
+                        <li>Características personales y profesionales</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== PÁGINA: EVOLUCIÓN Y CONTEXTO ===== -->
+    <main id="evolucion" class="page" role="main" aria-label="Sección Evolución y Contexto">
+        <header style="margin-bottom: 2rem;">
+            <span class="tag coral">Bloque 1</span>
+            <h1>Evolución y Situación Actual de la Atención a la Infancia</h1>
+            <p class="section-intro">Un recorrido histórico desde la Antigüedad hasta nuestros días, analizando cómo la sociedad ha comprendido la infancia y qué servicios se ofrecen actualmente en España y Europa.</p>
+        </header>
+
+        <section aria-labelledby="hist-title">
+            <h2 id="hist-title">La Infancia a lo Largo de la Historia</h2>
+            
+            <div class="callout info">
+                <span class="callout-icon" aria-hidden="true">💡</span>
+                <div>
+                    <strong>Concepto clave:</strong> Durante siglos, la infancia no fue reconocida como una etapa con necesidades propias. El verdadero reconocimiento del niño como <strong>sujeto de derechos</strong> es un logro del siglo XX.
+                </div>
+            </div>
+
+            <div class="timeline" role="list" aria-label="Línea temporal histórica">
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1</div>
+                    <div class="timeline-content">
+                        <h3>Antigüedad</h3>
+                        <p>El niño era considerado <strong>propiedad de su padre</strong>. En Atenas, los niños permanecían con la madre hasta los 7 años. En Esparta, la educación estaba orientada a la guerra. En Roma, el padre era el responsable de introducir al niño en la vida pública.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">2</div>
+                    <div class="timeline-content">
+                        <h3>Edad Media (Siglos V al XV)</h3>
+                        <p>Los niños trabajaban desde los 7 años y podían incluso ser vendidos. No existía una concepción de la infancia como etapa diferenciada de la vida adulta.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">3</div>
+                    <div class="timeline-content">
+                        <h3>Siglos XVI, XVII y XVIII</h3>
+                        <p>Comienza a surgir cierto interés por la infancia, aunque <strong>solo para las clases acomodadas</strong>. Aparecen las primeras reflexiones pedagógicas sobre la educación de los más pequeños.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">4</div>
+                    <div class="timeline-content">
+                        <h3>Siglo XIX</h3>
+                        <p>Aparecen las <strong>primeras leyes de protección infantil</strong>, si bien la explotación laboral infantil aún era habitual en toda Europa.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">★</div>
+                    <div class="timeline-content">
+                        <span class="year">1924</span>
+                        <h3>Declaración de Ginebra</h3>
+                        <p>Tras la Primera Guerra Mundial, se reconoce por primera vez al niño como <strong>sujeto de derechos</strong>. Punto de inflexión histórico en la concepción de la infancia.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">★</div>
+                    <div class="timeline-content">
+                        <span class="year">1959</span>
+                        <h3>Declaración de los Derechos del Niño</h3>
+                        <p>Tras la Segunda Guerra Mundial, nace con <strong>diez principios fundamentales</strong> que establecen las bases de la protección internacional de la infancia.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">★</div>
+                    <div class="timeline-content">
+                        <span class="year">1989 / 1990</span>
+                        <h3>Convención sobre los Derechos del Niño</h3>
+                        <p>La Declaración de 1959 se convierte en <strong>Convención internacional vinculante</strong>. España la ratifica en <strong>1990</strong>, asumiendo el compromiso legal de proteger los derechos de todos los niños y niñas.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="spain-title">
+            <h2 id="spain-title">Historia de la Atención a la Infancia en España</h2>
+            <p class="section-intro">Evolución de los servicios y leyes específicas en el contexto español, desde las primeras escuelas de párvulos hasta la escolarización gratuita.</p>
+
+            <div class="timeline" role="list" aria-label="Línea temporal España">
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1838</div>
+                    <div class="timeline-content">
+                        <h3>Primera Escuela de Párvulos</h3>
+                        <p><strong>Pablo Montesinos</strong> abre la primera escuela de párvulos en España, iniciando la atención educativa institucionalizada para la primera infancia.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1857</div>
+                    <div class="timeline-content">
+                        <h3>Ley Moyano</h3>
+                        <p>Primera ley educativa española. Divide la enseñanza en <strong>Elemental y Superior</strong>, sentando las bases del sistema educativo moderno.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1879</div>
+                    <div class="timeline-content">
+                        <h3>Escuelas Ave María</h3>
+                        <p>El <strong>Padre Manjón</strong> funda estas escuelas con respeto por la vida natural y el juego al aire libre, anticipando principios de la educación activa.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1882</div>
+                    <div class="timeline-content">
+                        <h3>Institución de Libre Enseñanza (ILE)</h3>
+                        <p>Impulsada por <strong>Giner de los Ríos</strong>, introduce la <strong>educación activa</strong> en España, influenciando profundamente la pedagogía infantil.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1913</div>
+                    <div class="timeline-content">
+                        <h3>Método Montessori en Cataluña</h3>
+                        <p>Se aplica por primera vez el <strong>método Montessori</strong> con niños de 3 a 6 años, introduciendo materiales manipulativos y aprendizaje sensorial.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1931</div>
+                    <div class="timeline-content">
+                        <h3>Segunda República (1931–1936)</h3>
+                        <p>Con <strong>Marcelino Domingo</strong> al frente del Ministerio, se impulsa la creación de centros escolares con <strong>nueva pedagogía</strong> y formación de maestros renovada.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1945</div>
+                    <div class="timeline-content">
+                        <h3>Ley de Educación Primaria</h3>
+                        <p>Reconoce oficialmente a las <strong>Maestras de Párvulos</strong> como figura profesional dentro del sistema educativo.</p>
+                    </div>
+                </article>
+
+                <article class="timeline-item" role="listitem">
+                    <div class="timeline-dot" aria-hidden="true">1970</div>
+                    <div class="timeline-content">
+                        <h3>Ley General de Educación (LGE)</h3>
+                        <p>Establece la <strong>escolarización gratuita hasta los 14 años</strong> e incorpora la etapa preescolar (hasta los 6–7 años) como parte del sistema.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="social-title">
+            <h2 id="social-title">Contexto Social Actual de la Infancia</h2>
+            <p class="section-intro">La sociedad ha cambiado mucho y eso afecta directamente a cómo se atiende a la infancia en España. Estos son los cambios más relevantes:</p>
+
+            <div class="mini-cards">
+                <article class="mini-card">
+                    <h4>👨‍👩‍👧‍👦 Modelo Familiar</h4>
+                    <p>De familias extensas se ha pasado a <strong>familias nucleares más pequeñas</strong>, con mayor diversidad familiar y menor número de hijos.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>🤝 Responsabilidad Compartida</h4>
+                    <p>Mayor implicación intergeneracional, <strong>corresponsabilidad entre progenitores</strong> y nuevas leyes de conciliación familiar.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📱 Medios de Comunicación</h4>
+                    <p>El impacto de <strong>internet y los videojuegos</strong> en la infancia es una realidad que los profesionales deben contemplar en su práctica diaria.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>🏙️ Entorno Urbano y Rural</h4>
+                    <p>Cada contexto tiene sus <strong>ventajas e inconvenientes</strong> para el desarrollo infantil, requiriendo respuestas educativas diferenciadas.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="modal-title">
+            <h2 id="modal-title">Modalidades de Atención a la Infancia</h2>
+            
+            <div class="accordion open">
+                <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true" style="border-left-color: var(--coral);">
+                    <span>🏫 Ámbito Formal (Sistema educativo reglado)</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-body">
+                    <div class="callout success">
+                        <span class="callout-icon">📍</span>
+                        <div>
+                            <strong>Escuelas Infantiles:</strong> Atienden a niños y niñas de <strong>0 a 3 años</strong>. Son centros especializados en la primera infancia con profesionales específicos.<br><br>
+                            <strong>CEIP (Colegios de Educación Infantil y Primaria):</strong> Atienden de <strong>3 a 6 años</strong>, integrando el segundo ciclo de Educación Infantil con la Primaria.<br><br>
+                            <strong>En Aragón:</strong> Existen <strong>Casas de Infancia</strong> para zonas rurales, y aulas de 2 a 3 años en colegios de infantil-primaria (escolarización anticipada).
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="accordion">
+                <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false" style="border-left-color: var(--lavanda);">
+                    <span>🎨 Ámbito No Formal (Fuera del sistema educativo reglado)</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="feature-list">
+                        <li><strong>Centros de acogida y protección de menores</strong> — Atención residencial y de emergencia.</li>
+                        <li><strong>Bebetecas y ludotecas</strong> — Espacios de juego enriquecedor para diferentes edades.</li>
+                        <li><strong>Aulas hospitalarias</strong> — Para niños y niñas con ingresos prolongados, garantizando la continuidad educativa.</li>
+                        <li><strong>Granjas escuela</strong> — Entorno natural con animales y huertos para el aprendizaje experiencial.</li>
+                        <li><strong>Espacios familiares de encuentro</strong> — Para menores de 3 años y sus familias, fomentando la socialización y el juego compartido.</li>
+                        <li><strong>Campamentos de verano y campus</strong> — Actividades durante vacaciones (Navidad, verano, temáticos).</li>
+                        <li><strong>Centros de ocio y tiempo libre</strong> — Actividades extraescolares y de recreo.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="europe-title">
+            <h2 id="europe-title">La Atención a la Infancia en Europa</h2>
+            
+            <div class="callout warning">
+                <span class="callout-icon">📊</span>
+                <div>
+                    <strong>Informe Eurydice 2025:</strong> "Cifras clave de la Educación y Atención a la Primera Infancia en Europa"
+                </div>
+            </div>
+
+            <p>El informe concluye que muchos países han avanzado en la expansión de servicios educativos para la primera infancia, pero persiste una <strong>brecha significativa en el acceso universal</strong>.</p>
+
+            <div class="two-col">
+                <div class="mini-card" style="border-top-color: var(--turquesa);">
+                    <h4>✅ España en el panorama europeo</h4>
+                    <p>España, junto a otros siete países europeos, <strong>garantiza una plaza pública a partir de los 3 años</strong>.</p>
+                </div>
+                <div class="mini-card" style="border-top-color: var(--coral);">
+                    <h4>⚠️ Desafíos pendientes</h4>
+                    <p>En algunas regiones europeas el acceso no está garantizado para todos, y la cobertura de <strong>0 a 3 años</strong> sigue siendo desigual.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== PÁGINA: MARCO LEGISLATIVO ===== -->
+    <main id="legislacion" class="page" role="main" aria-label="Sección Marco Legislativo">
+        <header style="margin-bottom: 2rem;">
+            <span class="tag turquesa">Bloque 2</span>
+            <h1>Marco Legislativo de la Educación Infantil (0–6 años)</h1>
+            <p class="section-intro">Normativa estatal, autonómica e internacional que regula la etapa de Educación Infantil, sus principios y su evolución histórica.</p>
+        </header>
+
+        <section aria-labelledby="caract-title">
+            <h2 id="caract-title">Características de la Etapa Infantil (0–6 años)</h2>
+            
+            <div class="callout success">
+                <span class="callout-icon">🎯</span>
+                <div>
+                    <strong>Finalidad:</strong> Contribuir al <strong>desarrollo integral y armónico</strong> del niño o niña en todas sus dimensiones: física, afectiva, sexual, social, cognitiva y artística, así como educar en valores cívicos para la convivencia.
+                </div>
+            </div>
+
+            <h3>Principios Generales</h3>
+            <div class="mini-cards">
+                <article class="mini-card">
+                    <h4>🎈 Voluntaria</h4>
+                    <p>Es una etapa <strong>no obligatoria</strong>, aunque de máxima importancia para el desarrollo.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>👶👧 Dos Ciclos</h4>
+                    <p>Atiende de 0 a 6 años, dividida en <strong>Primer Ciclo (0–3)</strong> y <strong>Segundo Ciclo (3–6)</strong>.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>💶 Gratuidad Progresiva</h4>
+                    <p>El segundo ciclo (3–6) es <strong>gratuito</strong>; en el primer ciclo (0–3) se trabaja hacia la gratuidad progresiva.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>♿ DUA</h4>
+                    <p>Se aplica el <strong>Diseño Universal del Aprendizaje</strong> en medidas organizativas, metodológicas y curriculares.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>⚖️ Equidad</h4>
+                    <p>Se garantiza la <strong>compensación de desigualdades</strong> como principio fundamental.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>👨‍👩‍👧 Colaboración Familiar</h4>
+                    <p>Los centros educativos colaboran activamente con las <strong>familias</strong> en el proceso educativo.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="leyes-title">
+            <h2 id="leyes-title">Evolución Legislativa en España</h2>
+            <p class="section-intro">Recorrido por las principales normas que han configurado el sistema educativo español y la Educación Infantil:</p>
+
+            <div class="table-wrap">
+                <table role="table" aria-label="Tabla de evolución legislativa">
+                    <thead>
+                        <tr role="row">
+                            <th role="columnheader">Norma</th>
+                            <th role="columnheader">Año</th>
+                            <th role="columnheader">Aportación Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr role="row">
+                            <td role="cell"><strong>Ley Moyano</strong></td>
+                            <td role="cell"><span class="tag coral">1857</span></td>
+                            <td role="cell">Primera ley educativa española</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>Ley de Educación Primaria</strong></td>
+                            <td role="cell"><span class="tag coral">1945</span></td>
+                            <td role="cell">Influencia del movimiento nacional e Iglesia; reconoce a las Maestras de Párvulos</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>Ley General de Educación (LGE)</strong></td>
+                            <td role="cell"><span class="tag coral">1970</span></td>
+                            <td role="cell">Escolarización gratuita de 6 a 14 años; incorpora la etapa preescolar</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>LODE</strong></td>
+                            <td role="cell"><span class="tag turquesa">1985</span></td>
+                            <td role="cell">Libertad de enseñanza</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>LOGSE</strong></td>
+                            <td role="cell"><span class="tag turquesa">1990</span></td>
+                            <td role="cell">Define la Educación Infantil; establece escolarización obligatoria de 6 a 16 años</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>LOE</strong></td>
+                            <td role="cell"><span class="tag lavanda">2006</span></td>
+                            <td role="cell">Educación de calidad acorde a objetivos europeos</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>LOMLOE</strong></td>
+                            <td role="cell"><span class="tag lavanda">2020</span></td>
+                            <td role="cell">Enfoque de equidad e inclusión</td>
+                        </tr>
+                        <tr role="row">
+                            <td role="cell"><strong>Real Decreto 95/2022</strong></td>
+                            <td role="cell"><span class="tag amarillo">2022</span></td>
+                            <td role="cell">Enseñanzas mínimas de Educación Infantil (estatal)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section aria-labelledby="aragon-title">
+            <h2 id="aragon-title">Normativa Aragonesa</h2>
+            
+            <div class="callout info">
+                <span class="callout-icon">📜</span>
+                <div>
+                    <strong>Orden ECD/853/2022, de 13 de junio:</strong> Aprueba el currículo y las características de la evaluación de la Educación Infantil para los centros de la <strong>Comunidad Autónoma de Aragón</strong>.
+                </div>
+            </div>
+
+            <p>Esta normativa específica desarrolla el currículo de Educación Infantil en Aragón, adaptando las enseñanzas mínimas estatales al contexto autonómico y estableciendo los criterios de evaluación para ambos ciclos (0-3 y 3-6 años).</p>
+        </section>
+
+        <section aria-labelledby="internacional-title">
+            <h2 id="internacional-title">Marco Internacional</h2>
+            
+            <h3>Agenda 2030 y Objetivos de Desarrollo Sostenible (ODS)</h3>
+            <p>A nivel internacional, la hoja de ruta es la <strong>Agenda 2030</strong>, que establece los siguientes objetivos directamente relacionados con la educación infantil:</p>
+
+            <div class="two-col">
+                <div class="mini-card" style="border-top: 4px solid #4ECDC4; background: linear-gradient(135deg, #E6FFFA, #fff);">
+                    <h4>🎯 ODS nº 4</h4>
+                    <p>Garantizar una educación <strong>inclusiva, equitativa y de calidad</strong> para todos, promoviendo oportunidades de aprendizaje a lo largo de la vida.</p>
+                </div>
+                <div class="mini-card" style="border-top: 4px solid #FF6B6B; background: linear-gradient(135deg, #FFE5E5, #fff);">
+                    <h4>♀️ ODS nº 5</h4>
+                    <p>Lograr la <strong>igualdad de género</strong> y empoderar a todas las mujeres y niñas, eliminando la violencia y garantizando la participación plena.</p>
+                </div>
+            </div>
+
+            <div class="accordion" style="margin-top: 2rem;">
+                <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="false">
+                    <span>📖 Constitución Española de 1978</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-body">
+                    <p>El <strong>derecho a la educación</strong> está recogido en el <strong>artículo 27 de la Constitución Española de 1978</strong>. Este artículo garantiza el derecho de todos los españoles a recibir una educación, así como la libertad de enseñanza y la creación de centros docentes respetando la normativa vigente.</p>
+                    <p>Para la etapa infantil, esto implica que, aunque sea voluntaria, el Estado tiene la obligación de ofrecer plazas públicas y de garantizar la calidad de los servicios educativos para los primeros años de vida.</p>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Resumen legislativo visual">
+            <h2>Mapa Conceptual Rápido</h2>
+            <div class="mini-cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                <div class="mini-card" style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🍼</div>
+                    <h4>0–3 años</h4>
+                    <p>Primer ciclo.<br>Voluntario.<br>Gratuidad progresiva.</p>
+                </div>
+                <div class="mini-card" style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🧒</div>
+                    <h4>3–6 años</h4>
+                    <p>Segundo ciclo.<br>Voluntario.<br>Gratuito y plaza garantizada.</p>
+                </div>
+                <div class="mini-card" style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏛️</div>
+                    <h4>Estatal</h4>
+                    <p>LOMLOE<br>RD 95/2022<br>Art. 27 CE</p>
+                </div>
+                <div class="mini-card" style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🏘️</div>
+                    <h4>Autonómica</h4>
+                    <p>Orden ECD/853/2022<br>(Aragón)</p>
+                </div>
+                <div class="mini-card" style="text-align: center;">
+                    <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌍</div>
+                    <h4>Internacional</h4>
+                    <p>Agenda 2030<br>ODS 4 y 5</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== PÁGINA: EL TSEI ===== -->
+    <main id="tsei" class="page" role="main" aria-label="Sección Perfil Profesional del TSEI">
+        <header style="margin-bottom: 2rem;">
+            <span class="tag lavanda">Bloque 3</span>
+            <h1>El Perfil Profesional del TSEI</h1>
+            <p class="section-intro">Definición, competencias, funciones, ética y desarrollo profesional del Técnico Superior en Educación Infantil en los ámbitos formal y no formal.</p>
+        </header>
+
+        <section aria-labelledby="def-title">
+            <h2 id="def-title">¿Qué es un TSEI?</h2>
+            
+            <div class="callout important">
+                <span class="callout-icon" aria-hidden="true">👩‍🏫</span>
+                <div>
+                    <strong>Competencia General:</strong> <em>"Diseñar, implementar y evaluar proyectos y programas educativos de atención a la infancia en el primer ciclo de educación infantil en el ámbito formal, de acuerdo con la propuesta pedagógica elaborada por un Maestro especializado, y en toda la etapa en el ámbito no formal, generando entornos seguros y en colaboración con otros profesionales y con las familias."</em>
+                </div>
+            </div>
+
+            <p>El <strong>Técnico Superior en Educación Infantil (TSEI)</strong> es el profesional que diseña, aplica y evalúa proyectos y programas educativos para la infancia. Su trabajo se desarrolla tanto en <strong>centros educativos reglados</strong> como en <strong>espacios no formales</strong>, siempre en coordinación con otros profesionales y las familias.</p>
+        </section>
+
+        <section aria-labelledby="rol-title">
+            <h2 id="rol-title">Rol según el Ciclo y Ámbito</h2>
+            <p class="section-intro">La función del TSEI varía significativamente dependiendo del ciclo educativo y del ámbito de intervención:</p>
+
+            <div class="role-cards">
+                <article class="role-card formal">
+                    <span class="role-badge">Ámbito Formal</span>
+                    <span class="age-tag">👶 0 – 3 años</span>
+                    <h3>Titular de Aula</h3>
+                    <p>En el primer ciclo de Educación Infantil (0–3 años), el TSEI puede ser <strong>titular de aula</strong>. Es el responsable directo del grupo, diseñando y aplicando las propuestas educativas según la orientación pedagógica del centro.</p>
+                </article>
+
+                <article class="role-card apoyo">
+                    <span class="role-badge">Ámbito Formal</span>
+                    <span class="age-tag">🧒 3 – 6 años</span>
+                    <h3>Apoyo a la Maestra</h3>
+                    <p>En el segundo ciclo (3–6 años), la titularidad corresponde a la <strong>Maestra en Educación Infantil</strong>. El TSEI actúa como <strong>apoyo</strong>, colaborando en el desarrollo de actividades y la atención al alumnado.</p>
+                </article>
+
+                <article class="role-card noformal">
+                    <span class="role-badge">Ámbito No Formal</span>
+                    <span class="age-tag">👶🧒 0 – 6 años</span>
+                    <h3>Intervención Completa</h3>
+                    <p>En el ámbito no formal (ludotecas, campamentos, centros de ocio, etc.), el TSEI puede intervenir en <strong>toda la etapa de 0 a 6 años</strong>, diseñando y ejecutando programas educativos con total autonomía profesional.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="tipos-title">
+            <h2 id="tipos-title">Tipos de Intervención</h2>
+            
+            <div class="two-col">
+                <div class="callout success">
+                    <span class="callout-icon">🌱</span>
+                    <div>
+                        <h4 style="margin-top: 0;">Intervención Educativa</h4>
+                        <p style="margin-bottom: 0;">Fomenta las <strong>capacidades</strong> de los niños y niñas mediante actividades planificadas, el juego, la estimulación y el acompañamiento en su desarrollo integral.</p>
+                    </div>
+                </div>
+
+                <div class="callout info">
+                    <span class="callout-icon">🤲</span>
+                    <div>
+                        <h4 style="margin-top: 0;">Intervención Asistencial</h4>
+                        <p style="margin-bottom: 0;">Cubre <strong>necesidades básicas</strong> como la alimentación, el cambio de pañal, el descanso y el cuidado de la higiene, especialmente en el primer ciclo.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="funciones-title">
+            <h2 id="funciones-title">Funciones en la Atención a la Infancia</h2>
+            <p class="section-intro">El TSEI desempeña múltiples funciones que abarcan desde la planificación educativa hasta la colaboración con el entorno:</p>
+
+            <div class="accordion open">
+                <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                    <span>📋 Funciones Principales</span>
+                    <span class="arrow">▼</span>
+                </button>
+                <div class="accordion-body">
+                    <ul class="feature-list">
+                        <li><strong>Planificar y desarrollar actividades educativas</strong> adaptadas al desarrollo evolutivo y las necesidades del grupo.</li>
+                        <li><strong>Prestar atención individualizada</strong>, especialmente a niños y niñas con necesidades educativas especiales.</li>
+                        <li><strong>Garantizar la seguridad y el bienestar</strong> de todo el alumnado en todo momento.</li>
+                        <li><strong>Responder a las necesidades básicas</strong> de la etapa (alimentación, higiene, descanso).</li>
+                        <li><strong>Colaborar con el equipo interdisciplinar</strong> para una atención integral.</li>
+                        <li><strong>Mantener comunicación fluida con las familias</strong>, informando y recibiendo feedback.</li>
+                        <li><strong>Realizar actividades de estimulación temprana</strong> para potenciar el desarrollo.</li>
+                        <li><strong>Promover valores y habilidades sociales</strong> para la convivencia.</li>
+                        <li><strong>Participar en la observación y evaluación</strong> del desarrollo individual de cada niño o niña.</li>
+                        <li><strong>Crear un ambiente enriquecedor</strong> que invite a la exploración y el aprendizaje.</li>
+                        <li><strong>Recibir formación continua</strong> para mantenerse actualizado en metodologías y conocimientos.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="familias-title">
+            <h2 id="familias-title">Relación con las Familias</h2>
+            <p class="section-intro">La colaboración con las familias es una función esencial, no opcional. Los canales de comunicación incluyen:</p>
+
+            <div class="mini-cards">
+                <article class="mini-card">
+                    <h4>🗣️ Reuniones Presenciales</h4>
+                    <p>Tutorías y entrevistas personalizadas para el seguimiento individualizado.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📓 Cuadernos de Comunicación</h4>
+                    <p>Agendas escolares para el intercambio diario de información.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>💬 Grupos Digitales</h4>
+                    <p>Plataformas de mensajería para comunicación ágil con las familias.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📰 Boletines Informativos</h4>
+                    <p>Información periódica sobre actividades, objetivos y novedades.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>🖥️ Plataformas Virtuales</h4>
+                    <p>Entornos educativos digitales para compartir recursos y evaluaciones.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>🎉 Eventos Sociales</h4>
+                    <p>Actividades para fomentar la participación familiar y la comunidad educativa.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="equipo-title">
+            <h2 id="equipo-title">Trabajo en Equipo Interdisciplinar</h2>
+            
+            <div class="callout info">
+                <span class="callout-icon">🤝</span>
+                <div>
+                    El TSEI coordina su trabajo con otros profesionales para garantizar una atención integral a la infancia.
+                </div>
+            </div>
+
+            <h3>Profesionales del Equipo</h3>
+            <div class="feature-list" style="margin-bottom: 2rem;">
+                <li>Maestras en Educación Infantil</li>
+                <li>Logopedas</li>
+                <li>Psicólogos/as infantiles</li>
+                <li>Fisioterapeutas</li>
+                <li>Terapeutas ocupacionales</li>
+                <li>Pediatras</li>
+                <li>Trabajadores/as sociales</li>
+            </div>
+
+            <h3>Claves del Trabajo en Equipo</h3>
+            <div class="mini-cards">
+                <article class="mini-card">
+                    <h4>💬 Comunicación Fluida</h4>
+                    <p>Intercambio constante de información entre todos los profesionales.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📋 Responsabilidades Definidas</h4>
+                    <p>Claridad en los roles y funciones de cada miembro del equipo.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📅 Reuniones Periódicas</h4>
+                    <p>Coordinación regular para evaluar y ajustar las intervenciones.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>⚖️ Resolución de Conflictos</h4>
+                    <p>Mecanismos constructivos para gestionar desacuerdos profesionales.</p>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="caracteristicas-title">
+            <h2 id="caracteristicas-title">Características del TSEI</h2>
+            
+            <div class="two-col">
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true" style="border-left-color: var(--rosa);">
+                        <span>❤️ Personales</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li>Estabilidad emocional</li>
+                            <li>Firmeza</li>
+                            <li>Afectividad</li>
+                            <li>Autocontrol</li>
+                            <li>Sensibilidad</li>
+                            <li>Madurez</li>
+                            <li>Discreción</li>
+                            <li>Prudencia</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true" style="border-left-color: var(--azul-cielo);">
+                        <span>💼 Profesionales</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li>Dominio de herramientas para obtener información relevante</li>
+                            <li>Capacidad de mejora continua del proceso de enseñanza-aprendizaje</li>
+                            <li>Actualización constante en metodologías</li>
+                            <li>Gestión eficaz del aula y los recursos</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="etica-title">
+            <h2 id="etica-title">Ética Profesional</h2>
+            <p class="section-intro">La ética regula cómo debe actuar el TSEI como profesional. Los principios éticos clave son:</p>
+
+            <div class="ethics-grid">
+                <div class="ethics-item">
+                    <span class="ethics-num">1</span>
+                    <div>
+                        <h4>Protección de los derechos de la infancia</h4>
+                        <p>Garantizar que se respeten todos los derechos del niño/a.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">2</span>
+                    <div>
+                        <h4>Respeto a las diferencias individuales</h4>
+                        <p>Atender la diversidad sin discriminación.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">3</span>
+                    <div>
+                        <h4>Responsabilidad en el ejercicio profesional</h4>
+                        <p>Asumir las consecuencias de las propias decisiones.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">4</span>
+                    <div>
+                        <h4>Interés superior del niño y la niña</h4>
+                        <p>Priorizar siempre el bienestar del menor.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">5</span>
+                    <div>
+                        <h4>Protección del derecho a la intimidad e imagen</h4>
+                        <p>Salvaguardar la privacidad y el uso de imágenes.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">6</span>
+                    <div>
+                        <h4>Autonomía profesional</h4>
+                        <p>Actuar con criterio propio y fundamentado.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">7</span>
+                    <div>
+                        <h4>Transparencia y honestidad</h4>
+                        <p>Comunicación veraz con familias y equipo.</p>
+                    </div>
+                </div>
+                <div class="ethics-item">
+                    <span class="ethics-num">8</span>
+                    <div>
+                        <h4>Formación permanente y trabajo en equipo</h4>
+                        <p>Compromiso con el aprendizaje continuo y la colaboración.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-labelledby="formacion-title">
+            <h2 id="formacion-title">Formación Permanente</h2>
+            
+            <div class="quote-box">
+                <p style="margin: 0; font-style: italic;">"El proceso educativo dirigido a la revisión y renovación de conocimientos, actitudes y habilidades previamente adquiridas, determinado por la necesidad de actualización debida a los cambios."</p>
+                <p style="margin: 0.5rem 0 0; text-align: right; font-size: 0.9rem;">— UNESCO</p>
+            </div>
+
+            <h3>Recursos para Mantenerse Actualizado/a</h3>
+            <div class="mini-cards">
+                <article class="mini-card">
+                    <h4>📝 Blogs Educativos</h4>
+                    <p>Blogs de recursos educativos especializados en Educación Infantil.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>📚 Revistas Digitales</h4>
+                    <p><em>Revista Infancia</em>, <em>Rosa Sensat</em> y otras publicaciones especializadas.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>🏛️ INTEF</h4>
+                    <p>Instituto Nacional de Tecnologías Educativas y Formación del Profesorado.</p>
+                </article>
+                <article class="mini-card">
+                    <h4>💻 Portal del Ministerio</h4>
+                    <p>Recursos y normativa actualizada del Ministerio de Educación y Formación Profesional.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== PÁGINA: IDEAS CLAVE ===== -->
+    <main id="ideas" class="page" role="main" aria-label="Sección Ideas Clave">
+        <header style="margin-bottom: 2rem;">
+            <span class="tag amarillo">Resumen</span>
+            <h1>Ideas Clave para Recordar</h1>
+            <p class="section-intro">Los conceptos fundamentales de la Unidad 1 que debes tener siempre presentes para tu práctica profesional y exámenes.</p>
+        </header>
+
+        <div class="progress-section">
+            <h2 style="text-align: center; margin-top: 0;">Tu Progreso de Aprendizaje</h2>
+            <div class="progress-dots" aria-hidden="true">
+                <div class="progress-dot">1</div>
+                <div class="progress-dot">2</div>
+                <div class="progress-dot">3</div>
+                <div class="progress-dot">✓</div>
+            </div>
+            <p style="text-align: center; color: var(--texto-claro);">Has completado los 3 bloques temáticos de la Unidad 1</p>
+        </div>
+
+        <section aria-labelledby="ideas-list-title">
+            <h2 id="ideas-list-title" class="sr-only">Lista de Ideas Clave</h2>
+            
+            <div class="key-ideas">
+                <article class="idea-card">
+                    <div class="idea-icon">👶</div>
+                    <div class="idea-content">
+                        <h3>La infancia como etapa con derechos propios</h3>
+                        <p>Es un <strong>concepto moderno</strong>; históricamente los niños eran considerados propiedad. El reconocimiento como sujeto de derechos llega en el siglo XX con la Declaración de Ginebra (1924) y la Convención de 1989.</p>
+                    </div>
+                </article>
+
+                <article class="idea-card">
+                    <div class="idea-icon">🎓</div>
+                    <div class="idea-content">
+                        <h3>La Educación Infantil (0–6) no es obligatoria</h3>
+                        <p>Es una etapa <strong>voluntaria</strong>, pero el segundo ciclo (3–6) es <strong>gratuito</strong> y de acceso garantizado en España. El primer ciclo (0–3) avanza hacia la gratuidad progresiva.</p>
+                    </div>
+                </article>
+
+                <article class="idea-card">
+                    <div class="idea-icon">♿</div>
+                    <div class="idea-content">
+                        <h3>El DUA como enfoque metodológico</h3>
+                        <p>El <strong>Diseño Universal del Aprendizaje (DUA)</strong> es el enfoque de referencia en la etapa, aplicado a medidas organizativas, metodológicas y curriculares para garantizar la inclusión.</p>
+                    </div>
+                </article>
+
+                <article class="idea-card">
+                    <div class="idea-icon">👩‍🏫</div>
+                    <div class="idea-content">
+                        <h3>El TSEI: titular en 0–3, apoyo en 3–6</h3>
+                        <p>El TSEI trabaja en el ciclo <strong>0–3 como titular</strong>, y en el <strong>3–6 como apoyo a la Maestra</strong>. En el ámbito no formal, puede actuar en toda la etapa (0–6 años).</p>
+                    </div>
+                </article>
+
+                <article class="idea-card">
+                    <div class="idea-icon">⚖️</div>
+                    <div class="idea-content">
+                        <h3>Ética profesional y formación permanente</h3>
+                        <p>Son <strong>pilares irrenunciables</strong> del perfil del TSEI. La ética guía todas las decisiones y la formación continua garantiza la calidad de la intervención.</p>
+                    </div>
+                </article>
+
+                <article class="idea-card">
+                    <div class="idea-icon">🤝</div>
+                    <div class="idea-content">
+                        <h3>Colaboración con familias y equipo interdisciplinar</h3>
+                        <p>Es una <strong>función esencial, no opcional</strong>. El trabajo coordinado con familias y otros profesionales (logopedas, psicólogos, pediatras) es fundamental para una atención integral.</p>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section aria-labelledby="mapa-title">
+            <h2 id="mapa-title">Mapa Visual de Conceptos</h2>
+            
+            <div class="two-col">
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                        <span>📍 Conceptos Temporales</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li><strong>1838:</strong> Primera escuela de párvulos (Pablo Montesinos)</li>
+                            <li><strong>1857:</strong> Ley Moyano</li>
+                            <li><strong>1970:</strong> LGE — escolarización gratuita</li>
+                            <li><strong>1990:</strong> LOGSE — define Educación Infantil</li>
+                            <li><strong>2020:</strong> LOMLOE — equidad e inclusión</li>
+                            <li><strong>2022:</strong> RD 95/2022 y Orden ECD/853/2022</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion open">
+                    <button class="accordion-header" onclick="toggleAccordion(this)" aria-expanded="true">
+                        <span>🎯 Conceptos Profesionales</span>
+                        <span class="arrow">▼</span>
+                    </button>
+                    <div class="accordion-body">
+                        <ul class="feature-list">
+                            <li><strong>TSEI:</strong> Técnico Superior en Educación Infantil</li>
+                            <li><strong>DUA:</strong> Diseño Universal del Aprendizaje</li>
+                            <li><strong>ODS 4 y 5:</strong> Educación de calidad e Igualdad de género</li>
+                            <li><strong>Art. 27 CE:</strong> Derecho a la educación</li>
+                            <li><strong>Ámbito formal:</strong> Sistema educativo reglado</li>
+                            <li><strong>Ámbito no formal:</strong> Fuera del sistema reglado</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section aria-label="Cierre motivacional">
+            <div class="hero" style="margin-top: 3rem;">
+                <div class="badge">🚀 ¡Sigue aprendiendo!</div>
+                <h2 style="background: linear-gradient(135deg, var(--lavanda), var(--turquesa)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; padding-left: 0;">¿Y ahora qué?</h2>
+                <p class="hero-summary" style="max-width: 700px;">
+                    Has completado la <strong>Unidad 1: El Contexto de la Intervención Educativa</strong>. Domina estos conceptos antes de avanzar a la Unidad 2. Recuerda: la clave está en entender el <strong>porqué</strong> de cada ley y cada rol profesional.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="rainbow-bar" aria-hidden="true"></div>
+        <p><strong>TSEI Guía Digital</strong> — Didáctica de la Educación Infantil</p>
+        <p style="margin-top: 0.5rem; opacity: 0.8; font-size: 0.9rem;">Unidad 1: El Contexto de la Intervención Educativa</p>
+        <p style="margin-top: 1rem; font-size: 0.8rem; opacity: 0.6;">Site web completo • Parte 1 + Parte 2 • Contenido actualizado a 2025</p>
+    </footer>
+
+    <script>
+        // ===== NAVEGACIÓN SPA =====
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            const target = document.getElementById(pageId);
+            if(target) {
+                target.classList.add('active');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+            
+            document.querySelectorAll('.nav-links button').forEach(btn => {
+                btn.classList.remove('active');
+                if(btn.getAttribute('onclick') === `showPage('${pageId}')`) {
+                    btn.classList.add('active');
+                }
+            });
+        }
+
+        // ===== ACORDEONES =====
+        function toggleAccordion(button) {
+            const accordion = button.parentElement;
+            const isOpen = accordion.classList.contains('open');
+            
+            if(isOpen) {
+                accordion.classList.remove('open');
+                button.setAttribute('aria-expanded', 'false');
+            } else {
+                accordion.classList.add('open');
+                button.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        // ===== ANIMACIÓN AL SCROLL =====
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if(entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelectorAll('.mini-card, .callout, .accordion, .role-card, .ethics-item, .idea-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(el);
+            });
+            
+            document.querySelectorAll('#home .mini-card, #home .callout, #home .accordion').forEach(el => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            });
+        });
+
+        // ===== TECLADO ACCESIBLE =====
+        document.querySelectorAll('[tabindex="0"]').forEach(el => {
+            el.addEventListener('keydown', (e) => {
+                if(e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    el.click();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
