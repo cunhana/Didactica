@@ -1,0 +1,730 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tema 5 Didáctica · Recursos educativos y organización del ambiente</title>
+  <meta name="description" content="Site didáctico sobre Recursos Educativos y Organización del Ambiente en Educación Infantil 0-3 en Aragón. Integra normativa, espacios, ratios, tiempos, actividades y guía de estudio.">
+  <meta property="og:title" content="Tema 5 Didáctica · Recursos educativos y organización del ambiente">
+  <meta property="og:description" content="Web de estudio del Tema 5 de Didáctica: espacios, organización, normativa aragonesa, materiales, tiempos y actividades.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://api.fontshare.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&f[]=zodiak@400,500,700&display=swap" rel="stylesheet">
+  <style>
+    :root, [data-theme="light"] {
+      --text-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);
+      --text-sm: clamp(0.875rem, 0.8rem + 0.35vw, 1rem);
+      --text-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);
+      --text-lg: clamp(1.125rem, 1rem + 0.75vw, 1.5rem);
+      --text-xl: clamp(1.5rem, 1.2rem + 1.25vw, 2.25rem);
+      --text-2xl: clamp(2rem, 1.2rem + 2.5vw, 3.5rem);
+      --text-3xl: clamp(2.5rem, 1rem + 4vw, 5rem);
+      --space-1: .25rem; --space-2: .5rem; --space-3: .75rem; --space-4: 1rem; --space-5: 1.25rem; --space-6: 1.5rem; --space-8: 2rem; --space-10: 2.5rem; --space-12: 3rem; --space-16: 4rem; --space-20: 5rem; --space-24: 6rem;
+      --color-bg:#f7f6f2; --color-surface:#f9f8f5; --color-surface-2:#fbfbf9; --color-surface-offset:#f3f0ec; --color-border:#d4d1ca; --color-divider:#dcd9d5;
+      --color-text:#28251d; --color-text-muted:#66645f; --color-text-faint:#9e9b96; --color-text-inverse:#f9f8f4;
+      --color-primary:#01696f; --color-primary-hover:#0c4e54; --color-primary-highlight:#cedcd8; --color-warning:#964219; --color-success:#437a22; --color-blue:#006494; --color-purple:#7a39bb;
+      --radius-sm:.375rem; --radius-md:.5rem; --radius-lg:.875rem; --radius-xl:1.25rem; --radius-full:9999px;
+      --shadow-sm:0 1px 2px oklch(0.2 0.01 80 / .06); --shadow-md:0 10px 30px oklch(0.2 0.01 80 / .08); --shadow-lg:0 20px 60px oklch(0.2 0.01 80 / .14);
+      --content:1200px;
+      --font-body:'Satoshi','Inter',sans-serif;
+      --font-display:'Zodiak','Georgia',serif;
+    }
+    [data-theme="dark"] {
+      --color-bg:#171614; --color-surface:#1c1b19; --color-surface-2:#201f1d; --color-surface-offset:#1d1c1a; --color-border:#393836; --color-divider:#262523;
+      --color-text:#e0ddd6; --color-text-muted:#afaba3; --color-text-faint:#79756f; --color-text-inverse:#2b2a28;
+      --color-primary:#4f98a3; --color-primary-hover:#227f8b; --color-primary-highlight:#313b3b; --color-warning:#bb653b; --color-success:#6daa45; --color-blue:#5591c7; --color-purple:#a86fdf;
+      --shadow-sm:0 1px 2px oklch(0 0 0 / .2); --shadow-md:0 10px 30px oklch(0 0 0 / .3); --shadow-lg:0 20px 60px oklch(0 0 0 / .45);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme]) {
+        --color-bg:#171614; --color-surface:#1c1b19; --color-surface-2:#201f1d; --color-surface-offset:#1d1c1a; --color-border:#393836; --color-divider:#262523;
+        --color-text:#e0ddd6; --color-text-muted:#afaba3; --color-text-faint:#79756f; --color-text-inverse:#2b2a28;
+        --color-primary:#4f98a3; --color-primary-hover:#227f8b; --color-primary-highlight:#313b3b; --color-warning:#bb653b; --color-success:#6daa45; --color-blue:#5591c7; --color-purple:#a86fdf;
+      }
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth;scroll-padding-top:5rem}
+    body{font-family:var(--font-body);font-size:var(--text-base);line-height:1.65;background:var(--color-bg);color:var(--color-text)}
+    img,svg{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit;color:inherit;background:none;border:none;cursor:pointer}
+    :focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .container{width:min(calc(100% - 2rem),var(--content));margin-inline:auto}
+    .skip-link{position:absolute;left:var(--space-4);top:-100%;background:var(--color-primary);color:var(--color-text-inverse);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);z-index:1000}
+    .skip-link:focus{top:var(--space-4)}
+    .site-header{position:sticky;top:0;z-index:40;background:color-mix(in oklab,var(--color-bg) 82%, transparent);backdrop-filter:blur(14px);border-bottom:1px solid color-mix(in oklab,var(--color-border) 70%, transparent)}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:var(--space-4);min-height:4.5rem}
+    .brand{display:flex;align-items:center;gap:var(--space-3);font-size:var(--text-sm);font-weight:700;letter-spacing:.02em}
+    .brand-mark{width:2.5rem;height:2.5rem;padding:.45rem;border-radius:.8rem;background:linear-gradient(145deg,var(--color-primary-highlight),var(--color-surface));box-shadow:var(--shadow-sm)}
+    .brand svg{width:100%;height:100%}
+    .nav-links{display:flex;gap:var(--space-4);flex-wrap:wrap}
+    .nav-links a{padding:.55rem .8rem;border-radius:var(--radius-full);font-size:var(--text-sm);color:var(--color-text-muted)}
+    .nav-links a:hover,.nav-links a.active{background:var(--color-surface-offset);color:var(--color-text)}
+    .header-actions{display:flex;align-items:center;gap:var(--space-3)}
+    .icon-btn,.menu-btn{display:grid;place-items:center;width:2.75rem;height:2.75rem;border:1px solid color-mix(in oklab,var(--color-border) 80%, transparent);border-radius:var(--radius-full);background:var(--color-surface)}
+    .hero{padding:clamp(var(--space-12),9vw,var(--space-24)) 0 var(--space-12);position:relative;overflow:hidden}
+    .hero::before{content:"";position:absolute;inset:auto auto -5rem -8rem;width:22rem;height:22rem;background:radial-gradient(circle,var(--color-primary-highlight),transparent 68%);filter:blur(10px);pointer-events:none}
+    .hero-grid{display:grid;grid-template-columns:1.25fr .9fr;gap:var(--space-8);align-items:end}
+    .eyebrow{display:inline-flex;align-items:center;gap:.55rem;padding:.45rem .8rem;border-radius:var(--radius-full);background:var(--color-surface-offset);font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted);margin-bottom:var(--space-5)}
+    h1,h2,h3{font-family:var(--font-display);line-height:1.08}
+    h1{font-size:var(--text-3xl);max-width:13ch;margin-bottom:var(--space-5)}
+    .lead{font-size:var(--text-lg);max-width:58ch;color:var(--color-text-muted)}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-6)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:.6rem;min-height:2.9rem;padding:.75rem 1rem;border-radius:var(--radius-full);font-size:var(--text-sm);font-weight:700;border:1px solid transparent;transition:.18s ease}
+    .btn-primary{background:var(--color-primary);color:var(--color-text-inverse)}
+    .btn-primary:hover{background:var(--color-primary-hover)}
+    .btn-secondary{background:var(--color-surface);border-color:color-mix(in oklab,var(--color-border) 80%, transparent)}
+    .hero-panel,.panel,.card,.metric,.timeline-card,.study-card,.tab-panel,.flashcard,.modal-card,.quote-card{background:var(--color-surface);border:1px solid color-mix(in oklab,var(--color-border) 75%, transparent);border-radius:var(--radius-xl);box-shadow:var(--shadow-sm)}
+    .hero-panel{padding:var(--space-6);display:grid;gap:var(--space-4)}
+    .kpi-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--space-3)}
+    .metric{padding:var(--space-4);background:linear-gradient(180deg,var(--color-surface-2),var(--color-surface))}
+    .metric strong{display:block;font-size:var(--text-xl);font-family:var(--font-display)}
+    .metric span{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
+    section{padding:clamp(var(--space-10),7vw,var(--space-20)) 0}
+    .section-head{display:grid;gap:var(--space-3);margin-bottom:var(--space-8);max-width:70ch}
+    .section-head p{color:var(--color-text-muted)}
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--space-6)}
+    .panel{padding:var(--space-6)}
+    .toc{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:var(--space-3)}
+    .toc a{padding:var(--space-4);border-radius:var(--radius-lg);background:var(--color-surface-offset);border:1px solid color-mix(in oklab,var(--color-border) 70%, transparent);font-weight:700;font-size:var(--text-sm)}
+    .toc a span{display:block;color:var(--color-text-muted);font-weight:500;font-size:var(--text-xs);margin-top:.35rem}
+    .accordion{display:grid;gap:var(--space-3)}
+    .accordion-item{border:1px solid color-mix(in oklab,var(--color-border) 75%, transparent);border-radius:var(--radius-lg);background:var(--color-surface)}
+    .accordion-trigger{width:100%;text-align:left;padding:var(--space-5);display:flex;justify-content:space-between;gap:var(--space-4);align-items:start}
+    .accordion-trigger h3{font-size:var(--text-lg);font-family:var(--font-body);font-weight:700;line-height:1.25}
+    .accordion-trigger small{display:block;color:var(--color-text-muted);margin-top:.35rem;font-size:var(--text-sm)}
+    .accordion-content{padding:0 var(--space-5) var(--space-5);display:none;color:var(--color-text-muted)}
+    .accordion-item.open .accordion-content{display:block}
+    .chevron{width:1.2rem;height:1.2rem;flex:none;transition:transform .18s ease;color:var(--color-text-muted)}
+    .accordion-item.open .chevron{transform:rotate(180deg)}
+    .chips{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:var(--space-4)}
+    .chip{padding:.4rem .7rem;border-radius:var(--radius-full);background:var(--color-surface-offset);font-size:var(--text-xs);color:var(--color-text-muted)}
+    .compare{overflow:auto}
+    table{width:100%;border-collapse:collapse;font-size:var(--text-sm)}
+    th,td{padding:var(--space-3);text-align:left;border-bottom:1px solid color-mix(in oklab,var(--color-divider) 80%, transparent);vertical-align:top}
+    th{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--color-text-muted)}
+    .timeline{display:grid;gap:var(--space-4)}
+    .timeline-card{padding:var(--space-5);position:relative;overflow:hidden}
+    .timeline-card::before{content:"";position:absolute;inset:0 auto 0 0;width:5px;background:linear-gradient(180deg,var(--color-primary),transparent)}
+    .timeline-card h3{font-size:var(--text-lg);margin-bottom:var(--space-2)}
+    .timeline-card p{color:var(--color-text-muted)}
+    .resource-grid,.study-grid,.flash-grid,.modal-grid,.activity-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--space-4)}
+    .card,.study-card,.flashcard{padding:var(--space-5)}
+    .card h3,.study-card h3,.flashcard h3{font-size:var(--text-lg);margin-bottom:var(--space-3)}
+    .card p,.study-card p,.flashcard p{color:var(--color-text-muted)}
+    .tabs{display:flex;flex-wrap:wrap;gap:var(--space-2);margin-bottom:var(--space-5)}
+    .tab-btn{padding:.65rem .9rem;border-radius:var(--radius-full);background:var(--color-surface-offset);font-size:var(--text-sm);font-weight:700;color:var(--color-text-muted)}
+    .tab-btn[aria-selected="true"]{background:var(--color-primary);color:var(--color-text-inverse)}
+    .tab-panel{padding:var(--space-5);display:none}
+    .tab-panel.active{display:block}
+    .callout{padding:var(--space-5);border-radius:var(--radius-lg);background:linear-gradient(180deg,color-mix(in oklab,var(--color-primary-highlight) 70%, var(--color-surface)),var(--color-surface));border:1px solid color-mix(in oklab,var(--color-primary) 20%, var(--color-border));color:var(--color-text)}
+    .callout p{color:var(--color-text-muted)}
+    .study-layout{display:grid;grid-template-columns:.8fr 1.2fr;gap:var(--space-6)}
+    .study-card ul,.accordion-content ul,.accordion-content ol,.tab-panel ul{padding-left:1.1rem}
+    .study-card li,.accordion-content li,.tab-panel li{margin:.45rem 0;color:var(--color-text-muted)}
+    .quote-card{padding:var(--space-6);background:linear-gradient(160deg,var(--color-surface),var(--color-surface-offset))}
+    .quote-card blockquote{font-family:var(--font-display);font-size:var(--text-xl);max-width:16ch}
+    .quote-card p{margin-top:var(--space-4);color:var(--color-text-muted)}
+    .footer{padding:var(--space-10) 0 var(--space-16);border-top:1px solid color-mix(in oklab,var(--color-divider) 80%, transparent)}
+    .footer-grid{display:grid;grid-template-columns:1fr auto;gap:var(--space-4);align-items:end}
+    .footer p{color:var(--color-text-muted);font-size:var(--text-sm);max-width:64ch}
+    .modal{position:fixed;inset:0;background:color-mix(in oklab,var(--color-bg) 38%, black 62%);display:none;align-items:center;justify-content:center;padding:var(--space-4);z-index:80}
+    .modal[aria-hidden="false"]{display:flex}
+    .modal-card{width:min(900px,100%);max-height:88vh;overflow:auto;padding:var(--space-6);position:relative}
+    .modal-close{position:absolute;top:var(--space-4);right:var(--space-4)}
+    .legend{display:flex;flex-wrap:wrap;gap:var(--space-3);margin-top:var(--space-3)}
+    .legend span{display:inline-flex;align-items:center;gap:.5rem;font-size:var(--text-xs);color:var(--color-text-muted)}
+    .legend i{width:.8rem;height:.8rem;border-radius:999px;background:var(--swatch, var(--color-primary));display:inline-block}
+    .mini-map{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-3);margin-top:var(--space-5)}
+    .mini-map .card{min-height:9rem}
+    .flashcard{cursor:pointer;min-height:180px;perspective:1000px;position:relative}
+    .flashcard-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .5s ease}
+    .flashcard.is-flipped .flashcard-inner{transform:rotateY(180deg)}
+    .flash-face{position:absolute;inset:0;backface-visibility:hidden;border-radius:var(--radius-lg);padding:var(--space-5);background:var(--color-surface-offset)}
+    .flash-face.back{transform:rotateY(180deg);background:color-mix(in oklab,var(--color-primary-highlight) 75%, var(--color-surface))}
+    .mobile-drawer{display:none}
+    @media (max-width: 960px){
+      .hero-grid,.grid-2,.study-layout,.footer-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .mobile-drawer{display:block;position:fixed;inset:4.5rem 1rem auto 1rem;background:var(--color-surface);border:1px solid color-mix(in oklab,var(--color-border) 80%, transparent);border-radius:var(--radius-xl);padding:var(--space-4);box-shadow:var(--shadow-lg);z-index:35}
+      .mobile-drawer[hidden]{display:none}
+      .mobile-drawer nav{display:grid;gap:var(--space-2)}
+      .mobile-drawer a{padding:.8rem 1rem;border-radius:var(--radius-lg);background:var(--color-surface-offset);font-weight:700}
+    }
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      *,*::before,*::after{transition:none !important;animation:none !important}
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Inicio Tema 5 Didáctica">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M12 46V18l20-8 20 8v28"/>
+            <path d="M20 24h24M20 34h24M32 10v44"/>
+            <path d="M18 46h28"/>
+          </svg>
+        </span>
+        <span>Tema 5 · Didáctica Infantil</span>
+      </a>
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#mapa">Mapa</a>
+        <a href="#espacios">Espacios</a>
+        <a href="#organizacion">Organización</a>
+        <a href="#materiales">Materiales</a>
+        <a href="#estudio">Guía de estudio</a>
+      </nav>
+      <div class="header-actions">
+        <button class="menu-btn" type="button" aria-label="Abrir menú" data-menu-toggle>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <button class="icon-btn" type="button" aria-label="Cambiar modo" data-theme-toggle>
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-drawer" hidden data-mobile-drawer>
+      <nav aria-label="Navegación móvil">
+        <a href="#mapa">Mapa</a>
+        <a href="#espacios">Espacios</a>
+        <a href="#organizacion">Organización</a>
+        <a href="#materiales">Materiales</a>
+        <a href="#estudio">Guía de estudio</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Educación Infantil 0-3 · Aragón · Ambiente educativo</span>
+          <h1>Recursos educativos y organización del ambiente</h1>
+          <p class="lead">Este site convierte todo el contenido del Tema 5 en una experiencia de estudio navegable: integra normativa, espacios, ratios, seguridad, organización del tiempo, talleres, rincones, materiales, actividades y una guía final de repaso sin omitir ninguna página del documento base.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#estudio">Ir a la guía de estudio</a>
+            <button class="btn btn-secondary" type="button" data-open-modal="modal-resumen">Ver resumen global</button>
+          </div>
+        </div>
+        <aside class="hero-panel" aria-label="Panel resumen del tema">
+          <div class="kpi-grid">
+            <div class="metric"><span>Páginas integradas</span><strong>23</strong></div>
+            <div class="metric"><span>Bloques</span><strong>2</strong></div>
+            <div class="metric"><span>Ratios clave</span><strong>8·13·20</strong></div>
+            <div class="metric"><span>Ficha final</span><strong>9</strong></div>
+          </div>
+          <div class="callout">
+            <strong style="display:block;margin-bottom:.55rem">Idea central</strong>
+            <p>En Infantil, el ambiente no es decorado: es estructura didáctica. El espacio, el tiempo, los agrupamientos y los materiales educan tanto como la actividad planificada.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="mapa">
+      <div class="container">
+        <div class="section-head">
+          <h2>Mapa del contenido</h2>
+          <p>La mejor solución para una materia extensa es combinar recursos distintos según el tipo de información: mapa de navegación para la estructura, acordeones para el detalle, tablas para comparar, líneas temporales para los tiempos y tarjetas de memorización para el estudio activo.</p>
+        </div>
+        <div class="toc">
+          <a href="#espacios">Primera parte: espacios <span>requisitos, normativa, instalaciones, ratios, seguridad, interiores y exteriores</span></a>
+          <a href="#organizacion">Segunda parte: organización <span>agrupamientos, talleres, rincones, tiempos y actividades</span></a>
+          <a href="#materiales">Mobiliario y materiales <span>recursos didácticos y equipamiento por edad</span></a>
+          <a href="#ficha">Ficha de actividad <span>estructura mínima para diseñar propuestas</span></a>
+          <a href="#estudio">Guía de estudio <span>esquemas, claves de examen y tarjetas</span></a>
+          <a href="#precision">Advertencias de precisión <span>qué es literal del tema y qué conviene matizar</span></a>
+        </div>
+        <div class="mini-map" aria-label="Vista rápida del tema">
+          <article class="card"><h3>Espacios</h3><p>Condiciones del centro, seguridad y configuración interior y exterior.</p></article>
+          <article class="card"><h3>Organización</h3><p>Cómo se ordenan grupos, tiempos, talleres, rincones y actividades.</p></article>
+          <article class="card"><h3>Estudio</h3><p>Resumen razonado, criterios de examen y materiales para memorizar.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="espacios">
+      <div class="container grid-2">
+        <div>
+          <div class="section-head">
+            <h2>Primera parte: espacios</h2>
+            <p>Para esta parte, el recurso más eficiente es el acordeón temático: permite conservar toda la información del archivo y desplegar cada bloque sin saturar la lectura inicial.</p>
+          </div>
+          <div class="accordion" data-accordion>
+            <article class="accordion-item open">
+              <button class="accordion-trigger" type="button" aria-expanded="true">
+                <div><h3>1. Requisitos de los espacios</h3><small>Condiciones generales del centro infantil</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Tamaño de los espacios y ratios adecuadas de los grupos.</li>
+                  <li>Proximidad, luminosidad y aislamiento acústico.</li>
+                  <li>Orientación adecuada; el tema recomienda aulas hacia el sureste.</li>
+                  <li>Distribución accesible y con servicios suficientes.</li>
+                  <li>Ventilación, temperatura, seguridad, salubridad y calidad resistente de los materiales.</li>
+                </ul>
+                <div class="chips"><span class="chip">Bienestar</span><span class="chip">Accesibilidad</span><span class="chip">Confort ambiental</span><span class="chip">Seguridad</span></div>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>2. Normativa en Aragón</h3><small>Orden de 25 de agosto de 2005</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <p>El tema cita como referencia la Orden de 25 de agosto de 2005 del Departamento de Educación, Cultura y Deporte, relativa a los requisitos mínimos e instrucciones técnicas de los centros que imparten el primer ciclo de Educación Infantil en Aragón.</p>
+                <ol>
+                  <li>Condiciones mínimas de seguridad según normativa vigente.</li>
+                  <li>Uso exclusivamente escolar.</li>
+                  <li>Accesibilidad.</li>
+                  <li>No estar ubicado en lugares peligrosos.</li>
+                </ol>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>3. Instalaciones</h3><small>Espacios mínimos descritos en el tema</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Una sala por cada unidad.</li>
+                  <li>En menores de 2 años, áreas diferenciadas de descanso e higiene.</li>
+                  <li>Espacio específico para preparación de alimentos infantiles.</li>
+                  <li>Sala de usos múltiples y zona de juegos.</li>
+                  <li>Aseos accesibles para 2-3 años y aseo independiente para el personal.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>4. Ratios y personal</h3><small>Datos normativos clave para examen</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <div class="compare">
+                  <table>
+                    <thead><tr><th>Edad</th><th>Máximo</th><th>Observación</th></tr></thead>
+                    <tbody>
+                      <tr><td>0-1 año</td><td>8 niños/as</td><td>Una unidad para menores de un año.</td></tr>
+                      <tr><td>1-2 años</td><td>13 niños/as</td><td>Tramo intermedio del primer ciclo.</td></tr>
+                      <tr><td>2-3 años</td><td>20 niños/as</td><td>Mayor grupo permitido en el tema.</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p style="margin-top:1rem">Personal mínimo descrito: al menos una persona con titulación de Maestro/a especialista en Educación Infantil y un tutor o tutora por unidad con titulación de Técnico/a Superior en Educación Infantil. El tema recuerda además la diferencia entre centros completos e incompletos.</p>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>5. Seguridad</h3><small>Prevención básica recogida en el archivo</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Prevención de accidentes, por ejemplo protección de enchufes.</li>
+                  <li>Botiquín y referencia a primeros auxilios.</li>
+                  <li>Protección contra incendios, como extintores.</li>
+                </ul>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>6. Espacios interiores</h3><small>Vestíbulo, aulas, salas y dependencias</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Entrada o vestíbulo acogedor.</li>
+                  <li>Aulas de referencia para cada unidad.</li>
+                  <li>Zona de juegos de 75 m² y sala de usos múltiples de 50 m².</li>
+                  <li>Preparación de alimentos, aseos, almacén, administración y coordinación docente.</li>
+                </ul>
+                <p style="margin-top:1rem">Especificaciones de aula: para 0-1 años se citan cunas, zona de actividad, espejo, estimulación, preparación de alimentos y cambios; para 1-3 años se añaden mesas, sillas, percheros, muebles bajos, zona de juego, aseos, descanso y comedor o zona diferenciada.</p>
+              </div>
+            </article>
+            <article class="accordion-item">
+              <button class="accordion-trigger" type="button" aria-expanded="false">
+                <div><h3>7. Espacios exteriores</h3><small>Patio como espacio educativo</small></div>
+                <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
+              </button>
+              <div class="accordion-content">
+                <ul>
+                  <li>Actividades motrices: escaleras, columpios, pelotas.</li>
+                  <li>Juego simbólico: casetas, carritos, trenecitos.</li>
+                  <li>Actividades sensoriales: areneros y juegos de agua.</li>
+                  <li>Exploración e investigación: hojas, animales, flores, huerto, palas y cubos.</li>
+                  <li>Diversidad de suelos, amplitud, sol, sombra y elementos naturales.</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+        </div>
+        <aside class="quote-card">
+          <blockquote>Un espacio infantil bien diseñado organiza la experiencia antes incluso de que empiece la actividad.</blockquote>
+          <p>Esta parte del tema debe estudiarse como una relación entre arquitectura, seguridad y didáctica. No basta con enumerar salas: hay que explicar para qué educa cada una.</p>
+          <div class="legend">
+            <span><i style="--swatch:var(--color-primary)"></i>Normativa y estructura</span>
+            <span><i style="--swatch:var(--color-success)"></i>Bienestar y autonomía</span>
+            <span><i style="--swatch:var(--color-warning)"></i>Seguridad y prevención</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="organizacion">
+      <div class="container">
+        <div class="section-head">
+          <h2>Segunda parte: organización</h2>
+          <p>Aquí se ha combinado una cronología funcional para los tiempos, pestañas para separar los grandes subtemas y tarjetas de síntesis para visualizar cómo se traduce la teoría en acción educativa.</p>
+        </div>
+        <div class="tabs" role="tablist" aria-label="Subtemas de organización">
+          <button class="tab-btn" role="tab" aria-selected="true" aria-controls="tab-agrupamientos" id="btn-agrupamientos">Agrupamientos</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-rincones" id="btn-rincones">Talleres y rincones</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-tiempos" id="btn-tiempos">Tiempos</button>
+          <button class="tab-btn" role="tab" aria-selected="false" aria-controls="tab-actividades" id="btn-actividades">Actividades</button>
+        </div>
+
+        <section class="tab-panel active" id="tab-agrupamientos" role="tabpanel" aria-labelledby="btn-agrupamientos">
+          <div class="resource-grid">
+            <article class="card">
+              <h3>Gran grupo</h3>
+              <p>El tema vincula la distribución por edades a la ratio regulada en Aragón y recuerda la referencia del tutor o tutora por unidad o grupo de aula.</p>
+            </article>
+            <article class="card">
+              <h3>Pequeños grupos</h3>
+              <p>Se proponen criterios de distribución heterogénea, por género, apoyo entre iguales, complementariedad de habilidades y accesibilidad a materiales.</p>
+            </article>
+            <article class="card">
+              <h3>Lectura didáctica</h3>
+              <p>Agrupar no solo organiza al alumnado: regula la interacción, el acceso a recursos y las oportunidades de autonomía y cooperación.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-rincones" role="tabpanel" aria-labelledby="btn-rincones">
+          <div class="resource-grid">
+            <article class="card">
+              <h3>Talleres</h3>
+              <p>Experiencias de manipulación y experimentación orientadas a que el alumnado adquiera conocimientos y destrezas, con desarrollo de la creatividad.</p>
+            </article>
+            <article class="card">
+              <h3>Rincones</h3>
+              <p>Organización del aula en zonas temáticas para explorar y aprender con autonomía. El tema pone ejemplos: biblioteca, juego simbólico, actividad, relajación y sensorial.</p>
+            </article>
+            <article class="card">
+              <h3>Permanentes y temporales</h3>
+              <p>El documento diferencia rincones estables y otros temporales, idea útil para justificar flexibilidad metodológica.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-tiempos" role="tabpanel" aria-labelledby="btn-tiempos">
+          <div class="timeline">
+            <article class="timeline-card">
+              <h3>Calendario escolar</h3>
+              <p>Según el tema, el primer ciclo suele ir de septiembre a julio, mientras el segundo ciclo se plantea de septiembre a junio. La programación didáctica debe ajustarse al calendario escolar de cada curso.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Informes y familias</h3>
+              <p>Se indica la entrega ordinaria de informes de evaluación u observación a las familias cada trimestre.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Periodo de adaptación</h3>
+              <p>Se orienta a la incorporación progresiva del niño o niña al centro, con construcción de vínculos, atención individualizada y consolidación de rutinas.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Periodo de transición</h3>
+              <p>Se refiere al paso del primer ciclo al segundo ciclo y puede implicar cambio de aula o incorporación de nuevos compañeros.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Fechas señaladas</h3>
+              <p>Se incluyen celebraciones como Halloween, Carnaval y Navidad, además de días internacionales como derechos del niño, día de la mujer o día de la paz.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Jornada escolar</h3>
+              <p>La jornada debe ofrecer tiempos adaptados a los ritmos de cada niño. El horario se presenta como flexible pero estable, con tramo central ampliable según necesidades familiares.</p>
+            </article>
+            <article class="timeline-card">
+              <h3>Criterios organizativos</h3>
+              <p>El tema cita criterio pronogénico, criterio semanal y criterio por ciclos o grupos. Todos se articulan mediante hábitos y rutinas repetidas para lograr autonomía.</p>
+            </article>
+          </div>
+        </section>
+
+        <section class="tab-panel" id="tab-actividades" role="tabpanel" aria-labelledby="btn-actividades">
+          <div class="activity-grid">
+            <article class="card">
+              <h3>Cómo deben ser</h3>
+              <p>Adaptables, significativas, motivadoras, lúdicas, inclusivas y seguras. Además, pueden ser libres o dirigidas.</p>
+            </article>
+            <article class="card">
+              <h3>Actividades iniciales</h3>
+              <p>De motivación, introducción y activación de conocimientos previos.</p>
+            </article>
+            <article class="card">
+              <h3>Actividades de desarrollo</h3>
+              <p>Orientadas al análisis, la experimentación, la resolución de casos y la consolidación.</p>
+            </article>
+            <article class="card">
+              <h3>Actividades finales</h3>
+              <p>De refuerzo, ampliación y evaluación del proceso.</p>
+            </article>
+          </div>
+        </section>
+      </div>
+    </section>
+
+    <section id="materiales">
+      <div class="container grid-2">
+        <div>
+          <div class="section-head">
+            <h2>Mobiliario y materiales</h2>
+            <p>El formato de tarjetas comparativas funciona mejor aquí porque el contenido es taxonómico: conviene separar recursos didácticos y equipamientos por edad para estudiar de forma visual.</p>
+          </div>
+          <div class="resource-grid">
+            <article class="card">
+              <h3>Materiales didácticos</h3>
+              <p>Memory, juegos de rosca, puzles, clasificación con imágenes, simulación o imitación, letras-palabras, construcción, encaje, asociación, fungibles y fichas con pegatinas.</p>
+            </article>
+            <article class="card">
+              <h3>Equipamiento 0-1</h3>
+              <p>Cojines, cama-cunas, estantes, casilleros individuales, colchonetas y cambiadores.</p>
+            </article>
+            <article class="card">
+              <h3>Equipamiento 1-2 y 2-3</h3>
+              <p>El material anterior más mesas, sillas, espejos, estanterías con manipulativos, mural de corcho, orinales, percheros, bloques grandes y alfombra.</p>
+            </article>
+            <article class="card">
+              <h3>Exterior</h3>
+              <p>Toboganes, túneles, rampas, bancos, arena, agua, estructuras con texturas, correpasillos y piezas grandes blandas.</p>
+            </article>
+          </div>
+        </div>
+        <aside class="panel">
+          <h3 style="margin-bottom:1rem">Relación edad · recurso · función</h3>
+          <div class="compare">
+            <table>
+              <thead><tr><th>Edad</th><th>Recurso dominante</th><th>Función educativa</th></tr></thead>
+              <tbody>
+                <tr><td>0-1</td><td>Cunas, colchonetas, espejo, zona de estimulación</td><td>Descanso, seguridad, exploración sensoriomotriz.</td></tr>
+                <tr><td>1-2</td><td>Mobiliario bajo, material manipulativo, cambiador</td><td>Autonomía incipiente, acceso al juego y control progresivo del entorno.</td></tr>
+                <tr><td>2-3</td><td>Mesas, sillas, percheros, orinales, bloques, rincones</td><td>Juego simbólico, hábitos, relación social y actividad dirigida más compleja.</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="ficha">
+      <div class="container">
+        <div class="section-head">
+          <h2>Ficha de actividad</h2>
+          <p>La información final del archivo pedía un formato práctico; por eso aquí se usa una plantilla interactiva clara, útil para estudiar y para redactar actividades reales.</p>
+        </div>
+        <div class="resource-grid">
+          <article class="card"><h3>Título</h3><p>Nombre identificable y coherente con la experiencia de aprendizaje.</p></article>
+          <article class="card"><h3>Tipo</h3><p>Inicial, de desarrollo o final; libre o dirigida, según la lógica del tema.</p></article>
+          <article class="card"><h3>Edad y número</h3><p>Grupo destinatario y cantidad de alumnado prevista.</p></article>
+          <article class="card"><h3>Temporalización</h3><p>Duración, secuencia y momento de aplicación.</p></article>
+          <article class="card"><h3>Espacio y recursos</h3><p>Lugar, materiales, mobiliario y apoyos necesarios.</p></article>
+          <article class="card"><h3>Papel del educador</h3><p>Intervención, mediación, observación y acompañamiento.</p></article>
+          <article class="card"><h3>Descripción</h3><p>Desarrollo paso a paso de la propuesta.</p></article>
+          <article class="card"><h3>Observaciones o variantes</h3><p>Adaptaciones, incidencias previstas o alternativas.</p></article>
+          <article class="card"><h3>Evaluación</h3><p>Qué se observa, con qué criterios y con qué finalidad.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="estudio">
+      <div class="container">
+        <div class="section-head">
+          <h2>Guía de estudio</h2>
+          <p>Esta sección usa una combinación de esquema, pasos de memorización y flashcards. Es el recurso más eficiente para pasar del contenido descriptivo al aprendizaje activo.</p>
+        </div>
+        <div class="study-layout">
+          <aside class="study-card">
+            <h3>Cómo estudiar este tema</h3>
+            <ul>
+              <li>Empieza por la estructura general: espacios y organización.</li>
+              <li>Memoriza después los datos cerrados: orden, artículo 2, ratios, 75 m², 50 m² y apartados de la ficha.</li>
+              <li>Asocia cada espacio con una función educativa: descansar, jugar, investigar, asearse, moverse, simbolizar.</li>
+              <li>Relaciona siempre tiempo y rutina con autonomía infantil.</li>
+              <li>En examen, no enumeres solo materiales: explica por qué son adecuados para la edad.</li>
+            </ul>
+          </aside>
+          <div class="study-grid">
+            <article class="study-card">
+              <h3>Esquema ultra breve</h3>
+              <p>Espacios: requisitos, normativa, instalaciones, ratios, seguridad, interiores y exteriores. Organización: agrupamientos, talleres, rincones, tiempos, materiales y actividades.</p>
+            </article>
+            <article class="study-card">
+              <h3>Datos imprescindibles</h3>
+              <p>Ratios 8-13-20; una sala por unidad; áreas diferenciadas de descanso e higiene para menores de 2 años; zona de juegos de 75 m²; sala de usos múltiples de 50 m².</p>
+            </article>
+            <article class="study-card">
+              <h3>Idea pedagógica</h3>
+              <p>El ambiente organiza conductas, relaciones, autonomía y posibilidades de acción. Por eso el espacio y el tiempo son variables didácticas, no solo organizativas.</p>
+            </article>
+            <article class="study-card">
+              <h3>Plantilla de examen</h3>
+              <p>Define el ambiente educativo, cita el marco aragonés, explica espacios y seguridad, desarrolla organización y termina con actividades y ficha de planificación.</p>
+            </article>
+          </div>
+        </div>
+
+        <div class="section-head" style="margin-top:3rem">
+          <h2 style="font-size:var(--text-xl)">Flashcards de repaso</h2>
+          <p>Pulsa cada tarjeta para girarla. Este recurso es el más adecuado para fijar conceptos cerrados y repasar oralmente antes del examen.</p>
+        </div>
+        <div class="flash-grid">
+          <article class="flashcard" tabindex="0"><div class="flashcard-inner"><div class="flash-face front"><h3>¿Cuáles son las dos partes del tema?</h3><p>Pulsa para ver la respuesta.</p></div><div class="flash-face back"><h3>Respuesta</h3><p>Primera parte: espacios. Segunda parte: organización.</p></div></div></article>
+          <article class="flashcard" tabindex="0"><div class="flashcard-inner"><div class="flash-face front"><h3>¿Qué ratios debes memorizar?</h3><p>Pulsa para ver la respuesta.</p></div><div class="flash-face back"><h3>Respuesta</h3><p>0-1: 8; 1-2: 13; 2-3: 20.</p></div></div></article>
+          <article class="flashcard" tabindex="0"><div class="flashcard-inner"><div class="flash-face front"><h3>¿Qué diferencia básica hay entre taller y rincón?</h3><p>Pulsa para ver la respuesta.</p></div><div class="flash-face back"><h3>Respuesta</h3><p>El taller se plantea como experiencia de manipulación y experimentación; el rincón como zona del aula para exploración y aprendizaje autónomo.</p></div></div></article>
+          <article class="flashcard" tabindex="0"><div class="flashcard-inner"><div class="flash-face front"><h3>¿Qué apartados tiene la ficha de actividad?</h3><p>Pulsa para ver la respuesta.</p></div><div class="flash-face back"><h3>Respuesta</h3><p>Título, tipo, edad y número, temporalización, espacio y recursos, papel del educador, descripción, observaciones o variantes y evaluación.</p></div></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="precision">
+      <div class="container">
+        <div class="section-head">
+          <h2>Advertencias de precisión</h2>
+          <p>Se integran aquí los matices necesarios para estudiar con exactitud y no repetir de forma acrítica posibles simplificaciones del documento.</p>
+        </div>
+        <div class="modal-grid">
+          <article class="card">
+            <h3>Norma resumida</h3>
+            <p>El tema funciona como resumen docente. Para una cita jurídica literal conviene comprobar directamente la Orden mencionada.</p>
+          </article>
+          <article class="card">
+            <h3>Términos con erratas</h3>
+            <p>En el material aparecen formas como “pronogénico”, “reolución”, “heteogéneos” o “idiciduales”. Debes estudiar el concepto, pero escribirlo correctamente en una prueba.</p>
+          </article>
+          <article class="card">
+            <h3>Recomendación no absoluta</h3>
+            <p>La orientación de aulas hacia el sureste aparece en el tema como recomendación, no como regla universal que pueda afirmarse sin matices.</p>
+          </article>
+          <article class="card">
+            <h3>Calendario</h3>
+            <p>El propio tema usa formulaciones como “normalmente”, señal de que algunos elementos del calendario pueden variar por curso o administración.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <strong style="display:block;margin-bottom:.4rem">Tema 5 · Recursos educativos y organización del ambiente</strong>
+        <p>Site estático preparado para GitHub Pages. Integra todos los contenidos del documento en formato navegable, accesible y orientado al estudio comprensivo.</p>
+      </div>
+      <div class="hero-actions">
+        <button class="btn btn-secondary" type="button" data-open-modal="modal-resumen">Resumen global</button>
+        <a class="btn btn-primary" href="#inicio">Volver arriba</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal" id="modal-resumen" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-card">
+      <button class="icon-btn modal-close" type="button" aria-label="Cerrar resumen" data-close-modal>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <h2 id="modal-title" style="margin-bottom:1rem">Resumen global del tema</h2>
+      <div class="resource-grid">
+        <article class="card"><h3>Bloque 1</h3><p>Espacios del centro infantil: requisitos, normativa aragonesa, instalaciones, ratios, seguridad y configuración de espacios interiores y exteriores.</p></article>
+        <article class="card"><h3>Bloque 2</h3><p>Organización didáctica: agrupamientos, talleres, rincones, calendario, jornada, hábitos, rutinas, materiales y actividades.</p></article>
+        <article class="card"><h3>Clave final</h3><p>La ficha de actividad cierra el tema y convierte toda la teoría anterior en una propuesta planificable y evaluable.</p></article>
+      </div>
+      <div class="callout" style="margin-top:1.5rem">
+        <strong style="display:block;margin-bottom:.5rem">Fórmula para recordar</strong>
+        <p>Ambiente educativo = espacio + tiempo + relaciones + materiales + seguridad + intencionalidad pedagógica.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const root = document.documentElement;
+      const themeBtn = document.querySelector('[data-theme-toggle]');
+      let theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      root.setAttribute('data-theme', theme);
+      const updateThemeIcon = () => {
+        themeBtn.innerHTML = theme === 'dark'
+          ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+          : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+      };
+      updateThemeIcon();
+      themeBtn.addEventListener('click', ()=>{
+        theme = theme === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', theme);
+        updateThemeIcon();
+      });
+
+      document.querySelectorAll('[data-accordion] .accordion-trigger').forEach(btn => {
+        btn.addEventListener('click', ()=>{
+          const item = btn.parentElement;
+          const open = item.classList.toggle('open');
+          btn.setAttribute('aria-expanded', String(open));
+        });
+      });
+
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      const tabPanels = document.querySelectorAll('.tab-panel');
+      tabButtons.forEach(btn => btn.addEventListener('click', ()=>{
+        tabButtons.forEach(b => b.setAttribute('aria-selected','false'));
+        tabPanels.forEach(p => p.classList.remove('active'));
+        btn.setAttribute('aria-selected','true');
+        document.getElementById(btn.getAttribute('aria-controls')).classList.add('active');
+      }));
+
+      const modal = document.getElementById('modal-resumen');
+      document.querySelectorAll('[data-open-modal="modal-resumen"]').forEach(btn => btn.addEventListener('click', ()=>{
+        modal.setAttribute('aria-hidden','false');
+        document.body.style.overflow='hidden';
+      }));
+      const closeModal = ()=>{ modal.setAttribute('aria-hidden','true'); document.body.style.overflow=''; };
+      document.querySelectorAll('[data-close-modal]').forEach(btn => btn.addEventListener('click', closeModal));
+      modal.addEventListener('click', e => { if(e.target === modal) closeModal(); });
+      document.addEventListener('keydown', e => { if(e.key === 'Escape' && modal.getAttribute('aria-hidden') === 'false') closeModal(); });
+
+      document.querySelectorAll('.flashcard').forEach(card => {
+        const toggle = ()=> card.classList.toggle('is-flipped');
+        card.addEventListener('click', toggle);
+        card.addEventListener('keydown', e => { if(e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+      });
+
+      const menuBtn = document.querySelector('[data-menu-toggle]');
+      const drawer = document.querySelector('[data-mobile-drawer]');
+      menuBtn.addEventListener('click', ()=>{
+        drawer.hidden = !drawer.hidden;
+        menuBtn.setAttribute('aria-expanded', String(!drawer.hidden));
+      });
+      drawer.querySelectorAll('a').forEach(link => link.addEventListener('click', ()=>{ drawer.hidden = true; }));
+
+      const sections = [...document.querySelectorAll('main section[id]')];
+      const navLinks = [...document.querySelectorAll('.nav-links a')];
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            navLinks.forEach(link => link.classList.toggle('active', link.getAttribute('href') === '#'+entry.target.id));
+          }
+        });
+      },{rootMargin:'-40% 0px -45% 0px', threshold:0});
+      sections.forEach(section => obs.observe(section));
+    })();
+  </script>
+</body>
+</html>
+
