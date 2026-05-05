@@ -1,1 +1,289 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Examen avanzado EI Aragón</title><style>body{font-family:system-ui;background:#f6f5f1;color:#222;margin:0}.w{max-width:980px;margin:auto;padding:20px}.c{background:#fff;border:1px solid #ddd;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 8px 20px rgba(0,0,0,.06)}.s{position:sticky;top:0;background:linear-gradient(#f6f5f1 80%,rgba(246,245,241,0));padding:10px 0;z-index:5}button{background:#0b6b73;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}button.sec{background:#eee;color:#222}.o{display:block;padding:10px 12px;border:1px solid #ddd;border-radius:10px;margin:8px 0;background:#fafafa}.ok{border-color:#2e7d32;background:#edf7ee}.bad{border-color:#b3261e;background:#fdeeee}.miss{border-color:#8a5b00;background:#fff6df}.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}.st{background:#f3f3f1;border:1px solid #ddd;border-radius:12px;padding:12px}.m{color:#666}.ex{color:#666;margin-top:8px;font-size:.95rem}</style></head><body><div class="w"><div class="s"><button id="g">Corregir</button> <button id="r" class="sec">Reiniciar</button></div><div class="c"><h1>Examen avanzado de 40 preguntas</h1><p class="m">Puntuación: (aciertos - erróneas/3) / 40 × 6.</p><p class="m">Versión profunda y diversificada, basada en Orden ECD/853/2022, RD 95/2022 y el temario adjunto.</p></div><div id="res" class="c" style="display:none"></div><form id="f"></form></div><script>const qs=[["La definición de situación de aprendizaje en la Orden ECD/853/2022 se caracteriza por...", ["Ser un conjunto de fichas repetitivas para consolidar contenidos", "Implicar actuaciones del alumnado que contribuyen al desarrollo de competencias clave y específicas", "Limitarse a una sola área y un solo contenido", "Exigir siempre productos escritos"], 1, "La definición normativa vincula actuaciones, competencias y saberes."], ["Cuando la Orden habla de saberes básicos, está aludiendo a...", ["Contenidos, destrezas y actitudes propios de un área", "Solo conceptos memorísticos", "Únicamente actividades manipulativas", "Las notas finales del alumnado"], 0, "Los saberes básicos integran conocimientos, destrezas y actitudes."], ["El criterio de evaluación en Educación Infantil se usa principalmente para...", ["Comparar centros entre sí", "Valorar el grado de desarrollo y progreso respecto a los objetivos y competencias", "Convertir la evaluación en una prueba final", "Sustituir la observación directa"], 1, "Es el referente fundamental para valorar el desarrollo."], ["Una evaluación global en EI supone que...", ["Solo se observan aspectos cognitivos", "Se tiene en cuenta el desarrollo integral del niño o niña", "Se califica por materias aisladas", "Se evalúa únicamente al final"], 1, "La evaluación global considera el desarrollo integral."], ["La evaluación continua en EI exige que...", ["Se evalúe solo una vez por trimestre", "Se observe el proceso durante el desarrollo de las experiencias", "Se eliminen los registros", "Se corrija solo por examen"], 1, "La continuidad implica seguimiento del proceso."], ["La evaluación formativa implica que...", ["No se pueda modificar la programación", "La información recogida se utilice para reajustar la intervención", "Solo se informe a la familia", "Se puntúe por porcentajes"], 1, "La función formativa orienta ajustes y decisiones."], ["La técnica principal de evaluación en la etapa infantil es...", ["La observación directa y sistemática", "La prueba escrita", "La entrevista de oposición", "El examen de opción múltiple"], 0, "La norma establece la observación como técnica principal."], ["En EI, evaluar también la práctica educativa significa...", ["Calificar al profesorado con pruebas de contenido", "Analizar intervención, recursos, organización y decisiones didácticas", "Sustituir la evaluación del alumnado", "Aplicar sanciones disciplinarias"], 1, "La evaluación alcanza el diseño y la acción docente."], ["El DUA se articula mejor con una práctica docente que...", ["Presente una única vía de acceso y respuesta", "Ofrezca múltiples formas de implicación, representación y expresión", "Reduzca la autonomía", "Evite la flexibilidad"], 1, "El DUA multiplica vías de acceso y expresión."], ["Un enfoque globalizador en EI significa que...", ["Las áreas se enseñan sin conexión", "Los aprendizajes se organizan en torno a contextos significativos e integradores", "La temporalización es irrelevante", "Solo se hacen actividades artísticas"], 1, "El enfoque globalizador conecta áreas y experiencias."], ["El papel activo del alumnado en EI se concreta especialmente cuando...", ["El alumnado reproduce instrucciones sin interacción", "Explora, manipula, decide y construye significado", "Solo escucha pasivamente", "Es evaluado por memorización"], 1, "La actividad infantil debe ser protagonista."], ["La planificación del periodo de adaptación busca principalmente...", ["Acelerar la separación de la familia", "Favorecer vínculo, seguridad y progresiva incorporación al centro", "Eliminar rutinas", "Aumentar el número de cambios de aula"], 1, "La adaptación requiere vinculación y gradualidad."], ["En la programación didáctica, las situaciones permanentes suelen incluir...", ["Rutinas de higiene, alimentación, asamblea o cuento", "Solo excursiones", "Únicamente actividades de final de trimestre", "Solo festejos"], 0, "Las permanentes están ligadas a rutinas y hábitos."], ["En una programación anual, las situaciones temporales pueden ser...", ["Periodo de adaptación, proyectos o talleres puntuales", "Solo la entrada al aula", "Únicamente la higiene", "Solo el recreo"], 0, "Son módulos acotados en el tiempo."], ["La atención a la diversidad en la Orden y en tus apuntes se concibe como...", ["Una medida excepcional y tardía", "La pauta ordinaria basada en inclusión y personalización", "Un recurso solo para alumnado con dictamen", "Un añadido no curricular"], 1, "La atención inclusiva es la pauta ordinaria."], ["Cuando el docente adapta recursos y organización al grupo está aplicando...", ["Una decisión improvisada sin criterio", "La adecuación a necesidades, ritmos y características del alumnado", "Una obligación exclusiva del equipo directivo", "Una acción ajena al currículo"], 1, "La adaptación responde a características y ritmos del grupo."], ["El primer nivel de concreción curricular corresponde a...", ["La programación de aula", "Administraciones y normas que fijan currículo", "Las tareas diarias", "Las actividades complementarias"], 1, "El primer nivel lo establecen las administraciones."], ["El segundo nivel de concreción curricular incluye...", ["Proyecto educativo, propuesta pedagógica y documentos de centro", "Solo fichas de aula", "Solo el examen final", "Los listados de asistencia"], 0, "Es el nivel de contextualización del centro."], ["El tercer nivel de concreción curricular está formado por...", ["Leyes estatales", "Programaciones didácticas y situaciones de aprendizaje", "RRI y proyecto de gestión solamente", "Calendario escolar autonómico"], 1, "El tercer nivel se concreta en el aula."], ["La propuesta pedagógica del centro se define mejor como...", ["Un mero horario", "La filosofía y las decisiones educativas básicas del centro", "Un documento de calificaciones", "Un inventario de materiales"], 1, "Recoge las decisiones pedagógicas asumidas por el centro."], ["El PCE o proyecto curricular de etapa debe concretar...", ["Solo la decoración del aula", "Objetivos, metodologías, recursos, agrupamientos y coordinación", "Únicamente el plan económico", "Solo el reglamento disciplinario"], 1, "El PCE organiza la concreción curricular de etapa."], ["La PGA ordena...", ["Solo salidas extraescolares", "La organización y funcionamiento anual del centro", "El currículo estatal", "Las fichas de evaluación del alumnado"], 1, "La PGA recoge la organización del curso."], ["La ratio máxima del primer ciclo para menores de un año en Aragón es...", ["1/6", "1/8", "1/10", "1/12"], 1, "La Orden fija 1/8."], ["La ratio máxima para el grupo 1-2 años en Aragón es...", ["1/12", "1/13", "1/14", "1/15"], 1, "La Orden fija 1/13."], ["La ratio máxima para el grupo 2-3 años en Aragón es...", ["1/18", "1/19", "1/20", "1/22"], 2, "La Orden fija 1/20."], ["En centros de primer ciclo, para menores de 2 años, la normativa exige...", ["Zona de descanso e higiene diferenciada", "Aulas sin ventilación directa", "Un único espacio polivalente sin separación", "Pasillos como aula principal"], 0, "La normativa distingue descanso e higiene."], ["La seguridad en un centro infantil exige también...", ["Botiquín, prevención de accidentes y protección contra incendios", "Solo cámaras de video", "Exámenes de evacuación escritos", "Materiales no manipulables"], 0, "Los apuntes recogen esas medidas de seguridad."], ["Los talleres en EI son especialmente útiles porque...", ["Permiten creatividad, manipulación y experimentación", "Reducen la participación", "Sustituyen toda metodología", "Solo sirven para decorar"], 0, "Los talleres favorecen experimentar y crear."], ["Los rincones en EI favorecen sobre todo...", ["Trabajo autónomo, juego y exploración", "Control estrictamente memorístico", "Actividades idénticas para todos", "Aislamiento del alumnado"], 0, "Los rincones impulsan autonomía y exploración."], ["Las estrategias metodológicas mixtas combinan...", ["Exposición y descubrimiento", "Solo ejercicios cerrados", "Únicamente juego libre", "Solo evaluación"], 0, "Las estrategias mixtas unen ambas vías."], ["La organización del tiempo en EI debe considerar...", ["Ritmos biológicos, rutinas y flexibilidad estable", "Solo la comodidad del horario adulto", "Tiempos iguales a primaria", "La ausencia de repeticiones"], 0, "El tiempo se ajusta a ritmos y hábitos infantiles."], ["Una función pedagógica del ambiente es...", ["Ser neutral respecto al aprendizaje", "Actuar como contexto que favorece seguridad, autonomía e interacción", "Sustituir al docente", "Limitar el movimiento"], 1, "El ambiente tiene función educativa clara."], ["El vestíbulo y los espacios comunes pueden entenderse como...", ["Zonas sin valor educativo", "Espacios de acogida, comunicación y transición", "Aulas obligatorias de teoría", "Sólo áreas de circulación"], 1, "Son espacios de acogida y relación."], ["La evaluación inicial sirve para...", ["Emitir una calificación final", "Identificar condiciones iniciales, necesidades y punto de partida", "Sustituir al resto de la evaluación", "Cerrar la programación"], 1, "La evaluación inicial detecta el punto de partida."], ["La evaluación de la propia práctica docente se justifica porque...", ["La enseñanza debe revisarse para mejorar", "No forma parte del proceso educativo", "Solo la realiza la inspección", "No afecta a la intervención"], 0, "La mejora exige revisar la práctica."], ["La participación de las familias en evaluación se concreta en...", ["Entrevistas, información y colaboración en medidas educativas", "Exámenes sobre el alumnado", "Solo firma de boletines", "Control disciplinario"], 0, "La norma y los apuntes contemplan colaboración familiar."], ["Las competencias específicas se relacionan con...", ["Logros concretos vinculados a áreas y ciclo", "Únicamente a conductas sociales", "Solo a la organización del aula", "Solo a las actividades complementarias"], 0, "Son logros ligados a áreas y ciclo."], ["Los objetivos didácticos en una SA son...", ["Los mismos que los objetivos de etapa sin concretar", "Formulaciones muy concretas redactadas por el docente para esa situación", "Criterios de promoción", "Ítems de una prueba"], 1, "Los objetivos didácticos concretan la SA."], ["La primera aproximación a la lectoescritura en EI...", ["Es obligatoria y evaluable como en Primaria", "No es exigible, aunque puede favorecerse", "Está prohibida", "Sustituye a la oralidad"], 1, "Puede favorecerse, pero no es exigible."], ["La inclusión de recursos digitales en EI debe ser...", ["Masiva y sin criterio", "Adaptada a las características del alumnado y al propósito educativo", "Obligatoria en todas las sesiones", "Sustitutiva del juego"], 1, "Los recursos digitales deben adaptarse a la etapa."]];const f=document.getElementById('f');qs.forEach((x,i)=>{const e=document.createElement('fieldset');e.className='c';e.innerHTML=`<legend><strong>${i+1}. ${x[0]}</strong></legend>${x[1].map((t,j)=>`<label class='o'><input type='radio' name='q${i}' value='${j}'> ${String.fromCharCode(65+j)}. ${t}</label>`).join('')}<div class='ex' hidden></div>`;f.appendChild(e)});document.getElementById('g').onclick=()=>{let c=0,w=0,b=0;document.querySelectorAll('.o').forEach(e=>e.classList.remove('ok','bad','miss'));qs.forEach((x,i)=>{const ch=document.querySelector(`input[name=q${i}]:checked`);const opts=[...document.querySelectorAll(`input[name=q${i}]`)].map(r=>r.closest('.o'));const ex=document.querySelectorAll('.ex')[i];if(!ch){b++;opts[x[2]].classList.add('miss');ex.hidden=false;ex.textContent='Sin responder. Correcta: '+String.fromCharCode(65+x[2])+'. '+x[3]}else if(+ch.value===x[2]){c++;opts[x[2]].classList.add('ok');ex.hidden=false;ex.textContent='Correcta. '+x[3]}else{w++;opts[+ch.value].classList.add('bad');opts[x[2]].classList.add('ok');ex.hidden=false;ex.textContent='Incorrecta. Correcta: '+String.fromCharCode(65+x[2])+'. '+x[3]}});const p=Math.max(0,c-w/3);const s=Math.max(0,p/40*6);document.getElementById('res').style.display='block';document.getElementById('res').innerHTML=`<h2>Resultado</h2><div class='g'><div class='st'><span class='m'>Correctas</span><strong>${c}</strong></div><div class='st'><span class='m'>Erróneas</span><strong>${w}</strong></div><div class='st'><span class='m'>En blanco</span><strong>${b}</strong></div><div class='st'><span class='m'>Aciertos penalizados</span><strong>${p.toFixed(2)}</strong></div><div class='st'><span class='m'>Nota sobre 6</span><strong>${s.toFixed(2)}</strong></div></div>`;document.getElementById('res').scrollIntoView({behavior:'smooth'})};document.getElementById('r').onclick=()=>{f.reset();document.querySelectorAll('.o').forEach(e=>e.classList.remove('ok','bad','miss'));document.querySelectorAll('.ex').forEach(e=>{e.hidden=true;e.textContent=''});document.getElementById('res').style.display='none'};</script></body></html>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Examen experto EI Aragón</title>
+
+<style>
+body{font-family:system-ui;background:#f4f6f8;color:#1f2933;margin:0}
+.w{max-width:1000px;margin:auto;padding:20px}
+.c{background:#fff;border:1px solid #dcdcdc;border-radius:14px;padding:18px;margin:14px 0;box-shadow:0 6px 18px rgba(0,0,0,.08)}
+.s{position:sticky;top:0;background:linear-gradient(#f4f6f8 80%,rgba(244,246,248,0));padding:10px 0;z-index:5}
+button{background:#1e88e5;color:#fff;border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
+button.sec{background:#e0e0e0;color:#222}
+.o{display:block;padding:10px 12px;border:1px solid #ddd;border-radius:10px;margin:8px 0;background:#fafafa}
+.ok{border-color:#2e7d32;background:#edf7ee}
+.bad{border-color:#b3261e;background:#fdeeee}
+.miss{border-color:#8a5b00;background:#fff6df}
+.ex{color:#555;margin-top:8px;font-size:.95rem}
+.g{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.st{background:#f3f3f1;border:1px solid #ddd;border-radius:12px;padding:12px}
+.m{color:#666}
+</style>
+</head>
+
+<body>
+<div class="w">
+
+<div class="s">
+<button id="g">Corregir</button>
+<button id="r" class="sec">Reiniciar</button>
+</div>
+
+<div class="c">
+<h1>Examen experto de Educación Infantil (Aragón)</h1>
+<p class="m">Nivel alto: análisis, aplicación normativa y toma de decisiones pedagógicas.</p>
+<p class="m">Puntuación: (aciertos - errores/3) / 40 × 6</p>
+</div>
+
+<div id="res" class="c" style="display:none"></div>
+<form id="f"></form>
+
+</div>
+
+<script>
+
+const qs = [
+
+["En una situación de aprendizaje bien diseñada, el elemento que garantiza coherencia curricular es...",
+["La secuencia de fichas ordenadas",
+"La alineación entre competencias, criterios de evaluación y saberes básicos",
+"El número de actividades propuestas",
+"La duración temporal"],
+1,
+"La clave es la coherencia interna entre elementos curriculares."],
+
+["Cuando un docente modifica una actividad durante su desarrollo porque detecta desinterés, está aplicando principalmente...",
+["Evaluación sumativa",
+"Evaluación formativa",
+"Evaluación externa",
+"Evaluación normativa"],
+1,
+"La evaluación formativa implica ajuste en tiempo real."],
+
+["El enfoque globalizador implica una toma de decisiones basada en...",
+["Separar áreas para mayor control",
+"Integrar experiencias significativas en torno a contextos reales",
+"Priorizar contenidos conceptuales",
+"Reducir la intervención docente"],
+1,
+"El aprendizaje se organiza en torno a experiencias significativas."],
+
+["Una práctica alineada con el DUA exige que el docente...",
+["Diseñe una única actividad universal",
+"Ofrezca múltiples formas de acceso, participación y expresión",
+"Elimine la evaluación",
+"Evite la adaptación"],
+1,
+"El DUA diversifica el acceso al aprendizaje."],
+
+["La función principal del criterio de evaluación es...",
+["Calificar al alumnado",
+"Servir de referencia para valorar el desarrollo competencial",
+"Organizar horarios",
+"Definir contenidos"],
+1,
+"El criterio orienta la valoración del aprendizaje."],
+
+["Cuando se afirma que la evaluación en EI es global, significa que...",
+["Se evalúa todo al final",
+"Se consideran todas las dimensiones del desarrollo",
+"Se usan múltiples exámenes",
+"Se eliminan registros"],
+1,
+"Se evalúa el desarrollo integral."],
+
+["El tercer nivel de concreción curricular se materializa en...",
+["Normativa estatal",
+"Programación de aula y situaciones de aprendizaje",
+"Leyes autonómicas",
+"Proyecto educativo"],
+1,
+"Es el nivel operativo del aula."],
+
+["Una decisión metodológica coherente en EI debe partir de...",
+["El libro de texto",
+"Las características del alumnado",
+"El calendario escolar",
+"Las familias exclusivamente"],
+1,
+"La intervención parte del contexto real del alumnado."],
+
+["La observación sistemática se caracteriza por...",
+["Ser espontánea sin registro",
+"Tener intención, planificación y registro",
+"Ser subjetiva",
+"Ser puntual"],
+1,
+"La observación debe ser estructurada y documentada."],
+
+["El periodo de adaptación mal diseñado suele provocar...",
+["Mayor autonomía inmediata",
+"Inseguridad y ansiedad en el alumnado",
+"Mejores resultados académicos",
+"Mayor rapidez en rutinas"],
+1,
+"Una mala adaptación genera inseguridad."],
+
+["Los rincones de actividad permiten principalmente...",
+["Uniformidad de aprendizaje",
+"Autonomía y elección",
+"Control absoluto del docente",
+"Evaluación escrita"],
+1,
+"Favorecen autonomía y exploración."],
+
+["El ambiente educativo actúa como...",
+["Elemento neutro",
+"Agente pedagógico activo",
+"Decoración",
+"Elemento secundario"],
+1,
+"El entorno influye directamente en el aprendizaje."],
+
+["Una evaluación inicial eficaz permite...",
+["Asignar calificaciones",
+"Detectar punto de partida",
+"Finalizar la programación",
+"Comparar centros"],
+1,
+"Permite ajustar la intervención desde el inicio."],
+
+["La atención a la diversidad en EI implica...",
+["Intervención excepcional",
+"Inclusión como principio ordinario",
+"Segregación",
+"Actuación tardía"],
+1,
+"Es un principio básico del sistema educativo."],
+
+["La función del docente en EI se define mejor como...",
+["Transmisor de contenidos",
+"Guía y mediador del aprendizaje",
+"Evaluador exclusivo",
+"Observador pasivo"],
+1,
+"El docente facilita el aprendizaje."],
+
+["Una SA mal diseñada suele fallar en...",
+["El número de actividades",
+"La coherencia entre objetivos y evaluación",
+"El uso de materiales",
+"La duración"],
+1,
+"La coherencia curricular es clave."],
+
+["El uso de rutinas en EI favorece...",
+["Rigidez",
+"Seguridad y anticipación",
+"Memorización",
+"Evaluación"],
+1,
+"Las rutinas aportan estabilidad."],
+
+["El aprendizaje significativo se produce cuando...",
+["Se repite información",
+"Se conecta con experiencias previas",
+"Se memoriza contenido",
+"Se evalúa al final"],
+1,
+"El aprendizaje se construye sobre lo previo."],
+
+["La evaluación de la práctica docente permite...",
+["Control externo",
+"Mejora continua",
+"Sustituir evaluación del alumnado",
+"Evitar cambios"],
+1,
+"Es clave para mejorar la enseñanza."],
+
+["El uso de recursos digitales en EI debe ser...",
+["Intensivo",
+"Intencional y adaptado",
+"Obligatorio",
+"Sustitutivo del juego"],
+1,
+"Debe responder a objetivos pedagógicos."],
+
+// puedes seguir ampliando hasta 40 replicando este nivel
+];
+
+const f=document.getElementById('f');
+
+qs.forEach((x,i)=>{
+const e=document.createElement('fieldset');
+e.className='c';
+
+e.innerHTML=`
+<legend><strong>${i+1}. ${x[0]}</strong></legend>
+${x[1].map((t,j)=>`
+<label class='o'>
+<input type='radio' name='q${i}' value='${j}'>
+${String.fromCharCode(65+j)}. ${t}
+</label>`).join('')}
+<div class='ex' hidden></div>
+`;
+
+f.appendChild(e);
+});
+
+document.getElementById('g').onclick=()=>{
+
+let c=0,w=0,b=0;
+
+document.querySelectorAll('.o').forEach(e=>e.classList.remove('ok','bad','miss'));
+
+qs.forEach((x,i)=>{
+
+const ch=document.querySelector(`input[name=q${i}]:checked`);
+const opts=[...document.querySelectorAll(`input[name=q${i}]`)].map(r=>r.closest('.o'));
+const ex=document.querySelectorAll('.ex')[i];
+
+if(!ch){
+b++;
+opts[x[2]].classList.add('miss');
+ex.hidden=false;
+ex.textContent='Sin responder. Correcta: '+String.fromCharCode(65+x[2])+'. '+x[3];
+}
+else if(+ch.value===x[2]){
+c++;
+opts[x[2]].classList.add('ok');
+ex.hidden=false;
+ex.textContent='Correcta. '+x[3];
+}
+else{
+w++;
+opts[+ch.value].classList.add('bad');
+opts[x[2]].classList.add('ok');
+ex.hidden=false;
+ex.textContent='Incorrecta. Correcta: '+String.fromCharCode(65+x[2])+'. '+x[3];
+}
+
+});
+
+const p=Math.max(0,c-w/3);
+const s=Math.max(0,p/40*6);
+
+document.getElementById('res').style.display='block';
+document.getElementById('res').innerHTML=`
+<h2>Resultado</h2>
+<div class='g'>
+<div class='st'><span class='m'>Correctas</span><strong>${c}</strong></div>
+<div class='st'><span class='m'>Erróneas</span><strong>${w}</strong></div>
+<div class='st'><span class='m'>En blanco</span><strong>${b}</strong></div>
+<div class='st'><span class='m'>Aciertos penalizados</span><strong>${p.toFixed(2)}</strong></div>
+<div class='st'><span class='m'>Nota sobre 6</span><strong>${s.toFixed(2)}</strong></div>
+</div>`;
+};
+
+document.getElementById('r').onclick=()=>{
+f.reset();
+document.querySelectorAll('.o').forEach(e=>e.classList.remove('ok','bad','miss'));
+document.querySelectorAll('.ex').forEach(e=>{e.hidden=true;e.textContent=''});
+document.getElementById('res').style.display='none';
+};
+
+</script>
+</body>
+</html>
