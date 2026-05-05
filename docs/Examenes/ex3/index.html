@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduInfantil Aragón - Plataforma de Estudio y Test</title>
+    <style>
+        :root {
+            --primary: #0056b3;
+            --secondary: #00a8ff;
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --correct: #28a745;
+            --incorrect: #dc3545;
+            --card-bg: #fff;
+        }
+        * { box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg-color); color: var(--text-color); margin: 0; padding: 0; line-height: 1.6; }
+        header { background: var(--primary); color: white; padding: 20px 0; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        nav { display: flex; justify-content: center; background: #004494; padding: 10px; }
+        nav button { background: none; border: none; color: white; font-size: 16px; margin: 0 15px; cursor: pointer; font-weight: bold; padding: 10px; border-radius: 5px; transition: background 0.3s; }
+        nav button:hover, nav button.active { background: var(--secondary); }
+        .container { max-width: 1000px; margin: 30px auto; padding: 20px; background: var(--card-bg); border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+        .section { display: none; }
+        .section.active { display: block; }
+        h1, h2, h3 { color: var(--primary); }
+        
+        /* Estilos Guía */
+        .guide-box { border-left: 4px solid var(--secondary); padding-left: 15px; margin-bottom: 20px; background: #f9fbff; padding: 15px; border-radius: 0 8px 8px 0; }
+        
+        /* Estilos Test */
+        .controls { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding: 15px; background: #eef2f5; border-radius: 8px; }
+        select, button.btn { padding: 10px 20px; font-size: 16px; border-radius: 5px; border: 1px solid #ccc; cursor: pointer; }
+        button.btn { background: var(--primary); color: white; border: none; transition: 0.3s; }
+        button.btn:hover { background: var(--secondary); }
+        .question-card { margin-bottom: 25px; padding: 20px; border: 1px solid #e1e4e8; border-radius: 8px; }
+        .question-title { font-weight: bold; margin-bottom: 15px; font-size: 1.1em; }
+        .options { list-style: none; padding: 0; }
+        .options li { margin-bottom: 10px; }
+        .options label { display: block; padding: 10px 15px; background: #f8f9fa; border: 1px solid #ddd; border-radius: 5px; cursor: pointer; transition: 0.2s; }
+        .options label:hover { background: #e2e6ea; }
+        .options input { margin-right: 10px; }
+        .feedback { margin-top: 10px; font-size: 0.95em; padding: 10px; border-radius: 5px; display: none; }
+        
+        /* Resultados */
+        #results-container { display: none; margin-top: 30px; text-align: center; padding: 30px; border-radius: 8px; }
+        .pass { background: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .fail { background: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+        .score-big { font-size: 3em; font-weight: bold; margin: 10px 0; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>🎓 Educación Infantil Aragón</h1>
+    <p>Plataforma de Estudio y Simulación de Exámenes</p>
+</header>
+
+<nav>
+    <button class="active" onclick="showSection('guia')">📖 Guía de Estudio</button>
+    <button onclick="showSection('test')">📝 Simulador de Examen</button>
+</nav>
+
+<div class="container">
+    <!-- SECCIÓN GUÍA DE ESTUDIO -->
+    <div id="guia" class="section active">
+        <h2>Guía de Estudio Profundizada</h2>
+        <p>Esta guía sintetiza los conocimientos fundamentales basados en la normativa vigente (R.D. 95/2022 y Orden ECD/853/2022 de Aragón) para el Grado Superior de Educación Infantil.</p>
+        
+        <div class="guide-box">
+            <h3>Tema 4: Principios Pedagógicos y Metodológicos</h3>
+            <p><strong>Principios (Art. 4 y 9):</strong> Se busca el máximo desarrollo a través de experiencias significativas, el DUA (Diseño Universal para el Aprendizaje) y el enfoque globalizador. El juego es el recurso metodológico principal.</p>
+            <p><strong>Niveles de Concreción (Formal):</strong> 
+            1º Nivel: Leyes (RD 95/2022, Orden ECD 853/2022). <br>
+            2º Nivel: Centro (PEC, Propuesta Pedagógica, PCE). <br>
+            3º Nivel: Aula (Programaciones Didácticas y Situaciones de Aprendizaje).</p>
+        </div>
+
+        <div class="guide-box">
+            <h3>Tema 5: Recursos y Organización del Ambiente</h3>
+            <p><strong>Normativa de Espacios (Orden 25 agosto 2005, Aragón):</strong> Zonas de juego de mínimo 75 m² y salas de usos múltiples de 50 m². Las ratios máximas por educador son: 0-1 año (8 niños), 1-2 años (13 niños) y 2-3 años (20 niños).</p>
+            <p><strong>Organización del Tiempo:</strong> Uso del *criterio pronogénico* (adaptación a ritmos biológicos). Las actividades pueden ser de motivación (iniciales), de desarrollo o finales (evaluación/refuerzo).</p>
+        </div>
+
+        <div class="guide-box">
+            <h3>Tema 6: La Evaluación</h3>
+            <p><strong>Características:</strong> Global, continua y formativa. Orientada a identificar las condiciones iniciales. Se evalúa el proceso de enseñanza-aprendizaje, la práctica docente y los recursos. Las familias son partícipes.</p>
+            <p><strong>Instrumentos:</strong> Diarios, agendas, anecdotarios (registran hechos significativos), listas de control (dicotómicas), escalas de estimación (frecuencia/grado) y sociogramas (relaciones afectivas en grupo).</p>
+        </div>
+
+        <div class="guide-box">
+            <h3>Tema 7: Intervención Socioeducativa en No Formal</h3>
+            <p><strong>Estructura Organizativa:</strong> Plan (amplio, largo plazo) → Programa (específico) → Proyecto (concreto y operativo) → Actividad (implementación práctica).</p>
+            <p><strong>Fases del Proyecto:</strong> 1. Análisis de la realidad. 2. Planificación (diseño). 3. Ejecución. 4. Evaluación.</p>
+            <p><strong>Campos:</strong> Socioeducativo (ludotecas, granjas) y Asistencial (centros de acogida, atención temprana).</p>
+        </div>
+    </div>
+
+    <!-- SECCIÓN TEST -->
+    <div id="test" class="section">
+        <div class="controls">
+            <div>
+                <label for="exam-selector"><strong>Selecciona tu Examen:</strong></label>
+                <select id="exam-selector" onchange="loadExam()">
+                    <option value="v1">Examen Versión 1 (Completo - 40 Preguntas)</option>
+                    <option value="v2">Examen Versión 2 (Muestra alternativa)</option>
+                    <option value="v3">Examen Versión 3 (Muestra alternativa)</option>
+                </select>
+            </div>
+            <div>
+                <span style="font-size: 0.9em; color: #555;">Sistema de puntuación: +1 acierto, -0.33 error. Aprobado: 6/10</span>
+            </div>
+        </div>
+
+        <form id="quiz-form">
+            <div id="questions-container"></div>
+            <button type="button" class="btn" style="width: 100%; font-size: 1.2em; margin-top: 20px;" onclick="calculateGrade()">Entregar Examen</button>
+        </form>
+
+        <div id="results-container">
+            <h2 id="result-title"></h2>
+            <div class="score-big" id="result-score"></div>
+            <p id="result-details"></p>
+            <button class="btn" onclick="retryExam()" style="margin-top: 15px;">Reintentar Examen</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Datos de los exámenes
+    const exams = {
+        v1:[
+            // TEMA 4
+            { q: "Según el Artículo 9 de la Orden ECD/853/2022 de Aragón, ¿qué principio debe usarse como guía para el diseño de las situaciones de aprendizaje?", options:["a) El condicionamiento operante.", "b) El Diseño Universal para el Aprendizaje (DUA).", "c) La asimilación competitiva.", "d) El método tradicional de lectoescritura."], answer: 1, feedback: "Correcto. El Art. 9 establece los principios del DUA como guía fundamental." },
+            { q: "El conjunto de decisiones e ideas que ha asumido toda la comunidad educativa definiendo identidad, valores y metas, se denomina:", options:["a) Programación General Anual.", "b) Proyecto Educativo del Centro (PEC).", "c) Reglamento de Régimen Interno.", "d) Propuesta Pedagógica."], answer: 1, feedback: "Correcto. El PEC define la identidad y metas del centro a largo plazo." },
+            { q: "¿En qué nivel de concreción curricular se sitúan las Programaciones Didácticas y las Situaciones de Aprendizaje?", options:["a) Primer nivel.", "b) Segundo nivel.", "c) Tercer nivel.", "d) Cuarto nivel."], answer: 2, feedback: "Correcto. El tercer nivel corresponde al personal docente en su aula (Programaciones y Situaciones de Aprendizaje)." },
+            { q: "De menor a mayor concreción, el orden lógico de los objetivos es:", options:["a) Didácticos, generales de etapa, específicos de área.", "b) Generales de etapa, didácticos, específicos de área.", "c) Generales de etapa, específicos de área, didácticos.", "d) Específicos de área, generales de etapa, didácticos."], answer: 2, feedback: "Correcto. Va desde lo general (etapa) hacia lo más concreto en el aula (didácticos)." },
+            { q: "¿Qué caracteriza a las 'estrategias mixtas' metodológicas?", options:["a) Solo el docente presenta la información.", "b) Combinan la exposición directa con el aprendizaje por descubrimiento.", "c) El niño explora sin ningún tipo de intervención guiada.", "d) Son exclusivas del periodo de adaptación."], answer: 1, feedback: "Correcto. Combinan la exposición de conceptos con actividades de exploración (ej. proyectos)." },
+            // TEMA 5
+            { q: "Según la Orden de 25 de agosto de 2005 para Aragón, ¿cuál es la ratio máxima en unidades para niños de 1 a 2 años?", options:["a) 8 niños.", "b) 13 niños.", "c) 15 niños.", "d) 20 niños."], answer: 1, feedback: "Correcto. 0-1 año: 8; 1-2 años: 13; 2-3 años: 20." },
+            { q: "La sala de usos múltiples en un centro de educación infantil (primer ciclo) según normativa debe tener un tamaño mínimo de:", options:["a) 30 m²", "b) 40 m²", "c) 50 m²", "d) 75 m²"], answer: 2, feedback: "Correcto. La sala de usos múltiples es de 50 m², mientras que la zona de juegos (patio) es de 75 m²." },
+            { q: "¿Qué criterio de organización temporal se adapta a los ritmos biológicos naturales del desarrollo infantil?", options:["a) Criterio estacional.", "b) Criterio pronogénico.", "c) Criterio metodológico.", "d) Criterio secuencial."], answer: 1, feedback: "Correcto. El criterio pronogénico respeta los ritmos biológicos (sueño, hambre, fatiga)." },
+            { q: "Según la distribución de grupos, la ratio de 20 alumnos se aplica a:", options:["a) Niños menores de 1 año.", "b) Niños de 1 a 2 años.", "c) Niños de 2 a 3 años.", "d) Aulas mixtas de 0 a 3 años."], answer: 2, feedback: "Correcto. Para la franja de 2 a 3 años la ratio legal máxima en Aragón es de 20 niños." },
+            { q: "Los momentos de rutinas en Educación Infantil (aseo, comida, sueño)...", options:["a) Son tiempos perdidos que restan horario al currículo.", "b) Son fundamentales porque generan aprendizajes por repetición para adquirir autonomía.", "c) Solo deben realizarse en el segundo ciclo.", "d) No requieren planificación del educador."], answer: 1, feedback: "Correcto. Las rutinas estructuran el tiempo y fomentan la adquisición de autonomía." },
+            // TEMA 6
+            { q: "Según la normativa (RD 95/2022 y Orden Infantil Aragón), la evaluación en Educación Infantil debe ser:", options:["a) Punitiva, sumativa y externa.", "b) Global, continua y formativa.", "c) Cuantitativa, puntual y segregadora.", "d) Estandarizada, final y sancionadora."], answer: 1, feedback: "Correcto. Es global, continua y formativa, enfocada en mejorar el proceso." },
+            { q: "¿Cuál es la TÉCNICA principal de evaluación en la etapa infantil?", options:["a) El examen escrito.", "b) Las pruebas estandarizadas de coeficiente intelectual.", "c) La observación directa y sistemática.", "d) La entrevista clínica estructurada."], answer: 2, feedback: "Correcto. La observación es la técnica principal y reina en Educación Infantil." },
+            { q: "Un documento donde el educador registra cada día todas las actividades, reflexiones o emociones acontecidas es un:", options:["a) Anecdotario.", "b) Diario.", "c) Sociograma.", "d) Lista de cotejo."], answer: 1, feedback: "Correcto. El diario sirve para el registro reflexivo y narrativo del día a día." },
+            { q: "El instrumento de evaluación que sirve para representar gráficamente mediante flechas las relaciones afectivas (aceptación y rechazo) en un grupo es:", options:["a) Escala Likert.", "b) Lista de control.", "c) Sociograma.", "d) Agenda escolar."], answer: 2, feedback: "Correcto. El sociograma estudia la estructura social y afectiva del grupo." },
+            { q: "¿Qué agentes intervienen en la 'heteroevaluación'?", options:["a) El propio docente evalúa su práctica.", "b) Evaluación conjunta de todo el equipo docente.", "c) Personas docentes evaluadas por agentes externos (ej. Inspección o equipo directivo).", "d) Los alumnos se evalúan a sí mismos."], answer: 2, feedback: "Correcto. La heteroevaluación implica que alguien externo al sujeto lo evalúa." },
+            // TEMA 7
+            { q: "En la planificación de la educación no formal, ¿cuál es el nivel más general y amplio?", options:["a) El Proyecto.", "b) El Programa.", "c) El Plan.", "d) La Actividad."], answer: 2, feedback: "Correcto. El orden de mayor a menor amplitud es: Plan -> Programa -> Proyecto -> Actividad." },
+            { q: "El nivel de planificación más concreto, que define objetivos operativos, se describe mediante un cronograma y detalla tareas profesionales es el:", options:["a) Plan.", "b) Programa.", "c) Proyecto.", "d) Marco legislativo."], answer: 2, feedback: "Correcto. El Proyecto aterriza los objetivos específicos en operativos y organiza cronogramas y recursos." },
+            { q: "Las fases de intervención socioeducativa en el ámbito no formal son:", options:["a) Análisis de la realidad, Planificación, Ejecución y Evaluación.", "b) Justificación, Objetivos, Presupuesto y Memoria.", "c) DAFO, Actividades, Temporalización y Conclusión.", "d) Contextualización, Aprobación directiva y Difusión."], answer: 0, feedback: "Correcto. Estas 4 fases garantizan un ciclo de proyecto coherente y cíclico." },
+            { q: "Un aula hospitalaria o un centro de acogida de menores tienen, principalmente, un carácter:", options:["a) Puramente lúdico.", "b) Socioeducativo de tiempo libre.", "c) Deportivo-recreativo.", "d) Asistencial."], answer: 3, feedback: "Correcto. Responden a necesidades de protección, cuidado o compensación de vulnerabilidades (asistencial)." },
+            { q: "En el diseño de un proyecto, ¿dónde se incluye el análisis de la realidad, necesidades y análisis DAFO?", options:["a) En la Evaluación.", "b) En la Metodología.", "c) En la Fundamentación / Justificación.", "d) En la Temporalización."], answer: 2, feedback: "Correcto. La fundamentación responde al 'por qué' hacemos el proyecto basándose en datos reales." },
+            // MEZCLA Y PROFUNDIZACIÓN
+            { q: "¿En qué etapa se pueden favorecer las aproximaciones a la lengua extranjera según los principios pedagógicos?", options:["a) Desde los 0 meses.", "b) Obligatoriamente en el primer ciclo.", "c) Se fomentará una primera aproximación en el segundo ciclo.", "d) Está terminantemente prohibido en toda la etapa infantil."], answer: 2, feedback: "Correcto. La normativa indica que se fomentará en el segundo ciclo (3-6 años)." },
+            { q: "La LOPDGDD y la Ley Orgánica 8/2021 (LOPIVI) regulan en el ámbito de la evaluación:", options:["a) El cálculo numérico de las notas.", "b) La obligación de proteger la identidad de los niños en fotos, vídeos o registros.", "c) El diseño de la programación didáctica.", "d) El sueldo del equipo directivo."], answer: 1, feedback: "Correcto. Ambas leyes protegen los derechos digitales y la integridad de los menores." },
+            { q: "¿Qué debe incluir una Situación de Aprendizaje en su contextualización curricular?", options:["a) Las ratios permitidas por ley.", "b) Las competencias clave relacionadas, áreas y competencias específicas a trabajar.", "c) La firma del inspector de educación.", "d) El listado de alergias de los alumnos."], answer: 1, feedback: "Correcto. Conecta la actividad práctica con el currículo oficial." },
+            { q: "El 'Anecdotario' es un instrumento de evaluación que:", options:["a) Registra respuestas dicotómicas (Sí/No).", "b) Mide mediante una escala numérica (1 al 4).", "c) Registra conductas o acontecimientos significativos para el educador.", "d) Sirve de comunicación diaria exclusiva con los padres como una agenda."], answer: 2, feedback: "Correcto. Recoge situaciones puntuales relevantes para el desarrollo del niño." },
+            { q: "En los talleres y rincones...", options:["a) Solo se fomentan aprendizajes si son dirigidos al 100% por el maestro.", "b) Ofrecen oportunidades de aprendizaje a través de la observación, experimentación y el juego autónomo.", "c) Los rincones son siempre temporales y los talleres permanentes.", "d) No se consideran espacios educativos formales."], answer: 1, feedback: "Correcto. Fomentan el aprendizaje activo, autónomo y la creatividad." },
+            { q: "Según la organización de la jornada en el primer ciclo, ¿cómo suele ser el horario central?", options:["a) Estricto, inamovible y de 10 horas seguidas.", "b) De 8:00 a 17:00 obligatoriamente para todos.", "c) Flexible pero estable, ampliado según las necesidades de las familias.", "d) Decidido por cada familia cada día al azar."], answer: 2, feedback: "Correcto. Se busca estabilidad para las rutinas, pero flexibilidad para la conciliación." },
+            { q: "El Reglamento de Régimen Interno (RRI) incluye:", options:["a) Las Situaciones de Aprendizaje de un aula.", "b) La filosofía educativa general del centro a largo plazo.", "c) Protocolos, prevención de riesgos, normas de funcionamiento y uso de espacios.", "d) Las unidades didácticas del segundo ciclo."], answer: 2, feedback: "Correcto. Es el documento normativo, administrativo y de convivencia del centro." },
+            { q: "Dentro del aula 0-1 año, ¿qué zona es característica y fundamental que NO predomina en 2-3 años?", options:["a) Zona de sillas y mesas para actividades grupales.", "b) Zona de ordenadores y tablets.", "c) Zona de cunas y estimulación temprana (espejo, alfombras).", "d) Zona de rincones de juego simbólico complejo (supermercado, hospital)."], answer: 2, feedback: "Correcto. Las aulas de 0-1 priorizan el descanso (cunas) y la estimulación motriz básica." },
+            { q: "¿A quién evaluaremos durante el proceso educativo según el Tema 6?", options:["a) Únicamente al alumnado.", "b) Únicamente a la práctica docente.", "c) Al alumnado (proceso de desarrollo) y la propia práctica docente.", "d) Al alumnado, excluyendo cualquier autoevaluación del docente."], answer: 2, feedback: "Correcto. La normativa exige que el docente evalúe tanto el desarrollo del niño como su propia intervención." },
+            { q: "¿Cuál de estos NO es un elemento transvesal a tratar en Educación Infantil?", options:["a) Educación en valores.", "b) Educación vial.", "c) Educación cívica y moral.", "d) Física cuántica."], answer: 3, feedback: "Correcto. Los temas transversales abarcan valores, paz, igualdad, educación ambiental, etc." },
+            { q: "La 'evaluación diagnóstica' o 'inicial' sirve para:", options:["a) Valorar los resultados finales conseguidos.", "b) Introducir correcciones a mitad del proceso.", "c) Ver necesidades y conocimientos previos del niño al iniciar un periodo.", "d) Sancionar al alumno si no sabe algo."], answer: 2, feedback: "Correcto. Es el punto de partida para adaptar la enseñanza al grupo/individuo." },
+            { q: "¿En qué documento se recogen aspectos relativos a organización y funcionamiento sobre proyectos anuales acordados por el equipo, días de fiesta, etc.?", options:["a) PGA (Programación General Anual).", "b) PEC (Proyecto Educativo de Centro).", "c) PCE (Proyecto Curricular de Etapa).", "d) RRI (Reglamento de Régimen Interno)."], answer: 0, feedback: "Correcto. La PGA concreta para un curso escolar específico todo lo que se va a llevar a cabo." },
+            { q: "Respecto a los Objetivos Operativos de un Proyecto de educación no formal, ¿cómo deben redactarse?", options:["a) Verbo en gerundio + complemento indirecto.", "b) Verbo en infinitivo (acción medible) + Complemento Directo + procedimiento.", "c) Como intenciones poéticas y abstractas.", "d) Dejándolos implícitos en las actividades."], answer: 1, feedback: "Correcto. Deben ser medibles, claros y directos (ej: 'Aumentar la participación mediante...')." },
+            { q: "Un Centro de Atención Temprana atiende a la franja de edad de:", options:["a) 0 a 3 años exclusivamente.", "b) 3 a 6 años exclusivamente.", "c) 0 a 6 años.", "d) 6 a 12 años."], answer: 2, feedback: "Correcto. La atención temprana abarca el tramo vital de 0 a 6 años para prevenir o tratar trastornos del desarrollo." },
+            { q: "El DUA (Diseño Universal para el Aprendizaje) tiene como objetivo final:", options:["a) Estandarizar a todos los alumnos.", "b) Guiar la práctica inclusiva permitiendo el acceso al currículo a todos.", "c) Sustituir al educador por recursos digitales.", "d) Evaluar numéricamente a los niños."], answer: 1, feedback: "Correcto. El DUA rompe barreras garantizando una educación inclusiva para las diferencias individuales." },
+            { q: "El periodo en el que se trabaja la creación de vínculos, atención individualizada y progresiva del niño en su entrada al centro se llama:", options:["a) Periodo de transición.", "b) Periodo vacacional.", "c) Periodo de adaptación.", "d) Periodo evaluativo."], answer: 2, feedback: "Correcto. El periodo de adaptación es clave y debe ser cuidadosamente planificado y progresivo." },
+            { q: "Una 'escala de estimación de grado' para evaluar se caracteriza por:", options:["a) Dar opciones de respuesta Dicotómicas (Sí/No).", "b) Utilizar una escala de números (ej. 1-2-3-4) para ver el grado de consecución.", "c) Escribir un texto libre en formato diario.", "d) Mostrar gráficos de barras exclusivamente."], answer: 1, feedback: "Correcto. Define el nivel o grado en el que se manifiesta una conducta." },
+            { q: "La ficha de una actividad en una situación de aprendizaje debe incluir:", options:["a) Título, Edad, Temporalización, Espacio y recursos, Descripción y Evaluación.", "b) Solamente el título y la edad.", "c) El presupuesto económico detallado del centro.", "d) El currículo vitae del educador."], answer: 0, feedback: "Correcto. Son los elementos básicos que aseguran que la actividad está estructurada y justificada." },
+            { q: "El II Plan Local de Infancia y Adolescencia de Zaragoza (PLIAZ) es un ejemplo de:", options:["a) Un currículo formal de etapa.", "b) Una planificación de ámbito no formal (Plan).", "c) Una programación didáctica de aula.", "d) Un proyecto a corto plazo (un mes)."], answer: 1, feedback: "Correcto. Es un Plan institucional que a su vez contiene programas y proyectos específicos a largo plazo." },
+            { q: "La evaluación en Educación Infantil, según sus objetivos, NO busca:", options:["a) Redirigir o mejorar el proceso de enseñanza.", "b) Diseñar situaciones de refuerzo o ampliación.", "c) Realizar adaptaciones en la planificación.", "d) Clasificar a los alumnos para promoverlos u obligarlos a repetir."], answer: 3, feedback: "Correcto. En Infantil no existe el concepto tradicional de repetición o clasificación punitiva." }
+        ],
+        // Muestra de V2 para demostración estructural y funcionalidad del sistema
+        v2:[
+            { q: "¿Cuál es el primer documento a nivel de centro que define sus señas de identidad?", options:["a) PEC", "b) PGA", "c) RRI", "d) PCE"], answer: 0, feedback: "Correcto. El Proyecto Educativo de Centro (PEC) es el pilar." },
+            { q: "¿De qué superficie debe disponer como mínimo la zona de juegos (patio) en el primer ciclo en Aragón?", options:["a) 50 m2", "b) 75 m2", "c) 100 m2", "d) 30 m2"], answer: 1, feedback: "Correcto. 75 m2 según la Orden de 25 de agosto de 2005." },
+            { q: "La metodología en Infantil debe priorizar:", options:["a) La memorización mecánica.", "b) El juego y la experimentación.", "c) El trabajo en silencio absoluto.", "d) La copia de fichas."], answer: 1, feedback: "Correcto. El aprendizaje significativo se logra explorando y jugando." },
+            { q: "El paso de primer ciclo a segundo ciclo se denomina:", options:["a) Periodo de adaptación.", "b) Periodo de transición.", "c) Salto de etapa.", "d) Ruptura curricular."], answer: 1, feedback: "Correcto. Las transiciones requieren planificación especial para la adaptación del niño." },
+            { q: "¿Quién elabora el Proyecto Curricular de Etapa (PCE)?", options:["a) El tutor en solitario.", "b) El inspector.", "c) El equipo educativo del centro.", "d) Las familias."], answer: 2, feedback: "Correcto. Es un documento de equipo que da coherencia al currículo del centro." }
+        ],
+        v3:[
+            { q: "El enfoque globalizador implica:", options:["a) Separar radicalmente las asignaturas.", "b) Trabajar las áreas de conocimiento de forma integrada.", "c) Ignorar los saberes básicos.", "d) Estudiar la geografía mundial."], answer: 1, feedback: "Correcto. Los saberes se presentan interconectados, tal como el niño percibe la realidad." },
+            { q: "Los saberes básicos incluyen:", options:["a) Solo conceptos teóricos.", "b) Conceptos, procedimientos y actitudes.", "c) Solo actitudes.", "d) Exclusivamente competencias digitales."], answer: 1, feedback: "Correcto. Abarcan saber (conceptos), saber hacer (procedimientos) y saber ser (actitudes)." },
+            { q: "¿A cuántos niños atiende como máximo un tutor en la franja de 0-1 año en Aragón?", options:["a) 5", "b) 8", "c) 10", "d) 13"], answer: 1, feedback: "Correcto. 8 bebés es la ratio máxima permitida." },
+            { q: "Un sociograma evalúa:", options:["a) El nivel de lectoescritura.", "b) La motricidad fina.", "c) Las relaciones afectivas del grupo.", "d) La altura y peso."], answer: 2, feedback: "Correcto. Identifica patrones de aceptación y rechazo social." },
+            { q: "El análisis DAFO en un proyecto no formal se ubica en:", options:["a) La justificación / fundamentación.", "b) El presupuesto.", "c) La evaluación de impacto final.", "d) El título del proyecto."], answer: 0, feedback: "Correcto. Sirve para analizar la realidad antes de intervenir." }
+        ]
+    };
+
+    let currentVersion = 'v1';
+
+    function loadExam() {
+        currentVersion = document.getElementById('exam-selector').value;
+        const container = document.getElementById('questions-container');
+        container.innerHTML = '';
+        
+        exams[currentVersion].forEach((qData, index) => {
+            const qDiv = document.createElement('div');
+            qDiv.className = 'question-card';
+            
+            const title = document.createElement('div');
+            title.className = 'question-title';
+            title.textContent = `${index + 1}. ${qData.q}`;
+            qDiv.appendChild(title);
+            
+            const optionsList = document.createElement('ul');
+            optionsList.className = 'options';
+            
+            qData.options.forEach((opt, optIndex) => {
+                const li = document.createElement('li');
+                const label = document.createElement('label');
+                const radio = document.createElement('input');
+                radio.type = 'radio';
+                radio.name = `q_${index}`;
+                radio.value = optIndex;
+                
+                label.appendChild(radio);
+                label.appendChild(document.createTextNode(opt));
+                li.appendChild(label);
+                optionsList.appendChild(li);
+            });
+            
+            qDiv.appendChild(optionsList);
+            
+            const feedbackBox = document.createElement('div');
+            feedbackBox.className = 'feedback';
+            feedbackBox.id = `feedback_${index}`;
+            qDiv.appendChild(feedbackBox);
+            
+            container.appendChild(qDiv);
+        });
+        
+        document.getElementById('results-container').style.display = 'none';
+        window.scrollTo(0, 0);
+    }
+
+    function calculateGrade() {
+        const questions = exams[currentVersion];
+        let correctas = 0;
+        let incorrectas = 0;
+        let enBlanco = 0;
+        
+        questions.forEach((qData, index) => {
+            const selected = document.querySelector(`input[name="q_${index}"]:checked`);
+            const feedbackBox = document.getElementById(`feedback_${index}`);
+            feedbackBox.style.display = 'block';
+            
+            if (selected) {
+                const answerValue = parseInt(selected.value);
+                if (answerValue === qData.answer) {
+                    correctas++;
+                    feedbackBox.innerHTML = `<strong>¡Correcto!</strong> ${qData.feedback}`;
+                    feedbackBox.style.backgroundColor = '#d4edda';
+                    feedbackBox.style.color = '#155724';
+                } else {
+                    incorrectas++;
+                    feedbackBox.innerHTML = `<strong>Incorrecto.</strong> La respuesta correcta era la opción ${String.fromCharCode(97 + qData.answer)}. ${qData.feedback}`;
+                    feedbackBox.style.backgroundColor = '#f8d7da';
+                    feedbackBox.style.color = '#721c24';
+                }
+            } else {
+                enBlanco++;
+                feedbackBox.innerHTML = `<strong>En blanco.</strong> La respuesta correcta era la opción ${String.fromCharCode(97 + qData.answer)}.`;
+                feedbackBox.style.backgroundColor = '#e2e3e5';
+                feedbackBox.style.color = '#383d41';
+            }
+            
+            // Deshabilitar inputs tras responder
+            const radios = document.querySelectorAll(`input[name="q_${index}"]`);
+            radios.forEach(r => r.disabled = true);
+        });
+        
+        // CÁLCULO DE LA NOTA (Oposiciones / FPE: 3 mal restan 1 bien)
+        // Nota cruda = Correctas - (Incorrectas / 3)
+        // Escala a 10 = (Nota cruda / Total de preguntas) * 10
+        const total = questions.length;
+        const rawScore = correctas - (incorrectas / 3);
+        let finalGrade = (rawScore / total) * 10;
+        
+        // Evitar notas negativas visuales (aunque teóricamente existan)
+        if (finalGrade < 0) finalGrade = 0;
+        
+        const resContainer = document.getElementById('results-container');
+        const resTitle = document.getElementById('result-title');
+        const resScore = document.getElementById('result-score');
+        const resDetails = document.getElementById('result-details');
+        
+        resContainer.style.display = 'block';
+        resScore.textContent = finalGrade.toFixed(2) + " / 10";
+        
+        resDetails.innerHTML = `
+            <strong>Aciertos:</strong> ${correctas} <br>
+            <strong>Errores:</strong> ${incorrectas} <em>(-${(incorrectas/3).toFixed(2)} puntos de penalización)</em><br>
+            <strong>En Blanco:</strong> ${enBlanco}
+        `;
+        
+        if (finalGrade >= 6) {
+            resContainer.className = 'pass';
+            resTitle.textContent = "¡Enhorabuena, has APROBADO!";
+        } else {
+            resContainer.className = 'fail';
+            resTitle.textContent = "Has SUSPENDIDO. ¡Sigue repasando la guía!";
+        }
+        
+        // Scroll al resultado
+        resContainer.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function retryExam() {
+        loadExam();
+    }
+
+    function showSection(sectionId) {
+        document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+        document.querySelectorAll('nav button').forEach(b => b.classList.remove('active'));
+        document.getElementById(sectionId).classList.add('active');
+        event.target.classList.add('active');
+        if(sectionId === 'test') { loadExam(); }
+    }
+
+    // Cargar test al iniciar
+    window.onload = () => loadExam();
+</script>
+
+</body>
+</html>
