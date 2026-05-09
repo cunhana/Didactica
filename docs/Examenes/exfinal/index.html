@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Examen Didáctica – Educación Infantil</title>
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --primary-dark: #3730a3;
+      --success: #16a34a;
+      --danger: #dc2626;
+      --bg: #f1f5f9;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+      --border: #e2e8f0;
+      --radius: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 24px 16px 48px;
+    }
+    header {
+      text-align: center;
+      margin-bottom: 32px;
+    }
+    header h1 {
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 6px;
+    }
+    header p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .progress-bar-wrap {
+      background: var(--border);
+      border-radius: 999px;
+      height: 10px;
+      max-width: 640px;
+      margin: 0 auto 28px;
+      overflow: hidden;
+    }
+    #progress-bar {
+      height: 100%;
+      background: var(--primary);
+      border-radius: 999px;
+      transition: width 0.4s ease;
+      width: 0%;
+    }
+    #quiz-container { max-width: 760px; margin: 0 auto; }
+
+    .question-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px 28px 20px;
+      margin-bottom: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+      animation: fadeIn .3s ease;
+    }
+    @keyframes fadeIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
+
+    .question-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 18px;
+    }
+    .question-number {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      min-width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: .85rem;
+      flex-shrink: 0;
+    }
+    .question-text {
+      font-size: 1rem;
+      font-weight: 600;
+      line-height: 1.55;
+    }
+    .options { display: flex; flex-direction: column; gap: 10px; }
+    .option-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 16px;
+      border: 2px solid var(--border);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all .18s;
+      font-size: .95rem;
+      line-height: 1.45;
+    }
+    .option-label:hover { border-color: var(--primary); background: #eef2ff; }
+    .option-label input[type=radio] { margin-top: 3px; accent-color: var(--primary); flex-shrink: 0; }
+    .option-label.correct { border-color: var(--success); background: #dcfce7; }
+    .option-label.incorrect { border-color: var(--danger); background: #fee2e2; }
+
+    .feedback {
+      margin-top: 14px;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: .88rem;
+      display: none;
+    }
+    .feedback.show { display: block; }
+    .feedback.ok { background: #dcfce7; color: #166534; border: 1px solid #bbf7d0; }
+    .feedback.ko { background: #fee2e2; color: #991b1b; border: 1px solid #fecaca; }
+
+    .btn-check {
+      margin-top: 16px;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: 8px;
+      font-size: .93rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-check:hover { background: var(--primary-dark); }
+    .btn-check:disabled { background: var(--muted); cursor: default; }
+
+    #result-card {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 40px 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,.1);
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    #result-card h2 { font-size: 1.6rem; color: var(--primary-dark); margin-bottom: 8px; }
+    #score-text { font-size: 3rem; font-weight: 800; margin: 16px 0 8px; }
+    #score-label { color: var(--muted); margin-bottom: 24px; }
+    #result-msg { font-size: 1rem; margin-bottom: 28px; color: var(--text); }
+    .btn-restart {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 12px 32px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .btn-restart:hover { background: var(--primary-dark); }
+
+    #submit-all-wrap { text-align: center; margin: 8px 0 32px; }
+    #btn-submit-all {
+      background: #16a34a;
+      color: #fff;
+      border: none;
+      padding: 14px 40px;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(22,163,74,.3);
+      transition: background .2s, transform .1s;
+    }
+    #btn-submit-all:hover { background: #15803d; transform: translateY(-1px); }
+
+    .tag {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-size: .72rem;
+      padding: 2px 8px;
+      border-radius: 999px;
+      margin-bottom: 10px;
+      font-weight: 600;
+      letter-spacing: .02em;
+      text-transform: uppercase;
+    }
+    footer {
+      text-align: center;
+      margin-top: 48px;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>🎓 Examen – Didáctica Educación Infantil</h1>
+  <p>40 preguntas de opción múltiple · Segundo Cuatrimestre</p>
+</header>
+
+<div class="progress-bar-wrap"><div id="progress-bar"></div></div>
+
+<div id="quiz-container"></div>
+<div id="submit-all-wrap" style="display:none;">
+  <button id="btn-submit-all" onclick="submitAll()">✅ Finalizar examen y ver resultado</button>
+</div>
+<div id="result-card">
+  <h2>📊 Resultado Final</h2>
+  <div id="score-text"></div>
+  <div id="score-label"></div>
+  <div id="result-msg"></div>
+  <button class="btn-restart" onclick="restartQuiz()">🔄 Repetir examen</button>
+</div>
+
+<footer>
+  <p>Basado en los Temas 4, 5, 6 y 7 de Didáctica · Aragón · RD 95/2022 · Orden ECD/853/2022</p>
+</footer>
+
+<script>
+const questions = [
+  // ─── BLOQUE 1: ASPECTOS QUE TRABAJAN EN UNA ESCUELA INFANTIL ───
+  {
+    tag: "Escuela Infantil",
+    q: "¿Cuál de los siguientes aspectos NO se trabaja habitualmente en una escuela infantil del primer ciclo (0-3)?",
+    opts: ["Rutinas y hábitos de higiene, alimentación y sueño", "Motricidad y desarrollo sensorial", "Aprendizaje de lengua extranjera obligatorio", "Habilidades de comunicación y relación social"],
+    answer: 2,
+    fb: "La lengua extranjera es una aproximación no obligatoria prevista solo para el segundo ciclo de infantil (Art. 4 del RD 95/2022)."
+  },
+  {
+    tag: "Escuela Infantil",
+    q: "Según el RD 95/2022, ¿qué aprendizaje 'sin resultar exigible' puede favorecerse en la etapa infantil?",
+    opts: ["El aprendizaje de la lectoescritura formal y las operaciones matemáticas avanzadas", "Una primera aproximación a lectoescritura, habilidades numéricas, TICs y expresión visual y musical", "La memorización de textos y poemas completos", "La enseñanza reglada de un instrumento musical"],
+    answer: 1,
+    fb: "El Art. 4.7 del RD 95/2022 indica que sin carácter exigible se puede favorecer una primera aproximación a la lectoescritura, habilidades numéricas, TICs y expresión visual y musical."
+  },
+  // ─── BLOQUE 2: TEMAS TRANSVERSALES ───
+  {
+    tag: "Temas Transversales",
+    q: "¿Cuál de las siguientes opciones recoge correctamente ejemplos de temas transversales en Educación Infantil?",
+    opts: ["Lengua, matemáticas, ciencias naturales y ciencias sociales", "Educación para la paz, educación vial, educación ambiental y educación para la salud", "Psicomotricidad, música, plástica y religión", "Programación, robótica, ajedrez y teatro"],
+    answer: 1,
+    fb: "Los temas transversales incluyen educación en valores, para la paz, ambiental, vial, para la salud, del consumidor, cívica, moral y para la igualdad."
+  },
+  {
+    tag: "Temas Transversales",
+    q: "La educación para el consumo responsable y sostenible en la etapa infantil:",
+    opts: ["No está contemplada en ninguna normativa actual", "Es un tema transversal recogido en el Art. 4 del RD 95/2022", "Solo se trabaja en Educación Primaria", "Es obligatoria exclusivamente en el segundo ciclo"],
+    answer: 1,
+    fb: "El Art. 4.4 del RD 95/2022 incluye la educación para el consumo responsable y sostenible, así como la promoción de la salud, como ámbito de atención."
+  },
+  // ─── BLOQUE 3: NIVELES DE CONCRECIÓN CURRICULAR ───
+  {
+    tag: "Niveles de Concreción",
+    q: "¿Qué documento elaboran las Administraciones educativas y constituye el Primer Nivel de concreción curricular?",
+    opts: ["La Programación Didáctica de aula", "Las Situaciones de Aprendizaje", "Las leyes que regulan el currículo (RD 95/2022 y Órdenes autonómicas)", "El Proyecto Educativo de Centro (PEC)"],
+    answer: 2,
+    fb: "El Primer Nivel lo forman las Administraciones, mediante leyes y decretos como el RD 95/2022 y la Orden ECD/853/2022 para Aragón."
+  },
+  {
+    tag: "Niveles de Concreción",
+    q: "¿Cuál es el Tercer Nivel de concreción curricular en el ámbito formal?",
+    opts: ["Las leyes nacionales y autonómicas", "El Proyecto Curricular de Etapa elaborado por el centro", "Las Programaciones Didácticas y Situaciones de Aprendizaje elaboradas por el/la docente tutor/a", "El Reglamento de Régimen Interno"],
+    answer: 2,
+    fb: "El Tercer Nivel corresponde al/la docente tutor/a de aula, que elabora las Programaciones Didácticas y diseña las Situaciones de Aprendizaje."
+  },
+  {
+    tag: "Niveles de Concreción",
+    q: "En el ámbito NO formal, ¿qué documento tiene mayor amplitud territorial y define objetivos generales a largo plazo?",
+    opts: ["El Proyecto", "El Programa", "El Plan", "La Propuesta Pedagógica"],
+    answer: 2,
+    fb: "El Plan es el documento de mayor alcance en el ámbito no formal: define metas a largo plazo, abarca un amplio territorio y contiene varios programas."
+  },
+  // ─── BLOQUE 4: OBJETIVOS OPERATIVOS (ÁMBITO NO FORMAL) ───
+  {
+    tag: "Objetivos – Ámbito No Formal",
+    q: "¿Cómo se denominan los objetivos más concretos que se alcanzan dentro de un Proyecto en el ámbito no formal?",
+    opts: ["Objetivos generales de etapa", "Objetivos específicos de área", "Objetivos didácticos de largo plazo", "Objetivos operativos"],
+    answer: 3,
+    fb: "El Proyecto en el ámbito no formal se articula mediante objetivos operativos: concretos, medibles y acotados en el tiempo."
+  },
+  {
+    tag: "Objetivos – Ámbito No Formal",
+    q: "Un Programa en el ámbito no formal se diferencia de un Plan en que:",
+    opts: ["Tiene mayor amplitud territorial y metas más generales", "Concreta objetivos específicos, metodologías y recursos, y tiene un ámbito territorial más reducido", "No incluye recursos ni metodologías", "Equivale exactamente a una Programación Didáctica de aula"],
+    answer: 1,
+    fb: "El Programa concreta objetivos específicos, metodologías y recursos, con un ámbito territorial más específico que el Plan. Consta de varios Proyectos."
+  },
+  // ─── BLOQUE 5: DOCUMENTACIÓN CURRICULAR ───
+  {
+    tag: "Documentación Curricular",
+    q: "¿Cuál es la función principal del Proyecto Educativo de Centro (PEC)?",
+    opts: ["Detallar la gestión económica del centro", "Definir la identidad, valores, metas y líneas generales de organización asumidas por toda la comunidad educativa", "Recoger exclusivamente las programaciones didácticas de cada tutor/a", "Establecer el calendario de festividades del curso"],
+    answer: 1,
+    fb: "El PEC define la identidad, valores y metas del centro; incluye la Propuesta Pedagógica y es asumido por toda la comunidad educativa."
+  },
+  {
+    tag: "Documentación Curricular",
+    q: "El Reglamento de Régimen Interno (RRI) recoge:",
+    opts: ["Solo la filosofía pedagógica del centro", "Las normas de funcionamiento administrativo, laboral y jurídico, protocolos, prevención de riesgos y derechos y deberes de toda la comunidad educativa", "Únicamente las programaciones de aula y las situaciones de aprendizaje", "Los proyectos de gestión económica y la PGA"],
+    answer: 1,
+    fb: "El RRI es un documento formal administrativo que incluye normas de funcionamiento, protocolos, prevención de riesgos, calendario escolar y derechos/deberes."
+  },
+  {
+    tag: "Documentación Curricular",
+    q: "¿Qué documento recoge la organización del curso escolar, los proyectos acordados por el equipo y las fiestas del centro, y se decide a principio de curso?",
+    opts: ["RRI", "PEC", "PGA (Programación General Anual)", "PCE (Proyecto Curricular de Etapa)"],
+    answer: 2,
+    fb: "La PGA recoge aspectos relativos a organización y funcionamiento, proyectos, fiestas y días de centro, y la decide el equipo educativo al inicio del curso."
+  },
+  // ─── BLOQUE 6: ESTRUCTURA DE LAS SITUACIONES DE APRENDIZAJE ───
+  {
+    tag: "Situaciones de Aprendizaje",
+    q: "Según la Orden ECD/853/2022, una Situación de Aprendizaje es:",
+    opts: ["Un examen escrito que mide los conocimientos adquiridos", "Situaciones y actividades que implican el despliegue de actuaciones que contribuyen al desarrollo de competencias e involucran el aprendizaje de saberes básicos", "Un documento exclusivo de la Administración educativa", "Un tipo de actividad solo para el segundo ciclo de infantil"],
+    answer: 1,
+    fb: "Definición oficial del Art. 7 de la Orden ECD/853/2022 para Aragón: las SA implican el despliegue de actuaciones competenciales asociadas a saberes básicos."
+  },
+  {
+    tag: "Situaciones de Aprendizaje",
+    q: "¿Cuál de los siguientes elementos NO forma parte de la estructura de una Situación de Aprendizaje?",
+    opts: ["Título y Justificación", "Contextualización curricular y de aula", "Expediente académico del alumnado", "Evaluación con criterios e instrumentos"],
+    answer: 2,
+    fb: "El expediente académico no es parte de la estructura de una SA. Sus elementos son: título, justificación, contextualización, objetivos, saberes, metodología, actividades, recursos y evaluación."
+  },
+  {
+    tag: "Situaciones de Aprendizaje",
+    q: "Las Situaciones de Aprendizaje PERMANENTES son aquellas que:",
+    opts: ["Se diseñan para un solo día y no se repiten", "Son estructurales y continuas: rutinas (higiene, descanso, comida) y actividades habituales (hora del cuento, rincones fijos)", "Solo se realizan durante el período de adaptación", "Se corresponden con salidas al exterior o talleres específicos puntales"],
+    answer: 1,
+    fb: "Las SA permanentes son las que se repiten de forma constante a lo largo del curso: rutinas de higiene, alimentación y sueño, hora del cuento, rincones permanentes..."
+  },
+  {
+    tag: "Situaciones de Aprendizaje",
+    q: "¿Cuál de los siguientes es un ejemplo de Situación de Aprendizaje TEMPORAL?",
+    opts: ["La rutina de lavado de manos antes del almuerzo", "El juego simbólico en el rincón de la casita", "El período de adaptación al inicio de curso", "La asamblea de buenos días"],
+    answer: 2,
+    fb: "Las SA temporales son módulos acotados en el tiempo: período de adaptación, centros de interés, talleres específicos, salidas, proyectos temáticos y festividades."
+  },
+  // ─── BLOQUE 7: INSTRUMENTOS DE EVALUACIÓN ───
+  {
+    tag: "Instrumentos de Evaluación",
+    q: "¿Cuál es la técnica principal de evaluación en la etapa de Educación Infantil según la normativa?",
+    opts: ["El examen escrito con preguntas cerradas", "La observación directa y sistemática", "La rúbrica analítica digital", "El portfolio del docente"],
+    answer: 1,
+    fb: "La normativa (Art. 12 del RD 95/2022 y Art. 14 de la Orden ECD/853/2022) establece la observación directa y sistemática como la técnica principal de evaluación en infantil."
+  },
+  {
+    tag: "Instrumentos de Evaluación",
+    q: "Un instrumento de evaluación en el que se registran conductas concretas con respuestas dicotómicas (sí/no) es:",
+    opts: ["El anecdotario", "La escala de estimación de grado", "La lista de control o de cotejo", "El sociograma"],
+    answer: 2,
+    fb: "Las listas de control o de cotejo registran si se da o no una conducta determinada con respuestas dicotómicas, de forma sencilla."
+  },
+  {
+    tag: "Instrumentos de Evaluación",
+    q: "¿Qué instrumento de evaluación representa gráficamente las relaciones afectivas dentro de un grupo mediante flechas de aceptación y rechazo?",
+    opts: ["Escala Likert", "Anecdotario", "Diario de clase", "Sociograma"],
+    answer: 3,
+    fb: "El sociograma es la representación gráfica, mediante flechas, de las relaciones afectivas de un grupo, a partir de patrones de aceptación y rechazo."
+  },
+  {
+    tag: "Instrumentos de Evaluación",
+    q: "Las Escalas de Thurstone son instrumentos estandarizados diseñados para:",
+    opts: ["Evaluar el desarrollo motor grueso del niño/a", "Medir relaciones afectivas", "Registrar el número de palabras aprendidas", "Analizar el desarrollo cognitivo en comparativa por edades"],
+    answer: 1,
+    fb: "Las escalas de Thurstone son escalas estandarizadas elaboradas por especialistas orientadas a medir relaciones afectivas."
+  },
+  // ─── BLOQUE 8: FASES DE INTERVENCIÓN SOCIOEDUCATIVA NO FORMAL ───
+  {
+    tag: "Intervención No Formal",
+    q: "En la planificación del ámbito no formal, el orden jerárquico correcto de mayor a menor concreción es:",
+    opts: ["Proyecto → Programa → Plan", "Plan → Programa → Proyecto", "Programa → Plan → Proyecto", "Proyecto → Plan → Programa"],
+    answer: 1,
+    fb: "La jerarquía es: Plan (más amplio, largo plazo) → Programa (objetivos más concretos) → Proyecto (conjunto de actividades operativas concretas y medibles)."
+  },
+  {
+    tag: "Intervención No Formal",
+    q: "¿Cuál de los siguientes documentos forma parte de la estructura de un Proyecto de intervención socioeducativa en el ámbito no formal?",
+    opts: ["Propuesta Pedagógica, PCE y PGA", "Justificación, objetivos operativos, actividades, recursos, temporalización y evaluación", "RD 95/2022, Orden autonómica y PEC", "Diario, anecdotario y sociograma"],
+    answer: 1,
+    fb: "Todo proyecto de intervención incluye: justificación, objetivos operativos concretos y medibles, actividades, recursos, temporalización y evaluación."
+  },
+  // ─── BLOQUE 9: PRINCIPIOS PEDAGÓGICOS Y METODOLÓGICOS ───
+  {
+    tag: "Principios Pedagógicos",
+    q: "¿Qué marco de referencia guía el diseño inclusivo de las Situaciones de Aprendizaje según el Art. 9 del RD 95/2022?",
+    opts: ["El enfoque conductista de Skinner", "El Diseño Universal para el Aprendizaje (DUA)", "El método Montessori exclusivamente", "La Taxonomía de Bloom"],
+    answer: 1,
+    fb: "El Art. 9.b del RD 95/2022 establece el DUA (Diseño Universal para el Aprendizaje) como guía principal para el diseño de situaciones de aprendizaje inclusivas."
+  },
+  {
+    tag: "Principios Pedagógicos",
+    q: "¿Cuál es el recurso metodológico principal en Educación Infantil según los Principios Metodológicos (Art. 9)?",
+    opts: ["La lección magistral del docente", "El libro de texto como guía", "El juego", "Las fichas de trabajo individual"],
+    answer: 2,
+    fb: "El Art. 9.i establece el juego como el principal recurso metodológico en la etapa infantil."
+  },
+  {
+    tag: "Principios Metodológicos",
+    q: "Una estrategia metodológica donde el alumnado experimenta de forma activa y autónoma, como en talleres de experimentación libre, se denomina:",
+    opts: ["Estrategia expositiva", "Estrategia por descubrimiento", "Estrategia mixta", "Estrategia evaluativa"],
+    answer: 1,
+    fb: "Las estrategias por descubrimiento se basan en la experimentación activa y autónoma del alumnado; un ejemplo son los talleres de experimentación libre."
+  },
+  {
+    tag: "Principios Metodológicos",
+    q: "El aprendizaje significativo se define como aquel que:",
+    opts: ["Se basa exclusivamente en la memorización de contenidos", "Establece conexiones entre lo nuevo y lo ya conocido por el alumnado", "Se realiza solo a través de fichas y actividades escritas", "No requiere la participación activa del alumnado"],
+    answer: 1,
+    fb: "El aprendizaje significativo (Ausubel) implica establecer conexiones entre el conocimiento nuevo y los conocimientos previos del alumnado."
+  },
+  // ─── BLOQUE 10: INSTALACIONES ───
+  {
+    tag: "Instalaciones",
+    q: "Según la Orden de 25 de agosto de 2005 de Aragón, ¿cuántas salas de usos múltiples mínimas deben tener los centros completos de primer ciclo?",
+    opts: ["No se exige sala de usos múltiples", "Una sala de usos múltiples de al menos 50 m²", "Dos salas de al menos 25 m² cada una", "Una sala compartida con el comedor de al menos 30 m²"],
+    answer: 1,
+    fb: "La normativa de Aragón exige una sala de usos múltiples (psicomotricidad, fiestas, reuniones) de al menos 50 m² en centros completos."
+  },
+  {
+    tag: "Instalaciones",
+    q: "¿Cuál de los siguientes requisitos generales deben cumplir los locales de los centros de primer ciclo en Aragón?",
+    opts: ["Pueden estar en sótanos si tienen buena ventilación artificial", "Deben ser de uso exclusivamente escolar y estar accesibles, sin ubicarse en lugares peligrosos", "Pueden compartirse con actividades comerciales fuera del horario escolar", "No necesitan accesibilidad si el municipio es pequeño"],
+    answer: 1,
+    fb: "El Art. 2 de la Orden exige uso exclusivamente escolar, accesibilidad, no ubicación en lugares peligrosos y reunir requisitos mínimos de seguridad."
+  },
+  // ─── BLOQUE 11: RATIOS Y PERSONAL ───
+  {
+    tag: "Ratios y Personal",
+    q: "Según la normativa de Aragón (Orden 25/08/2005), ¿cuál es la ratio máxima para niños/as de 2 a 3 años?",
+    opts: ["8 niños/as por unidad", "13 niños/as por unidad", "20 niños/as por unidad", "25 niños/as por unidad"],
+    answer: 2,
+    fb: "La ratio es: menores de 1 año → 8; de 1 a 2 años → 13; de 2 a 3 años → 20 niños/as por unidad."
+  },
+  {
+    tag: "Ratios y Personal",
+    q: "¿Qué titulación mínima se exige al menos a una persona del personal en cada centro de primer ciclo de Educación Infantil en Aragón?",
+    opts: ["Técnico/a Superior en Integración Social", "Maestro/a en la especialidad de Educación Infantil", "Graduado/a en Psicología Educativa", "Técnico/a en Animación Sociocultural"],
+    answer: 1,
+    fb: "La normativa exige al menos una persona con titulación de Maestro/a especialista en Educación Infantil, y al menos un/a tutor/a por unidad con titulación de Técnico/a Superior en EI."
+  },
+  {
+    tag: "Ratios y Personal",
+    q: "En unidades mixtas (con niños/as de diferentes edades juntos), ¿cuál es la ratio máxima según la normativa de Aragón?",
+    opts: ["1:8 si hay algún menor de 1 año", "1:20 independientemente de las edades", "1:10 si la unidad mezcla distintos grupos de edad", "1:13 siempre"],
+    answer: 2,
+    fb: "Para unidades mixtas con niños/as de distintos rangos de edad (ej. 1, 1-2 y 2-3 años juntos), la ratio es de 1:10."
+  },
+  // ─── BLOQUE 12: ESPECIFICACIONES DE AULAS ───
+  {
+    tag: "Espacios – Aulas",
+    q: "En las aulas para niños/as de 0 a 1 año, ¿cuál de las siguientes zonas es específica y diferenciadora?",
+    opts: ["Zona de juego simbólico con cocinita y disfraces", "Zona de cunas, estimulación, cambios de ropa y pañales", "Zona de lectura con biblioteca de aula", "Zona de experimentación con arena y agua"],
+    answer: 1,
+    fb: "Las aulas 0-1 año deben tener: zona de cunas, zona de actividad, espejo, estimulación, kit de psicomotricidad y zona de preparación de alimentos/cambios."
+  },
+  {
+    tag: "Espacios – Aulas",
+    q: "¿Cuál es la superficie mínima de la zona de juegos en un aula de centro completo?",
+    opts: ["50 m²", "30 m²", "75 m²", "20 m²"],
+    answer: 2,
+    fb: "Las aulas de referencia en centros completos deben cumplir las ratios indicadas y disponer de una zona de juegos de al menos 75 m²."
+  },
+  // ─── BLOQUE 13: ESPACIOS EXTERIORES ───
+  {
+    tag: "Espacios Exteriores",
+    q: "¿Cuál de los siguientes elementos es imprescindible en los espacios exteriores de una escuela infantil?",
+    opts: ["Piscina cubierta climatizada", "Diversidad de suelos, zonas al sol y en sombra, elementos naturales y equipamiento seguro", "Aula de informática al aire libre", "Canchas deportivas reglamentarias"],
+    answer: 1,
+    fb: "Los espacios exteriores deben ofrecer: amplitud, diversidad de suelos, zonas al sol y en sombra, elementos naturales y equipamiento seguro de hasta 1,5 m de altura."
+  },
+  {
+    tag: "Espacios Exteriores",
+    q: "Según la normativa, si el centro carece de espacio al aire libre, ¿qué se exige como sustitución?",
+    opts: ["No es obligatorio tener ningún espacio alternativo", "Una zona cubierta con iluminación y ventilación de al menos 1/4 de su superficie", "Un aula extra de psicomotricidad de 100 m²", "Un acuerdo con un parque público cercano"],
+    answer: 1,
+    fb: "Si no existe espacio exterior, la normativa exige una zona cubierta con iluminación y ventilación natural de al menos 1/4 de su superficie."
+  },
+  // ─── BLOQUE 14: TALLERES Y RINCONES ───
+  {
+    tag: "Talleres y Rincones",
+    q: "¿Cuál es la diferencia principal entre un taller y un rincón en Educación Infantil?",
+    opts: ["No hay diferencia, son sinónimos pedagógicos", "Los talleres son experiencias para adquirir conocimientos y destrezas mediante manipulación; los rincones organizan el aula por temáticas para fomentar el aprendizaje autónomo", "Los rincones son dirigidos por el docente y los talleres son libres", "Los talleres se realizan siempre fuera del aula y los rincones dentro"],
+    answer: 1,
+    fb: "Talleres: experiencias de manipulación y experimentación para desarrollar creatividad. Rincones: organización del aula por temáticas o tipos de juego (biblioteca, juego simbólico, sensorial...)."
+  },
+  // ─── BLOQUE 15: PERÍODOS Y FECHAS SEÑALADAS ───
+  {
+    tag: "Períodos y Fechas",
+    q: "El período de adaptación en una escuela infantil tiene como objetivo principal:",
+    opts: ["Evaluar el nivel cognitivo de cada niño/a para asignarlo a un grupo", "Lograr la progresiva adaptación del niño/a al centro, crear vínculos, atención individualizada e instaurar rutinas", "Reunir a las familias para informarles del proyecto educativo del centro", "Realizar pruebas de acceso al primer ciclo"],
+    answer: 1,
+    fb: "El período de adaptación busca la incorporación progresiva, la creación de vínculos afectivos, atención individualizada y el inicio de las rutinas."
+  },
+  {
+    tag: "Períodos y Fechas",
+    q: "¿Cuándo comienza y termina normalmente el curso en el primer ciclo de Educación Infantil (0-3) en Aragón?",
+    opts: ["Septiembre y acaba en junio, igual que Primaria", "Septiembre y acaba en julio", "Octubre y acaba en junio", "Enero y acaba en diciembre"],
+    answer: 1,
+    fb: "El primer ciclo de EI en Aragón tiene una oferta más amplia: comienza en septiembre y acaba en julio. El segundo ciclo finaliza en junio."
+  },
+  // ─── BLOQUE 16: CRITERIOS DE ORGANIZACIÓN ───
+  {
+    tag: "Criterios de Organización",
+    q: "El criterio de organización del tiempo que se adapta a los ritmos biológicos naturales del desarrollo infantil se denomina:",
+    opts: ["Criterio semanal", "Criterio por ciclos", "Criterio pronogénico", "Criterio sincrónico"],
+    answer: 2,
+    fb: "El criterio pronogénico (o cronobiológico) adapta la organización del tiempo a los ritmos biológicos naturales del desarrollo infantil."
+  },
+  // ─── BLOQUE 17: MOBILIARIO ───
+  {
+    tag: "Mobiliario",
+    q: "¿Qué características debe tener el mobiliario de una escuela infantil (0-3)?",
+    opts: ["Fijo, oscuro, pesado y de gran tamaño para mayor durabilidad", "Ligero, polivalente, lavable y de colores suaves/claros", "Únicamente fabricado en materiales plásticos sin madera", "Alto y resistente para evitar que los niños lo muevan"],
+    answer: 1,
+    fb: "El mobiliario debe ser ligero (movilidad), polivalente, lavable y de colores suaves/claros; el almacenaje debe ser con contenedores transparentes etiquetados a baja altura."
+  },
+  // ─── BLOQUE 18: CARÁCTER Y TIPOS DE EVALUACIÓN ───
+  {
+    tag: "Carácter de la Evaluación",
+    q: "¿Cuál es el carácter de la evaluación en Educación Infantil según el Art. 12 del RD 95/2022?",
+    opts: ["Selectiva, sumativa y puntual", "Global, continua y formativa", "Normativa, periódica y cuantitativa", "Individualizada, excluyente y calificativa"],
+    answer: 1,
+    fb: "El Art. 12 del RD 95/2022 establece que la evaluación en EI será global, continua y formativa, orientada a identificar las condiciones iniciales y la evolución de cada niño/a."
+  },
+  {
+    tag: "Tipos de Evaluación",
+    q: "La evaluación que se realiza AL INICIO del proceso de enseñanza-aprendizaje para conocer conocimientos previos y necesidades del alumnado es la evaluación:",
+    opts: ["Sumativa", "Formativa o de seguimiento", "Inicial o diagnóstica", "Heteroevaluación"],
+    answer: 2,
+    fb: "La evaluación inicial o diagnóstica se realiza al comienzo para detectar conocimientos previos, necesidades e intereses del grupo."
+  },
+  {
+    tag: "Tipos de Evaluación",
+    q: "Cuando el equipo docente de todas las unidades evalúa conjuntamente alguna actividad del centro, se denomina:",
+    opts: ["Autoevaluación", "Heteroevaluación", "Evaluación mixta", "Evaluación sumativa"],
+    answer: 2,
+    fb: "La evaluación mixta combina autoevaluación y heteroevaluación; se da cuando el equipo docente evalúa colectivamente alguna actividad o proyecto del centro."
+  },
+  {
+    tag: "Tipos de Evaluación",
+    q: "¿Qué protecciones legales se deben aplicar durante el proceso de evaluación cuando se usan fotos o vídeos de los niños/as?",
+    opts: ["No existe ninguna regulación específica al respecto", "La LOPDGDD y la LO 8/2021 obligan a proteger la identidad de los niños/as en fotos, vídeos o registros", "Solo se aplican si los registros se publican en redes sociales", "Únicamente si los niños/as son menores de un año"],
+    answer: 1,
+    fb: "La LOPDGDD (Ley Orgánica de Protección de Datos) y la LO 8/2021 de protección integral de la infancia regulan la protección de la identidad de los menores en todo tipo de registros evaluativos."
+  }
+];
+
+let answered = {};
+
+function buildQuiz() {
+  const container = document.getElementById('quiz-container');
+  container.innerHTML = '';
+  answered = {};
+  updateProgress();
+
+  questions.forEach((q, i) => {
+    const card = document.createElement('div');
+    card.className = 'question-card';
+    card.id = 'card-' + i;
+
+    const optsHTML = q.opts.map((opt, j) => `
+      <label class="option-label" id="opt-${i}-${j}">
+        <input type="radio" name="q${i}" value="${j}" onchange="onSelect(${i})">
+        <span>${opt}</span>
+      </label>`).join('');
+
+    card.innerHTML = `
+      <span class="tag">${q.tag}</span>
+      <div class="question-header">
+        <span class="question-number">${i+1}</span>
+        <span class="question-text">${q.q}</span>
+      </div>
+      <div class="options">${optsHTML}</div>
+      <div class="feedback" id="fb-${i}"></div>`;
+
+    container.appendChild(card);
+  });
+
+  document.getElementById('submit-all-wrap').style.display = 'block';
+  document.getElementById('result-card').style.display = 'none';
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+
+function onSelect(i) {
+  updateProgress();
+}
+
+function updateProgress() {
+  const total = questions.length;
+  const done = Object.keys(answered).length + 
+    questions.filter((_,i) => !answered.hasOwnProperty(i) && document.querySelector(`input[name="q${i}"]:checked`)).length;
+  const pct = Math.round((Object.keys(answered).length / total) * 100);
+  document.getElementById('progress-bar').style.width = pct + '%';
+}
+
+function submitAll() {
+  let score = 0;
+  questions.forEach((q, i) => {
+    const selected = document.querySelector(`input[name="q${i}"]:checked`);
+    const fb = document.getElementById('fb-' + i);
+
+    // disable all radios
+    document.querySelectorAll(`input[name="q${i}"]`).forEach(r => r.disabled = true);
+
+    if (selected) {
+      const val = parseInt(selected.value);
+      answered[i] = val;
+      if (val === q.answer) {
+        score++;
+        document.getElementById(`opt-${i}-${val}`).classList.add('correct');
+        fb.className = 'feedback show ok';
+        fb.textContent = '✅ Correcto. ' + q.fb;
+      } else {
+        document.getElementById(`opt-${i}-${val}`).classList.add('incorrect');
+        document.getElementById(`opt-${i}-${q.answer}`).classList.add('correct');
+        fb.className = 'feedback show ko';
+        fb.textContent = '❌ Incorrecto. ' + q.fb;
+      }
+    } else {
+      answered[i] = null;
+      document.getElementById(`opt-${i}-${q.answer}`).classList.add('correct');
+      fb.className = 'feedback show ko';
+      fb.textContent = '⚠️ Sin responder. ' + q.fb;
+    }
+  });
+
+  document.getElementById('progress-bar').style.width = '100%';
+  document.getElementById('submit-all-wrap').style.display = 'none';
+
+  const pct = Math.round((score / questions.length) * 100);
+  const scoreEl = document.getElementById('score-text');
+  scoreEl.textContent = score + ' / ' + questions.length;
+  scoreEl.style.color = pct >= 70 ? 'var(--success)' : pct >= 50 ? 'var(--primary)' : 'var(--danger)';
+  document.getElementById('score-label').textContent = pct + '% de aciertos';
+  let msg = '';
+  if (pct >= 90) msg = '🏆 ¡Excelente! Dominas perfectamente la materia.';
+  else if (pct >= 70) msg = '👍 Buen resultado. Repasa los temas con más errores.';
+  else if (pct >= 50) msg = '📚 Resultado aprobado pero hay margen de mejora. ¡Sigue estudiando!';
+  else msg = '💪 Necesitas reforzar el estudio. ¡No te rindas, vuelve a intentarlo!';
+  document.getElementById('result-msg').textContent = msg;
+  document.getElementById('result-card').style.display = 'block';
+
+  setTimeout(() => {
+    document.getElementById('result-card').scrollIntoView({behavior:'smooth', block:'center'});
+  }, 300);
+}
+
+function restartQuiz() {
+  buildQuiz();
+}
+
+buildQuiz();
+</script>
+</body>
+</html>
