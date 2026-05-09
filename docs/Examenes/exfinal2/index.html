@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen Didáctica EI — Variante B</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@300..700&display=swap" rel="stylesheet">
+<style>
+/* ===== DESIGN TOKENS ===== */
+:root,[data-theme="light"]{
+  --color-bg:#f7f6f2;--color-surface:#f9f8f5;--color-surface-2:#fbfbf9;
+  --color-surface-offset:#f3f0ec;--color-surface-dynamic:#e6e4df;
+  --color-divider:#dcd9d5;--color-border:#d4d1ca;
+  --color-text:#28251d;--color-text-muted:#7a7974;--color-text-faint:#bab9b4;
+  --color-primary:#01696f;--color-primary-hover:#0c4e54;--color-primary-active:#0f3638;
+  --color-primary-highlight:#cedcd8;
+  --color-success:#437a22;--color-success-highlight:#d4dfcc;
+  --color-error:#a12c7b;--color-error-highlight:#e0ced7;
+  --color-warning:#964219;--color-warning-highlight:#ddcfc6;
+  --color-gold:#d19900;--color-gold-highlight:#e9e0c6;
+  --radius-sm:.375rem;--radius-md:.5rem;--radius-lg:.75rem;--radius-xl:1rem;--radius-full:9999px;
+  --shadow-sm:0 1px 2px oklch(0.2 0.01 80/0.06);
+  --shadow-md:0 4px 12px oklch(0.2 0.01 80/0.08);
+  --shadow-lg:0 12px 32px oklch(0.2 0.01 80/0.12);
+  --font-display:'Instrument Serif',Georgia,serif;
+  --font-body:'DM Sans','Helvetica Neue',sans-serif;
+  --text-xs:clamp(.75rem,.7rem + .25vw,.875rem);
+  --text-sm:clamp(.875rem,.8rem + .35vw,1rem);
+  --text-base:clamp(1rem,.95rem + .25vw,1.125rem);
+  --text-lg:clamp(1.125rem,1rem + .75vw,1.5rem);
+  --text-xl:clamp(1.5rem,1.2rem + 1.25vw,2.25rem);
+  --text-2xl:clamp(2rem,1.2rem + 2.5vw,3.5rem);
+  --space-1:.25rem;--space-2:.5rem;--space-3:.75rem;--space-4:1rem;
+  --space-5:1.25rem;--space-6:1.5rem;--space-8:2rem;--space-10:2.5rem;
+  --space-12:3rem;--space-16:4rem;
+  --transition:180ms cubic-bezier(.16,1,.3,1);
+}
+[data-theme="dark"]{
+  --color-bg:#171614;--color-surface:#1c1b19;--color-surface-2:#201f1d;
+  --color-surface-offset:#1d1c1a;--color-surface-dynamic:#2d2c2a;
+  --color-divider:#262523;--color-border:#393836;
+  --color-text:#cdccca;--color-text-muted:#797876;--color-text-faint:#5a5957;
+  --color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-primary-active:#1a626b;
+  --color-primary-highlight:#313b3b;
+  --color-success:#6daa45;--color-success-highlight:#3a4435;
+  --color-error:#d163a7;--color-error-highlight:#4c3d46;
+  --color-warning:#bb653b;--color-warning-highlight:#564942;
+  --color-gold:#e8af34;--color-gold-highlight:#4d4332;
+  --shadow-sm:0 1px 2px oklch(0 0 0/.2);
+  --shadow-md:0 4px 12px oklch(0 0 0/.3);
+  --shadow-lg:0 12px 32px oklch(0 0 0/.4);
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme]){
+  --color-bg:#171614;--color-surface:#1c1b19;--color-surface-2:#201f1d;
+  --color-surface-offset:#1d1c1a;--color-surface-dynamic:#2d2c2a;
+  --color-divider:#262523;--color-border:#393836;
+  --color-text:#cdccca;--color-text-muted:#797876;--color-text-faint:#5a5957;
+  --color-primary:#4f98a3;--color-primary-hover:#227f8b;--color-primary-active:#1a626b;
+  --color-primary-highlight:#313b3b;
+  --color-success:#6daa45;--color-success-highlight:#3a4435;
+  --color-error:#d163a7;--color-error-highlight:#4c3d46;
+  --color-warning:#bb653b;--color-warning-highlight:#564942;
+  --color-gold:#e8af34;--color-gold-highlight:#4d4332;
+}}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-font-smoothing:antialiased;scroll-behavior:smooth;scroll-padding-top:var(--space-16)}
+body{min-height:100dvh;line-height:1.6;font-family:var(--font-body);font-size:var(--text-base);color:var(--color-text);background:var(--color-bg);transition:background var(--transition),color var(--transition)}
+img,svg{display:block;max-width:100%}
+button{cursor:pointer;background:none;border:none;font:inherit;color:inherit}
+::selection{background:oklch(from var(--color-primary) l c h/.25);color:var(--color-text)}
+:focus-visible{outline:2px solid var(--color-primary);outline-offset:3px;border-radius:var(--radius-sm)}
+
+/* ===== LAYOUT ===== */
+.site-header{position:sticky;top:0;z-index:100;background:var(--color-surface);border-bottom:1px solid var(--color-border);box-shadow:var(--shadow-sm)}
+.header-inner{max-width:960px;margin-inline:auto;padding:var(--space-4) var(--space-6);display:flex;align-items:center;justify-content:space-between;gap:var(--space-4)}
+.logo{display:flex;align-items:center;gap:var(--space-3);text-decoration:none;color:var(--color-text)}
+.logo-mark{width:36px;height:36px;flex-shrink:0}
+.logo-text{font-family:var(--font-display);font-size:var(--text-lg);line-height:1.1}
+.logo-sub{font-size:var(--text-xs);color:var(--color-text-muted);display:block;letter-spacing:.04em;text-transform:uppercase}
+.header-controls{display:flex;align-items:center;gap:var(--space-3)}
+#progress-pill{font-size:var(--text-xs);font-weight:600;color:var(--color-primary);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);white-space:nowrap;transition:background var(--transition),color var(--transition)}
+.theme-toggle{width:36px;height:36px;border-radius:var(--radius-full);display:flex;align-items:center;justify-content:center;color:var(--color-text-muted);transition:background var(--transition),color var(--transition)}
+.theme-toggle:hover{background:var(--color-surface-offset);color:var(--color-text)}
+
+.main-wrap{max-width:960px;margin-inline:auto;padding:var(--space-10) var(--space-6) var(--space-16)}
+
+/* ===== HERO ===== */
+.exam-hero{text-align:center;margin-bottom:var(--space-12);padding:var(--space-10) var(--space-8);background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);box-shadow:var(--shadow-md);position:relative;overflow:hidden}
+.exam-hero::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,oklch(from var(--color-primary) l c h/.05) 0%,transparent 60%);pointer-events:none}
+.hero-badge{display:inline-flex;align-items:center;gap:var(--space-2);font-size:var(--text-xs);font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--color-primary);background:var(--color-primary-highlight);padding:var(--space-1) var(--space-3);border-radius:var(--radius-full);margin-bottom:var(--space-4)}
+.hero-title{font-family:var(--font-display);font-size:var(--text-2xl);line-height:1.15;color:var(--color-text);margin-bottom:var(--space-3)}
+.hero-sub{font-size:var(--text-base);color:var(--color-text-muted);max-width:52ch;margin-inline:auto;margin-bottom:var(--space-8)}
+.meta-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:var(--space-4);margin-bottom:var(--space-8)}
+.meta-item{background:var(--color-surface-2);border:1px solid var(--color-border);border-radius:var(--radius-lg);padding:var(--space-4);text-align:center}
+.meta-value{font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-primary);line-height:1}
+.meta-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:var(--space-1);text-transform:uppercase;letter-spacing:.05em}
+.btn-start{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary);color:#fff;font-size:var(--text-sm);font-weight:600;padding:var(--space-3) var(--space-8);border-radius:var(--radius-full);box-shadow:var(--shadow-md);transition:background var(--transition),box-shadow var(--transition),transform var(--transition)}
+.btn-start:hover{background:var(--color-primary-hover);box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.btn-start:active{background:var(--color-primary-active);transform:translateY(0)}
+
+/* ===== PROGRESS BAR ===== */
+.progress-track{width:100%;height:6px;background:var(--color-surface-dynamic);border-radius:var(--radius-full);overflow:hidden;margin-bottom:var(--space-6)}
+.progress-fill{height:100%;background:var(--color-primary);border-radius:var(--radius-full);transition:width .5s cubic-bezier(.16,1,.3,1)}
+
+/* ===== SECTION DIVIDERS ===== */
+.section-sep{display:flex;align-items:center;gap:var(--space-4);margin:var(--space-10) 0 var(--space-6)}
+.section-sep-line{flex:1;height:1px;background:var(--color-divider)}
+.section-sep-label{font-size:var(--text-xs);font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--color-text-muted);white-space:nowrap;padding:var(--space-1) var(--space-3);background:var(--color-surface-offset);border-radius:var(--radius-full)}
+
+/* ===== QUESTION CARD ===== */
+.q-card{background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-6) var(--space-8);margin-bottom:var(--space-6);box-shadow:var(--shadow-sm);transition:box-shadow var(--transition),border-color var(--transition);position:relative;overflow:hidden}
+.q-card::before{content:'';position:absolute;left:0;top:0;width:4px;height:100%;background:var(--color-border);border-radius:var(--radius-sm) 0 0 var(--radius-sm);transition:background var(--transition)}
+.q-card.answered::before{background:var(--color-primary)}
+.q-card.correct::before{background:var(--color-success)}
+.q-card.incorrect::before{background:var(--color-error)}
+.q-card:hover{box-shadow:var(--shadow-md)}
+.q-header{display:flex;align-items:flex-start;gap:var(--space-4);margin-bottom:var(--space-5)}
+.q-num{width:32px;height:32px;border-radius:var(--radius-full);background:var(--color-surface-offset);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;color:var(--color-text-muted);flex-shrink:0;transition:background var(--transition),color var(--transition)}
+.q-card.answered .q-num{background:var(--color-primary-highlight);color:var(--color-primary);border-color:var(--color-primary)}
+.q-card.correct .q-num{background:var(--color-success-highlight);color:var(--color-success)}
+.q-card.incorrect .q-num{background:var(--color-error-highlight);color:var(--color-error)}
+.difficulty-badge{font-size:var(--text-xs);font-weight:600;padding:2px var(--space-2);border-radius:var(--radius-sm);flex-shrink:0}
+.diff-basic{background:var(--color-success-highlight);color:var(--color-success)}
+.diff-medio{background:var(--color-gold-highlight);color:var(--color-gold)}
+.diff-alto{background:var(--color-error-highlight);color:var(--color-error)}
+.q-text{font-size:var(--text-base);font-weight:500;color:var(--color-text);line-height:1.55;flex:1}
+.options-grid{display:flex;flex-direction:column;gap:var(--space-3)}
+.opt{display:flex;align-items:flex-start;gap:var(--space-3);padding:var(--space-3) var(--space-4);border:1.5px solid var(--color-border);border-radius:var(--radius-lg);cursor:pointer;transition:all var(--transition);background:var(--color-surface-2);user-select:none;text-align:left;width:100%}
+.opt:hover:not(:disabled){border-color:var(--color-primary);background:var(--color-primary-highlight);transform:translateX(3px)}
+.opt:active:not(:disabled){transform:translateX(1px)}
+.opt.selected{border-color:var(--color-primary);background:var(--color-primary-highlight)}
+.opt.correct-ans{border-color:var(--color-success)!important;background:var(--color-success-highlight)!important}
+.opt.wrong-ans{border-color:var(--color-error)!important;background:var(--color-error-highlight)!important}
+.opt:disabled{cursor:default}
+.opt-letter{width:24px;height:24px;border-radius:var(--radius-full);background:var(--color-surface-offset);border:1px solid var(--color-border);display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;flex-shrink:0;color:var(--color-text-muted);transition:all var(--transition)}
+.opt.selected .opt-letter{background:var(--color-primary);border-color:var(--color-primary);color:#fff}
+.opt.correct-ans .opt-letter{background:var(--color-success);border-color:var(--color-success);color:#fff}
+.opt.wrong-ans .opt-letter{background:var(--color-error);border-color:var(--color-error);color:#fff}
+.opt-text{font-size:var(--text-sm);line-height:1.5;color:var(--color-text)}
+.feedback-msg{margin-top:var(--space-4);padding:var(--space-3) var(--space-4);border-radius:var(--radius-md);font-size:var(--text-sm);display:none;animation:fadeSlideIn .3s ease both}
+.feedback-msg.show{display:flex;align-items:flex-start;gap:var(--space-2)}
+.feedback-msg.ok{background:var(--color-success-highlight);color:var(--color-success)}
+.feedback-msg.fail{background:var(--color-error-highlight);color:var(--color-error)}
+@keyframes fadeSlideIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== RESULTS PANEL ===== */
+#results-panel{display:none;background:var(--color-surface);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-10);box-shadow:var(--shadow-lg);text-align:center;margin-top:var(--space-8)}
+.score-ring{width:140px;height:140px;margin:0 auto var(--space-6);position:relative}
+.score-ring svg{transform:rotate(-90deg)}
+.score-ring-track{fill:none;stroke:var(--color-surface-dynamic);stroke-width:10}
+.score-ring-fill{fill:none;stroke:var(--color-primary);stroke-width:10;stroke-linecap:round;stroke-dasharray:346;stroke-dashoffset:346;transition:stroke-dashoffset 1.5s cubic-bezier(.16,1,.3,1)}
+.score-num{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:var(--font-display);font-size:var(--text-xl);color:var(--color-primary);line-height:1}
+.score-label{font-size:var(--text-xs);color:var(--color-text-muted);margin-top:2px}
+.result-title{font-family:var(--font-display);font-size:var(--text-xl);margin-bottom:var(--space-2)}
+.result-sub{color:var(--color-text-muted);margin-bottom:var(--space-8)}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--space-4);margin-bottom:var(--space-8)}
+.stat-box{padding:var(--space-4);border-radius:var(--radius-lg);text-align:center;border:1px solid var(--color-border)}
+.stat-box.s-ok{background:var(--color-success-highlight);border-color:var(--color-success)}
+.stat-box.s-ko{background:var(--color-error-highlight);border-color:var(--color-error)}
+.stat-box.s-neutral{background:var(--color-surface-2)}
+.stat-num{font-family:var(--font-display);font-size:var(--text-xl);line-height:1}
+.stat-box.s-ok .stat-num{color:var(--color-success)}
+.stat-box.s-ko .stat-num{color:var(--color-error)}
+.stat-box.s-neutral .stat-num{color:var(--color-text-muted)}
+.stat-lbl{font-size:var(--text-xs);text-transform:uppercase;letter-spacing:.05em;margin-top:var(--space-1);color:inherit;opacity:.8}
+.note-band{padding:var(--space-4) var(--space-6);border-radius:var(--radius-lg);font-weight:600;font-size:var(--text-lg);margin-bottom:var(--space-6)}
+.note-band.apto{background:var(--color-success-highlight);color:var(--color-success)}
+.note-band.noapto{background:var(--color-error-highlight);color:var(--color-error)}
+.btn-retry{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary);color:#fff;font-size:var(--text-sm);font-weight:600;padding:var(--space-3) var(--space-8);border-radius:var(--radius-full);box-shadow:var(--shadow-md);transition:all var(--transition)}
+.btn-retry:hover{background:var(--color-primary-hover);transform:translateY(-1px)}
+.btn-submit-wrap{text-align:center;margin-top:var(--space-10)}
+.btn-submit{display:inline-flex;align-items:center;gap:var(--space-2);background:var(--color-primary);color:#fff;font-size:var(--text-base);font-weight:600;padding:var(--space-4) var(--space-10);border-radius:var(--radius-full);box-shadow:var(--shadow-md);transition:all var(--transition)}
+.btn-submit:hover{background:var(--color-primary-hover);box-shadow:var(--shadow-lg);transform:translateY(-2px)}
+
+/* ===== GITHUB SECTION ===== */
+.gh-section{background:var(--color-surface-offset);border:1px solid var(--color-border);border-radius:var(--radius-xl);padding:var(--space-8);margin-top:var(--space-12)}
+.gh-section h3{font-family:var(--font-display);font-size:var(--text-lg);margin-bottom:var(--space-5)}
+.steps-list{display:flex;flex-direction:column;gap:var(--space-4)}
+.step{display:flex;gap:var(--space-4);align-items:flex-start}
+.step-n{width:28px;height:28px;border-radius:var(--radius-full);background:var(--color-primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:var(--text-xs);font-weight:700;flex-shrink:0;margin-top:2px}
+.step-body h4{font-size:var(--text-sm);font-weight:600;margin-bottom:var(--space-1)}
+.step-body p,.step-body code{font-size:var(--text-xs);color:var(--color-text-muted)}
+code{background:var(--color-surface-dynamic);padding:1px 6px;border-radius:var(--radius-sm);font-family:monospace;color:var(--color-text)}
+
+/* ===== HIDDEN STATE ===== */
+#exam-body{display:none}
+#start-screen{display:block}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:640px){
+  .main-wrap{padding:var(--space-6) var(--space-4) var(--space-12)}
+  .q-card{padding:var(--space-5) var(--space-5)}
+  .hero-title{font-size:clamp(1.5rem,6vw,2.2rem)}
+  .meta-grid{grid-template-columns:repeat(2,1fr)}
+  .stats-row{grid-template-columns:1fr}
+  .header-inner{padding:var(--space-3) var(--space-4)}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header" role="banner">
+  <div class="header-inner">
+    <a href="#" class="logo" aria-label="Inicio">
+      <svg class="logo-mark" viewBox="0 0 36 36" fill="none" aria-hidden="true">
+        <rect width="36" height="36" rx="10" fill="var(--color-primary)"/>
+        <path d="M9 26V14l9-5 9 5v12" stroke="#fff" stroke-width="2" stroke-linejoin="round"/>
+        <rect x="14" y="20" width="8" height="6" rx="1" fill="#fff" opacity=".9"/>
+        <circle cx="18" cy="14" r="2" fill="#fff" opacity=".7"/>
+      </svg>
+      <span>
+        <span class="logo-text">Didáctica EI</span>
+        <span class="logo-sub">Variante B — 40 preguntas</span>
+      </span>
+    </a>
+    <div class="header-controls">
+      <span id="progress-pill" aria-live="polite">0 / 40</span>
+      <button class="theme-toggle" data-theme-toggle aria-label="Cambiar tema">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="main-wrap">
+
+<!-- START SCREEN -->
+<div id="start-screen">
+  <div class="exam-hero">
+    <div class="hero-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      Educación Infantil 0–3 · Segundo Cuatrimestre
+    </div>
+    <h1 class="hero-title">Examen de Didáctica<br><em>Variante B</em></h1>
+    <p class="hero-sub">Preguntas renovadas con mayor grado de dificultad. Los conceptos clave del temario se formulan en sentido inverso: respuestas que ahora son enunciados.</p>
+    <div class="meta-grid">
+      <div class="meta-item"><div class="meta-value">40</div><div class="meta-label">Preguntas</div></div>
+      <div class="meta-item"><div class="meta-value">4</div><div class="meta-label">Opciones c/u</div></div>
+      <div class="meta-item"><div class="meta-value">3</div><div class="meta-label">Niveles dificultad</div></div>
+      <div class="meta-item"><div class="meta-value">50%</div><div class="meta-label">Para aprobar</div></div>
+    </div>
+    <button class="btn-start" onclick="startExam()">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+      Comenzar examen
+    </button>
+  </div>
+
+  <!-- GITHUB GUIDE -->
+  <div class="gh-section">
+    <h3>📤 Subir a GitHub Pages</h3>
+    <div class="steps-list">
+      <div class="step"><div class="step-n">1</div><div class="step-body"><h4>Crear repositorio</h4><p>En <a href="https://github.com/new" target="_blank" rel="noopener noreferrer">github.com/new</a> crea un repo público, p. ej. <code>examen-didactica</code>. Marca "Add a README file".</p></div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-body"><h4>Subir el archivo HTML</h4><p>En el repo → botón <strong>Add file &gt; Upload files</strong>. Arrastra este <code>.html</code> y haz commit en <code>main</code>.</p></div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-body"><h4>Activar GitHub Pages</h4><p>Settings → Pages → Source: <strong>Deploy from a branch</strong> → rama <code>main</code> → carpeta <code>/ (root)</code> → Save.</p></div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-body"><h4>Acceder al examen</h4><p>En ~1 min disponible en <code>https://TU-USUARIO.github.io/examen-didactica/</code>. Puedes renombrar el HTML a <code>index.html</code> para acceso directo.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- EXAM BODY -->
+<div id="exam-body">
+  <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="40" aria-valuenow="0" id="progress-bar-wrap">
+    <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+  </div>
+  <div id="questions-container"></div>
+  <div class="btn-submit-wrap">
+    <button class="btn-submit" onclick="submitExam()">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      Entregar examen
+    </button>
+  </div>
+</div>
+
+<!-- RESULTS -->
+<div id="results-panel" role="region" aria-label="Resultados del examen">
+  <div class="score-ring">
+    <svg viewBox="0 0 120 120" width="140" height="140">
+      <circle class="score-ring-track" cx="60" cy="60" r="55"/>
+      <circle class="score-ring-fill" id="ring-fill" cx="60" cy="60" r="55"/>
+    </svg>
+    <div class="score-num">
+      <span id="score-pct">0%</span>
+      <span class="score-label">nota</span>
+    </div>
+  </div>
+  <h2 class="result-title" id="result-title">Resultado</h2>
+  <p class="result-sub" id="result-sub"></p>
+  <div class="stats-row">
+    <div class="stat-box s-ok"><div class="stat-num" id="r-ok">0</div><div class="stat-lbl">Correctas</div></div>
+    <div class="stat-box s-ko"><div class="stat-num" id="r-ko">0</div><div class="stat-lbl">Incorrectas</div></div>
+    <div class="stat-box s-neutral"><div class="stat-num" id="r-sk">0</div><div class="stat-lbl">Sin responder</div></div>
+  </div>
+  <div class="note-band" id="note-band"></div>
+  <button class="btn-retry" onclick="retryExam()">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-4.5"/></svg>
+    Repetir examen
+  </button>
+</div>
+
+</main>
+
+<script>
+// ===== DARK MODE TOGGLE =====
+(function(){
+  const t=document.querySelector('[data-theme-toggle]'),r=document.documentElement;
+  let d=matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light';
+  r.setAttribute('data-theme',d);
+  if(t) t.addEventListener('click',()=>{
+    d=d==='dark'?'light':'dark';
+    r.setAttribute('data-theme',d);
+    t.setAttribute('aria-label','Cambiar tema');
+    t.innerHTML=d==='dark'
+      ?'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>'
+      :'<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+  });
+})();
+
+// ===== QUESTION DATA =====
+const QUESTIONS = [
+  // ── BLOQUE 1: ESCUELA INFANTIL – ASPECTOS Y TEMAS TRANSVERSALES ──
+  {id:1,block:"Escuela Infantil: Aspectos y Temas Transversales",diff:"basico",
+   text:"¿Cuál de estos aspectos NO forma parte del trabajo habitual en una escuela infantil?",
+   opts:["Desarrollo afectivo y habilidades sociales","Motricidad y desarrollo sensorial","Especialización en una única área curricular","Rutinas y hábitos de higiene, alimentación y sueño"],
+   ans:2,fb:"Las escuelas infantiles trabajan de forma globalizada. La especialización en una única área es contraria al enfoque integrador propio de esta etapa (R.D. 95/2022, art. 9c)."},
+  {id:2,block:"Escuela Infantil: Aspectos y Temas Transversales",diff:"medio",
+   text:"La educación para el consumo responsable y sostenible en Educación Infantil se sitúa dentro de:",
+   opts:["Los objetivos operativos del proyecto","Los temas transversales del currículo","Los criterios de evaluación del segundo ciclo","Los saberes básicos del área de comunicación"],
+   ans:1,fb:"La educación para el consumo responsable y sostenible es un tema transversal recogido en el artículo 4 del R.D. 95/2022."},
+  {id:3,block:"Escuela Infantil: Aspectos y Temas Transversales",diff:"medio",
+   text:"¿Qué enunciado describe con mayor precisión la educación para la igualdad como tema transversal?",
+   opts:["Es un contenido optativo en el segundo ciclo","Se incluye transversalmente en todas las áreas y situaciones de aprendizaje","Solo se trabaja en fechas señaladas como el 8 de marzo","Es competencia exclusiva del equipo directivo"],
+   ans:1,fb:"Los temas transversales impregnan todas las áreas y situaciones de aprendizaje, no se limitan a fechas puntuales."},
+  {id:4,block:"Escuela Infantil: Aspectos y Temas Transversales",diff:"alto",
+   text:"Según el artículo 4 del R.D. 95/2022, ¿qué afirmación es correcta respecto a la lectoescritura en el primer ciclo?",
+   opts:["Es obligatoria desde los 18 meses","Se puede favorecer como primera aproximación aunque no sea exigible","Es un objetivo principal del primer nivel","Está prohibida hasta el segundo ciclo"],
+   ans:1,fb:"El art. 4.7 indica que 'sin que resulte exigible' se podrá favorecer una primera aproximación a la lectoescritura, habilidades numéricas y TICs."},
+
+  // ── BLOQUE 2: NIVELES DE CONCRECIÓN CURRICULAR ──
+  {id:5,block:"Niveles de Concreción Curricular",diff:"basico",
+   text:"¿Quién elabora el PRIMER nivel de concreción curricular en el ámbito formal?",
+   opts:["El tutor o tutora de aula","El equipo directivo del centro","Las Administraciones educativas mediante leyes y decretos","La familia del alumnado"],
+   ans:2,fb:"El primer nivel corresponde a la Administración (p. ej. R.D. 95/2022 y Orden ECD/853/2022 para Aragón) que regula el currículo base."},
+  {id:6,block:"Niveles de Concreción Curricular",diff:"medio",
+   text:"El tercer nivel de concreción curricular en el ámbito formal corresponde a:",
+   opts:["La propuesta pedagógica del centro","Las leyes orgánicas de educación","Las programaciones didácticas y situaciones de aprendizaje elaboradas por el personal docente","El Proyecto de Gestión del centro"],
+   ans:2,fb:"El tercer nivel es el más próximo al aula: programaciones didácticas y situaciones de aprendizaje redactadas por cada tutora/tutor."},
+  {id:7,block:"Niveles de Concreción Curricular",diff:"alto",
+   text:"En el ámbito NO formal, ¿cuál es el nivel de planificación que contiene objetivos operativos, un cronograma y la descripción detallada de actividades?",
+   opts:["El Plan","El Programa","El Proyecto","La Unidad Didáctica"],
+   ans:2,fb:"El Proyecto es el nivel más concreto en el ámbito no formal: define objetivos operativos, cronograma, tareas y recursos concretos (Tema 7)."},
+  {id:8,block:"Niveles de Concreción Curricular",diff:"alto",
+   text:"¿Qué diferencia fundamental existe entre un Programa y un Plan en la planificación no formal?",
+   opts:["El Programa tiene mayor alcance territorial que el Plan","El Plan contiene metas a largo plazo y varios programas; el Programa concreta objetivos específicos","El Programa y el Plan son términos equivalentes","El Plan solo aplica al ámbito formal"],
+   ans:1,fb:"El Plan es el nivel más amplio (metas a largo plazo, varios programas). El Programa concreta objetivos específicos y puede contener varios proyectos coordinados."},
+
+  // ── BLOQUE 3: DOCUMENTACIÓN CURRICULAR ──
+  {id:9,block:"Aclarando la Documentación Curricular",diff:"basico",
+   text:"¿Cuál de estos documentos define la identidad, valores y metas generales del centro educativo, e incluye la propuesta pedagógica?",
+   opts:["La Programación Didáctica","El Reglamento de Régimen Interno (RRI)","El Proyecto Educativo de Centro (PEC)","La Programación General Anual (PGA)"],
+   ans:2,fb:"El PEC recoge las decisiones asumidas por toda la comunidad educativa: identidad, valores, metas y líneas generales, e incluye la propuesta pedagógica."},
+  {id:10,block:"Aclarando la Documentación Curricular",diff:"medio",
+   text:"El Reglamento de Régimen Interno (RRI) contiene principalmente:",
+   opts:["Las competencias clave y criterios de evaluación del ciclo","Las normas administrativas, laborales y jurídicas del centro, protocolos y calendario escolar","Las situaciones de aprendizaje del curso","Los agrupamientos del alumnado por edades"],
+   ans:1,fb:"El RRI es el documento formal-administrativo que recoge normas de funcionamiento, protocolos, prevención de riesgos, horario, derechos y deberes de toda la comunidad educativa."},
+  {id:11,block:"Aclarando la Documentación Curricular",diff:"medio",
+   text:"¿Qué documento elabora cada tutora/tutor de aula y recoge competencias específicas, criterios de evaluación, metodología y temporalización del curso?",
+   opts:["La Propuesta Pedagógica del centro","El Proyecto Curricular de Etapa (PCE)","La Programación Didáctica","El Proyecto de Gestión"],
+   ans:2,fb:"La Programación Didáctica es el instrumento de planificación de cada tutora/tutor para su ciclo o curso, tal como recoge el artículo 26 de la Orden para Aragón."},
+  {id:12,block:"Aclarando la Documentación Curricular",diff:"alto",
+   text:"La Propuesta Pedagógica del centro y el Proyecto Curricular de Etapa (PCE), ¿qué relación guardan entre sí?",
+   opts:["Son documentos idénticos con distinto nombre","La Propuesta Pedagógica está incluida en el PEC; el PCE detalla la enseñanza-aprendizaje y está en un nivel de concreción mayor","El PCE sustituye a la Propuesta Pedagógica cuando hay más de tres unidades","Son elaborados por agentes externos al centro"],
+   ans:1,fb:"La Propuesta Pedagógica (filosofía educativa y principios) se integra en el PEC, mientras que el PCE detalla objetivos, metodologías, temporalización y coordinación a nivel de ciclo."},
+
+  // ── BLOQUE 4: SITUACIONES DE APRENDIZAJE ──
+  {id:13,block:"Estructura de las Situaciones de Aprendizaje",diff:"basico",
+   text:"Según la Orden ECD/853/2022 para Aragón, ¿qué son las Situaciones de Aprendizaje?",
+   opts:["Actividades individuales para evaluar al alumnado","Situaciones y actividades que implican el despliegue de competencias clave y específicas, conectando saberes básicos de una o varias áreas","Documentos redactados solo por la dirección del centro","Espacios físicos organizados por rincones en el aula"],
+   ans:1,fb:"Art. 7 de la Orden ECD/853/2022: situaciones y actividades que implican el despliegue de actuaciones del alumnado que contribuyen al desarrollo de competencias clave y específicas."},
+  {id:14,block:"Estructura de las Situaciones de Aprendizaje",diff:"medio",
+   text:"¿Cuáles de estas son Situaciones de Aprendizaje PERMANENTES?",
+   opts:["El periodo de adaptación y las salidas al exterior","Las rutinas de entrada/salida, la hora del cuento y los rincones permanentes como la biblioteca","Los talleres de carnaval y las fiestas de fin de curso","Los proyectos temáticos trimestrales"],
+   ans:1,fb:"Las situaciones permanentes son las que se repiten a lo largo del curso: rutinas, actividades habituales y rincones estables (biblioteca, juego simbólico...)."},
+  {id:15,block:"Estructura de las Situaciones de Aprendizaje",diff:"medio",
+   text:"En la estructura de una Situación de Aprendizaje, ¿qué información debe incluir la sección de 'Contextualización curricular'?",
+   opts:["El nombre del tutor/a responsable y el presupuesto","Las Competencias Clave relacionadas, áreas y Competencias Específicas a trabajar","El número de sesiones y el calendario de festivos","El listado de materiales fungibles necesarios"],
+   ans:1,fb:"La contextualización curricular conecta la situación con el marco legal: Competencias Clave, áreas y Competencias Específicas asociadas."},
+  {id:16,block:"Estructura de las Situaciones de Aprendizaje",diff:"alto",
+   text:"Al diseñar la sección de 'Metodología' en una Situación de Aprendizaje, ¿qué elementos son imprescindibles según el currículo aragonés?",
+   opts:["Solo el nombre de la metodología principal","Estrategias y principios metodológicos, TICs, organización espacio-temporal, colaboración con familias, atención a la diversidad y DUA","Los criterios de evaluación de cada área y los sociogramas","La ratio exacta del grupo y el nombre del personal de apoyo"],
+   ans:1,fb:"La sección de Metodología en una Situación de Aprendizaje debe incluir todos esos elementos para garantizar un diseño completo e inclusivo."},
+
+  // ── BLOQUE 5: INSTRUMENTOS DE EVALUACIÓN ──
+  {id:17,block:"Instrumentos de Evaluación",diff:"basico",
+   text:"¿Cuál es la técnica PRINCIPAL de evaluación en la etapa de Educación Infantil según la normativa vigente?",
+   opts:["El portafolio digital del alumnado","La observación directa y sistemática","El examen escrito trimestral","La entrevista con las familias como único instrumento"],
+   ans:1,fb:"La normativa (art. 12 R.D. 95/2022 y Orden ECD/853/2022) señala la observación directa y sistemática como técnica principal de evaluación en Educación Infantil."},
+  {id:18,block:"Instrumentos de Evaluación",diff:"basico",
+   text:"Una lista de control (o de cotejo) se caracteriza porque:",
+   opts:["Registra el grado de consecución mediante una escala numérica del 1 al 4","Ofrece respuestas dicotómicas (sí/no) sobre la presencia o ausencia de un indicador","Representa gráficamente las relaciones afectivas del grupo","Es exclusiva para evaluar la práctica docente"],
+   ans:1,fb:"Las listas de control usan respuestas dicotómicas (sí/no, observado/no observado) para registrar si se produce o no una conducta determinada."},
+  {id:19,block:"Instrumentos de Evaluación",diff:"medio",
+   text:"¿Qué instrumento de evaluación registra conductas y acontecimientos significativos que el educador/a considera relevantes, sin seguir un esquema fijo?",
+   opts:["La escala de estimación de grado","El sociograma","El anecdotario","La agenda escolar"],
+   ans:2,fb:"El anecdotario registra conductas o acontecimientos significativos de forma libre y narrativa, sin estructura predeterminada."},
+  {id:20,block:"Instrumentos de Evaluación",diff:"medio",
+   text:"Las escalas de Thurstone y la escala Likert son ejemplos de:",
+   opts:["Escalas estandarizadas elaboradas por especialistas para evaluar aspectos concretos","Listas de control de uso exclusivo en segundo ciclo","Técnicas de observación indirecta documental","Instrumentos de comunicación familia-escuela"],
+   ans:0,fb:"Las escalas estandarizadas (Thurstone para relaciones afectivas, Likert para actitudes) son instrumentos preparados por especialistas con ítems validados."},
+  {id:21,block:"Instrumentos de Evaluación",diff:"alto",
+   text:"Un sociograma en Educación Infantil permite principalmente:",
+   opts:["Medir el grado de consecución de los saberes básicos","Representar gráficamente las relaciones afectivas del grupo a través de patrones de aceptación y rechazo","Registrar la frecuencia de conductas disruptivas individualmente","Evaluar la práctica docente frente al equipo directivo"],
+   ans:1,fb:"El sociograma es una representación gráfica mediante flechas de las relaciones afectivas del grupo, basada en patrones de aceptación y rechazo."},
+
+  // ── BLOQUE 6: FASES DE LA INTERVENCIÓN NO FORMAL ──
+  {id:22,block:"Fases de la Intervención Socioeducativa No Formal",diff:"basico",
+   text:"¿Cuál es la PRIMERA fase de la intervención socioeducativa en el ámbito no formal?",
+   opts:["Evaluación del proyecto","Ejecución de las actividades","Planificación","Análisis de la realidad"],
+   ans:3,fb:"La intervención socioeducativa no formal se inicia con el Análisis de la realidad: estudio de necesidades mediante documentación, cuestionarios o entrevistas."},
+  {id:23,block:"Fases de la Intervención Socioeducativa No Formal",diff:"medio",
+   text:"En la fase de Planificación de un proyecto no formal, ¿qué se diseña?",
+   opts:["Exclusivamente el presupuesto y los recursos materiales","Todos los elementos del proyecto: objetivos, metodología, temporalización, recursos y evaluación","Solo el cronograma de actividades","La memoria final del proyecto"],
+   ans:1,fb:"La fase de Planificación abarca el diseño completo del proyecto con todos sus elementos (objetivos, metodología, recursos, temporalización, evaluación)."},
+  {id:24,block:"Fases de la Intervención Socioeducativa No Formal",diff:"alto",
+   text:"¿A qué tipo de centros del ámbito no formal pertenecen las ludotecas, los centros de tiempo libre y las granjas-escuela?",
+   opts:["Centros de carácter asistencial","Centros de carácter más socioeducativo","Centros de atención temprana especializada","Centros de acogida y protección de menores"],
+   ans:1,fb:"Las ludotecas, centros de tiempo libre, colonias, campus y granjas-escuela tienen carácter más socioeducativo, a diferencia de los de carácter asistencial (aulas hospitalarias, centros de acogida...)."},
+
+  // ── BLOQUE 7: ESTRUCTURA PAI DEL PROYECTO NO FORMAL ──
+  {id:25,block:"Estructura del PAI – Proyecto No Formal",diff:"basico",
+   text:"En un Proyecto de Atención a la Infancia (PAI) del ámbito no formal, ¿cómo deben redactarse los objetivos operativos?",
+   opts:["Con verbo en gerundio y sin complemento directo","Con verbo en infinitivo + acción medible + complemento directo del procedimiento","De forma libre, sin estructura predeterminada","Copiando los objetivos generales de etapa del R.D. 95/2022"],
+   ans:1,fb:"Los objetivos operativos se redactan con verbo en infinitivo + complemento directo que exprese el procedimiento medible, al menos una actividad por objetivo."},
+  {id:26,block:"Estructura del PAI – Proyecto No Formal",diff:"medio",
+   text:"¿Qué apartado del PAI incluye el análisis de la realidad, el diagnóstico de necesidades y el DAFO?",
+   opts:["Naturaleza/Contextualización","Temporalización","Fundamentación/Justificación","Recursos"],
+   ans:2,fb:"La Fundamentación/Justificación contiene el análisis de la realidad, necesidades detectadas, diagnóstico y DAFO del PAI no formal."},
+  {id:27,block:"Estructura del PAI – Proyecto No Formal",diff:"alto",
+   text:"En la estructura de un PAI, la 'Naturaleza/Contextualización' debe incluir:",
+   opts:["El resumen de la idea de proyecto, el Plan/Programa en el que se inscribe y el contexto del centro","Solo los objetivos operativos y el presupuesto","La evaluación final y la memoria de resultados","La temporalización detallada y el sociograma del grupo"],
+   ans:0,fb:"La Naturaleza/Contextualización describe de qué trata el proyecto (resumen), en qué Plan/Programa se inserta y el contexto o localización del centro."},
+
+  // ── BLOQUE 8: PRINCIPIOS METODOLÓGICOS Y PEDAGÓGICOS ──
+  {id:28,block:"Principios Metodológicos y Pedagógicos",diff:"basico",
+   text:"¿Cuál es el principal recurso metodológico en Educación Infantil según el artículo 9 del R.D. 95/2022?",
+   opts:["La ficha impresa","El juego","La exposición magistral","Las TICs"],
+   ans:1,fb:"El artículo 9i del R.D. 95/2022 señala expresamente el juego como principal recurso metodológico en la etapa infantil."},
+  {id:29,block:"Principios Metodológicos y Pedagógicos",diff:"medio",
+   text:"El Diseño Universal para el Aprendizaje (DUA) se emplea como guía para:",
+   opts:["Establecer los ratios máximos de cada unidad","Diseñar las situaciones de aprendizaje de forma inclusiva (art. 9b R.D. 95/2022)","Elaborar el calendario escolar anual","Determinar los espacios exteriores mínimos"],
+   ans:1,fb:"El art. 9b del R.D. 95/2022 establece los principios del DUA como guía para el diseño de las situaciones de aprendizaje, favoreciendo la inclusión."},
+  {id:30,block:"Principios Metodológicos y Pedagógicos",diff:"medio",
+   text:"Una estrategia metodológica 'por descubrimiento' se caracteriza por:",
+   opts:["La presentación directa de información por parte del educador/a","La experimentación activa por parte del alumnado (ej. talleres)","La combinación de exposición y exploración","La repetición de rutinas para adquirir automatismos"],
+   ans:1,fb:"Las estrategias por descubrimiento ponen al alumnado como agente activo que experimenta, investiga y construye el conocimiento (ej. talleres de experimentación)."},
+  {id:31,block:"Principios Metodológicos y Pedagógicos",diff:"alto",
+   text:"El aprendizaje significativo (art. 9e R.D. 95/2022) implica fundamentalmente:",
+   opts:["Memorizar contenidos antes de comprenderlos","Establecer conexiones entre lo nuevo y lo ya conocido por el alumnado","Separar los contenidos conceptuales de los procedimentales","Evaluar solo el resultado final, no el proceso"],
+   ans:1,fb:"El aprendizaje significativo se basa en establecer conexiones entre los nuevos aprendizajes y los conocimientos previos del alumnado, dando sentido a lo que se aprende."},
+
+  // ── BLOQUE 9: INSTALACIONES, RATIOS Y PERSONAL ──
+  {id:32,block:"Instalaciones, Ratios y Personal",diff:"basico",
+   text:"Según la Orden de 25 de agosto de 2005 para Aragón, ¿cuál es el ratio máximo para grupos de niños/as de 1 a 2 años?",
+   opts:["8 niños/as por unidad","13 niños/as por unidad","20 niños/as por unidad","25 niños/as por unidad"],
+   ans:1,fb:"La Orden de 25 de agosto de 2005 establece: menores de 1 año → máx. 8; de 1 a 2 años → máx. 13; de 2 a 3 años → máx. 20 niños/as por unidad."},
+  {id:33,block:"Instalaciones, Ratios y Personal",diff:"medio",
+   text:"¿Qué titulación mínima exige la Orden aragonesa de 2005 para al menos una persona del centro de educación infantil?",
+   opts:["Técnico/a Superior en Educación Infantil","Maestro/a en la especialidad de Educación Infantil","Grado en Pedagogía","Auxiliar de Educación Infantil"],
+   ans:1,fb:"La Orden exige como mínimo una persona con titulación de Maestro/a en la especialidad de Educación Infantil; el resto puede ser Técnico/a Superior en Educación Infantil."},
+  {id:34,block:"Instalaciones, Ratios y Personal",diff:"alto",
+   text:"¿Cuál es la superficie mínima exigida para la zona de juegos interior en un aula de referencia de un centro de primer ciclo en Aragón?",
+   opts:["50 m²","75 m²","100 m²","40 m²"],
+   ans:1,fb:"Las aulas de referencia deben incluir una zona de juegos de 75 m² según la normativa aragonesa (Orden 25/08/2005 y Tema 5)."},
+
+  // ── BLOQUE 10: ESPACIOS EXTERIORES, TALLERES Y RINCONES ──
+  {id:35,block:"Espacios Exteriores, Talleres y Rincones",diff:"basico",
+   text:"¿Qué característica distingue a los TALLERES de los RINCONES como formas de organización del aula?",
+   opts:["Los talleres son permanentes; los rincones son temporales","Los talleres son experiencias para adquirir conocimientos y destrezas mediante manipulación; los rincones organizan el aula con temáticas para el aprendizaje autónomo","Los talleres solo se realizan en el exterior; los rincones, en el interior","No existe diferencia metodológica entre ambos"],
+   ans:1,fb:"Talleres = experiencias estructuradas para adquirir conocimientos/destrezas por manipulación y creatividad. Rincones = organización del aula en temáticas para el juego autónomo y la exploración."},
+  {id:36,block:"Espacios Exteriores, Talleres y Rincones",diff:"medio",
+   text:"¿Cuál de las siguientes NO es una característica recomendada para los espacios exteriores en el primer ciclo?",
+   opts:["Diversidad de suelos y elementos naturales","Zonas al sol y en sombra","Superficie totalmente lisa y homogénea para minimizar riesgos","Espacios para actividades motrices, sensoriales y de exploración"],
+   ans:2,fb:"Los espacios exteriores deben tener diversidad de suelos (no superficie homogénea), amplitud, zonas de sombra y sol, y elementos naturales para favorecer la exploración."},
+  {id:37,block:"Espacios Exteriores, Talleres y Rincones",diff:"alto",
+   text:"Según el criterio 'pronogénico' de organización del tiempo en escuelas infantiles, ¿a qué se adapta principalmente la jornada?",
+   opts:["A los intereses del equipo educativo y la disponibilidad de espacios","A los ritmos biológicos naturales del desarrollo infantil","Al calendario escolar marcado por la Administración","A las preferencias de las familias en cuanto a horario"],
+   ans:1,fb:"El criterio pronogénico organiza la jornada en función de los ritmos biológicos naturales de los niños/as: ciclos de actividad, descanso, alimentación e higiene."},
+
+  // ── BLOQUE 11: CARÁCTER Y TIPOS DE EVALUACIÓN ──
+  {id:38,block:"Carácter y Tipos de Evaluación",diff:"basico",
+   text:"¿Cuál es el carácter de la evaluación en Educación Infantil según el artículo 12 del R.D. 95/2022?",
+   opts:["Sumativa, puntual y normativa","Global, continua y formativa","Selectiva, calificadora y externa","Diagnóstica y solo al inicio de curso"],
+   ans:1,fb:"El art. 12 del R.D. 95/2022 (y art. 14 de la Orden aragonesa) establece que la evaluación en EI será global, continua y formativa, orientada al desarrollo integral."},
+  {id:39,block:"Carácter y Tipos de Evaluación",diff:"medio",
+   text:"La evaluación 'diagnóstica' tiene como función principal:",
+   opts:["Valorar los resultados finales obtenidos al término del ciclo","Conocer el estado inicial: necesidades, conocimientos previos y condiciones del alumnado","Calificar numéricamente el progreso trimestral","Evaluar la práctica docente por agentes externos"],
+   ans:1,fb:"La evaluación diagnóstica se realiza al inicio para conocer el punto de partida: necesidades, conocimientos previos y condiciones individuales de cada niño/a."},
+  {id:40,block:"Carácter y Tipos de Evaluación",diff:"alto",
+   text:"Según los agentes evaluadores, ¿qué tipo de evaluación se produce cuando el propio equipo docente de todas las unidades evalúa alguna actividad del centro de forma conjunta?",
+   opts:["Autoevaluación individual","Heteroevaluación por inspección externa","Evaluación mixta","Evaluación sumativa"],
+   ans:2,fb:"La evaluación mixta combina autoevaluación y heteroevaluación: el equipo docente conjunto evalúa actividades del centro, integrando perspectivas internas y compartidas."}
+];
+
+let answered = {};
+
+function startExam(){
+  document.getElementById('start-screen').style.display='none';
+  document.getElementById('exam-body').style.display='block';
+  renderQuestions();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function getDiffLabel(d){
+  if(d==='basico') return '<span class="difficulty-badge diff-basic">Básico</span>';
+  if(d==='medio') return '<span class="difficulty-badge diff-medio">Medio</span>';
+  return '<span class="difficulty-badge diff-alto">Alto</span>';
+}
+
+function renderQuestions(){
+  const container=document.getElementById('questions-container');
+  let currentBlock='';
+  let html='';
+  QUESTIONS.forEach((q,i)=>{
+    if(q.block!==currentBlock){
+      currentBlock=q.block;
+      html+=`<div class="section-sep"><div class="section-sep-line"></div><div class="section-sep-label">${currentBlock}</div><div class="section-sep-line"></div></div>`;
+    }
+    const letters=['A','B','C','D'];
+    const optsHtml=q.opts.map((o,j)=>`
+      <button class="opt" data-q="${q.id}" data-idx="${j}" onclick="selectOpt(${q.id},${j})" type="button" aria-label="Opción ${letters[j]}: ${o}">
+        <span class="opt-letter">${letters[j]}</span>
+        <span class="opt-text">${o}</span>
+      </button>`).join('');
+    html+=`
+    <div class="q-card" id="qcard-${q.id}">
+      <div class="q-header">
+        <div class="q-num" id="qnum-${q.id}">${q.id}</div>
+        ${getDiffLabel(q.diff)}
+        <p class="q-text">${q.text}</p>
+      </div>
+      <div class="options-grid" id="opts-${q.id}">${optsHtml}</div>
+      <div class="feedback-msg" id="fb-${q.id}" role="alert"></div>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+
+function selectOpt(qid,idx){
+  if(answered[qid]!==undefined) return;
+  answered[qid]=idx;
+  const card=document.getElementById('qcard-'+qid);
+  card.classList.add('answered');
+  const btns=document.querySelectorAll(`[data-q="${qid}"]`);
+  btns.forEach(b=>{b.disabled=true;});
+  btns[idx].classList.add('selected');
+  updateProgress();
+}
+
+function updateProgress(){
+  const n=Object.keys(answered).length;
+  document.getElementById('progress-pill').textContent=`${n} / 40`;
+  const pct=(n/40)*100;
+  document.getElementById('progress-fill').style.width=pct+'%';
+  const bar=document.getElementById('progress-bar-wrap');
+  bar.setAttribute('aria-valuenow',n);
+}
+
+function submitExam(){
+  let correct=0,incorrect=0,skipped=0;
+  QUESTIONS.forEach(q=>{
+    const card=document.getElementById('qcard-'+q.id);
+    const btns=document.querySelectorAll(`[data-q="${q.id}"]`);
+    const fb=document.getElementById('fb-'+q.id);
+    btns.forEach(b=>b.disabled=true);
+    if(answered[q.id]===undefined){
+      skipped++;
+      // mark correct answer
+      btns[q.ans].classList.add('correct-ans');
+      fb.className='feedback-msg fail show';
+      fb.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Sin responder. Respuesta correcta: <strong>'+['A','B','C','D'][q.ans]+'</strong> — '+q.fb;
+    } else if(answered[q.id]===q.ans){
+      correct++;
+      card.classList.remove('answered');
+      card.classList.add('correct');
+      btns[q.ans].classList.remove('selected');
+      btns[q.ans].classList.add('correct-ans');
+      fb.className='feedback-msg ok show';
+      fb.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ¡Correcto! — '+q.fb;
+    } else {
+      incorrect++;
+      card.classList.remove('answered');
+      card.classList.add('incorrect');
+      btns[answered[q.id]].classList.add('wrong-ans');
+      btns[q.ans].classList.add('correct-ans');
+      fb.className='feedback-msg fail show';
+      fb.innerHTML='<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg> Incorrecto. Respuesta correcta: <strong>'+['A','B','C','D'][q.ans]+'</strong> — '+q.fb;
+    }
+  });
+  showResults(correct,incorrect,skipped);
+}
+
+function showResults(correct,incorrect,skipped){
+  const panel=document.getElementById('results-panel');
+  panel.style.display='block';
+  document.querySelector('.btn-submit-wrap').style.display='none';
+  const pct=Math.round((correct/40)*100);
+  const nota=(correct/40*10).toFixed(1);
+  document.getElementById('score-pct').textContent=nota+'/10';
+  document.getElementById('r-ok').textContent=correct;
+  document.getElementById('r-ko').textContent=incorrect;
+  document.getElementById('r-sk').textContent=skipped;
+  const band=document.getElementById('note-band');
+  const apto=correct>=20;
+  if(apto){
+    document.getElementById('result-title').textContent='¡Buen trabajo!';
+    document.getElementById('result-sub').textContent='Has superado el 50% de preguntas. Repasa los temas en los que hayas fallado.';
+    band.className='note-band apto';
+    band.textContent='APTO — '+correct+' de 40 correctas ('+pct+'%)';
+  } else {
+    document.getElementById('result-title').textContent='Sigue practicando';
+    document.getElementById('result-sub').textContent='No has alcanzado el 50% mínimo. Revisa el temario y vuelve a intentarlo.';
+    band.className='note-band noapto';
+    band.textContent='NO APTO — '+correct+' de 40 correctas ('+pct+'%)';
+  }
+  // animate ring
+  const circumference=346;
+  const offset=circumference-(pct/100)*circumference;
+  setTimeout(()=>{
+    document.getElementById('ring-fill').style.strokeDashoffset=offset;
+    document.getElementById('ring-fill').style.stroke=apto?'var(--color-success)':'var(--color-error)';
+  },200);
+  panel.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function retryExam(){
+  answered={};
+  document.getElementById('results-panel').style.display='none';
+  document.querySelector('.btn-submit-wrap').style.display='block';
+  document.getElementById('ring-fill').style.strokeDashoffset=346;
+  updateProgress();
+  renderQuestions();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>
