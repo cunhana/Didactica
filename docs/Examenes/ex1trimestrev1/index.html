@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simulacro TSEI Educación Infantil</title>
+
+<style>
+body{
+font-family:Arial, sans-serif;
+background:#f3f6fb;
+margin:0;
+color:#1e293b;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:20px;
+}
+
+header{
+background:white;
+padding:25px;
+border-radius:15px;
+box-shadow:0 4px 16px rgba(0,0,0,.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+h1{
+margin:0;
+color:#1d4ed8;
+}
+
+button{
+padding:12px 18px;
+border:none;
+border-radius:10px;
+font-weight:bold;
+cursor:pointer;
+margin:8px 6px 0 0;
+}
+
+.primary{background:#2563eb;color:white;}
+.secondary{background:#64748b;color:white;}
+.reset{background:#111827;color:white;}
+
+.card{
+background:white;
+padding:20px;
+margin:18px 0;
+border-radius:14px;
+box-shadow:0 4px 12px rgba(0,0,0,.06);
+}
+
+.option{
+display:block;
+padding:12px;
+margin:8px 0;
+border:1px solid #cbd5e1;
+border-radius:10px;
+cursor:pointer;
+}
+
+.feedback{
+display:none;
+margin-top:12px;
+padding:12px;
+border-radius:10px;
+}
+
+.ok{
+background:#dcfce7;
+color:#166534;
+}
+
+.bad{
+background:#fee2e2;
+color:#991b1b;
+}
+
+.progress{
+height:14px;
+background:#e2e8f0;
+border-radius:999px;
+overflow:hidden;
+margin-top:15px;
+}
+
+.bar{
+height:100%;
+width:0;
+background:linear-gradient(90deg,#2563eb,#10b981);
+transition:.4s;
+}
+
+.result{
+font-size:1.1rem;
+font-weight:bold;
+margin-top:15px;
+}
+</style>
+</head>
+<body>
+
+<div class="container">
+
+<header>
+<h1>Simulacro Completo TSEI – Educación Infantil</h1>
+<p>Penalización: cada 3 errores descuentan 1 acierto</p>
+
+<button class="primary" onclick="corregir()">Corregir</button>
+<button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
+<button class="reset" onclick="reiniciar()">Reiniciar</button>
+
+<div class="result" id="resultado">Pendiente</div>
+
+<div class="progress">
+<div class="bar" id="bar"></div>
+</div>
+</header>
+
+<div id="exam"></div>
+
+</div>
+
+<script>
+
+const preguntas = [
+{
+q:"¿Qué finalidad principal tiene la Educación Infantil según la normativa vigente?",
+o:[
+"Preparar para Primaria exclusivamente",
+"Contribuir al desarrollo físico, afectivo, social e intelectual",
+"Evaluar competencias académicas",
+"Seleccionar alumnado"
+],a:1,e:"La finalidad es contribuir al desarrollo integral."
+},
+{
+q:"¿Qué artículo de la Constitución reconoce el derecho a la educación?",
+o:["14","27","35","49"],a:1,e:"Artículo 27."
+},
+{
+q:"¿Qué norma establece las enseñanzas mínimas de Educación Infantil?",
+o:[
+"RD 95/2022",
+"LODE",
+"LOGSE",
+"RD 126/2014"
+],a:0,e:"Real Decreto 95/2022."
+},
+{
+q:"¿Cuál es el carácter de la Educación Infantil?",
+o:["Obligatorio","Voluntario","Selectivo","Compensatorio"],
+a:1,e:"Tiene carácter voluntario."
+},
+{
+q:"¿Qué ODS está directamente vinculado a la educación de calidad?",
+o:["ODS 4","ODS 8","ODS 12","ODS 16"],
+a:0,e:"ODS 4."
+},
+{
+q:"¿Qué autor formuló la teoría sociocultural?",
+o:["Piaget","Bandura","Vygotsky","Freud"],
+a:2,e:"Vygotsky."
+},
+{
+q:"¿Qué concepto desarrolló Vygotsky?",
+o:[
+"Aprendizaje significativo",
+"Zona de Desarrollo Próximo",
+"Condicionamiento operante",
+"Centros de interés"
+],a:1,e:"ZDP."
+},
+{
+q:"¿Qué autor defendió el aprendizaje significativo?",
+o:["Ausubel","Bruner","Skinner","Freinet"],
+a:0,e:"Ausubel."
+},
+{
+q:"¿Qué autor desarrolló el condicionamiento operante?",
+o:["Pavlov","Skinner","Bandura","Piaget"],
+a:1,e:"Skinner."
+},
+{
+q:"¿Qué teoría estudia el aprendizaje por observación?",
+o:["Bandura","Gestalt","Freud","Erikson"],
+a:0,e:"Bandura."
+},
+{
+q:"¿Qué etapa de Piaget corresponde de 2 a 7 años?",
+o:[
+"Preoperacional",
+"Sensoriomotora",
+"Operaciones concretas",
+"Formales"
+],a:0,e:"Preoperacional."
+},
+{
+q:"¿Qué autor creó el kindergarten?",
+o:["Fröebel","Montessori","Agazzi","Freinet"],
+a:0,e:"Fröebel."
+},
+{
+q:"¿Quién fundó la Casa dei Bambini?",
+o:["Montessori","Pikler","Agazzi","Mata"],
+a:0,e:"Montessori."
+},
+{
+q:"¿Qué aporta Decroly?",
+o:[
+"Centros de interés",
+"Movimiento libre",
+"Escuela democrática",
+"Condicionamiento"
+],a:0,e:"Centros de interés."
+},
+{
+q:"¿Qué caracteriza a Emmi Pikler?",
+o:[
+"Exámenes precoces",
+"Movimiento libre",
+"Refuerzo positivo",
+"Pedagogía crítica"
+],a:1,e:"Movimiento autónomo."
+},
+{
+q:"¿Qué pedagogía se asocia a Steiner?",
+o:["Waldorf","Reggio","Montessori","Summerhill"],
+a:0,e:"Waldorf."
+},
+{
+q:"¿Qué escuela elimina clases obligatorias?",
+o:["Summerhill","Waldorf","Freinet","Agazzi"],
+a:0,e:"Summerhill."
+},
+{
+q:"¿Qué caracteriza Reggio Emilia?",
+o:[
+"Documentación pedagógica",
+"Exámenes orales",
+"Memorización",
+"Control conductual"
+],a:0,e:"Documentación."
+},
+{
+q:"¿Quién desarrolló el modelo ecológico?",
+o:["Bronfenbrenner","Piaget","Bruner","Erikson"],
+a:0,e:"Bronfenbrenner."
+},
+{
+q:"¿Qué es el mesosistema?",
+o:[
+"Relación entre contextos",
+"Entorno familiar",
+"Normas culturales",
+"Factores históricos"
+],a:0,e:"Conexión entre microsistemas."
+},
+{
+q:"¿Qué teoría plantea Siemens?",
+o:["Conectivismo","Constructivismo","Gestalt","Psicoanálisis"],
+a:0,e:"Conectivismo."
+},
+{
+q:"¿Qué principio NO pertenece al DUA?",
+o:[
+"Compromiso",
+"Representación",
+"Memorización",
+"Acción y expresión"
+],a:2,e:"No forma parte."
+},
+{
+q:"¿Qué persigue el DUA?",
+o:[
+"Homogeneizar",
+"Eliminar barreras desde el inicio",
+"Reducir contenidos",
+"Sustituir currículo"
+],a:1,e:"Diseño accesible."
+},
+{
+q:"¿Cuántas áreas tiene el currículo de Infantil?",
+o:["2","3","4","5"],a:1,e:"Tres."
+},
+{
+q:"¿Cuál es un área oficial?",
+o:[
+"Crecimiento en armonía",
+"Matemáticas aplicadas",
+"Ciencias naturales",
+"Historia"
+],a:0,e:"Área oficial."
+},
+{
+q:"¿Qué son los saberes básicos?",
+o:[
+"Normas de aula",
+"Conocimientos, destrezas y actitudes",
+"Exámenes mínimos",
+"Objetivos generales"
+],a:1,e:"Definición oficial."
+},
+{
+q:"¿Qué son las situaciones de aprendizaje?",
+o:[
+"Exámenes",
+"Secuencias contextualizadas",
+"Adaptaciones",
+"Recursos"
+],a:1,e:"Movilizan competencias."
+},
+{
+q:"¿Cómo es la evaluación en Infantil?",
+o:[
+"Continua y formativa",
+"Selectiva",
+"Competitiva",
+"Eliminatoria"
+],a:0,e:"Global, continua y formativa."
+},
+{
+q:"¿Qué función cumple el TSEI?",
+o:[
+"Diseñar e implementar proyectos",
+"Inspeccionar",
+"Dirigir centros",
+"Legislar"
+],a:0,e:"Competencia profesional."
+},
+{
+q:"¿En qué ciclo interviene principalmente?",
+o:[
+"Primer ciclo",
+"Segundo ciclo",
+"Primaria",
+"ESO"
+],a:0,e:"0-3 años."
+},
+{
+q:"¿Qué rasgo profesional es esencial?",
+o:[
+"Estabilidad emocional",
+"Autoritarismo",
+"Rigidez",
+"Improvisación"
+],a:0,e:"Clave profesional."
+},
+{
+q:"¿Qué principio ético debe respetar?",
+o:[
+"Confidencialidad",
+"Competitividad",
+"Jerarquía rígida",
+"Neutralidad afectiva"
+],a:0,e:"Protección de datos."
+},
+{
+q:"¿Quién impulsó Escola Rosa Sensat?",
+o:["Marta Mata","Agazzi","Pikler","Klein"],
+a:0,e:"Marta Mata."
+},
+{
+q:"¿Qué estudia Erikson?",
+o:[
+"Desarrollo psicosocial",
+"Condicionamiento",
+"Conectividad",
+"Percepción"
+],a:0,e:"Etapas psicosociales."
+},
+{
+q:"¿Qué estudia la Gestalt?",
+o:[
+"Percepción",
+"Conducta",
+"Refuerzo",
+"Memoria"
+],a:0,e:"Organización perceptiva."
+},
+{
+q:"¿Qué autora analiza conflictos emocionales tempranos?",
+o:["Melanie Klein","Agazzi","Mata","Pikler"],
+a:0,e:"Psicoanálisis infantil."
+},
+{
+q:"¿Qué principio guía Freinet?",
+o:[
+"Trabajo cooperativo",
+"Examen memorístico",
+"Disciplina rígida",
+"Refuerzo negativo"
+],a:0,e:"Aprendizaje cooperativo."
+},
+{
+q:"¿Qué pionero fundó la primera escuela de párvulos en España?",
+o:[
+"Pablo Montesino",
+"Giner de los Ríos",
+"Steiner",
+"Ferrière"
+],a:0,e:"Pablo Montesino."
+},
+{
+q:"¿Qué persigue el aprendizaje significativo?",
+o:[
+"Relacionar conocimientos previos",
+"Memorizar datos",
+"Condicionar respuestas",
+"Uniformar enseñanza"
+],a:0,e:"Construcción cognitiva."
+},
+{
+q:"¿Qué autor defendió el aprendizaje por descubrimiento?",
+o:["Bruner","Ausubel","Skinner","Freud"],
+a:0,e:"Bruner."
+}
+];
+
+const letras=["A","B","C","D"];
+const exam=document.getElementById("exam");
+
+function render(){
+exam.innerHTML="";
+preguntas.forEach((p,i)=>{
+let opciones=p.o.map((op,j)=>
+`<label class="option" id="q${i}o${j}">
+<input type="radio" name="q${i}" value="${j}">
+<strong>${letras[j]}.</strong> ${op}
+</label>`
+).join("");
+
+exam.innerHTML+=`
+<div class="card">
+<h3>Pregunta ${i+1}</h3>
+<p>${p.q}</p>
+${opciones}
+<div id="f${i}" class="feedback"></div>
+</div>`;
+});
+}
+
+function corregir(){
+
+let aciertos=0;
+let errores=0;
+
+preguntas.forEach((p,i)=>{
+const sel=document.querySelector(`input[name=q${i}]:checked`);
+const fb=document.getElementById(`f${i}`);
+
+if(sel){
+if(Number(sel.value)===p.a){
+aciertos++;
+fb.className="feedback ok";
+fb.innerHTML="✔ Correcta<br>"+p.e;
+}else{
+errores++;
+fb.className="feedback bad";
+fb.innerHTML=`✘ Incorrecta<br>Correcta: ${letras[p.a]}<br>${p.e}`;
+}
+fb.style.display="block";
+}
+});
+
+const penalizacion=Math.floor(errores/3);
+const notaFinal=Math.max(aciertos-penalizacion,0);
+const porcentaje=Math.round((notaFinal/preguntas.length)*100);
+
+document.getElementById("resultado").innerHTML=
+`
+Aciertos: ${aciertos}<br>
+Errores: ${errores}<br>
+Penalización: -${penalizacion}<br>
+Nota final: ${notaFinal}/${preguntas.length}
+`;
+
+document.getElementById("bar").style.width=porcentaje+"%";
+}
+
+function mostrar(){
+preguntas.forEach((p,i)=>{
+const fb=document.getElementById(`f${i}`);
+fb.style.display="block";
+fb.className="feedback ok";
+fb.innerHTML=`Respuesta correcta: ${letras[p.a]}<br>${p.e}`;
+});
+}
+
+function reiniciar(){
+document.querySelectorAll("input").forEach(i=>i.checked=false);
+document.querySelectorAll(".feedback").forEach(f=>f.style.display="none");
+document.getElementById("resultado").textContent="Pendiente";
+document.getElementById("bar").style.width="0";
+}
+
+render();
+
+</script>
+
+</body>
+</html>
