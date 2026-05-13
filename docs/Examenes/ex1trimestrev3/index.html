@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Examen autocorregible Educación Infantil - Versión avanzada</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#1f2937;margin:0}
+.wrap{max-width:1200px;margin:auto;padding:24px}
+.hero,.card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.hero{padding:24px;margin-bottom:18px;position:sticky;top:0;z-index:2}
+h1{margin:0 0 10px;color:#123d6b}.meta{color:#4b5563;margin:6px 0}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;align-items:center}
+button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
+.primary{background:#1d4ed8;color:#fff}.secondary{background:#e5e7eb}.dark{background:#111827;color:#fff}
+#timer{padding:12px 16px;border-radius:10px;background:#eff6ff;font-weight:700;min-width:84px;text-align:center}
+.score{margin-top:12px;font-weight:700}.barwrap{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#10b981);transition:width .4s ease}
+.card{padding:18px;margin:16px 0}.qnum{font-size:.95rem;font-weight:700;color:#334155}.qtext{font-size:1.05rem;font-weight:700;margin:10px 0 12px;line-height:1.45}
+.option{display:block;padding:12px;border:1px solid #d1d5db;border-radius:10px;margin:8px 0;background:#fff;cursor:pointer;line-height:1.4}
+.option:hover{background:#f8fafc}.option input{margin-right:10px;vertical-align:top;margin-top:3px}
+.feedback{display:none;margin-top:10px;padding:12px;border-radius:10px}.ok{background:#dcfce7;color:#166534;border:1px solid #86efac}.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
+.solution{margin-top:10px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;display:none;line-height:1.4}
+.small{font-size:.95rem;color:#4b5563}
+.badge{display:inline-block;background:#e0f2fe;color:#075985;border-radius:999px;padding:4px 10px;font-size:.85rem;font-weight:700;margin-top:6px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <h1>Examen autocorregible de Educación Infantil · Versión avanzada</h1>
+    <p class="meta">Versión de 40 preguntas con distractores más complejos, enunciados más elaborados y enfoque de razonamiento aplicado a normativa, TSEI, teorías educativas, currículo y DUA.</p>
+    <p class="meta">Incluye corrección automática, explicación por pregunta, repaso de errores, simulacro completo y reinicio.</p>
+    <div class="controls">
+      <button class="secondary" onclick="nuevoSimulacro()">Nuevo simulacro</button>
+      <button class="secondary" onclick="repasarErrores()">Repasar fallos</button>
+      <div id="timer">40:00</div>
+      <button class="primary" onclick="corregir()">Corregir examen</button>
+      <button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
+      <button class="dark" onclick="reiniciar()">Reiniciar</button>
+    </div>
+    <div id="score" class="score">Puntuación: pendiente</div>
+    <div class="barwrap"><div id="bar" class="bar"></div></div>
+    <div class="badge">Nivel: avanzado</div>
+  </div>
+  <div id="exam"></div>
+  <p class="small">Advertencia de precisión: el examen se ha construido a partir de los materiales aportados. Está diseñado como recurso de estudio y no sustituye la consulta directa de la normativa oficial ni de los documentos completos.</p>
+</div>
+<script>
+const CONFIG = { tiempoExamen: 40 * 60, aprobado: 70, preguntasSimulacro: 40 };
+
+const bloques = {
+  tema1: 'Tema 1 · Contexto, normativa y TSEI',
+  tema2: 'Tema 2 · Teorías y modelos educativos',
+  curriculum: 'Currículo, áreas y competencias',
+  dua: 'DUA y situaciones de aprendizaje'
+};
+
+const preguntas = [
+  {tema:'tema1', q:'En relación con el contexto social de la atención a la infancia en España, ¿qué opción integra de forma más ajustada los cambios señalados en los materiales como factores de incidencia educativa?', options:['Reducción del uso de tecnologías, homogeneidad familiar y desaparición de la conciliación','Paso de familias extensas a nucleares, incorporación de las mujeres al mundo laboral, diversidad familiar y cambios en medios de comunicación y entorno','Desvinculación entre familia y escuela, supresión de la corresponsabilidad y estabilidad absoluta del entorno rural','Eliminación de la diversidad social y consolidación de un único modelo educativo de crianza'], answer:1, explanation:'Los materiales señalan cambios en el modelo familiar, la corresponsabilidad, los medios de comunicación y el entorno urbano-rural como factores de incidencia en la infancia.'},
+  {tema:'tema1', q:'Si se compara la modalidad formal con la no formal de atención a la infancia, ¿qué opción clasifica correctamente los recursos según los documentos aportados?', options:['Escuelas Infantiles y CEIP en el ámbito formal; ludotecas, aulas hospitalarias y campamentos en el no formal','Escuelas Infantiles y granjas escuela en el ámbito formal; CEIP y bebetecas en el no formal','Casas de Infancia y residencias infantiles en el ámbito exclusivamente universitario','CEIP y academias privadas en el ámbito formal; servicios sociales y hospitales fuera de cualquier intervención educativa'], answer:0, explanation:'Los materiales ubican Escuelas Infantiles y CEIP en el ámbito formal, y ejemplos como ludotecas, aulas hospitalarias, granjas escuela o campamentos en el no formal.'},
+  {tema:'tema1', q:'A partir del resumen del informe Eurydice 2025 incluido en los apuntes, ¿cuál es la interpretación más precisa sobre la educación y atención a la primera infancia en Europa?', options:['La expansión de servicios ha resuelto completamente la universalización del acceso','Se han ampliado los servicios, pero sigue existiendo una brecha notable en el acceso universal a una atención temprana de calidad','Todos los países europeos garantizan plaza pública desde el nacimiento','España no garantiza plaza pública en ningún tramo de la etapa'], answer:1, explanation:'El resumen del informe indica progreso en disponibilidad, pero persistencia de brechas en el acceso universal a servicios de calidad.'},
+  {tema:'tema1', q:'Siguiendo la clasificación de Trilla recogida en los materiales, ¿qué opción define mejor la educación no formal?', options:['Enseñanza reglada, estructurada y acreditada por el Estado','Actividad organizada y sistemática fuera del sistema formal para aprendizajes dirigidos a determinados grupos','Aprendizaje espontáneo derivado solo del entorno familiar','Proceso exclusivamente universitario y profesionalizador'], answer:1, explanation:'La educación no formal aparece definida como actividad organizada y sistemática realizada fuera del sistema formal educativo.'},
+  {tema:'tema1', q:'¿Qué formulación recoge mejor el concepto actual de Educación Infantil presente en los apuntes?', options:['Una etapa centrada en el adiestramiento temprano de destrezas académicas aisladas','Una educación diferenciada respecto a la del adulto, orientada a la formación integral y adaptada a las características y necesidades del niño y la niña','Una intervención básicamente asistencial, previa al verdadero aprendizaje escolar','Una fase preparatoria cuyo objetivo principal es anticipar contenidos de Primaria'], answer:1, explanation:'Los materiales definen la Educación Infantil como educación diferenciada, adaptada a las características infantiles y orientada a la formación integral.'},
+  {tema:'tema1', q:'¿Qué combinación normativa aparece correctamente relacionada en los materiales respecto al marco estatal y autonómico de Educación Infantil?', options:['Constitución Española art. 27, LOMLOE, RD 95/2022 y Orden ECD/853/2022','Estatuto de Autonomía, LODE, LOGSE y Ley Moyano como normas vigentes de currículo aragonés','LOMCE, Orden ministerial de FP y reglamento universitario de acceso a infantil','Solo la Constitución Española, al no existir desarrollo curricular específico'], answer:0, explanation:'Los materiales relacionan el artículo 27 CE, la LOMLOE, el RD 95/2022 y la Orden ECD/853/2022 como referencias clave.'},
+  {tema:'tema1', q:'Cuando los materiales vinculan el ODS 4 con la Educación Infantil, ¿qué formulación se ajusta mejor a ese objetivo?', options:['Garantizar rentabilidad económica en los centros de 0 a 6 años','Garantizar una educación inclusiva, equitativa y de calidad y promover oportunidades de aprendizaje permanente','Reducir exclusivamente el absentismo en enseñanzas posobligatorias','Promover la digitalización sin referencias a equidad ni inclusión'], answer:1, explanation:'Los apuntes asocian el ODS 4 a una educación inclusiva, equitativa y de calidad.'},
+  {tema:'tema1', q:'¿Qué interpretación es más coherente con el ODS 5 en el contexto educativo descrito en los materiales?', options:['Impulsar la igualdad de género y el empoderamiento de mujeres y niñas','Priorizar solo el acceso masculino a estudios superiores','Sustituir la coeducación por segregación sistemática','Reducir la educación infantil al cuidado asistencial'], answer:0, explanation:'Los materiales asocian el ODS 5 con la igualdad de género y el empoderamiento de mujeres y niñas.'},
+  {tema:'tema1', q:'La competencia general del TSEI se formula en los materiales con varios matices. ¿Cuál de las siguientes opciones la reproduce con mayor precisión conceptual?', options:['Diseñar, implementar y evaluar proyectos y programas de atención a la infancia en el primer ciclo formal y en toda la etapa no formal, en colaboración con otros profesionales y las familias','Asumir la titularidad docente exclusiva en toda la etapa 0-6 en el ámbito formal','Ejercer como inspector de educación y responsable jurídico del centro infantil','Sustituir la propuesta pedagógica elaborada por el maestro especialista en Educación Infantil'], answer:0, explanation:'La formulación recogida en los materiales incluye diseño, implementación y evaluación de programas, colaboración profesional y actuación en primer ciclo formal y ámbito no formal.'},
+  {tema:'tema1', q:'¿Qué opción diferencia adecuadamente las modalidades de intervención del TSEI mencionadas en los materiales?', options:['Intervención educativa, orientada al desarrollo de capacidades, e intervención asistencial, centrada en la satisfacción de necesidades básicas','Intervención legislativa e intervención judicial','Intervención curricular e intervención universitaria','Intervención clínica e intervención sancionadora'], answer:0, explanation:'Los apuntes distinguen entre intervención educativa e intervención asistencial.'},
+  {tema:'tema1', q:'En relación con las funciones del TSEI, ¿qué opción refleja mejor el equilibrio entre atención directa, seguimiento y coordinación?', options:['Planificar actividades, atender individualmente, garantizar seguridad, observar y evaluar el desarrollo, coordinarse con el equipo y comunicarse con las familias','Limitarse a custodiar al alumnado mientras el diseño pedagógico recae enteramente fuera del aula','Centrarse solo en tareas higiénicas sin participación en evaluación u observación','Desarrollar funciones exclusivamente administrativas'], answer:0, explanation:'Los materiales incluyen planificación, atención individualizada, seguridad, observación, evaluación, coordinación y comunicación con familias.'},
+  {tema:'tema1', q:'¿Qué medio de relación con las familias aparece expresamente entre los ejemplos recogidos en los materiales?', options:['Solo comparecencias judiciales','Reuniones presenciales, cuadernos de comunicación, entrevistas y plataformas virtuales','Únicamente exámenes trimestrales firmados','Comunicaciones informales sin registro ni seguimiento'], answer:1, explanation:'Los apuntes citan reuniones, cuadernos de comunicación, entrevistas, boletines y plataformas virtuales, entre otros medios.'},
+  {tema:'tema1', q:'¿Cuál de las siguientes opciones recoge rasgos personales y profesionales atribuidos al TSEI en los materiales?', options:['Neutralidad emocional absoluta, improvisación y rigidez comunicativa','Estabilidad emocional, afectividad, autocontrol, sensibilidad, madurez, discreción y prudencia','Especialización jurídica obligatoria y desvinculación afectiva del alumnado','Autoridad punitiva como rasgo central'], answer:1, explanation:'Los materiales destacan estabilidad emocional, afectividad, autocontrol, sensibilidad, madurez, discreción y prudencia.'},
+  {tema:'tema1', q:'En el bloque de ética profesional del TSEI, ¿qué formulación se ajusta mejor a los principios enumerados en los apuntes?', options:['Protección de derechos de la infancia, respeto a las diferencias individuales, responsabilidad, intimidad, honestidad, formación permanente y trabajo en equipo','Primacía de la conveniencia del profesional sobre el interés superior del niño','Reserva de la información solo para la dirección, sin colaboración interdisciplinar','Sustitución de la normativa por criterios personales'], answer:0, explanation:'Los materiales recogen esos principios dentro de la ética profesional del TSEI.'},
+  {tema:'tema1', q:'¿Qué sentido tiene la formación permanente según la definición resumida de la UNESCO incluida en los materiales?', options:['Es una exigencia puntual que finaliza con la titulación inicial','Es un proceso de revisión y renovación de conocimientos, actitudes y habilidades motivado por la necesidad de actualización','Se reduce a obtener certificados sin impacto profesional','Solo resulta útil fuera del ámbito educativo'], answer:1, explanation:'Los apuntes citan la definición de la UNESCO como proceso de revisión y renovación de conocimientos, actitudes y habilidades.'},
+
+  {tema:'tema2', q:'En los materiales, el conductismo se presenta como una teoría que vincula el aprendizaje a relaciones entre conducta y entorno. ¿Qué opción expresa mejor esa idea?', options:['El aprendizaje depende exclusivamente de intuiciones súbitas y reorganizaciones perceptivas','El aprendizaje se produce por combinaciones de estímulos y respuestas y por las consecuencias asociadas a la conducta','El aprendizaje surge de la libre elección sin influencia del contexto','El aprendizaje se explica solo por la estructura biológica innata'], answer:1, explanation:'Los apuntes presentan el conductismo como teoría basada en relaciones estímulo-respuesta y consecuencias de la conducta.'},
+  {tema:'tema2', q:'¿Qué ejemplo encaja mejor con el condicionamiento clásico atribuido a Pavlov?', options:['Un niño repite una conducta porque obtiene un refuerzo social','Un estímulo inicialmente neutro llega a provocar una respuesta condicionada al asociarse con otro estímulo','Un alumno reorganiza perceptivamente un problema y halla una solución súbita','Una niña construye conocimiento por exploración autónoma en un ambiente preparado'], answer:1, explanation:'El condicionamiento clásico consiste en asociar un estímulo neutro con una respuesta condicionada.'},
+  {tema:'tema2', q:'¿Qué afirmación describe con mayor precisión el condicionamiento operante de Skinner según los apuntes?', options:['La conducta se fortalece o debilita en función de sus consecuencias, como refuerzos o castigos','El aprendizaje es únicamente observacional y vicario','Las etapas cognitivas se suceden por maduración lógica','La percepción figura-fondo explica todo comportamiento'], answer:0, explanation:'Skinner relaciona la conducta con las consecuencias obtenidas, mediante refuerzos y castigos.'},
+  {tema:'tema2', q:'Desde la perspectiva cognitiva resumida en los materiales, ¿qué implicación educativa resulta más coherente?', options:['El educador actúa como facilitador y aprovecha los conocimientos previos y el interés natural por el juego','La enseñanza debe ignorar el desarrollo evolutivo del sujeto','La memoria mecánica sustituye a toda actividad exploratoria','El contexto social carece de valor educativo'], answer:0, explanation:'Los materiales señalan que las teorías cognitivas llevan a aprovechar conocimientos previos, interés por el juego y papel facilitador del educador.'},
+  {tema:'tema2', q:'¿Qué secuencia de etapas de Piaget está mejor alineada con la información recogida en los apuntes?', options:['Sensoriomotora, preoperacional, operaciones concretas y operaciones formales','Oral, anal, fálica y genital','Microsistema, mesosistema, exosistema y macrosistema','Representación, compromiso y acción'], answer:0, explanation:'Los apuntes atribuyen a Piaget las etapas sensoriomotora, preoperacional, operaciones concretas y formales.'},
+  {tema:'tema2', q:'¿Qué formulación identifica mejor la aportación de Bruner?', options:['Aprendizaje por descubrimiento y andamiaje, con retirada progresiva de la ayuda adulta','Condicionamiento clásico mediante asociación automática','Explicación de la personalidad a partir de ello, yo y superyó','Defensa de la ausencia total de intervención adulta'], answer:0, explanation:'Bruner se asocia al aprendizaje por descubrimiento y al andamiaje tutorial.'},
+  {tema:'tema2', q:'¿Qué elemento distingue la propuesta de Bandura en relación con otros enfoques del aprendizaje?', options:['La centralidad del aprendizaje por observación de modelos y la influencia social','La negación de todo proceso mental','La eliminación del papel del entorno','La imposibilidad de modificar conductas mediante interacción'], answer:0, explanation:'Bandura destaca el aprendizaje por observación de modelos y la influencia social.'},
+  {tema:'tema2', q:'¿Qué rasgo caracteriza el aprendizaje significativo de Ausubel según los apuntes?', options:['Los nuevos conocimientos se integran mejor cuando se relacionan con la estructura cognitiva previa del alumno','Aprender consiste en repetir sin conexión ideas nuevas','Solo es válido en etapas superiores, no en infantil','Exige evitar la evaluación inicial'], answer:0, explanation:'Ausubel sostiene que el aprendizaje mejora cuando lo nuevo se conecta con conocimientos previos.'},
+  {tema:'tema2', q:'La Zona de Desarrollo Próximo de Vygotsky se entiende en los materiales como:', options:['La distancia entre lo que el niño puede hacer solo y lo que puede lograr con ayuda','Una etapa rígida previa al lenguaje','Una técnica de castigo negativo','Un recurso exclusivo del conductismo'], answer:0, explanation:'Los apuntes definen la ZDP como la distancia entre el desarrollo actual y el potencial con ayuda.'},
+  {tema:'tema2', q:'¿Qué idea sintetiza mejor la aportación educativa de la teoría socio-histórica?', options:['El desarrollo y el aprendizaje están determinados también por las características sociales del medio','Todo aprendizaje es únicamente individual e interno','La cultura no influye en la educación infantil','El lenguaje tiene un papel secundario sin relevancia social'], answer:0, explanation:'Los materiales atribuyen a Vygotsky la influencia decisiva del medio social en el desarrollo.'},
+  {tema:'tema2', q:'Dentro de las teorías evolutivas y psicoanalíticas recogidas en los materiales, ¿qué rasgo se asocia específicamente a Erikson?', options:['Desarrollo de la identidad a través de etapas psicosociales y crisis evolutivas','Condicionamiento operante mediante refuerzo negativo','Aprendizaje vicario por modelado','Organización perceptiva figura-fondo'], answer:0, explanation:'Los apuntes atribuyen a Erikson un enfoque sobre identidad, etapas psicosociales y crisis evolutivas.'},
+  {tema:'tema2', q:'¿Qué opción refleja mejor la aportación de Melanie Klein según los materiales?', options:['Análisis del juego y la fantasía como expresión de conflictos emocionales tempranos','Diseño de ambientes preparados con materiales específicos','Trabajo por centros de interés vinculados a necesidades','Modelo ecológico organizado en sistemas concéntricos'], answer:0, explanation:'Melanie Klein se centra en conflictos emocionales tempranos y su manifestación en el juego y la fantasía.'},
+  {tema:'tema2', q:'En la teoría de la Gestalt, ¿qué interpretación es la más precisa según los apuntes?', options:['La percepción organiza la información y permite comprender relaciones como figura-fondo e insight','La conducta se explica exclusivamente por premios y castigos','El aprendizaje depende solo de redes tecnológicas','La educación debe eliminar toda experiencia sensorial'], answer:0, explanation:'Los materiales destacan en la Gestalt la percepción, la organización de la información, la ley figura-fondo y el insight.'},
+  {tema:'tema2', q:'¿Qué formulación resume mejor el conectivismo presentado en los materiales?', options:['Teoría centrada en el papel de la tecnología, las redes sociales y la capacidad de conectar información','Método clásico de memorización repetitiva','Modelo psicoafectivo basado en etapas libidinales','Enfoque de control conductual estricto'], answer:0, explanation:'El conectivismo se presenta como teoría centrada en tecnología, redes sociales y capacidad de conectar información.'},
+  {tema:'tema2', q:'¿Qué combinación pedagógica y aportación está correctamente relacionada según los apuntes?', options:['Montessori - ambiente preparado y autoeducación; Decroly - centros de interés; Freinet - cooperación y experiencia','Montessori - castigo negativo; Decroly - macrosistema; Freinet - figura-fondo','Agazzi - conectivismo; Pikler - exámenes obligatorios; Waldorf - refuerzo operante','Reggio Emilia - condicionamiento clásico; Summerhill - criterios de evaluación oficiales'], answer:0, explanation:'Esa combinación coincide con las aportaciones recogidas en los materiales para esos autores.'},
+  {tema:'tema2', q:'En el modelo ecológico de Bronfenbrenner resumido en los apuntes, ¿qué opción ilustra mejor el mesosistema?', options:['Las conexiones entre familia y escuela','La cultura y las influencias políticas generales','Los servicios sociales sin relación directa inmediata','La intimidad psíquica del niño'], answer:0, explanation:'El mesosistema se refiere a las conexiones entre los distintos entornos del microsistema, como familia y escuela.'},
+
+  {tema:'curriculum', q:'Según los materiales del tema 3, ¿qué definición de currículo es la más ajustada?', options:['Relación cerrada de contenidos conceptuales por edades','Conjunto orgánico de objetivos, competencias, criterios, saberes y orientaciones que regulan la práctica docente','Documento administrativo limitado al horario escolar','Sistema de calificación independiente del proceso educativo'], answer:1, explanation:'Los apuntes definen el currículo como conjunto orgánico de objetivos, competencias, criterios, saberes y orientaciones que regulan la práctica docente.'},
+  {tema:'curriculum', q:'¿Qué relación establecen los materiales entre objetivos de etapa, competencias clave, competencias específicas y criterios de evaluación?', options:['Son elementos aislados que se aplican por separado','Forman una arquitectura interconectada en la que los criterios permiten valorar el desarrollo de competencias específicas vinculadas a las competencias clave y a los objetivos de etapa','Los criterios sustituyen por completo a las competencias clave','Los objetivos generales solo tienen valor decorativo y no curricular'], answer:1, explanation:'Los materiales presentan estos elementos como un sistema interconectado dentro del currículo.'},
+  {tema:'curriculum', q:'¿Cuál de las siguientes opciones enumera correctamente las tres áreas de aprendizaje de Educación Infantil recogidas en el material?', options:['Crecimiento en Armonía; Descubrimiento y Exploración del Entorno; Comunicación y Representación de la Realidad','Lengua; Matemáticas; Conocimiento del Medio','Autonomía personal; Lectoescritura; Educación plástica','Desarrollo motor; Razonamiento lógico; Expresión artística'], answer:0, explanation:'Las tres áreas oficiales recogidas en los materiales son esas.'},
+  {tema:'curriculum', q:'¿Qué formulación representa mejor el sentido de los saberes básicos dentro del currículo?', options:['Contenidos auxiliares sin conexión con competencias ni evaluación','Conocimientos, destrezas y actitudes propios de un área que contribuyen al desarrollo competencial','Listado de sanciones y normas del centro','Resumen de recursos materiales del aula'], answer:1, explanation:'Los saberes básicos se definen como conocimientos, destrezas y actitudes propios de cada área.'},
+  {tema:'curriculum', q:'¿Qué competencia específica del área de Crecimiento en Armonía se relaciona en los materiales con la adopción de hábitos saludables?', options:['CA.3','DEE.2','CRR.1','CA.1'], answer:0, explanation:'CA.3 se refiere a hábitos saludables y estilo de vida saludable y ecosocialmente responsable.'},
+  {tema:'curriculum', q:'Si una propuesta busca que el alumnado identifique características de objetos, establezca relaciones y avance en destrezas lógico-matemáticas mediante exploración y manipulación, ¿qué competencia específica se ajusta mejor?', options:['DEE.1','CRR.4','CA.2','CCEC'], answer:0, explanation:'DEE.1 se centra en identificación de características, relaciones y exploración lógico-matemática.'},
+  {tema:'curriculum', q:'¿Qué opción recoge de manera más precisa una competencia específica del área de Comunicación y Representación de la Realidad?', options:['Manifestar interés por interactuar y explorar el repertorio comunicativo para expresar necesidades e intenciones','Clasificar colecciones por atributos físicos y desarrollar pensamiento computacional','Adoptar hábitos saludables y confianza en las propias posibilidades','Reconocer fenómenos naturales desde la sostenibilidad exclusivamente'], answer:0, explanation:'CRR.1 se refiere a interactuar en situaciones cotidianas mediante el repertorio comunicativo para expresar necesidades e intenciones.'},
+  {tema:'curriculum', q:'En los materiales, los criterios de evaluación se describen como:', options:['Referentes que indican niveles de desempeño esperados en un momento determinado del aprendizaje','Pruebas estandarizadas obligatorias al final de cada trimestre','Listados de conductas sancionables en el aula','Actividades optativas para ampliar contenidos'], answer:0, explanation:'Los criterios de evaluación aparecen definidos como referentes de desempeño esperado.'},
+  {tema:'curriculum', q:'¿Qué interpretación es más coherente con el papel de las competencias clave en Educación Infantil según el tema 3?', options:['Son desempeños transversales imprescindibles que se desarrollan a través de las tres áreas','Sustituyen por completo a los objetivos generales de etapa','Se limitan al segundo ciclo y excluyen el primer ciclo','Se aplican solo a materias instrumentales tradicionales'], answer:0, explanation:'Los materiales presentan las competencias clave como desempeños transversales que se desarrollan a través de las tres áreas.'},
+  {tema:'curriculum', q:'¿Qué opción sintetiza mejor la finalidad de las situaciones de aprendizaje en el diseño curricular?', options:['Contextualizar actuaciones para movilizar saberes y desarrollar competencias en tareas significativas','Reducir el currículo a fichas repetitivas y exámenes cerrados','Separar completamente áreas, evaluación y metodología','Sustituir la planificación docente por improvisación'], answer:0, explanation:'Las situaciones de aprendizaje se orientan a movilizar saberes y desarrollar competencias en contextos significativos.'},
+
+  {tema:'dua', q:'Cuando los materiales afirman que el DUA es un marco de referencia para crear contextos inclusivos, ¿qué implicación metodológica señalan de forma más clara?', options:['La accesibilidad debe diseñarse desde el inicio, evitando depender solo de adaptaciones posteriores','La inclusión se logra manteniendo un único formato de actividad para todo el alumnado','El DUA elimina la necesidad de objetivos y evaluación','La atención a la diversidad solo compete al apoyo externo, no a la planificación ordinaria'], answer:0, explanation:'Los materiales indican que el DUA busca accesibilidad desde el inicio, sin depender exclusivamente de adaptaciones posteriores.'},
+  {tema:'dua', q:'¿Qué opción relaciona correctamente los tres principios del DUA con su sentido pedagógico?', options:['Representación: múltiples formas de presentar la información; acción y expresión: diversas formas de demostrar lo aprendido; compromiso: distintas vías de implicación y motivación','Representación: evaluación final; acción y expresión: disciplina; compromiso: memorización','Representación: castigo; acción y expresión: premio; compromiso: obediencia','Representación: contenidos; acción y expresión: horarios; compromiso: calificaciones'], answer:0, explanation:'Esa relación coincide con la explicación del DUA en los materiales.'},
+  {tema:'dua', q:'Si una docente usa pictogramas, materiales manipulativos y opciones de participación diversas para anticipar barreras, ¿qué lectura es más ajustada según los materiales?', options:['Está aplicando el DUA mediante múltiples medios de representación, acción/expresión y compromiso','Está sustituyendo el currículo por apoyos visuales','Está renunciando a los criterios de evaluación','Está limitando el aprendizaje a alumnado con necesidades específicas'], answer:0, explanation:'Los materiales presentan ese tipo de recursos como ejemplos de desarrollo DUA.'},
+  {tema:'dua', q:'¿Qué debe planificarse en una situación de aprendizaje, según el esquema recogido en el tema 3?', options:['Temporalización, espacios, metodología, agrupamiento, recursos materiales y humanos, evaluación y atención a la diversidad','Solo el producto final y la nota','Únicamente el material fungible necesario','Solo los objetivos generales sin conexión con actividades'], answer:0, explanation:'Los materiales indican que deben planificarse esos elementos en el diseño de situaciones de aprendizaje.'},
+  {tema:'dua', q:'¿Qué opción explica mejor la relación entre competencias específicas, criterios de evaluación y situaciones de aprendizaje?', options:['Las situaciones de aprendizaje movilizan saberes para desarrollar competencias específicas, cuyo grado de desarrollo se informa mediante criterios de evaluación','Los criterios de evaluación sustituyen las situaciones de aprendizaje','Las competencias específicas solo se usan para clasificar alumnos por nivel','Las situaciones de aprendizaje se diseñan al margen del currículo'], answer:0, explanation:'Los materiales explican esa relación como parte del sistema curricular interconectado.'},
+  {tema:'dua', q:'En el ejemplo del “Restaurante de los Colores”, ¿qué integración curricular aparece reflejada en los materiales?', options:['Hábitos saludables, clasificación lógica, interacción verbal y desarrollo DUA mediante pictogramas, manipulación y elección de roles','Solo contenidos de higiene sin conexión con lenguaje ni exploración','Una actividad evaluativa cerrada sin contexto ni juego','Una propuesta centrada únicamente en lectoescritura formal'], answer:0, explanation:'El ejemplo integra CA.3, DEE.1, CRR.1 y elementos DUA como pictogramas, manipulación real y elección de roles.'},
+  {tema:'dua', q:'¿Qué formulación resume mejor el papel del DUA en el currículo descrito en los materiales?', options:['Es un añadido opcional para alumnado con dificultades ya detectadas','Es un marco estructural de planificación inclusiva que orienta medidas organizativas, metodológicas y curriculares','Es una técnica exclusiva de evaluación sumativa','Es un recurso tecnológico sin relación con el diseño de actividades'], answer:1, explanation:'Los materiales presentan el DUA como marco de referencia e incluso como criterio para medidas organizativas, metodológicas y curriculares.'},
+  {tema:'dua', q:'¿Qué idea es más coherente con la presencia del conectivismo y de las redes sociales en tus materiales cuando se piensa en aprendizaje actual?', options:['Las redes y la tecnología pueden formar parte de los procesos de conexión y acceso a información relevante','La tecnología anula el papel del docente y del currículo','Las redes sociales no tienen ninguna relación con el aprendizaje en ningún nivel','El conectivismo prohíbe la interacción presencial'], answer:0, explanation:'Los apuntes asocian el conectivismo a tecnología, redes sociales y capacidad de conectar información.'},
+  {tema:'dua', q:'Si una programación incorpora diversidad de materiales, varias vías de respuesta, motivación basada en intereses y evaluación vinculada a criterios, ¿qué interpretación se ajusta mejor al enfoque de los materiales?', options:['La programación articula currículo, DUA y situaciones de aprendizaje como elementos conectados','La programación contradice el currículo por no usar una única vía de enseñanza','La programación excluye las competencias clave','La programación solo sería válida en educación no formal'], answer:0, explanation:'Los materiales insisten en que currículo, DUA y situaciones de aprendizaje forman una arquitectura interconectada.'}
+];
+
+let activeQuestions = [...preguntas];
+let errores = [];
+let tiempoRestante = CONFIG.tiempoExamen;
+let timer = null;
+let solucionesVisibles = false;
+
+function shuffle(arr){ return [...arr].sort(() => Math.random() - 0.5); }
+function formatTime(sec){ const m = Math.floor(sec/60); const s = sec%60; return `${m}:${String(s).padStart(2,'0')}`; }
+
+function iniciarTemporizador(){
+  clearInterval(timer);
+  document.getElementById('timer').textContent = formatTime(tiempoRestante);
+  timer = setInterval(() => {
+    tiempoRestante--;
+    document.getElementById('timer').textContent = formatTime(Math.max(tiempoRestante,0));
+    if(tiempoRestante <= 0){
+      clearInterval(timer);
+      corregir();
+      alert('Tiempo finalizado');
+    }
+  },1000);
+}
+
+function render(){
+  const exam = document.getElementById('exam');
+  exam.innerHTML = '';
+  activeQuestions.forEach((q, idx) => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="qnum">Pregunta ${idx + 1} · ${bloques[q.tema] || q.tema}</div>
+      <div class="qtext">${q.q}</div>
+      <div class="options"></div>
+      <div class="feedback" id="fb-${idx}"></div>
+      <div class="solution" id="sol-${idx}">${q.explanation}</div>
+    `;
+    const options = card.querySelector('.options');
+    q.options.forEach((opt, i) => {
+      const label = document.createElement('label');
+      label.className = 'option';
+      label.innerHTML = `<input type="radio" name="q${idx}" value="${i}"> ${opt}`;
+      options.appendChild(label);
+    });
+    exam.appendChild(card);
+  });
+  document.getElementById('score').textContent = 'Puntuación: pendiente';
+  document.getElementById('bar').style.width = '0%';
+  aplicarEstadoSoluciones();
+}
+
+function corregir(){
+  let ok = 0;
+  errores = [];
+  activeQuestions.forEach((q, idx) => {
+    const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+    const fb = document.getElementById(`fb-${idx}`);
+    const sol = document.getElementById(`sol-${idx}`);
+    if(sel && Number(sel.value) === q.answer){
+      ok++;
+      fb.className = 'feedback ok';
+      fb.style.display = 'block';
+      fb.textContent = 'Correcta.';
+    } else {
+      errores.push(q);
+      fb.className = 'feedback bad';
+      fb.style.display = 'block';
+      fb.textContent = `Incorrecta. Respuesta correcta: ${q.options[q.answer]}.`;
+    }
+    sol.style.display = solucionesVisibles ? 'block' : 'none';
+  });
+  const total = activeQuestions.length || 1;
+  const pct = Math.round((ok / total) * 100);
+  document.getElementById('score').innerHTML = `Resultado: ${ok}/${activeQuestions.length} (${pct}%)<br>${pct >= CONFIG.aprobado ? '✅ APROBADO' : '❌ SUSPENSO'}`;
+  document.getElementById('bar').style.width = `${pct}%`;
+}
+
+function mostrar(){
+  solucionesVisibles = !solucionesVisibles;
+  aplicarEstadoSoluciones();
+}
+
+function aplicarEstadoSoluciones(){
+  activeQuestions.forEach((q, idx) => {
+    const sol = document.getElementById(`sol-${idx}`);
+    if(sol) sol.style.display = solucionesVisibles ? 'block' : 'none';
+  });
+}
+
+function nuevoSimulacro(){
+  activeQuestions = shuffle(preguntas).slice(0, CONFIG.preguntasSimulacro);
+  tiempoRestante = CONFIG.tiempoExamen;
+  solucionesVisibles = false;
+  render();
+  iniciarTemporizador();
+}
+
+function repasarErrores(){
+  if(!errores.length){
+    alert('No hay fallos previos para repasar. Corrige primero un simulacro.');
+    return;
+  }
+  activeQuestions = [...errores];
+  tiempoRestante = CONFIG.tiempoExamen;
+  solucionesVisibles = true;
+  render();
+  iniciarTemporizador();
+}
+
+function reiniciar(){
+  clearInterval(timer);
+  errores = [];
+  activeQuestions = [...preguntas];
+  tiempoRestante = CONFIG.tiempoExamen;
+  solucionesVisibles = false;
+  render();
+  iniciarTemporizador();
+}
+
+render();
+iniciarTemporizador();
+</script>
+</body>
+</html>
