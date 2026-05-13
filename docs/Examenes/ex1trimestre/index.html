@@ -1,117 +1,178 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Examen Educación Infantil - 40 preguntas</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 40px; color: #222; line-height: 1.45; }
-    h1, h2 { color: #1f4e79; }
-    .meta { margin-bottom: 20px; }
-    .question { margin: 18px 0; padding: 14px; border: 1px solid #d9d9d9; border-radius: 8px; }
-    .question p { margin: 0 0 10px 0; font-weight: bold; }
-    ol.options { margin: 0 0 0 22px; }
-    .answer-key { margin-top: 40px; page-break-before: always; }
-    table { border-collapse: collapse; width: 100%; margin-top: 12px; }
-    th, td { border: 1px solid #bbb; padding: 8px; text-align: left; }
-    th { background: #f2f2f2; }
-    .note { font-size: 0.95em; color: #444; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nuevo examen autocorregible Educación Infantil</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#1f2937;margin:0}
+.wrap{max-width:1100px;margin:auto;padding:24px}
+.hero,.card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.hero{padding:24px;margin-bottom:18px;position:sticky;top:0;z-index:2}
+h1{margin:0 0 10px;color:#123d6b}.meta{color:#4b5563;margin:6px 0}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
+.primary{background:#1d4ed8;color:#fff}.secondary{background:#e5e7eb}.dark{background:#111827;color:#fff}
+.score{margin-top:12px;font-weight:700}.barwrap{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#10b981);transition:width .4s ease}
+.card{padding:18px;margin:16px 0}.qnum{font-size:.95rem;font-weight:700;color:#334155}.qtext{font-size:1.05rem;font-weight:700;margin:10px 0 12px}
+.option{display:block;padding:12px;border:1px solid #d1d5db;border-radius:10px;margin:8px 0;background:#fff;cursor:pointer}
+.feedback{display:none;margin-top:10px;padding:12px;border-radius:10px}.ok{background:#dcfce7;color:#166534;border:1px solid #86efac}.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}.warn{background:#fff7ed;color:#9a3412;border:1px solid #fdba74}
+.small{font-size:.95rem;color:#4b5563}
+</style>
 </head>
 <body>
-  <h1>Examen de Educación Infantil</h1>
-  <div class="meta">
-    <p><strong>Formato:</strong> test de 40 preguntas con 4 opciones.</p>
-    <p><strong>Bloques:</strong> contexto y legislación, TSEI, teorías del aprendizaje, precursores históricos, metodologías actuales y currículo de Educación Infantil.</p>
-    <p class="note"><strong>Advertencia de precisión:</strong> el contenido se ha elaborado a partir de los apuntes aportados por el usuario y archivos disponibles, con especial referencia al currículo aragonés y al perfil del TSEI.</p>
-  </div>
+<div class="wrap">
+<div class="hero">
+<h1>Nuevo examen autocorregible de Educación Infantil</h1>
+<p class="meta">Versión nueva con 40 preguntas reformuladas: se han convertido respuestas previas en enunciados interrogativos y se ha redistribuido el contenido entre los tres temarios.</p>
+<p class="meta">Incluye corrección automática, explicación por pregunta, botón para mostrar soluciones y reinicio completo.</p>
+<div class="controls">
+  <button onclick="nuevoSimulacro()">Nuevo simulacro</button>
+<button onclick="repasarErrores()">Repasar fallos</button>
+<div id="timer">40:00</div>
+<button class="primary" onclick="corregir()">Corregir examen</button>
+<button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
+<button class="dark" onclick="reiniciar()">Reiniciar</button>
+</div>
+<div id="score" class="score">Puntuación: pendiente</div>
+<div class="barwrap"><div id="bar" class="bar"></div></div>
+</div>
+<div id="exam"></div>
+<p class="small">Advertencia de precisión: esta versión se basa en los tres documentos aportados y en su redacción didáctica. No sustituye la consulta directa de la normativa oficial ni de los textos completos del currículo.</p>
+</div>
+<script>
+const CONFIG = {
+  tiempoExamen: 40 * 60,
+  aprobado: 70
+};
 
-  <div class="question"><p>1. Según la clasificación recogida en los apuntes, la educación formal se caracteriza por:</p><ol class="options"><li>Desarrollarse solo en el hogar.</li><li>Ser reglada, estructurada y avalada por el Estado.</li><li>No requerir planificación previa.</li><li>Basarse únicamente en experiencias espontáneas.</li></ol></div>
-  <div class="question"><p>2. La educación no formal es:</p><ol class="options"><li>La enseñanza universitaria exclusivamente.</li><li>La que solo realizan las familias.</li><li>Una actividad organizada fuera del sistema formal para determinados aprendizajes.</li><li>Sinónimo de educación informal.</li></ol></div>
-  <div class="question"><p>3. El artículo de la Constitución Española que reconoce el derecho a la educación es el:</p><ol class="options"><li>Artículo 14.</li><li>Artículo 20.</li><li>Artículo 27.</li><li>Artículo 35.</li></ol></div>
-  <div class="question"><p>4. La norma estatal que establece la ordenación y las enseñanzas mínimas de la Educación Infantil es:</p><ol class="options"><li>Real Decreto 95/2022.</li><li>Ley Moyano de 1857.</li><li>Real Decreto 1349/2007.</li><li>Orden ECD/853/2022.</li></ol></div>
-  <div class="question"><p>5. En Aragón, la orden que aprueba el currículo y las características de la evaluación de Educación Infantil es:</p><ol class="options"><li>Orden ECD/853/2022, de 13 de junio.</li><li>Real Decreto 95/2022, de 1 de febrero.</li><li>LOMLOE, de 2020.</li><li>Orden de 21 de julio de 2008.</li></ol></div>
-  <div class="question"><p>6. La etapa de Educación Infantil tiene carácter:</p><ol class="options"><li>Obligatorio y gratuito en ambos ciclos.</li><li>Voluntario.</li><li>Obligatorio solo en 0-3 años.</li><li>Postobligatorio.</li></ol></div>
-  <div class="question"><p>7. Los ODS más directamente citados en los apuntes de la etapa son:</p><ol class="options"><li>ODS 1 y ODS 2.</li><li>ODS 4 y ODS 5.</li><li>ODS 8 y ODS 9.</li><li>ODS 10 y ODS 11.</li></ol></div>
-  <div class="question"><p>8. La competencia general del TSEI se orienta principalmente a:</p><ol class="options"><li>Dirigir inspecciones educativas.</li><li>Diseñar, implementar y evaluar proyectos de atención a la infancia.</li><li>Impartir docencia universitaria.</li><li>Elaborar leyes educativas autonómicas.</li></ol></div>
-  <div class="question"><p>9. En el ámbito formal, el TSEI desarrolla su labor principalmente en:</p><ol class="options"><li>El primer ciclo de Educación Infantil.</li><li>Solo en Bachillerato.</li><li>Exclusivamente en Educación Primaria.</li><li>Solo en la universidad.</li></ol></div>
-  <div class="question"><p>10. Una función del TSEI en relación con las familias es:</p><ol class="options"><li>Redactar sentencias judiciales.</li><li>Mantener una comunicación fluida mediante reuniones, entrevistas o agendas.</li><li>Realizar diagnósticos médicos.</li><li>Sustituir a todos los profesionales del equipo interdisciplinar.</li></ol></div>
-  <div class="question"><p>11. Una característica personal y profesional adecuada del TSEI es:</p><ol class="options"><li>Improvisación constante sin planificación.</li><li>Estabilidad emocional y habilidades sociales.</li><li>Autoritarismo como norma básica.</li><li>Desinterés por la formación continua.</li></ol></div>
-  <div class="question"><p>12. La ética profesional del TSEI incluye especialmente:</p><ol class="options"><li>La protección del derecho a la intimidad y a la imagen del menor.</li><li>La difusión pública de datos personales.</li><li>La ausencia de coordinación con otros profesionales.</li><li>El rechazo de la formación permanente.</li></ol></div>
-  <div class="question"><p>13. En el conductismo de Pavlov, el aprendizaje se explica por:</p><ol class="options"><li>La construcción libre del conocimiento sin estímulos.</li><li>La asociación entre estímulos y respuestas.</li><li>La introspección filosófica.</li><li>La interacción exclusiva con iguales.</li></ol></div>
-  <div class="question"><p>14. Skinner es conocido por desarrollar la teoría del:</p><ol class="options"><li>Aprendizaje significativo.</li><li>Condicionamiento operante.</li><li>Aprendizaje por descubrimiento.</li><li>Modelo ecológico.</li></ol></div>
-  <div class="question"><p>15. Según Piaget, la etapa preoperacional comprende aproximadamente:</p><ol class="options"><li>0 a 2 años.</li><li>2 a 7 años.</li><li>7 a 11 años.</li><li>11 a 16 años.</li></ol></div>
-  <div class="question"><p>16. Bruner defendió especialmente:</p><ol class="options"><li>El aprendizaje por descubrimiento.</li><li>La desaparición del juego infantil.</li><li>El castigo como eje metodológico.</li><li>La teoría del ello, yo y superyó.</li></ol></div>
-  <div class="question"><p>17. Bandura destacó el aprendizaje:</p><ol class="options"><li>Por mera repetición mecánica.</li><li>Por observación de modelos.</li><li>Exclusivamente memorístico.</li><li>Basado solo en reflejos automáticos.</li></ol></div>
-  <div class="question"><p>18. Ausubel relaciona el aprendizaje eficaz con:</p><ol class="options"><li>La ausencia de conocimientos previos.</li><li>La asociación de nuevos contenidos con conocimientos previos.</li><li>La eliminación de toda evaluación inicial.</li><li>La instrucción exclusivamente verbal.</li></ol></div>
-  <div class="question"><p>19. La Zona de Desarrollo Próximo es un concepto de:</p><ol class="options"><li>Freud.</li><li>Vygotsky.</li><li>Skinner.</li><li>Decroly.</li></ol></div>
-  <div class="question"><p>20. Las teorías de la Gestalt ponen el foco en:</p><ol class="options"><li>La percepción y la organización de la información.</li><li>La legislación educativa.</li><li>La burocracia escolar.</li><li>La clasificación de centros.</li></ol></div>
-  <div class="question"><p>21. Freud explica la psique humana mediante las instancias:</p><ol class="options"><li>Microsistema, mesosistema y macrosistema.</li><li>Representación, acción y compromiso.</li><li>Ello, yo y superyó.</li><li>CA, DEE y CRR.</li></ol></div>
-  <div class="question"><p>22. Erikson es conocido por su teoría del desarrollo:</p><ol class="options"><li>Psicosocial.</li><li>Conductista radical.</li><li>Computacional.</li><li>Maduracionista biológico exclusivo.</li></ol></div>
-  <div class="question"><p>23. Melanie Klein concedió gran importancia a:</p><ol class="options"><li>Los conflictos emocionales tempranos y su manifestación en el juego.</li><li>La instrucción militar.</li><li>La evaluación estandarizada masiva.</li><li>La supresión de la fantasía.</li></ol></div>
-  <div class="question"><p>24. En el modelo ecológico de Bronfenbrenner, la relación familia-escuela pertenece al:</p><ol class="options"><li>Microsistema.</li><li>Mesosistema.</li><li>Exosistema.</li><li>Macrosistema.</li></ol></div>
-  <div class="question"><p>25. El conectivismo de George Siemens pone el acento en:</p><ol class="options"><li>La memorización aislada.</li><li>La capacidad para conectar información en redes y entornos tecnológicos.</li><li>La supresión de la tecnología en educación.</li><li>La enseñanza exclusivamente magistral.</li></ol></div>
-  <div class="question"><p>26. Rousseau defendía principalmente:</p><ol class="options"><li>El desarrollo natural y espontáneo del niño.</li><li>La disciplina militar desde el nacimiento.</li><li>La escolarización universitaria temprana.</li><li>La negación del juego.</li></ol></div>
-  <div class="question"><p>27. Froebel es reconocido por:</p><ol class="options"><li>Crear el concepto de kindergarten o jardín de infancia.</li><li>Fundar Summerhill.</li><li>Desarrollar el conectivismo.</li><li>Redactar la Constitución Española.</li></ol></div>
-  <div class="question"><p>28. María Montessori creó:</p><ol class="options"><li>La Institución Libre de Enseñanza.</li><li>La Casa dei Bambini.</li><li>La Escola Rosa Sensat.</li><li>El programa Head Start.</li></ol></div>
-  <div class="question"><p>29. La principal aportación de Decroly en los apuntes es:</p><ol class="options"><li>Los centros de interés y la globalización.</li><li>El refuerzo negativo.</li><li>La zona de desarrollo próximo.</li><li>La ley figura-fondo.</li></ol></div>
-  <div class="question"><p>30. Freinet defendió una educación basada en:</p><ol class="options"><li>La cooperación y la experiencia.</li><li>La pasividad del alumnado.</li><li>La memorización sin contexto.</li><li>La eliminación del trabajo en común.</li></ol></div>
-  <div class="question"><p>31. Pablo Montesinos destaca en España por:</p><ol class="options"><li>Fundar en 1838 la primera escuela de párvulos.</li><li>Crear la teoría psicoanalítica.</li><li>Impulsar la Gestalt.</li><li>Desarrollar las competencias clave europeas.</li></ol></div>
-  <div class="question"><p>32. Marta Mata se vincula con:</p><ol class="options"><li>La Escola Rosa Sensat y la formación continua del profesorado.</li><li>La Casa-cuna de Lóczy.</li><li>El conductismo clásico.</li><li>La escuela Summerhill.</li></ol></div>
-  <div class="question"><p>33. En la propuesta de Emmi Pikler, uno de los pilares básicos es:</p><ol class="options"><li>Forzar la sedestación temprana.</li><li>Permitir el movimiento libre y autónomo.</li><li>Usar siempre hamacas y tronas.</li><li>Eliminar las rutinas diarias.</li></ol></div>
-  <div class="question"><p>34. Reggio Emilia se caracteriza, entre otros rasgos, por:</p><ol class="options"><li>La documentación del proceso de aprendizaje y el valor de los espacios.</li><li>La ausencia de trabajo en grupo.</li><li>La supresión de materiales diversos.</li><li>La enseñanza centrada en castigos.</li></ol></div>
-  <div class="question"><p>35. La Escuela Waldorf se basa en el enfoque de:</p><ol class="options"><li>Rudolf Steiner.</li><li>Loris Malaguzzi.</li><li>Alexander Neill.</li><li>George Siemens.</li></ol></div>
-  <div class="question"><p>36. Summerhill fue fundada por:</p><ol class="options"><li>Ovide Decroly.</li><li>Alexander Sutherland Neill.</li><li>Urie Bronfenbrenner.</li><li>Pablo Montesinos.</li></ol></div>
-  <div class="question"><p>37. Según el currículo aragonés, las tres áreas de aprendizaje de Educación Infantil son:</p><ol class="options"><li>Lengua, Matemáticas y Ciencias Sociales.</li><li>Crecimiento en Armonía, Descubrimiento y Exploración del Entorno, y Comunicación y Representación de la Realidad.</li><li>Biología, Física y Química.</li><li>Expresión Corporal, Tecnología y Religión.</li></ol></div>
-  <div class="question"><p>38. El DUA se articula en torno a tres principios fundamentales:</p><ol class="options"><li>Memoria, repetición y examen.</li><li>Representación, acción y expresión, y compromiso.</li><li>Castigo, premio y sanción.</li><li>Observación, hipótesis y experimentación.</li></ol></div>
-  <div class="question"><p>39. En el currículo, los saberes básicos son:</p><ol class="options"><li>Únicamente normas de disciplina.</li><li>Conocimientos, destrezas y actitudes propios de un área.</li><li>Sinónimo exacto de calificaciones.</li><li>Exclusivamente contenidos memorísticos.</li></ol></div>
-  <div class="question"><p>40. Las situaciones de aprendizaje tienen como finalidad principal:</p><ol class="options"><li>Organizar actividades aisladas sin conexión curricular.</li><li>Desarrollar competencias mediante actuaciones contextualizadas.</li><li>Sustituir toda evaluación.</li><li>Eliminar la planificación docente.</li></ol></div>
+let tiempoRestante = CONFIG.tiempoExamen;
+let timer;
+let errores = [];
 
-  <div class="answer-key">
-    <h2>Plantilla de respuestas</h2>
-    <table>
-      <tr><th>Pregunta</th><th>Respuesta correcta</th></tr>
-      <tr><td>1</td><td>B</td></tr>
-      <tr><td>2</td><td>C</td></tr>
-      <tr><td>3</td><td>C</td></tr>
-      <tr><td>4</td><td>A</td></tr>
-      <tr><td>5</td><td>A</td></tr>
-      <tr><td>6</td><td>B</td></tr>
-      <tr><td>7</td><td>B</td></tr>
-      <tr><td>8</td><td>B</td></tr>
-      <tr><td>9</td><td>A</td></tr>
-      <tr><td>10</td><td>B</td></tr>
-      <tr><td>11</td><td>B</td></tr>
-      <tr><td>12</td><td>A</td></tr>
-      <tr><td>13</td><td>B</td></tr>
-      <tr><td>14</td><td>B</td></tr>
-      <tr><td>15</td><td>B</td></tr>
-      <tr><td>16</td><td>A</td></tr>
-      <tr><td>17</td><td>B</td></tr>
-      <tr><td>18</td><td>B</td></tr>
-      <tr><td>19</td><td>B</td></tr>
-      <tr><td>20</td><td>A</td></tr>
-      <tr><td>21</td><td>C</td></tr>
-      <tr><td>22</td><td>A</td></tr>
-      <tr><td>23</td><td>A</td></tr>
-      <tr><td>24</td><td>B</td></tr>
-      <tr><td>25</td><td>B</td></tr>
-      <tr><td>26</td><td>A</td></tr>
-      <tr><td>27</td><td>A</td></tr>
-      <tr><td>28</td><td>B</td></tr>
-      <tr><td>29</td><td>A</td></tr>
-      <tr><td>30</td><td>A</td></tr>
-      <tr><td>31</td><td>A</td></tr>
-      <tr><td>32</td><td>A</td></tr>
-      <tr><td>33</td><td>B</td></tr>
-      <tr><td>34</td><td>A</td></tr>
-      <tr><td>35</td><td>A</td></tr>
-      <tr><td>36</td><td>B</td></tr>
-      <tr><td>37</td><td>B</td></tr>
-      <tr><td>38</td><td>B</td></tr>
-      <tr><td>39</td><td>B</td></tr>
-      <tr><td>40</td><td>B</td></tr>
-    </table>
-  </div>
+const bloques = {
+  tema1: "Contexto y normativa",
+  tema2: "Teorías educativas",
+  curriculum: "Currículo y áreas",
+  dua: "DUA e inclusión"
+};
+
+const questions = [
+{
+tema:"dua",
+q:"¿Qué persigue el Diseño Universal para el Aprendizaje (DUA)?",
+options:[
+"Adaptar actividades después de detectar dificultades",
+"Diseñar experiencias accesibles desde el inicio",
+"Eliminar la evaluación",
+"Homogeneizar el aprendizaje"
+],
+answer:1,
+explanation:"El DUA diseña contextos educativos inclusivos desde el principio, anticipando barreras y ofreciendo múltiples formas de acceso, participación y expresión."
+},
+{
+tema:"dua",
+q:"¿Cuáles son los tres principios del DUA?",
+options:[
+"Observación, repetición y evaluación",
+"Representación, acción/expresión y compromiso",
+"Memorización, disciplina y prueba",
+"Inclusión, calificación y refuerzo"
+],
+answer:1,
+explanation:"Basado en CAST: múltiples formas de representación, acción/expresión y compromiso."
+},
+{
+tema:"curriculum",
+q:"¿Cuántas áreas establece el RD 95/2022 para Educación Infantil?",
+options:["2","3","4","5"],
+answer:1,
+explanation:"El currículo se estructura en tres áreas: Crecimiento en Armonía, Descubrimiento y Exploración del Entorno, y Comunicación y Representación de la Realidad."
+},
+{
+tema:"curriculum",
+q:"¿Qué son las situaciones de aprendizaje?",
+options:[
+"Exámenes competenciales",
+"Secuencias contextualizadas para movilizar competencias",
+"Actividades libres sin planificación",
+"Recursos TIC"
+],
+answer:1,
+explanation:"Son propuestas contextualizadas para desarrollar competencias específicas."
+},
+{
+tema:"tema2",
+q:"¿Qué autor formula la Zona de Desarrollo Próximo?",
+options:["Piaget","Bruner","Vygotsky","Bandura"],
+answer:2,
+explanation:"Vygotsky plantea que el aprendizaje ocurre entre lo que el niño puede hacer solo y con ayuda."
+},
+{
+tema:"tema1",
+q:"Según el RD 95/2022, la Educación Infantil tiene carácter:",
+options:["Obligatorio","Voluntario","Selectivo","Evaluativo"],
+answer:1,
+explanation:"El artículo 5 establece que la etapa tiene carácter voluntario."
+}
+];
+
+let activeQuestions = [...questions];
+
+function iniciarTemporizador(){
+ clearInterval(timer);
+ timer=setInterval(()=>{
+   tiempoRestante--;
+   const min=Math.floor(tiempoRestante/60);
+   const seg=tiempoRestante%60;
+   document.getElementById("timer").textContent=
+   `${min}:${seg.toString().padStart(2,'0')}`;
+
+   if(tiempoRestante<=0){
+      clearInterval(timer);
+      corregir();
+      alert("Tiempo finalizado");
+   }
+ },1000);
+}
+
+function mezclar(arr){
+ return arr.sort(()=>Math.random()-0.5);
+}
+
+function nuevoSimulacro(){
+ activeQuestions=mezclar([...questions]).slice(0,20);
+ render();
+ tiempoRestante=CONFIG.tiempoExamen;
+ iniciarTemporizador();
+}
+
+function repasarErrores(){
+ activeQuestions=errores;
+ render();
+}
+
+function corregir(){
+ let ok=0;
+ errores=[];
+
+ activeQuestions.forEach((q,idx)=>{
+   const sel=document.querySelector(`input[name="q${idx}"]:checked`);
+   if(sel && Number(sel.value)===q.answer){
+      ok++;
+   } else {
+      errores.push(q);
+   }
+ });
+
+ const pct=Math.round(ok/activeQuestions.length*100);
+
+ document.getElementById("score").innerHTML=
+ `Resultado: ${ok}/${activeQuestions.length} (${pct}%)
+ <br>${pct>=CONFIG.aprobado ? "✅ APROBADO" : "❌ SUSPENSO"}`;
+
+ document.getElementById("bar").style.width=pct+"%";
+}
+</script>
 </body>
 </html>
