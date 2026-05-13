@@ -18,65 +18,89 @@ button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:poin
 .card{padding:18px;margin:16px 0}.qnum{font-size:.95rem;font-weight:700;color:#334155}.qtext{font-size:1.05rem;font-weight:700;margin:10px 0 12px}
 .option{display:block;padding:12px;border:1px solid #d1d5db;border-radius:10px;margin:8px 0;background:#fff;cursor:pointer}
 .option input{margin-right:10px}
-.feedback{display:none;margin-top:10px;padding:12px;border-radius:10px}.ok{background:#dcfce7;color:#166534;border:1px solid #86efac}.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}.warn{background:#fff7ed;color:#9a3412;border:1px solid #fdba74}
+.feedback{display:none;margin-top:10px;padding:12px;border-radius:10px}.ok{background:#dcfce7;color:#166534;border:1px solid #86efac}.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
 .small{font-size:.95rem;color:#4b5563}
-.hidden{display:none}
 .solution{margin-top:10px;padding:12px;border-radius:10px;background:#f8fafc;border:1px solid #e2e8f0;display:none}
-.actions{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
 </style>
 </head>
 <body>
 <div class="wrap">
-<div class="hero">
-<h1>Nuevo examen autocorregible de Educación Infantil</h1>
-<p class="meta">Versión nueva con preguntas reformuladas y redistribuidas entre los tres temarios.</p>
-<p class="meta">Incluye corrección automática, explicación por pregunta, botón para mostrar soluciones y reinicio completo.</p>
-<div class="controls">
-  <button class="secondary" onclick="nuevoSimulacro()">Nuevo simulacro</button>
-  <button class="secondary" onclick="repasarErrores()">Repasar fallos</button>
-  <div id="timer">40:00</div>
-  <button class="primary" onclick="corregir()">Corregir examen</button>
-  <button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
-  <button class="dark" onclick="reiniciar()">Reiniciar</button>
-</div>
-<div id="score" class="score">Puntuación: pendiente</div>
-<div class="barwrap"><div id="bar" class="bar"></div></div>
-</div>
-<div id="exam"></div>
-<p class="small">Advertencia de precisión: esta versión se basa en los documentos aportados y en su redacción didáctica. No sustituye la consulta directa de la normativa oficial ni de los textos completos del currículo.</p>
+  <div class="hero">
+    <h1>Nuevo examen autocorregible de Educación Infantil</h1>
+    <p class="meta">Examen completo con 40 preguntas, corrección automática, explicación por pregunta, repaso de fallos y reinicio total.</p>
+    <p class="meta">Las preguntas están distribuidas entre normativa, teorías educativas, currículo y DUA.</p>
+    <div class="controls">
+      <button class="secondary" onclick="nuevoSimulacro()">Nuevo simulacro</button>
+      <button class="secondary" onclick="repasarErrores()">Repasar fallos</button>
+      <div id="timer">40:00</div>
+      <button class="primary" onclick="corregir()">Corregir examen</button>
+      <button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
+      <button class="dark" onclick="reiniciar()">Reiniciar</button>
+    </div>
+    <div id="score" class="score">Puntuación: pendiente</div>
+    <div class="barwrap"><div id="bar" class="bar"></div></div>
+  </div>
+  <div id="exam"></div>
+  <p class="small">Advertencia de precisión: esta versión mantiene la estructura didáctica aportada y no sustituye la consulta directa de la normativa oficial ni de los materiales completos.</p>
 </div>
 <script>
-const CONFIG = {
-  tiempoExamen: 40 * 60,
-  aprobado: 70
-};
+const CONFIG = { tiempoExamen: 40 * 60, aprobado: 70 };
 
-const QUESTIONS_ORIG = [
-  {tema:"dua", q:"¿Qué persigue el Diseño Universal para el Aprendizaje (DUA)?", options:["Adaptar actividades después de detectar dificultades","Diseñar experiencias accesibles desde el inicio","Eliminar la evaluación","Homogeneizar el aprendizaje"], answer:1, explanation:"El DUA diseña contextos educativos inclusivos desde el principio, anticipando barreras y ofreciendo múltiples formas de acceso, participación y expresión."},
-  {tema:"dua", q:"¿Cuáles son los tres principios del DUA?", options:["Observación, repetición y evaluación","Representación, acción/expresión y compromiso","Memorización, disciplina y prueba","Inclusión, calificación y refuerzo"], answer:1, explanation:"Basado en CAST: múltiples formas de representación, acción/expresión y compromiso."},
-  {tema:"curriculum", q:"¿Cuántas áreas establece el RD 95/2022 para Educación Infantil?", options:["2","3","4","5"], answer:1, explanation:"El currículo se estructura en tres áreas: Crecimiento en Armonía, Descubrimiento y Exploración del Entorno, y Comunicación y Representación de la Realidad."},
-  {tema:"curriculum", q:"¿Qué son las situaciones de aprendizaje?", options:["Exámenes competenciales","Secuencias contextualizadas para movilizar competencias","Actividades libres sin planificación","Recursos TIC"], answer:1, explanation:"Son propuestas contextualizadas para desarrollar competencias específicas."},
-  {tema:"tema2", q:"¿Qué autor formula la Zona de Desarrollo Próximo?", options:["Piaget","Bruner","Vygotsky","Bandura"], answer:2, explanation:"Vygotsky plantea que el aprendizaje ocurre entre lo que el niño puede hacer solo y con ayuda."},
-  {tema:"tema1", q:"Según el RD 95/2022, la Educación Infantil tiene carácter:", options:["Obligatorio","Voluntario","Selectivo","Evaluativo"], answer:1, explanation:"La etapa tiene carácter voluntario."},
-  {tema:"tema1", q:"¿Qué documento establece las enseñanzas mínimas de la Educación Infantil en España?", options:["LOMLOE","RD 95/2022","LODE","Ley Moyano"], answer:1, explanation:"El Real Decreto 95/2022 establece la ordenación y las enseñanzas mínimas de la Educación Infantil."},
-  {tema:"tema1", q:"¿En cuántos ciclos se organiza la Educación Infantil?", options:["Uno","Dos","Tres","Cuatro"], answer:1, explanation:"La etapa se organiza en dos ciclos: 0-3 y 3-6 años."},
-  {tema:"curriculum", q:"¿Cómo se llaman las tres áreas de la Educación Infantil?", options:["Lenguaje, Matemáticas y Juego","Crecimiento en Armonía, Descubrimiento y Exploración del Entorno, Comunicación y Representación de la Realidad","Personal, social y artística","Naturaleza, sociedad y expresión"], answer:1, explanation:"Son las tres áreas oficiales del currículo."},
-  {tema:"tema2", q:"¿Qué teoría relaciona el aprendizaje con la observación de modelos?", options:["Conductismo","Aprendizaje social de Bandura","Gestalt","Psicoanálisis"], answer:1, explanation:"Bandura explica el aprendizaje por observación y modelado."},
-  {tema:"tema2", q:"¿Qué autor se asocia con el aprendizaje por descubrimiento y el andamiaje?", options:["Bruner","Pestalozzi","Freinet","Comenius"], answer:0, explanation:"Bruner desarrolló el aprendizaje por descubrimiento y la idea de andamiaje."},
-  {tema:"curriculum", q:"¿Cuál de estas opciones define mejor una situación de aprendizaje?", options:["Una ficha repetitiva aislada","Una secuencia contextualizada y competencial","Una prueba memorística","Una actividad sin objetivo"], answer:1, explanation:"Las situaciones de aprendizaje contextualizan tareas para movilizar competencias."}
+const preguntas = [
+  {tema:'tema1', q:'¿Qué norma establece la ordenación y las enseñanzas mínimas de la Educación Infantil en España?', options:['LOE 2/2006','RD 95/2022','LOMLOE 3/2020','Ley Moyano'], answer:1, explanation:'El Real Decreto 95/2022 establece la ordenación y las enseñanzas mínimas de la Educación Infantil.'},
+  {tema:'tema1', q:'Según la normativa vigente, la Educación Infantil tiene carácter:', options:['Obligatorio','Voluntario','Selectivo','Exclusivamente asistencial'], answer:1, explanation:'La etapa tiene carácter voluntario.'},
+  {tema:'tema1', q:'¿En cuántos ciclos se organiza la Educación Infantil?', options:['Uno','Dos','Tres','Cuatro'], answer:1, explanation:'La etapa se organiza en dos ciclos: 0-3 y 3-6 años.'},
+  {tema:'tema1', q:'¿Cuál es la finalidad general de la Educación Infantil?', options:['Preparar exámenes','Contribuir al desarrollo integral y armónico','Especializar tempranamente','Reducir la socialización'], answer:1, explanation:'La finalidad es contribuir al desarrollo integral y armónico del alumnado.'},
+  {tema:'tema1', q:'¿Qué artículo del RD 95/2022 regula el carácter voluntario de la etapa?', options:['Artículo 2','Artículo 5','Artículo 8','Artículo 10'], answer:1, explanation:'El artículo 5 establece que la etapa tiene carácter voluntario.'},
+  {tema:'tema1', q:'¿Qué documento curricular desarrolla el RD 95/2022 a nivel estatal?', options:['El currículo básico de Educación Infantil','El currículo de Bachillerato','El currículo de Primaria','El currículo universitario'], answer:0, explanation:'El RD 95/2022 desarrolla el currículo básico de Educación Infantil.'},
+  {tema:'tema1', q:'¿Qué papel tienen las familias según el enfoque general de la etapa?', options:['No intervienen','Colaboran con los centros educativos','Sustituyen al profesorado','Solo participan en evaluación final'], answer:1, explanation:'La colaboración con las familias forma parte del enfoque educativo de la etapa.'},
+  {tema:'tema1', q:'¿Qué principio metodológico aparece vinculado a la atención a la diversidad en tus materiales?', options:['DUA','Memorización mecánica','Competencia exclusiva','Repetición uniforme'], answer:0, explanation:'Los materiales vinculan la atención a la diversidad con el DUA.'},
+
+  {tema:'tema2', q:'¿Qué autor formuló la Zona de Desarrollo Próximo?', options:['Piaget','Vygotsky','Bruner','Bandura'], answer:1, explanation:'Vygotsky formuló la Zona de Desarrollo Próximo.'},
+  {tema:'tema2', q:'¿Qué teoría explica el aprendizaje por observación de modelos?', options:['Conductismo','Aprendizaje social de Bandura','Gestalt','Psicoanálisis'], answer:1, explanation:'Bandura explica el aprendizaje por observación y modelado.'},
+  {tema:'tema2', q:'¿Qué autor se relaciona con el aprendizaje significativo?', options:['Ausubel','Freinet','Decroly','Montessori'], answer:0, explanation:'Ausubel desarrolla la teoría del aprendizaje significativo.'},
+  {tema:'tema2', q:'¿Quién propuso el aprendizaje por descubrimiento y el andamiaje?', options:['Bruner','Pestalozzi','Comenius','Froebel'], answer:0, explanation:'Bruner propuso el aprendizaje por descubrimiento y el andamiaje.'},
+  {tema:'tema2', q:'¿Qué corriente se centra en estímulo y respuesta?', options:['Cognitivismo','Conductismo','Constructivismo','Humanismo'], answer:1, explanation:'El conductismo se centra en asociaciones entre estímulos y respuestas.'},
+  {tema:'tema2', q:'¿Qué autor se asocia con la etapa preoperacional?', options:['Piaget','Skinner','Freinet','Rousseau'], answer:0, explanation:'Piaget describe la etapa preoperacional entre 2 y 7 años.'},
+  {tema:'tema2', q:'¿Qué pedagoga se vincula a la Casa dei Bambini?', options:['Montessori','Agazzi','Pikler','Mata'], answer:0, explanation:'María Montessori creó la Casa dei Bambini.'},
+  {tema:'tema2', q:'¿Qué autor se relaciona con los Centros de Interés?', options:['Decroly','Bruner','Bandura','Freud'], answer:0, explanation:'Decroly desarrolló los Centros de Interés.'},
+  {tema:'tema2', q:'¿Qué corriente defiende la educación activa, cooperativa y el trabajo en común?', options:['Freinet','Pavlov','Gesell','Thorndike'], answer:0, explanation:'Freinet defendió la cooperación y el aprendizaje activo.'},
+  {tema:'tema2', q:'¿Qué enfoque explica la influencia de sistemas como familia, escuela y cultura?', options:['Modelo ecológico de Bronfenbrenner','Condicionamiento clásico','Gestalt','Aprendizaje vicario'], answer:0, explanation:'Bronfenbrenner propone el modelo ecológico con microsistema, mesosistema, exosistema y macrosistema.'},
+  {tema:'tema2', q:'¿Qué autora se relaciona con la libertad de movimiento y la observación respetuosa del bebé?', options:['Pikler','Agazzi','Mata','Rosa Sensat'], answer:0, explanation:'Emmi Pikler defendió el movimiento libre y la observación no intervencionista.'},
+  {tema:'tema2', q:'¿Qué pedagogo está asociado a la Escuela Nueva en España y a la primera escuela de párvulos?', options:['Pablo Montesino','Marta Mata','Ferrer Guardia','Giner de los Ríos'], answer:0, explanation:'Pablo Montesino fue pionero de la escuela de párvulos en España.'},
+
+  {tema:'curriculum', q:'¿Cuántas áreas establece el currículo de Educación Infantil?', options:['2','3','4','5'], answer:1, explanation:'El currículo se estructura en tres áreas.'},
+  {tema:'curriculum', q:'¿Cuál de estas es una de las tres áreas del currículo?', options:['Crecimiento en Armonía','Matemáticas y Ciencia','Lengua Extranjera','Tecnología y Diseño'], answer:0, explanation:'Crecimiento en Armonía es una de las tres áreas.'},
+  {tema:'curriculum', q:'¿Cuál de estas es otra área oficial?', options:['Descubrimiento y Exploración del Entorno','Educación Física','Religión','Artística'], answer:0, explanation:'Descubrimiento y Exploración del Entorno es una de las áreas oficiales.'},
+  {tema:'curriculum', q:'¿Cuál de estas completa las tres áreas oficiales?', options:['Comunicación y Representación de la Realidad','Ciencias Sociales','Matemáticas Aplicadas','Idiomas'], answer:0, explanation:'Comunicación y Representación de la Realidad completa las tres áreas.'},
+  {tema:'curriculum', q:'¿Qué son las situaciones de aprendizaje?', options:['Exámenes tipo test','Secuencias contextualizadas para movilizar competencias','Actividades sin planificación','Solamente juegos libres'], answer:1, explanation:'Son secuencias contextualizadas orientadas al desarrollo de competencias.'},
+  {tema:'curriculum', q:'¿Qué elemento curricular se usa para concretar los aprendizajes esperados?', options:['Criterios de evaluación','Horarios','Pasillos','Uniformes'], answer:0, explanation:'Los criterios de evaluación concretan el grado de desarrollo esperado.'},
+  {tema:'curriculum', q:'¿Qué elemento se vincula con conocimientos, destrezas y actitudes?', options:['Saberes básicos','Notas finales','Horario escolar','Material fungible'], answer:0, explanation:'Los saberes básicos agrupan conocimientos, destrezas y actitudes.'},
+  {tema:'curriculum', q:'¿Qué elemento conecta competencias clave con competencias específicas?', options:['Objetivos de etapa','Criterios de evaluación','Recreo','Consejo escolar'], answer:1, explanation:'Los criterios de evaluación conectan competencias clave y específicas en el desarrollo curricular.'},
+  {tema:'curriculum', q:'¿Qué finalidad tienen las situaciones de aprendizaje en el currículo?', options:['Desarrollar competencias en contextos significativos','Sustituir la evaluación','Eliminar la metodología','Reducir la participación'], answer:0, explanation:'Buscan desarrollar competencias en contextos significativos.'},
+  {tema:'curriculum', q:'¿Qué rasgo metodológico aparece en la documentación aportada?', options:['Globalización','Aprendizaje al azar','Exclusión','Competición constante'], answer:0, explanation:'La documentación aportada destaca la globalización como principio metodológico.'},
+  {tema:'curriculum', q:'¿Qué orientación aparece ligada a la planificación de actividades en el aula?', options:['Temporalización, espacios y recursos','Solo calificación final','Solo memoria oral','Sólo exámenes'], answer:0, explanation:'La planificación incluye temporalización, espacios, recursos, agrupamiento y evaluación.'},
+
+  {tema:'dua', q:'¿Qué persigue el Diseño Universal para el Aprendizaje?', options:['Adaptar solo después de detectar dificultades','Diseñar experiencias accesibles desde el inicio','Eliminar la evaluación','Homogeneizar el aprendizaje'], answer:1, explanation:'El DUA diseña contextos accesibles desde el inicio.'},
+  {tema:'dua', q:'¿Cuáles son los tres principios del DUA?', options:['Observación, repetición y evaluación','Representación, acción/expresión y compromiso','Memorización, disciplina y prueba','Inclusión, calificación y refuerzo'], answer:1, explanation:'El DUA se organiza en representación, acción/expresión y compromiso.'},
+  {tema:'dua', q:'¿Qué principio del DUA se relaciona con ofrecer distintas formas de presentar la información?', options:['Representación','Compromiso','Castigo','Selección'], answer:0, explanation:'La representación se refiere a ofrecer distintas formas de presentar la información.'},
+  {tema:'dua', q:'¿Qué principio del DUA permite distintas formas de demostrar lo aprendido?', options:['Acción y expresión','Representación','Aislamiento','Uniformidad'], answer:0, explanation:'Acción y expresión permite demostrar el aprendizaje de formas diversas.'},
+  {tema:'dua', q:'¿Qué principio del DUA atiende a la motivación y al interés del alumnado?', options:['Compromiso','Representación','Memorización','Control externo'], answer:0, explanation:'El compromiso aborda motivación, participación e implicación.'},
+  {tema:'dua', q:'¿Qué objetivo general del DUA se adapta mejor a la diversidad del alumnado?', options:['Eliminar apoyos','Anticipar barreras y ofrecer alternativas','Exigir una única tarea','Reducir la accesibilidad'], answer:1, explanation:'El DUA anticipa barreras y ofrece múltiples opciones de acceso y expresión.'},
+  {tema:'dua', q:'¿Qué papel tiene el entorno en el DUA?', options:['No importa','Debe ser accesible y flexible','Debe ser rígido','Solo importa la nota'], answer:1, explanation:'El entorno debe ser accesible y flexible para favorecer la participación.'},
+  {tema:'dua', q:'¿Qué relación tiene el DUA con la inclusión?', options:['La sustituye','La favorece desde el diseño inicial','La impide','No tiene relación'], answer:1, explanation:'El DUA favorece la inclusión desde el diseño de la enseñanza.'},
+  {tema:'dua', q:'¿Qué estrategia encaja mejor con el DUA?', options:['Presentar la misma tarea de una sola manera','Ofrecer apoyos visuales, manipulativos y orales','Dar instrucciones incompletas','Evitar la participación'], answer:1, explanation:'El DUA recomienda múltiples formas de acceso y participación.'},
+  {tema:'dua', q:'¿Qué idea resume mejor el DUA?', options:['Mismo camino para todos','Diseño flexible para todo el alumnado','Aprendizaje sin objetivos','Evaluación única'], answer:1, explanation:'El DUA propone diseño flexible para responder a la diversidad.'},
+  {tema:'dua', q:'¿Qué relación mantiene el DUA con la planificación docente?', options:['La sustituye por completo','Forma parte de la planificación para prevenir barreras','La vuelve innecesaria','Solo se aplica al final'], answer:1, explanation:'El DUA se integra en la planificación para prevenir barreras desde el inicio.'}
 ];
 
-const bloques = {tema1:"Contexto y normativa", tema2:"Teorías educativas", curriculum:"Currículo y áreas", dua:"DUA e inclusión"};
-
-let activeQuestions = [...QUESTIONS_ORIG];
+let activeQuestions = [...preguntas];
 let errores = [];
 let tiempoRestante = CONFIG.tiempoExamen;
 let timer = null;
-let modoRepaso = false;
 let solucionesVisibles = false;
 
 function shuffle(arr){ return [...arr].sort(() => Math.random() - 0.5); }
-
 function formatTime(sec){ const m = Math.floor(sec/60); const s = sec%60; return `${m}:${String(s).padStart(2,'0')}`; }
 
 function iniciarTemporizador(){
@@ -99,16 +123,12 @@ function render(){
   activeQuestions.forEach((q, idx) => {
     const card = document.createElement('div');
     card.className = 'card';
-    card.dataset.index = idx;
     card.innerHTML = `
-      <div class="qnum">Pregunta ${idx + 1} · ${bloques[q.tema] || q.tema}</div>
+      <div class="qnum">Pregunta ${idx + 1} · ${q.tema}</div>
       <div class="qtext">${q.q}</div>
       <div class="options"></div>
       <div class="feedback" id="fb-${idx}"></div>
       <div class="solution" id="sol-${idx}">${q.explanation}</div>
-      <div class="actions">
-        <button class="secondary" type="button" onclick="marcarVacia(${idx})">Marcar sin respuesta</button>
-      </div>
     `;
     const options = card.querySelector('.options');
     q.options.forEach((opt, i) => {
@@ -119,15 +139,9 @@ function render(){
     });
     exam.appendChild(card);
   });
-  solucionesVisibles = false;
-  aplicarEstadoSoluciones();
   document.getElementById('score').textContent = 'Puntuación: pendiente';
   document.getElementById('bar').style.width = '0%';
-}
-
-function marcarVacia(idx){
-  const checks = document.querySelectorAll(`input[name="q${idx}"]`);
-  checks.forEach(c => c.checked = false);
+  aplicarEstadoSoluciones();
 }
 
 function corregir(){
@@ -148,7 +162,7 @@ function corregir(){
       fb.style.display = 'block';
       fb.textContent = `Incorrecta. Respuesta correcta: ${q.options[q.answer]}.`;
     }
-    if(solucionesVisibles){ sol.style.display = 'block'; }
+    sol.style.display = solucionesVisibles ? 'block' : 'none';
   });
   const total = activeQuestions.length || 1;
   const pct = Math.round((ok / total) * 100);
@@ -169,8 +183,7 @@ function aplicarEstadoSoluciones(){
 }
 
 function nuevoSimulacro(){
-  modoRepaso = false;
-  activeQuestions = shuffle(QUESTIONS_ORIG).slice(0, 20);
+  activeQuestions = shuffle(preguntas).slice(0, 40);
   tiempoRestante = CONFIG.tiempoExamen;
   render();
   iniciarTemporizador();
@@ -181,7 +194,6 @@ function repasarErrores(){
     alert('No hay fallos previos para repasar. Corrige primero un simulacro.');
     return;
   }
-  modoRepaso = true;
   activeQuestions = [...errores];
   tiempoRestante = CONFIG.tiempoExamen;
   render();
@@ -190,9 +202,9 @@ function repasarErrores(){
 
 function reiniciar(){
   clearInterval(timer);
-  modoRepaso = false;
   errores = [];
-  activeQuestions = [...QUESTIONS_ORIG];
+  solucionesVisibles = false;
+  activeQuestions = [...preguntas];
   tiempoRestante = CONFIG.tiempoExamen;
   render();
   iniciarTemporizador();
