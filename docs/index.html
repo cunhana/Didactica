@@ -1,31 +1,87 @@
-<!doctype html>
-<html>
-<head><meta charset="utf-8"><title>Didáctica - Índice</title></head>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Version 1 Examen de Educacion Infantil</title>
+<style>
+body{font-family:Arial,Helvetica,sans-serif;background:#f4f7fb;color:#1f2937;margin:0}
+.wrap{max-width:1100px;margin:auto;padding:24px}
+.hero,.card{background:#fff;border-radius:14px;box-shadow:0 4px 16px rgba(0,0,0,.08)}
+.hero{padding:24px;margin-bottom:18px;position:sticky;top:0;z-index:2}
+h1{margin:0 0 10px;color:#123d6b}.meta{color:#4b5563;margin:6px 0}
+.controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+button{border:0;border-radius:10px;padding:12px 16px;font-weight:700;cursor:pointer}
+.primary{background:#1d4ed8;color:#fff}.secondary{background:#e5e7eb}.dark{background:#111827;color:#fff}
+.score{margin-top:12px;font-weight:700}.barwrap{height:12px;background:#e5e7eb;border-radius:999px;overflow:hidden;margin-top:10px}.bar{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#10b981);transition:width .4s ease}
+.card{padding:18px;margin:16px 0}.qnum{font-size:.95rem;font-weight:700;color:#334155}.qtext{font-size:1.05rem;font-weight:700;margin:10px 0 12px}
+.option{display:block;padding:12px;border:1px solid #d1d5db;border-radius:10px;margin:8px 0;background:#fff;cursor:pointer}
+.feedback{display:none;margin-top:10px;padding:12px;border-radius:10px}.ok{background:#dcfce7;color:#166534;border:1px solid #86efac}.bad{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}.warn{background:#fff7ed;color:#9a3412;border:1px solid #fdba74}
+.small{font-size:.95rem;color:#4b5563}
+</style>
+</head>
 <body>
-  <h1>Trabajos y temario de Didáctica de la Escuela Infantil</h1>
-  <ul>
-    <li><a href="./Tema1/">Tarea 1</a></li>
-    <li><a href="./Tema1/Tema1P1">Tema 1 primera parte</a></li>
-    <li><a href="./Tema1/Tema1p2">Tema 1 segunda parte</a></li>
-    <li><a href="./Tema2/">Tarea 2</a></li>
-    <li><a href="./Tema2/Tema2/">Tema 2</a></li>
-    <li><a href="./Tema3/">Tema 3</a></li>
-     <li><a href="./Tarea3/">Tarea 3</a></li>
-    <li><a href="./Tema4/">Tema 4</a></li>
-    <li><a href="./Tema5/">Tema 5</a></li>
-    <li><a href="./Tema6/">Tema 6</a></li>
-    <li><a href="./Tema7/">Tema 7</a></li>
-    <li><a href="./Curriculo/">Curriculo Infantil</a></li>
-    <li><a href="./CVInfantil/">Curriculo Infantil interactivo</a></li>
-    <li><a href="./Examenes/ex1trimestre/">Examen Version 1 primer trimestre</a></li>
-    <li><a href="./Examenes/ex2trimestre/">Examen Version 2 primer trimestre</a></li>
-    <li><a href="./Examenes/ex3trimestre/">Examen Version 3 primer trimestre</a></li>
-     <li><a href="./Examenes/ex1/">Examenes Version 1</a></li>
-     <li><a href="./Examenes/ex2/">Examenes Version 2</a></li>
-    <li><a href="./Examenes/ex3/">Examenes Version 3</a></li>
-    <li><a href="./Examenes/exfinal/">Examenes guiado por la profesora</a></li>
-    <li><a href="./Examenes/exfinal2/">otra version de Examen guiado por la profesora</a></li>
-    
-  </ul>
+<div class="wrap">
+<div class="hero">
+<h1>Nuevo examen autocorregible de Educación Infantil</h1>
+<p class="meta">Versión nueva con 40 preguntas reformuladas: se han convertido respuestas previas en enunciados interrogativos y se ha redistribuido el contenido entre los tres temarios.</p>
+<p class="meta">Incluye corrección automática, explicación por pregunta, botón para mostrar soluciones y reinicio completo.</p>
+<div class="controls">
+<button class="primary" onclick="corregir()">Corregir examen</button>
+<button class="secondary" onclick="mostrar()">Mostrar soluciones</button>
+<button class="dark" onclick="reiniciar()">Reiniciar</button>
+</div>
+<div id="score" class="score">Puntuación: pendiente</div>
+<div class="barwrap"><div id="bar" class="bar"></div></div>
+</div>
+<div id="exam"></div>
+<p class="small">Advertencia de precisión: esta versión se basa en los tres documentos aportados y en su redacción didáctica. No sustituye la consulta directa de la normativa oficial ni de los textos completos del currículo.</p>
+</div>
+<script>
+const questions = [{"q": "¿Qué tipo de educación se define como enseñanza reglada, estructurada y avalada por el Estado, que certifica y acredita?", "options": ["Educación informal", "Educación no formal", "Educación formal", "Educación espontánea"], "answer": 2, "explanation": "En los apuntes, esa definición corresponde a la educación formal."}, {"q": "¿Cómo se denomina la actividad organizada y sistemática realizada fuera del sistema educativo formal para determinados aprendizajes?", "options": ["Educación informal", "Educación no formal", "Educación formal", "Educación universitaria"], "answer": 1, "explanation": "Los apuntes distinguen la educación no formal como actividad organizada fuera del sistema formal."}, {"q": "¿Qué artículo de la Constitución Española contempla el derecho a la educación?", "options": ["Artículo 14", "Artículo 27", "Artículo 35", "Artículo 49"], "answer": 1, "explanation": "El tema legislativo indica expresamente el artículo 27 de la Constitución Española."}, {"q": "¿Qué norma estatal establece la ordenación y las enseñanzas mínimas de la Educación Infantil?", "options": ["Real Decreto 95/2022, de 1 de febrero", "Orden ECD/853/2022, de 13 de junio", "Ley Orgánica 3/2020", "Real Decreto 1349/2007"], "answer": 0, "explanation": "El Real Decreto 95/2022 se identifica en los apuntes como la norma estatal de enseñanzas mínimas de Educación Infantil."}, {"q": "¿Qué orden aprueba en Aragón el currículo y las características de la evaluación de la Educación Infantil?", "options": ["Orden de 21 de julio de 2008", "Orden ECD/853/2022, de 13 de junio", "Ley Moyano de 1857", "LODE de 1985"], "answer": 1, "explanation": "La normativa aragonesa recogida en los apuntes remite a la Orden ECD/853/2022."}, {"q": "¿Qué carácter tiene la etapa de Educación Infantil según los principios generales recogidos en los apuntes?", "options": ["Obligatorio", "Voluntario", "Selectivo", "Postobligatorio"], "answer": 1, "explanation": "Los apuntes indican que la etapa de Educación Infantil tiene carácter voluntario."}, {"q": "¿Qué ODS aparecen citados de forma expresa en relación con la Educación Infantil en los apuntes?", "options": ["ODS 1 y ODS 2", "ODS 4 y ODS 5", "ODS 8 y ODS 9", "ODS 10 y ODS 16"], "answer": 1, "explanation": "En el marco internacional se citan el ODS 4 y el ODS 5."}, {"q": "¿Qué competencia general del TSEI se resume en diseñar, implementar y evaluar proyectos y programas educativos de atención a la infancia?", "options": ["Competencia inspectora", "Competencia general profesional del TSEI", "Competencia universitaria", "Competencia legislativa"], "answer": 1, "explanation": "Esa formulación aparece en el bloque de perfil profesional del TSEI."}, {"q": "¿En qué ciclo de la Educación Infantil desarrolla principalmente su intervención el TSEI en el ámbito formal?", "options": ["Segundo ciclo exclusivamente", "Primer ciclo", "Ambos ciclos como titular de aula", "Solo en Primaria"], "answer": 1, "explanation": "Los apuntes señalan que el TSEI actúa en el primer ciclo en el ámbito formal."}, {"q": "¿Qué vía de relación con las familias figura en los apuntes como función del TSEI?", "options": ["Solo comunicaciones judiciales", "Reuniones, entrevistas y agendas escolares", "Únicamente informes médicos", "Sustitución de las familias en la crianza"], "answer": 1, "explanation": "En el tema 1 se enumeran reuniones, entrevistas, agendas y otras formas de comunicación con familias."}, {"q": "¿Qué rasgo personal del TSEI aparece expresamente en los apuntes?", "options": ["Estabilidad emocional", "Indiferencia afectiva", "Autoritarismo", "Improvisación constante"], "answer": 0, "explanation": "Entre las características personales se menciona la estabilidad emocional."}, {"q": "¿Qué principio ético profesional del TSEI aparece recogido de forma expresa en los apuntes?", "options": ["Difusión pública de datos personales", "Protección del derecho a la intimidad y a la imagen", "Sustitución del equipo interdisciplinar", "Rechazo de la formación permanente"], "answer": 1, "explanation": "La ética profesional incluye la protección de la intimidad y de la imagen del menor."}, {"q": "¿Qué autor se asocia en los apuntes al condicionamiento clásico?", "options": ["Skinner", "Piaget", "Pavlov", "Bandura"], "answer": 2, "explanation": "El condicionamiento clásico se atribuye a Pavlov en el bloque conductista."}, {"q": "¿Qué teoría se atribuye a Skinner en los apuntes?", "options": ["Aprendizaje significativo", "Condicionamiento operante", "Teoría socio-histórica", "Gestalt"], "answer": 1, "explanation": "Skinner aparece asociado al condicionamiento operante."}, {"q": "¿Qué etapa del desarrollo intelectual describe Piaget entre los 2 y los 7 años?", "options": ["Sensoriomotora", "Preoperacional", "Operaciones concretas", "Operaciones formales"], "answer": 1, "explanation": "Los apuntes sitúan la etapa preoperacional entre los 2 y los 7 años."}, {"q": "¿Qué concepto promueve Bruner como forma de construcción activa del conocimiento?", "options": ["Refuerzo negativo", "Aprendizaje por descubrimiento", "Condicionamiento clásico", "Ley figura-fondo"], "answer": 1, "explanation": "Bruner se relaciona con el aprendizaje por descubrimiento y el andamiaje tutorial."}, {"q": "¿Qué tipo de aprendizaje se vincula a Bandura en los apuntes?", "options": ["Aprendizaje por observación", "Aprendizaje memorístico", "Aprendizaje exclusivamente verbal", "Aprendizaje innato"], "answer": 0, "explanation": "Bandura aparece asociado al aprendizaje por observación y a los modelos."}, {"q": "¿Qué teoría sostiene que los nuevos conocimientos se adquieren mejor cuando se relacionan con los conocimientos previos?", "options": ["Teoría del aprendizaje significativo", "Teoría del condicionamiento operante", "Teoría de la Gestalt", "Teoría del modelo ecológico"], "answer": 0, "explanation": "Esa formulación corresponde a Ausubel y al aprendizaje significativo."}, {"q": "¿Qué autor formula la Zona de Desarrollo Próximo?", "options": ["Freud", "Vygotsky", "Decroly", "Montessori"], "answer": 1, "explanation": "La Zona de Desarrollo Próximo se atribuye a Vygotsky en los apuntes."}, {"q": "¿Qué enfoque se centra en la percepción, la comprensión y la organización de la información?", "options": ["Gestalt", "Psicoanálisis", "Conductismo", "Conectivismo"], "answer": 0, "explanation": "Los apuntes describen así las teorías de la Gestalt."}, {"q": "¿Qué tres instancias de la psique humana recoge Freud en los apuntes?", "options": ["Microsistema, mesosistema y exosistema", "Ello, yo y superyó", "Representación, acción y compromiso", "Interés, globalización y observación"], "answer": 1, "explanation": "Freud aparece vinculado a ello, yo y superyó."}, {"q": "¿Qué tipo de desarrollo estudia Erikson según los apuntes?", "options": ["Desarrollo psicosocial", "Desarrollo lógico-matemático", "Desarrollo ecológico", "Desarrollo conductista"], "answer": 0, "explanation": "Erikson se cita como autor de la teoría del desarrollo psicosocial."}, {"q": "¿Qué autora se centra en los conflictos emocionales tempranos y su manifestación a través del juego y la fantasía?", "options": ["María Montessori", "Melanie Klein", "Emmi Pikler", "Marta Mata"], "answer": 1, "explanation": "Los apuntes atribuyen esa orientación a Melanie Klein."}, {"q": "¿Qué nivel del modelo ecológico de Bronfenbrenner describe la relación entre familia y escuela?", "options": ["Microsistema", "Mesosistema", "Exosistema", "Macrosistema"], "answer": 1, "explanation": "El mesosistema conecta diferentes entornos del microsistema, como familia y escuela."}, {"q": "¿Qué teoría se centra en el papel de la tecnología, las redes y la capacidad para conectar información?", "options": ["Conectivismo", "Gestalt", "Psicoanálisis", "Aprendizaje significativo"], "answer": 0, "explanation": "Los apuntes atribuyen esa teoría a George Siemens y Stephen Downes."}, {"q": "¿Qué autor defendía el desarrollo natural y espontáneo del niño y el aprendizaje por observación y manipulación?", "options": ["Rousseau", "Freinet", "Skinner", "Bronfenbrenner"], "answer": 0, "explanation": "Esa formulación aparece en el apartado dedicado a Rousseau."}, {"q": "¿Qué autor creó el concepto de kindergarten o jardín de infancia?", "options": ["Pestalozzi", "Fröebel", "Decroly", "Ferrière"], "answer": 1, "explanation": "Los apuntes atribuyen a Fröebel la creación del kindergarten."}, {"q": "¿Qué creadora fundó la Casa dei Bambini?", "options": ["Marta Mata", "María Montessori", "Rosa Agazzi", "Emmi Pikler"], "answer": 1, "explanation": "La Casa dei Bambini se presenta como origen del método Montessori."}, {"q": "¿Qué aportación metodológica se atribuye a Decroly?", "options": ["Los centros de interés y la globalización", "El refuerzo positivo", "La ZDP", "La escuela libre sin exámenes"], "answer": 0, "explanation": "Decroly se asocia a los centros de interés y al principio de globalización."}, {"q": "¿Qué pedagogo defendió el trabajo cooperativo, la experiencia y los talleres como forma de aprendizaje?", "options": ["Freinet", "Pavlov", "Freud", "Tonucci"], "answer": 0, "explanation": "Los apuntes atribuyen esos principios a Célestin Freinet."}, {"q": "¿Qué pionero fundó en 1838 la primera escuela de párvulos en España?", "options": ["Pablo Montesinos", "Francisco Giner de los Ríos", "Ferrer Guardia", "Rudolf Steiner"], "answer": 0, "explanation": "La evolución histórica en España recoge ese dato para Pablo Montesinos."}, {"q": "¿Qué autora se vincula con la Escola Rosa Sensat y la formación continua del profesorado?", "options": ["Melanie Klein", "Marta Mata", "Carolina Agazzi", "Loris Malaguzzi"], "answer": 1, "explanation": "Marta Mata aparece asociada a la Escola Rosa Sensat y a la formación continua."}, {"q": "¿Qué principio básico forma parte de la propuesta de Emmi Pikler?", "options": ["Movimiento libre y natural autónomo", "Escolarización obligatoria temprana", "Eliminación de rutinas", "Exámenes sin juego"], "answer": 0, "explanation": "Uno de los tres pilares básicos de Pikler es permitir el movimiento libre y autónomo."}, {"q": "¿Qué característica define a Reggio Emilia en los apuntes?", "options": ["Documentación del proceso de aprendizaje mediante fotografías", "Uso exclusivo de libros de texto", "Supresión del trabajo en grupo", "Evaluación sin observación"], "answer": 0, "explanation": "Reggio Emilia se caracteriza por documentar el proceso y cuidar los espacios y materiales."}, {"q": "¿Qué enfoque pedagógico está basado en Rudolf Steiner?", "options": ["Escuela Waldorf", "Summerhill", "Casa dei Bambini", "Head Start"], "answer": 0, "explanation": "Los apuntes sitúan la Escuela Waldorf en el enfoque de Rudolf Steiner."}, {"q": "¿Qué escuela británica se presenta como radical y progresista, sin clases obligatorias ni exámenes?", "options": ["Head Start", "Summerhill", "Reggio Emilia", "Casa de Mompiano"], "answer": 1, "explanation": "Esa descripción corresponde a Summerhill en los apuntes."}, {"q": "¿Cuáles son las tres áreas de aprendizaje del currículo aragonés de Educación Infantil?", "options": ["CA, DEE y CRR", "Lengua, Matemáticas y Ciencias", "Motricidad, Lenguaje y Música", "Convivencia, Naturaleza y Arte"], "answer": 0, "explanation": "El tema 3 recoge las áreas Crecimiento en armonía, Descubrimiento y exploración del entorno, y Comunicación y representación de la realidad."}, {"q": "¿Qué tres principios articula el DUA según los apuntes?", "options": ["Representación, acción y expresión, y compromiso", "Objetivos, saberes y criterios", "Observación, memoria y examen", "Conducta, refuerzo y castigo"], "answer": 0, "explanation": "El DUA se desarrolla en torno a representación, acción y expresión, y compromiso."}, {"q": "¿Cómo define el tema 3 los saberes básicos?", "options": ["Normas disciplinarias comunes", "Conocimientos, destrezas y actitudes propios de un área", "Calificaciones finales del alumnado", "Materiales didácticos de aula"], "answer": 1, "explanation": "Los saberes básicos se definen como conocimientos, destrezas y actitudes propios de un área."}, {"q": "¿Para qué sirven las situaciones de aprendizaje en el currículo?", "options": ["Para desarrollar competencias mediante actuaciones contextualizadas", "Para sustituir toda evaluación", "Para eliminar la planificación", "Para separar objetivos y saberes"], "answer": 0, "explanation": "El currículo las presenta como actividades o secuencias para desarrollar competencias."}, {"q": "¿Qué recurso no formal de atención a la infancia aparece expresamente en los apuntes?", "options": ["Ludotecas y bebetecas", "Facultades universitarias", "Escuelas oficiales de idiomas", "Inspección educativa"], "answer": 0, "explanation": "Las ludotecas y bebetecas aparecen en el bloque de modalidades de atención a la infancia no formal."}];
+const letters = ['A','B','C','D'];
+const exam = document.getElementById('exam');
+function render(){
+ exam.innerHTML='';
+ questions.forEach((q,idx)=>{
+   const card=document.createElement('div');
+   card.className='card';
+   const opts=q.options.map((op,i)=>'<label class="option" id="q'+idx+'o'+i+'"><input type="radio" name="q'+idx+'" value="'+i+'"> <strong>'+letters[i]+'.</strong> '+op+'</label>').join('');
+   card.innerHTML='<div class="qnum">Pregunta '+(idx+1)+'</div><div class="qtext">'+q.q+'</div>'+opts+'<div id="f'+idx+'" class="feedback"></div>';
+   exam.appendChild(card);
+ });
+}
+function corregir(){
+ let ok=0, resp=0;
+ questions.forEach((q,idx)=>{
+   const fb=document.getElementById('f'+idx);
+   document.querySelectorAll('input[name="q'+idx+'"]').forEach((el,i)=>{ const lb=document.getElementById('q'+idx+'o'+i); lb.style.background='#fff'; lb.style.borderColor='#d1d5db'; });
+   const sel=document.querySelector('input[name="q'+idx+'"]:checked');
+   if(!sel){ fb.style.display='block'; fb.className='feedback warn'; fb.innerHTML='<strong>Sin responder.</strong> Respuesta correcta: '+letters[q.answer]+'. '+q.options[q.answer]+'. <div>'+q.explanation+'</div>'; return; }
+   resp++;
+   const v=Number(sel.value);
+   const good=document.getElementById('q'+idx+'o'+q.answer);
+   const chosen=document.getElementById('q'+idx+'o'+v);
+   good.style.background='#f0fdf4'; good.style.borderColor='#22c55e';
+   if(v===q.answer){ ok++; chosen.style.background='#dcfce7'; chosen.style.borderColor='#16a34a'; fb.style.display='block'; fb.className='feedback ok'; fb.innerHTML='<strong>Correcta.</strong><div>'+q.explanation+'</div>'; }
+   else { chosen.style.background='#fef2f2'; chosen.style.borderColor='#ef4444'; fb.style.display='block'; fb.className='feedback bad'; fb.innerHTML='<strong>Incorrecta.</strong> Respuesta correcta: '+letters[q.answer]+'. '+q.options[q.answer]+'. <div>'+q.explanation+'</div>'; }
+ });
+ const total=questions.length; const pct=Math.round(ok/total*100);
+ document.getElementById('score').textContent='Puntuación: '+ok+'/'+total+' | '+pct+'% | Respondidas: '+resp+'/'+total;
+ document.getElementById('bar').style.width=pct+'%';
+}
+function mostrar(){
+ questions.forEach((q,idx)=>{ const fb=document.getElementById('f'+idx); const good=document.getElementById('q'+idx+'o'+q.answer); good.style.background='#f0fdf4'; good.style.borderColor='#22c55e'; fb.style.display='block'; fb.className='feedback ok'; fb.innerHTML='<strong>Respuesta correcta: '+letters[q.answer]+'.</strong> '+q.options[q.answer]+'.<div>'+q.explanation+'</div>'; });
+}
+function reiniciar(){
+ document.querySelectorAll('input[type="radio"]').forEach(x=>x.checked=false);
+ document.querySelectorAll('.option').forEach(x=>{x.style.background='#fff';x.style.borderColor='#d1d5db';});
+ document.querySelectorAll('.feedback').forEach(x=>{x.style.display='none';x.innerHTML='';x.className='feedback';});
+ document.getElementById('score').textContent='Puntuación: pendiente';
+ document.getElementById('bar').style.width='0%';
+ window.scrollTo({top:0,behavior:'smooth'});
+}
+render();
+</script>
 </body>
 </html>
